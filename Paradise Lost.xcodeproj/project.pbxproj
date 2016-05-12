@@ -1,0 +1,568 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		96DCF8231CE422D000A08658 /* Paradise_LostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF8221CE422D000A08658 /* Paradise_LostTests.swift */; };
+		96DCF82E1CE422D000A08658 /* Paradise_LostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF82D1CE422D000A08658 /* Paradise_LostUITests.swift */; };
+		96DCF8401CE4250700A08658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF83E1CE4250700A08658 /* AppDelegate.swift */; };
+		96DCF8441CE4251F00A08658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96DCF8421CE4251F00A08658 /* Assets.xcassets */; };
+		96DCF8451CE4251F00A08658 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96DCF8431CE4251F00A08658 /* Info.plist */; };
+		96DCF8501CE4275700A08658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96DCF84D1CE4275700A08658 /* Main.storyboard */; };
+		96DCF8521CE4340600A08658 /* GameListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF8511CE4340500A08658 /* GameListVC.swift */; };
+		96DCF8581CE4773100A08658 /* ToolListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF8571CE4773100A08658 /* ToolListVC.swift */; };
+		96DCF85A1CE4794E00A08658 /* UniversalTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF8591CE4794E00A08658 /* UniversalTableView.swift */; };
+		96DCF85D1CE48BAB00A08658 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF85C1CE48BAB00A08658 /* README.md */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		96DCF81F1CE422D000A08658 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96DCF8021CE422CE00A08658 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 96DCF8091CE422CF00A08658;
+			remoteInfo = "Paradise Lost";
+		};
+		96DCF82A1CE422D000A08658 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 96DCF8021CE422CE00A08658 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 96DCF8091CE422CF00A08658;
+			remoteInfo = "Paradise Lost";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		96DCF80A1CE422CF00A08658 /* Paradise Lost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paradise Lost.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96DCF81E1CE422D000A08658 /* Paradise LostTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Paradise LostTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96DCF8221CE422D000A08658 /* Paradise_LostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paradise_LostTests.swift; sourceTree = "<group>"; };
+		96DCF8241CE422D000A08658 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96DCF8291CE422D000A08658 /* Paradise LostUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Paradise LostUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96DCF82D1CE422D000A08658 /* Paradise_LostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paradise_LostUITests.swift; sourceTree = "<group>"; };
+		96DCF82F1CE422D000A08658 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96DCF83E1CE4250700A08658 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Classes/AppDelegate.swift; sourceTree = "<group>"; };
+		96DCF8421CE4251F00A08658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		96DCF8431CE4251F00A08658 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
+		96DCF84E1CE4275700A08658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Views/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		96DCF8511CE4340500A08658 /* GameListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameListVC.swift; path = Classes/ViewControllers/GameListVC.swift; sourceTree = "<group>"; };
+		96DCF8571CE4773100A08658 /* ToolListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToolListVC.swift; path = Classes/ViewControllers/ToolListVC.swift; sourceTree = "<group>"; };
+		96DCF8591CE4794E00A08658 /* UniversalTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniversalTableView.swift; path = Classes/ViewModels/UniversalTableView.swift; sourceTree = "<group>"; };
+		96DCF85C1CE48BAB00A08658 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "Paradise Lost/README.md"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		96DCF8071CE422CF00A08658 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96DCF81B1CE422D000A08658 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96DCF8261CE422D000A08658 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		96DCF8011CE422CE00A08658 = {
+			isa = PBXGroup;
+			children = (
+				96DCF80C1CE422CF00A08658 /* Paradise Lost */,
+				96DCF85C1CE48BAB00A08658 /* README.md */,
+				96DCF8211CE422D000A08658 /* Paradise LostTests */,
+				96DCF82C1CE422D000A08658 /* Paradise LostUITests */,
+				96DCF80B1CE422CF00A08658 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		96DCF80B1CE422CF00A08658 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				96DCF80A1CE422CF00A08658 /* Paradise Lost.app */,
+				96DCF81E1CE422D000A08658 /* Paradise LostTests.xctest */,
+				96DCF8291CE422D000A08658 /* Paradise LostUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		96DCF80C1CE422CF00A08658 /* Paradise Lost */ = {
+			isa = PBXGroup;
+			children = (
+				96DCF83B1CE4240400A08658 /* Classes */,
+				96DCF83C1CE4244C00A08658 /* Views */,
+				96DCF83D1CE4246600A08658 /* Resources */,
+			);
+			path = "Paradise Lost";
+			sourceTree = "<group>";
+		};
+		96DCF8211CE422D000A08658 /* Paradise LostTests */ = {
+			isa = PBXGroup;
+			children = (
+				96DCF8221CE422D000A08658 /* Paradise_LostTests.swift */,
+				96DCF8241CE422D000A08658 /* Info.plist */,
+			);
+			path = "Paradise LostTests";
+			sourceTree = "<group>";
+		};
+		96DCF82C1CE422D000A08658 /* Paradise LostUITests */ = {
+			isa = PBXGroup;
+			children = (
+				96DCF82D1CE422D000A08658 /* Paradise_LostUITests.swift */,
+				96DCF82F1CE422D000A08658 /* Info.plist */,
+			);
+			path = "Paradise LostUITests";
+			sourceTree = "<group>";
+		};
+		96DCF83B1CE4240400A08658 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				96DCF8471CE4258E00A08658 /* DataStructures */,
+				96DCF85B1CE487B900A08658 /* Models */,
+				96DCF8481CE425CD00A08658 /* ViewModels */,
+				96DCF8461CE4258400A08658 /* ViewControllers */,
+				96DCF83E1CE4250700A08658 /* AppDelegate.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		96DCF83C1CE4244C00A08658 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				96DCF84D1CE4275700A08658 /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		96DCF83D1CE4246600A08658 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				96DCF8421CE4251F00A08658 /* Assets.xcassets */,
+				96DCF8431CE4251F00A08658 /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		96DCF8461CE4258400A08658 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				96DCF8511CE4340500A08658 /* GameListVC.swift */,
+				96DCF8571CE4773100A08658 /* ToolListVC.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		96DCF8471CE4258E00A08658 /* DataStructures */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DataStructures;
+			sourceTree = "<group>";
+		};
+		96DCF8481CE425CD00A08658 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				96DCF8591CE4794E00A08658 /* UniversalTableView.swift */,
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		96DCF85B1CE487B900A08658 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		96DCF8091CE422CF00A08658 /* Paradise Lost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96DCF8321CE422D000A08658 /* Build configuration list for PBXNativeTarget "Paradise Lost" */;
+			buildPhases = (
+				96DCF8061CE422CF00A08658 /* Sources */,
+				96DCF8071CE422CF00A08658 /* Frameworks */,
+				96DCF8081CE422CF00A08658 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Paradise Lost";
+			productName = "Paradise Lost";
+			productReference = 96DCF80A1CE422CF00A08658 /* Paradise Lost.app */;
+			productType = "com.apple.product-type.application";
+		};
+		96DCF81D1CE422D000A08658 /* Paradise LostTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96DCF8351CE422D000A08658 /* Build configuration list for PBXNativeTarget "Paradise LostTests" */;
+			buildPhases = (
+				96DCF81A1CE422D000A08658 /* Sources */,
+				96DCF81B1CE422D000A08658 /* Frameworks */,
+				96DCF81C1CE422D000A08658 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				96DCF8201CE422D000A08658 /* PBXTargetDependency */,
+			);
+			name = "Paradise LostTests";
+			productName = "Paradise LostTests";
+			productReference = 96DCF81E1CE422D000A08658 /* Paradise LostTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		96DCF8281CE422D000A08658 /* Paradise LostUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96DCF8381CE422D000A08658 /* Build configuration list for PBXNativeTarget "Paradise LostUITests" */;
+			buildPhases = (
+				96DCF8251CE422D000A08658 /* Sources */,
+				96DCF8261CE422D000A08658 /* Frameworks */,
+				96DCF8271CE422D000A08658 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				96DCF82B1CE422D000A08658 /* PBXTargetDependency */,
+			);
+			name = "Paradise LostUITests";
+			productName = "Paradise LostUITests";
+			productReference = 96DCF8291CE422D000A08658 /* Paradise LostUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		96DCF8021CE422CE00A08658 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Jason Chen";
+				TargetAttributes = {
+					96DCF8091CE422CF00A08658 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = ESYE4DY6PK;
+					};
+					96DCF81D1CE422D000A08658 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 96DCF8091CE422CF00A08658;
+					};
+					96DCF8281CE422D000A08658 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = 96DCF8091CE422CF00A08658;
+					};
+				};
+			};
+			buildConfigurationList = 96DCF8051CE422CE00A08658 /* Build configuration list for PBXProject "Paradise Lost" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 96DCF8011CE422CE00A08658;
+			productRefGroup = 96DCF80B1CE422CF00A08658 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				96DCF8091CE422CF00A08658 /* Paradise Lost */,
+				96DCF81D1CE422D000A08658 /* Paradise LostTests */,
+				96DCF8281CE422D000A08658 /* Paradise LostUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		96DCF8081CE422CF00A08658 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96DCF8441CE4251F00A08658 /* Assets.xcassets in Resources */,
+				96DCF8451CE4251F00A08658 /* Info.plist in Resources */,
+				96DCF8501CE4275700A08658 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96DCF81C1CE422D000A08658 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96DCF8271CE422D000A08658 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		96DCF8061CE422CF00A08658 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96DCF8401CE4250700A08658 /* AppDelegate.swift in Sources */,
+				96DCF8521CE4340600A08658 /* GameListVC.swift in Sources */,
+				96DCF85D1CE48BAB00A08658 /* README.md in Sources */,
+				96DCF85A1CE4794E00A08658 /* UniversalTableView.swift in Sources */,
+				96DCF8581CE4773100A08658 /* ToolListVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96DCF81A1CE422D000A08658 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96DCF8231CE422D000A08658 /* Paradise_LostTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		96DCF8251CE422D000A08658 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96DCF82E1CE422D000A08658 /* Paradise_LostUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		96DCF8201CE422D000A08658 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 96DCF8091CE422CF00A08658 /* Paradise Lost */;
+			targetProxy = 96DCF81F1CE422D000A08658 /* PBXContainerItemProxy */;
+		};
+		96DCF82B1CE422D000A08658 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 96DCF8091CE422CF00A08658 /* Paradise Lost */;
+			targetProxy = 96DCF82A1CE422D000A08658 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		96DCF84D1CE4275700A08658 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				96DCF84E1CE4275700A08658 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		96DCF8301CE422D000A08658 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		96DCF8311CE422D000A08658 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		96DCF8331CE422D000A08658 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/Paradise Lost/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-Lost";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		96DCF8341CE422D000A08658 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "$(SRCROOT)/Paradise Lost/Resources/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-Lost";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		96DCF8361CE422D000A08658 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Paradise LostTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-LostTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Paradise Lost.app/Paradise Lost";
+			};
+			name = Debug;
+		};
+		96DCF8371CE422D000A08658 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Paradise LostTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-LostTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Paradise Lost.app/Paradise Lost";
+			};
+			name = Release;
+		};
+		96DCF8391CE422D000A08658 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Paradise LostUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-LostUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Paradise Lost";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		96DCF83A1CE422D000A08658 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Paradise LostUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-LostUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Paradise Lost";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		96DCF8051CE422CE00A08658 /* Build configuration list for PBXProject "Paradise Lost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96DCF8301CE422D000A08658 /* Debug */,
+				96DCF8311CE422D000A08658 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		96DCF8321CE422D000A08658 /* Build configuration list for PBXNativeTarget "Paradise Lost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96DCF8331CE422D000A08658 /* Debug */,
+				96DCF8341CE422D000A08658 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		96DCF8351CE422D000A08658 /* Build configuration list for PBXNativeTarget "Paradise LostTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96DCF8361CE422D000A08658 /* Debug */,
+				96DCF8371CE422D000A08658 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		96DCF8381CE422D000A08658 /* Build configuration list for PBXNativeTarget "Paradise LostUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96DCF8391CE422D000A08658 /* Debug */,
+				96DCF83A1CE422D000A08658 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 96DCF8021CE422CE00A08658 /* Project object */;
+}
