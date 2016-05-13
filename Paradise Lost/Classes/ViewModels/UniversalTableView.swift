@@ -11,14 +11,10 @@ import UIKit
 
 class UniversalTableViewController: UITableViewController, UniversalTableViewCellDelegate {
     /// The identifier for reused cell
-    var cellReuseIdentifier: String = {
-        return "Cell"
-    }()
-
+    var cellReuseIdentifier: String = "Cell"
+    
     /// The name for title of navigation item
-    var viewName: String = {
-       return "default view name"
-    }()
+    var viewName: String = ""
     
     /// Array of item names shown on the screen
     var itemNames: [String] = []
@@ -55,6 +51,23 @@ class UniversalTableViewController: UITableViewController, UniversalTableViewCel
     func cellButtonAction(cell: UITableViewCell) {
         fatalError("cellButtonAction(cell:) has not been implemented")
     }
+    
+    // MARK: getters and setters
+    
+    func loadItem(name: String) {
+        guard
+            let itemsPath = NSBundle.mainBundle().pathForResource(name, ofType: "plist"),
+            let dict = NSDictionary(contentsOfFile: itemsPath)
+        else {
+                return
+        }
+        
+        for index in 1...dict.count {
+            if let item = dict.objectForKey("\(index)") {
+                itemNames.append((item as! NSDictionary).objectForKey("name") as! String)
+            }
+        }
+    }
 }
 
 protocol UniversalTableViewCellDelegate {
@@ -87,7 +100,7 @@ class UniversalTableViewCell: UITableViewCell {
         addSubview(nameLabel)
         addSubview(actionButton)
         
-        actionButton.addTarget(self, action: "handleAction", forControlEvents: .TouchUpInside)
+        actionButton.addTarget(self, action: #selector(UniversalTableViewCell.handleAction), forControlEvents: .TouchUpInside)
         
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-16-[v0]-8-[v1(80)]-8-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel, "v1": actionButton]))

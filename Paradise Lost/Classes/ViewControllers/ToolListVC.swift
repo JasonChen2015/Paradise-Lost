@@ -15,7 +15,7 @@ class ToolListVC: UniversalTableViewController {
 
     override func viewDidLoad() {
         viewName = "Tool List"
-        itemNames = ["Bar Code Scan", "Test"]
+        loadItem("ToolItems")
         
         super.viewDidLoad()
     }

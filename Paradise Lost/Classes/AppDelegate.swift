@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         // initialize environment
+        
+        // let the Launching Screen stay for several seconds
+        NSThread.sleepForTimeInterval(2.0)
 
         // set root view controller
 
@@ -26,11 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let gameListVCtrl = GameListVC()
         let gameListNavCtrl = UINavigationController(rootViewController: gameListVCtrl)
-        gameListNavCtrl.tabBarItem.title = "Game"
+        gameListNavCtrl.tabBarItem.title = "Games"
+        gameListNavCtrl.tabBarItem.image = UIImage(named: "GameNavItem")
 
         let toolListVCtrl = ToolListVC()
         let toolListNavCtrl = UINavigationController(rootViewController: toolListVCtrl)
-        toolListNavCtrl.tabBarItem.title = "Tool"
+        toolListNavCtrl.tabBarItem.title = "Tools"
+        toolListNavCtrl.tabBarItem.image = UIImage(named: "ToolNavItem")
 
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [gameListNavCtrl, toolListNavCtrl]

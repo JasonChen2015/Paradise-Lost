@@ -15,7 +15,7 @@ class GameListVC: UniversalTableViewController {
 
     override func viewDidLoad() {
         viewName = "Game List"
-        itemNames = ["2048", "Sudoku", "Snake"]
+        loadItem("GameItems")
 
         super.viewDidLoad()
     }
