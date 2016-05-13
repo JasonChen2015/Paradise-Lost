@@ -7,7 +7,9 @@
 		<key>name</key>
 		<string>2048</string>
 		<key>segueId</key>
-		<string></string>
+		<string>TwoZeroFourEightVC</string>
+		<key>needNavigation</key>
+		<false/>
 	</dict>
 	<key>2</key>
 	<dict>
@@ -15,6 +17,8 @@
 		<string>Sudoku</string>
 		<key>segueId</key>
 		<string></string>
+		<key>needNavigation</key>
+		<false/>
 	</dict>
 </dict>
 </plist>

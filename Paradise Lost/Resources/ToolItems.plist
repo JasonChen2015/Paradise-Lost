@@ -7,7 +7,9 @@
 		<key>name</key>
 		<string>File Explorer</string>
 		<key>segueId</key>
-		<string></string>
+		<string>FileExplorerVC</string>
+		<key>needNavigation</key>
+		<true/>
 	</dict>
 	<key>2</key>
 	<dict>
@@ -15,6 +17,8 @@
 		<string>Text Editor</string>
 		<key>segueId</key>
 		<string></string>
+		<key>needNavigation</key>
+		<false/>
 	</dict>
 </dict>
 </plist>
