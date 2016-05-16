@@ -60,7 +60,7 @@ class CellItemManager {
         
         let appName = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName") as! String
         let moduleName = appName.stringByReplacingOccurrencesOfString(" ", withString: "_")
-        let className = "\(moduleName).\(items[index].segueId))"
+        let className = "\(moduleName).\(items[index].segueId)"
         
         return className
     }

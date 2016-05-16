@@ -12,10 +12,27 @@ class TwoZeroFourEightVC: UIViewController {
     
     // MARK: life cycle
     
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return .Portrait
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.whiteColor()
         
-        // TODO:
-        self.view.backgroundColor = UIColor.blueColor()
+        let v = TwoZeroFourEightV(frame: UIScreen.mainScreen().bounds)
+        view.addSubview(v)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
 }

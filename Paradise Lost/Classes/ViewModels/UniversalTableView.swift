@@ -82,7 +82,7 @@ class UniversalTableViewCell: UITableViewCell {
         addSubview(nameLabel)
         addSubview(actionButton)
         
-        actionButton.addTarget(self, action: #selector(handleAction), forControlEvents: .TouchUpInside)
+        actionButton.addTarget(self, action: "handleAction", forControlEvents: .TouchUpInside)
         
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
             "H:|-16-[v0]-8-[v1(80)]-8-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel, "v1": actionButton]))

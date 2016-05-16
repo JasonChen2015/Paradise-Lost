@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		962AF9F41CE9640D00B7E128 /* TwoZeroFourEightV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962AF9F31CE9640D00B7E128 /* TwoZeroFourEightV.swift */; };
 		96687FE21CE5714000149A59 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 96687FE01CE5714000149A59 /* LICENSE */; };
 		96687FE31CE5714000149A59 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 96687FE11CE5714000149A59 /* README.md */; };
 		96687FE61CE57ED700149A59 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96687FE41CE57ED700149A59 /* Launch Screen.storyboard */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		962AF9F31CE9640D00B7E128 /* TwoZeroFourEightV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwoZeroFourEightV.swift; path = Classes/ViewModels/Game/TwoZeroFourEightV.swift; sourceTree = "<group>"; };
 		96687FE01CE5714000149A59 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		96687FE11CE5714000149A59 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		96687FE51CE57ED700149A59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Views/Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		962AF9F51CE9641200B7E128 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				962AF9F31CE9640D00B7E128 /* TwoZeroFourEightV.swift */,
+			);
+			name = Game;
+			sourceTree = "<group>";
+		};
 		96753A341CE5D8630079FB8F /* Game */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,11 +175,11 @@
 		96DCF83B1CE4240400A08658 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				96DCF83E1CE4250700A08658 /* AppDelegate.swift */,
 				96DCF8471CE4258E00A08658 /* DataStructures */,
 				96DCF85B1CE487B900A08658 /* Models */,
 				96DCF8481CE425CD00A08658 /* ViewModels */,
 				96DCF8461CE4258400A08658 /* ViewControllers */,
-				96DCF83E1CE4250700A08658 /* AppDelegate.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -214,6 +224,7 @@
 		96DCF8481CE425CD00A08658 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				962AF9F51CE9641200B7E128 /* Game */,
 				96DCF8591CE4794E00A08658 /* UniversalTableView.swift */,
 			);
 			name = ViewModels;
@@ -370,6 +381,7 @@
 				96DCF85A1CE4794E00A08658 /* UniversalTableView.swift in Sources */,
 				96753A3B1CE5D8F50079FB8F /* ToolListVC.swift in Sources */,
 				96753A371CE5D8BE0079FB8F /* TwoZeroFourEightVC.swift in Sources */,
+				962AF9F41CE9640D00B7E128 /* TwoZeroFourEightV.swift in Sources */,
 				96753A3D1CE5D9590079FB8F /* FileExplorerVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
