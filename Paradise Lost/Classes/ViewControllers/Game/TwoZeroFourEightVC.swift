@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TwoZeroFourEightVC: UIViewController {
+class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     
     // MARK: life cycle
     
@@ -29,10 +29,24 @@ class TwoZeroFourEightVC: UIViewController {
         view.backgroundColor = UIColor.whiteColor()
         
         let v = TwoZeroFourEightV(frame: UIScreen.mainScreen().bounds)
+        v.delegate = self
         view.addSubview(v)
+        
+        let val = 2 << Int(arc4random_uniform(10))
+        v.setValueOfTile(1, value: val)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    // MARK: TwoZeroFourEightViewDelegate
+    
+    func newButtonAction() {
+        //
+    }
+    
+    func exitButtonAction() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }
