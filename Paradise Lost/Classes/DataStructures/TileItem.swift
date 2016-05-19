@@ -25,6 +25,7 @@ class TileItemManager {
     */
     
     enum Direction {
+        case none
         case up
         case down
         case left
@@ -47,21 +48,83 @@ class TileItemManager {
         }
     }
     
-    class func mergeAsideFromItems(items: [TileItem], atIndex index: Int, atDirection direct: Direction) -> Bool {
-        // TODO:
+    class func mergeAsideFromItems(var items: [TileItem], atDirection direct: Direction) -> Bool {
         switch direct {
+        case .none:
+            return false
         case .up:
-            if index < 4 {
-                return false
+            var i = 0;
+            while (i < 12) {
+                if (items[i].value == items[i + 4].value) {
+                    items[i].value = items[i].value * 2
+                    items[i + 4].value = 0
+                    var j = i
+                    while (j < 12) {
+                        if (items[j].value == 0) {
+                            items[j].value = items[j + 4].value
+                            items[j + 4].value = 0
+                        }
+                        j = j + 4
+                    }
+                }
+                i = i + 1
             }
             break
         case .down:
+            var i = 15;
+            while (i > 3) {
+                if (items[i].value == items[i - 4].value) {
+                    items[i].value = items[i].value * 2
+                    items[i - 4].value = 0
+                    var j = i
+                    while (j > 3) {
+                        if (items[j].value == 0) {
+                            items[j].value = items[j - 4].value
+                            items[j - 4].value = 0
+                        }
+                        j = j - 4
+                    }
+                }
+                i = i - 1
+            }
             break
         case .left:
+            var i = 0
+            while (i != 3) {
+                if (items[i].value == items[i + 1].value) {
+                    items[i].value = items[i].value * 2
+                    items[i + 1].value = 0;
+                    var j = i
+                    while (j % 4 < 3) {
+                        if (items[j].value == 0) {
+                            items[j].value = items[j + 1].value
+                            items[j + 1].value = 0
+                        }
+                        j = j + 1
+                    }
+                }
+                i = (i + 4 > 15) ? (i - 11) : (i + 4)
+            }
             break
         case .right:
+            var i = 15
+            while (i != 12) {
+                if (items[i].value == items[i - 1].value) {
+                    items[i].value = items[i].value * 2
+                    items[i - 1].value = 0;
+                    var j = i
+                    while (j % 4 > 0) {
+                        if (items[j].value == 0) {
+                            items[j].value = items[j - 1].value
+                            items[j - 1].value = 0
+                        }
+                        j = j - 1
+                    }
+                }
+                i = (i - 4 < 0) ? (i + 11) : (i - 4)
+            }
             break
         }
-        return false
+        return true
     }
 }

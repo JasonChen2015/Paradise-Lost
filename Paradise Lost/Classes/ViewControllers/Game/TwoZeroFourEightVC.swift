@@ -10,6 +10,9 @@ import UIKit
 
 class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     
+    var tiles: [TileItem] = []
+    var lastDirection: TileItemManager.Direction = .none
+    
     // MARK: life cycle
     
     override func shouldAutorotate() -> Bool {
@@ -32,8 +35,15 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         v.delegate = self
         view.addSubview(v)
         
+        // for test
         let val = 2 << Int(arc4random_uniform(10))
-        v.setValueOfTile(1, value: val)
+        tiles[0] = TileItem(value: val)
+        v.setValueOfTile(0, value: val)
+        
+        for index in 1...15 {
+            tiles[index] = TileItem(value: 0)
+            v.setValueOfTile(index, value: 0)
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
