@@ -50,6 +50,21 @@ class TwoZeroFourEightV: UIView {
         delegate?.exitButtonAction()
     }
     
+    func moveAside(index: Int, atDirecttion direct: TileItemManager.Direction) {
+        switch direct {
+        case .None:
+            break;
+        case .Up:
+            break
+        case .Down:
+            break
+        case .Left:
+            break
+        case .Right:
+            break
+        }
+    }
+    
     // MARK: private methods
     
     func setupView() {
@@ -206,7 +221,7 @@ class TZFETileView: UIView {
     var contentLabel: UILabel = {
         var label = UILabel()
         label.textColor = UIColor.whiteColor()
-        label.font = UIFont.boldSystemFontOfSize(20)
+        label.font = UIFont.boldSystemFontOfSize(27)
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -236,18 +251,5 @@ class TZFETileView: UIView {
     
     func disappear(index: Int) {
         
-    }
-    
-    func moveAside(index: Int, atDirecttion direct: TileItemManager.Direction) {
-        switch direct {
-        case .up:
-            break
-        case .down:
-            break
-        case .left:
-            break
-        case .right:
-            break
-        }
     }
 }

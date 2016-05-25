@@ -10,8 +10,9 @@ import UIKit
 
 class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     
-    var tiles: [TileItem] = []
-    var lastDirection: TileItemManager.Direction = .none
+    var tiles: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    var lastDirection: TileItemManager.Direction = .None
+    var tileView: TwoZeroFourEightV!
     
     // MARK: life cycle
     
@@ -31,19 +32,21 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
         
-        let v = TwoZeroFourEightV(frame: UIScreen.mainScreen().bounds)
-        v.delegate = self
-        view.addSubview(v)
+        tileView = TwoZeroFourEightV(frame: UIScreen.mainScreen().bounds)
+        tileView.delegate = self
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        panGesture.maximumNumberOfTouches = 1
+        panGesture.minimumNumberOfTouches = 1
+        tileView.addGestureRecognizer(panGesture)
+        
+        view.addSubview(tileView)
         
         // for test
         let val = 2 << Int(arc4random_uniform(10))
-        tiles[0] = TileItem(value: val)
-        v.setValueOfTile(0, value: val)
+        tiles[2] = val
         
-        for index in 1...15 {
-            tiles[index] = TileItem(value: 0)
-            v.setValueOfTile(index, value: 0)
-        }
+        refreshTileView()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -58,5 +61,46 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     
     func exitButtonAction() {
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // MARK: event response
+    
+    func handlePanGesture(sender: UIPanGestureRecognizer) {
+        // TODO: the animation of merging
+        if sender.state == .Ended {
+            let velocity = sender.velocityInView(self.view)
+            // ignore the case when x == y
+            if fabs(velocity.x) > fabs(velocity.y) {
+                // horizontal
+                if velocity.x > 0 {
+                    TileItemManager.mergeAsideFromItems(tiles, atDirection: .Right)
+                    lastDirection = .Right
+                    refreshTileView()
+                } else if velocity.x < 0 {
+                    TileItemManager.mergeAsideFromItems(tiles, atDirection: .Left)
+                    lastDirection = .Left
+                    refreshTileView()
+                }
+            } else if fabs(velocity.x) < fabs(velocity.y) {
+                // vertical
+                if velocity.y > 0 {
+                    TileItemManager.mergeAsideFromItems(tiles, atDirection: .Down)
+                    lastDirection = .Down
+                    refreshTileView()
+                } else if velocity.y < 0 {
+                    TileItemManager.mergeAsideFromItems(tiles, atDirection: .Up)
+                    lastDirection = .Up
+                    refreshTileView()
+                }
+            }
+        }
+    }
+    
+    // MARK: private methods
+    
+    func refreshTileView() {
+        for index in 0...15 {
+            tileView.setValueOfTile(index, value: tiles[index])
+        }
     }
 }

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 struct TileItem {
     var value: Int
     
@@ -15,7 +15,7 @@ struct TileItem {
         self.value = value
     }
 }
-
+*/
 class TileItemManager {
     /*
     00 01 02 03
@@ -25,22 +25,30 @@ class TileItemManager {
     */
     
     enum Direction {
-        case none
-        case up
-        case down
-        case left
-        case right
+        case None
+        case Up
+        case Down
+        case Left
+        case Right
     }
     
-    class func changeValueFromItems(var items: [TileItem], atIndex index: Int, newValue: Int) {
-        items[index].value = newValue
+    class func generateTileArray(rawData: [Int]) -> [Int] {
+        var items: [Int] = [];
+        for i in 0..<rawData.count {
+            items.insert(rawData[i], atIndex: i)
+        }
+        return items
     }
     
-    class func getValueFromItems(items: [TileItem], atIndex index: Int) -> Int {
-        return items[index].value
+    class func changeValueFromItems(var items: [Int], atIndex index: Int, newValue: Int) {
+        items[index] = newValue
     }
     
-    class func hasValueFromItems(items: [TileItem], atIndex index: Int) -> Bool {
+    class func getValueFromItems(items: [Int], atIndex index: Int) -> Int {
+        return items[index]
+    }
+    
+    class func hasValueFromItems(items: [Int], atIndex index: Int) -> Bool {
         if getValueFromItems(items, atIndex: index) == 0 {
             return false
         } else {
@@ -48,21 +56,22 @@ class TileItemManager {
         }
     }
     
-    class func mergeAsideFromItems(var items: [TileItem], atDirection direct: Direction) -> Bool {
+    class func mergeAsideFromItems(var items: [Int], atDirection direct: Direction) -> Bool {
+        // TODO: the logic and result of merging is wrong
         switch direct {
-        case .none:
+        case .None:
             return false
-        case .up:
+        case .Up:
             var i = 0;
             while (i < 12) {
-                if (items[i].value == items[i + 4].value) {
-                    items[i].value = items[i].value * 2
-                    items[i + 4].value = 0
+                if (items[i] == items[i + 4]) {
+                    items[i] = items[i] * 2
+                    items[i + 4] = 0
                     var j = i
                     while (j < 12) {
-                        if (items[j].value == 0) {
-                            items[j].value = items[j + 4].value
-                            items[j + 4].value = 0
+                        if (items[j] == 0) {
+                            items[j] = items[j + 4]
+                            items[j + 4] = 0
                         }
                         j = j + 4
                     }
@@ -70,17 +79,17 @@ class TileItemManager {
                 i = i + 1
             }
             break
-        case .down:
+        case .Down:
             var i = 15;
             while (i > 3) {
-                if (items[i].value == items[i - 4].value) {
-                    items[i].value = items[i].value * 2
-                    items[i - 4].value = 0
+                if (items[i] == items[i - 4]) {
+                    items[i] = items[i] * 2
+                    items[i - 4] = 0
                     var j = i
                     while (j > 3) {
-                        if (items[j].value == 0) {
-                            items[j].value = items[j - 4].value
-                            items[j - 4].value = 0
+                        if (items[j] == 0) {
+                            items[j] = items[j - 4]
+                            items[j - 4] = 0
                         }
                         j = j - 4
                     }
@@ -88,17 +97,17 @@ class TileItemManager {
                 i = i - 1
             }
             break
-        case .left:
+        case .Left:
             var i = 0
             while (i != 3) {
-                if (items[i].value == items[i + 1].value) {
-                    items[i].value = items[i].value * 2
-                    items[i + 1].value = 0;
+                if (items[i] == items[i + 1]) {
+                    items[i] = items[i] * 2
+                    items[i + 1] = 0;
                     var j = i
                     while (j % 4 < 3) {
-                        if (items[j].value == 0) {
-                            items[j].value = items[j + 1].value
-                            items[j + 1].value = 0
+                        if (items[j] == 0) {
+                            items[j] = items[j + 1]
+                            items[j + 1] = 0
                         }
                         j = j + 1
                     }
@@ -106,17 +115,17 @@ class TileItemManager {
                 i = (i + 4 > 15) ? (i - 11) : (i + 4)
             }
             break
-        case .right:
+        case .Right:
             var i = 15
             while (i != 12) {
-                if (items[i].value == items[i - 1].value) {
-                    items[i].value = items[i].value * 2
-                    items[i - 1].value = 0;
+                if (items[i] == items[i - 1]) {
+                    items[i] = items[i] * 2
+                    items[i - 1] = 0;
                     var j = i
                     while (j % 4 > 0) {
-                        if (items[j].value == 0) {
-                            items[j].value = items[j - 1].value
-                            items[j - 1].value = 0
+                        if (items[j] == 0) {
+                            items[j] = items[j - 1]
+                            items[j - 1] = 0
                         }
                         j = j - 1
                     }
