@@ -21,6 +21,7 @@
 		96753A3B1CE5D8F50079FB8F /* ToolListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96753A3A1CE5D8F50079FB8F /* ToolListVC.swift */; };
 		96753A3D1CE5D9590079FB8F /* FileExplorerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96753A3C1CE5D9590079FB8F /* FileExplorerVC.swift */; };
 		96753A411CE5DD170079FB8F /* FileSharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96753A401CE5DD170079FB8F /* FileSharing.swift */; };
+		96B84F031CF6D04200817793 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B84F021CF6D04200817793 /* UserDefaultManager.swift */; };
 		96DCF8231CE422D000A08658 /* Paradise_LostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF8221CE422D000A08658 /* Paradise_LostTests.swift */; };
 		96DCF82E1CE422D000A08658 /* Paradise_LostUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF82D1CE422D000A08658 /* Paradise_LostUITests.swift */; };
 		96DCF8401CE4250700A08658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF83E1CE4250700A08658 /* AppDelegate.swift */; };
@@ -61,6 +62,7 @@
 		96753A3A1CE5D8F50079FB8F /* ToolListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToolListVC.swift; path = Classes/ViewControllers/Tool/ToolListVC.swift; sourceTree = "<group>"; };
 		96753A3C1CE5D9590079FB8F /* FileExplorerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileExplorerVC.swift; path = Classes/ViewControllers/Tool/FileExplorerVC.swift; sourceTree = "<group>"; };
 		96753A401CE5DD170079FB8F /* FileSharing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileSharing.swift; path = Classes/Models/FileSharing.swift; sourceTree = "<group>"; };
+		96B84F021CF6D04200817793 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultManager.swift; path = Classes/Models/UserDefaultManager.swift; sourceTree = "<group>"; };
 		96DCF80A1CE422CF00A08658 /* Paradise Lost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paradise Lost.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DCF81E1CE422D000A08658 /* Paradise LostTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Paradise LostTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		96DCF8221CE422D000A08658 /* Paradise_LostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paradise_LostTests.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				96753A401CE5DD170079FB8F /* FileSharing.swift */,
+				96B84F021CF6D04200817793 /* UserDefaultManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96687FEC1CE5AB3400149A59 /* CellItem.swift in Sources */,
+				96B84F031CF6D04200817793 /* UserDefaultManager.swift in Sources */,
 				96DCF8401CE4250700A08658 /* AppDelegate.swift in Sources */,
 				96753A411CE5DD170079FB8F /* FileSharing.swift in Sources */,
 				965BA4B41CEAF29C003988E2 /* Color.swift in Sources */,

@@ -137,7 +137,7 @@ class TwoZeroFourEightV: UIView {
     
     var tilesBackground: UIView = {
         var view = UIView()
-        view.backgroundColor = Color().FrechBeige
+        view.backgroundColor = Color().TileBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -153,7 +153,6 @@ class TwoZeroFourEightV: UIView {
     
     var highScoreNumLabel: UILabel = {
         var label = UILabel()
-        // TODO: read from local data
         label.text = "0"
         label.font = UIFont.boldSystemFontOfSize(27)
         label.textAlignment = .Center
@@ -186,12 +185,21 @@ class TwoZeroFourEightV: UIView {
      parameter x: 0..<dimension * dimension
      parameter y: 0..<dimension * dimension
      */
+    // maybe no use
     func setValueOfTile(x x: Int, y: Int, value: Int) {
         setValueOfTile((x + (y - 1) * dimension), value: value)
     }
     
     func setValueOfTile(index: Int, value: Int) {
         (tilesSet[index] as! TZFETileView).value = value
+    }
+    
+    func setValueOfScore(value: Int) {
+        scoreNumLabel.text = "\(value)"
+    }
+    
+    func setValueOfHighScore(value: Int) {
+        highScoreNumLabel.text = "\(value)"
     }
 }
 
@@ -200,10 +208,10 @@ class TZFETileView: UIView {
         0: Color().CosmicLatte,
         2: UIColor.redColor(),
         4: UIColor.orangeColor(),
-        8: UIColor.yellowColor(),
-        16: UIColor.greenColor(),
-        32: UIColor.brownColor(),
-        64: UIColor.blueColor(),
+        8: Color().BrightOrange,
+        16: Color().BrightRed,
+        32: Color().VividRed,
+        64: Color().PureRed,
         128: UIColor.purpleColor(),
         256: UIColor.cyanColor(),
         512: UIColor.lightGrayColor(),
@@ -214,7 +222,11 @@ class TZFETileView: UIView {
     var value: Int = 0 {
         didSet {
             backgroundColor = colorMap[value]
-            contentLabel.text = "\(value)"
+            if value == 0 {
+                contentLabel.text = ""
+            } else {
+                contentLabel.text = "\(value)"
+            }
         }
     }
     
