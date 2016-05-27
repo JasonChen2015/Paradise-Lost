@@ -1,5 +1,5 @@
 //
-//  TileItem.swift
+//  TileManager.swift
 //  Paradise Lost
 //
 //  Created by Jason Chen on 5/17/16.
@@ -7,16 +7,8 @@
 //
 
 import Foundation
-/*
-struct TileItem {
-    var value: Int
-    
-    init(value: Int) {
-        self.value = value
-    }
-}
-*/
-class TileItemManager {
+
+class TileManager {
     
     enum Direction {
         case None
@@ -26,33 +18,7 @@ class TileItemManager {
         case Right
     }
     
-    class func generateTileArray(rawData: [Int]) -> [Int] {
-        var items: [Int] = [];
-        for i in 0..<rawData.count {
-            items.insert(rawData[i], atIndex: i)
-        }
-        return items
-    }
-    
-    class func changeValueFromItems(items: [Int], atIndex index: Int, newValue: Int) -> [Int] {
-        var temp = items
-        temp[index] = newValue
-        return temp
-    }
-    
-    class func getValueFromItems(items: [Int], atIndex index: Int) -> Int {
-        return items[index]
-    }
-    
-    class func hasValueFromItems(items: [Int], atIndex index: Int) -> Bool {
-        if getValueFromItems(items, atIndex: index) == 0 {
-            return false
-        } else {
-            return true
-        }
-    }
-    
-    class func addANewValueToTile(items: [Int]) -> ([Int], Bool) {
+    class func addANewValueToTile(items: [Int]) -> [Int] {
         var temp = items
         var hasPos = true
         var s = 0
@@ -64,14 +30,15 @@ class TileItemManager {
         }
         if s == items.count {
             hasPos = false
+            return temp
         }
         // get new value
         let val = Int(arc4random_uniform(10))
         var value = 0
         if val < 9 {
-            value = 2
+            value = 2 // 80%
         } else {
-            value = 4
+            value = 4 // 20%
         }
         while hasPos {
             // get new position
@@ -81,17 +48,47 @@ class TileItemManager {
                 break
             }
         }
-        return (temp, hasPos)
+        return temp
+    }
+    
+    class func hasMoveOnTiles(items: [Int]) -> Bool {
+        var s = 0
+        // judge if has position to put a new value
+        for i in 0..<items.count {
+            if items[i] != 0 {
+                s = s + 1
+            }
+        }
+        if s != items.count {
+            return true
+        }
+        // judge if can merge
+        for i in 0..<16 {
+            // Up (Down)
+            if i > 3 {
+                if items[i] == items[i - 4] {
+                    return true
+                }
+            }
+            // Left (Right)
+            if i % 4 != 0 {
+                if items[i] == items[i - 1] {
+                    return true
+                }
+            }
+        }
+        return false
     }
     
     /*
     General Direction is .Left:
         00 01 02 03
-        04 05 06 07
+        04 05 06 07     (<-)
         08 09 10 11
         12 13 14 15
     */
-    class func rotateTileItemsToGeneral(items: [Int], atDirection direct: Direction) -> [Int] {
+    // private methods
+    class func rotateTileItemsToGeneral(items: [Int], fromDirection direct: Direction) -> [Int] {
         var temp = items
         switch direct {
         case .None:
@@ -123,6 +120,7 @@ class TileItemManager {
         return temp
     }
     
+    // private methods
     class func mergeTileItemsToLeft(items: [Int]) -> ([Int], Int, Bool) {
         var temp = items
         var score = 0
@@ -182,22 +180,22 @@ class TileItemManager {
         case .None:
             break
         case .Up:
-            temp = rotateTileItemsToGeneral(items, atDirection: .Up)
+            temp = rotateTileItemsToGeneral(items, fromDirection: .Up)
             (temp, score, hasMove) = mergeTileItemsToLeft(temp)
-            temp = rotateTileItemsToGeneral(temp, atDirection: .Down)
+            temp = rotateTileItemsToGeneral(temp, fromDirection: .Down)
             break
         case .Down:
-            temp = rotateTileItemsToGeneral(items, atDirection: .Down)
+            temp = rotateTileItemsToGeneral(items, fromDirection: .Down)
             (temp, score, hasMove) = mergeTileItemsToLeft(temp)
-            temp = rotateTileItemsToGeneral(temp, atDirection: .Up)
+            temp = rotateTileItemsToGeneral(temp, fromDirection: .Up)
             break
         case .Left:
             (temp, score, hasMove) = mergeTileItemsToLeft(items)
             break
         case .Right:
-            temp = rotateTileItemsToGeneral(items, atDirection: .Right)
+            temp = rotateTileItemsToGeneral(items, fromDirection: .Right)
             (temp, score, hasMove) = mergeTileItemsToLeft(temp)
-            temp = rotateTileItemsToGeneral(temp, atDirection: .Right)
+            temp = rotateTileItemsToGeneral(temp, fromDirection: .Right)
             break
         }
         return (temp, score, hasMove)

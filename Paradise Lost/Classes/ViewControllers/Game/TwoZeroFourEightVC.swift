@@ -11,7 +11,7 @@ import UIKit
 class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     
     var tiles: [Int] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-    var lastDirection: TileItemManager.Direction = .None
+    var lastTiles: [Int] = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
     var score: Int = 0
     var highScore: Int = 0
     var tileView: TwoZeroFourEightV!
@@ -48,16 +48,32 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        // judge the current state of tiles
+        if !TileManager.hasMoveOnTiles(tiles) {
+            gameOver()
+        }
     }
     
     func initialData() {
-        (tiles, _) = TileItemManager.addANewValueToTile(tiles)
-        (tiles, _) = TileItemManager.addANewValueToTile(tiles)
+        lastTiles = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+        // tiles
+        if let tmp = UserDefaultManager.valueFromKeyEnum(.TZFETilesRecord) {
+            tiles = tmp as! [Int]
+        } else {
+            tiles = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+            tiles = TileManager.addANewValueToTile(tiles)
+            tiles = TileManager.addANewValueToTile(tiles)
+        }
         refreshTileView()
-        
-        tileView.setValueOfScore(0)
+        // score
+        if let tmp = UserDefaultManager.valueFromKeyEnum(.TZFEScoreRecord) {
+            score = tmp as! Int
+        } else {
+            score = 0
+        }
         refreshScore()
-        
+        // high score
         if let tmp = UserDefaultManager.valueFromKeyEnum(.TZFEHighScore) {
             highScore = tmp as! Int
         } else {
@@ -66,11 +82,25 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         refreshHighScore()
     }
     
+    func resetData(alert: UIAlertAction?) {
+        lastTiles = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
+        tiles = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+        tiles = TileManager.addANewValueToTile(tiles)
+        tiles = TileManager.addANewValueToTile(tiles)
+        refreshTileView()
+        
+        tileView.setValueOfScore(0)
+        refreshScore()
+        
+        // save to user default
+        UserDefaultManager.setValue(tiles, forKeyEnum: .TZFETilesRecord)
+        UserDefaultManager.setValue(score, forKeyEnum: .TZFEScoreRecord)
+    }
+    
     // MARK: TwoZeroFourEightViewDelegate
     
     func newButtonAction() {
-        // TODO: should has tips
-        initialData()
+        AlertManager.showTips(self, message: "You will have a new game", handler: resetData)
     }
     
     func exitButtonAction() {
@@ -80,30 +110,32 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     // MARK: event response
     
     func handlePanGesture(sender: UIPanGestureRecognizer) {
-        // TODO: the animation of merging
         if sender.state == .Ended {
             let velocity = sender.velocityInView(self.view)
-            lastDirection = .None
+            var direction: TileManager.Direction = .None
             // ignore the case when x == y
             if fabs(velocity.x) > fabs(velocity.y) {
                 // horizontal
                 if velocity.x > 0 {
-                    lastDirection = .Right
+                    direction = .Right
                 } else if velocity.x < 0 {
-                    lastDirection = .Left
+                    direction = .Left
                 }
             } else if fabs(velocity.x) < fabs(velocity.y) {
                 // vertical
                 if velocity.y > 0 {
-                    lastDirection = .Down
+                    direction = .Down
                 } else if velocity.y < 0 {
-                    lastDirection = .Up
+                    direction = .Up
                 }
             }
+            // try to move
             var temp = 0
             var hasMove = false
-            var hasPos = true
-            (tiles, temp, hasMove) = TileItemManager.mergeAsideFromItems(tiles, atDirection: lastDirection)
+            lastTiles = tiles
+            (tiles, temp, hasMove) = TileManager.mergeAsideFromItems(tiles, atDirection: direction)
+            
+            // judge the action of merge
             if hasMove {
                 score = score + temp
                 refreshScore()
@@ -112,10 +144,13 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
                     UserDefaultManager.setValue(highScore, forKeyEnum: .TZFEHighScore)
                     refreshHighScore()
                 }
-                (tiles, hasPos) = TileItemManager.addANewValueToTile(tiles)
+                tiles = TileManager.addANewValueToTile(tiles)
                 refreshTileView()
+                
+                UserDefaultManager.setValue(tiles, forKeyEnum: .TZFETilesRecord)
+                UserDefaultManager.setValue(score, forKeyEnum: .TZFEScoreRecord)
             }
-            if !hasPos {
+            if !TileManager.hasMoveOnTiles(tiles) {
                 gameOver()
             }
         }
@@ -125,7 +160,10 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     
     func refreshTileView() {
         for index in 0...15 {
-            tileView.setValueOfTile(index, value: tiles[index])
+            // if no change then not set value
+            if lastTiles[index] != tiles[index] {
+                tileView.setValueOfTile(index, value: tiles[index])
+            }
         }
     }
     
@@ -138,7 +176,6 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     }
     
     func gameOver() {
-        // TODO: should show tips
-        initialData()
+        AlertManager.showTips(self, message: "Game Over!", handler: resetData)
     }
 }

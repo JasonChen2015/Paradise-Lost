@@ -11,12 +11,18 @@ import Foundation
 class UserDefaultManager {
     
     enum UserKey {
-        case TZFEHighScore
+        case TZFEHighScore      // Int
+        case TZFEScoreRecord    // Int
+        case TZFETilesRecord    // [Int]
         
         var value: String {
             switch self {
             case .TZFEHighScore:
                 return "TZFEHighScore"
+            case .TZFEScoreRecord:
+                return "TZFEScoreRecord"
+            case .TZFETilesRecord:
+                return "TZFETilesRecord"
             }
         }
     }

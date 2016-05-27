@@ -16,10 +16,9 @@ protocol TwoZeroFourEightViewDelegate {
 
 class TwoZeroFourEightV: UIView {
     
-    /// dimension of tiles
-    let dimension = 4
     /// the length of a tile
     let length = 86
+    
     /// distance between two tile
     let padding = 6
     
@@ -32,7 +31,7 @@ class TwoZeroFourEightV: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        self.backgroundColor = Color().CosmicLatte
         setupView()
     }
     
@@ -50,27 +49,12 @@ class TwoZeroFourEightV: UIView {
         delegate?.exitButtonAction()
     }
     
-    func moveAside(index: Int, atDirecttion direct: TileItemManager.Direction) {
-        switch direct {
-        case .None:
-            break;
-        case .Up:
-            break
-        case .Down:
-            break
-        case .Left:
-            break
-        case .Right:
-            break
-        }
-    }
-    
     // MARK: private methods
     
-    func setupView() {
+    private func setupView() {
         // add tiles
-        for j in 0..<dimension {
-            for i in 0..<dimension {
+        for j in 0..<4 {
+            for i in 0..<4 {
                 let tile = TZFETileView(
                     frame: CGRect(
                         x: (padding + i * (length + padding)),
@@ -108,90 +92,87 @@ class TwoZeroFourEightV: UIView {
     
     // MARK: getters and setters
     
-    var titleLabel: UILabel = {
+    private var titleLabel: UILabel = {
         var label = UILabel()
         label.text = "2048"
+        label.textColor = Color().Kokiake
         label.font = UIFont.boldSystemFontOfSize(54)
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    var scoreTextLabel: UILabel = {
+    private var scoreTextLabel: UILabel = {
         var label = UILabel()
         label.text = "Score:"
+        label.textColor = Color().Kurotobi
         label.font = UIFont.boldSystemFontOfSize(27)
         label.textAlignment = .Right
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    var scoreNumLabel: UILabel = {
+    private var scoreNumLabel: UILabel = {
         var label = UILabel()
         label.text = "0"
+        label.textColor = Color().Kakitsubata
         label.font = UIFont.boldSystemFontOfSize(27)
         label.textAlignment = .Right
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    var tilesBackground: UIView = {
+    private var tilesBackground: UIView = {
         var view = UIView()
         view.backgroundColor = Color().TileBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    var highScoreTextLabel: UILabel = {
+    private var highScoreTextLabel: UILabel = {
         var label = UILabel()
         label.text = "High Score:"
+        label.textColor = Color().Kurotobi
         label.font = UIFont.boldSystemFontOfSize(27)
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    var highScoreNumLabel: UILabel = {
+    private var highScoreNumLabel: UILabel = {
         var label = UILabel()
         label.text = "0"
+        label.textColor = Color().Kakitsubata
         label.font = UIFont.boldSystemFontOfSize(27)
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    var newButton: UIButton = {
+    private var newButton: UIButton = {
         var button = UIButton(type: .System)
+        button.setTitleColor(Color().Kurotobi, forState: .Normal)
         button.setTitle("New Game", forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    var exitButton: UIButton = {
+    private var exitButton: UIButton = {
         var button = UIButton(type: .System)
+        button.setTitleColor(Color().Kurotobi, forState: .Normal)
         button.setTitle("Exit", forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    /*
-    00 01 02 03
-    04 05 06 07
-    08 09 10 11
-    12 13 14 15
-    */
-    
-    /**
-     parameter x: 0..<dimension * dimension
-     parameter y: 0..<dimension * dimension
-     */
-    // maybe no use
-    func setValueOfTile(x x: Int, y: Int, value: Int) {
-        setValueOfTile((x + (y - 1) * dimension), value: value)
-    }
-    
     func setValueOfTile(index: Int, value: Int) {
-        (tilesSet[index] as! TZFETileView).value = value
+        let tile = tilesSet[index] as! TZFETileView
+        tile.value = value
+        if value == 2 || value == 4 {
+            tile.contentLabel.textColor = Color().DarkGrayishOrange
+        } else {
+            tile.contentLabel.textColor = Color().LightGrayishOrange
+        }
     }
     
     func setValueOfScore(value: Int) {
@@ -204,36 +185,42 @@ class TwoZeroFourEightV: UIView {
 }
 
 class TZFETileView: UIView {
+
     private let colorMap = [
-        0: Color().CosmicLatte,
-        2: UIColor.redColor(),
-        4: UIColor.orangeColor(),
-        8: Color().BrightOrange,
-        16: Color().BrightRed,
-        32: Color().VividRed,
-        64: Color().PureRed,
-        128: UIColor.purpleColor(),
-        256: UIColor.cyanColor(),
-        512: UIColor.lightGrayColor(),
-        1024: UIColor.magentaColor(),
-        2048: UIColor.blackColor()
+        0: Color().mixColorBetween(Color().TileColor, colorB: Color().TileBackground),
+        2: Color().mixColorBetween(Color().TileColor, weightA: 1, colorB: Color().TileGoldColor, weightB: 0),
+        4: Color().mixColorBetween(Color().TileColor, weightA: 0.9, colorB: Color().TileGoldColor, weightB: 0.1),
+        8: Color().mixColorBetween(Color().BrightOrange, weightA: 0.55, colorB: Color().TileColor, weightB: 0.45),
+        16: Color().mixColorBetween(Color().BrightRed, weightA: 0.55, colorB: Color().TileColor, weightB: 0.45),
+        32: Color().mixColorBetween(Color().VividRed, weightA: 0.55, colorB: Color().TileColor, weightB: 0.45),
+        64: Color().mixColorBetween(Color().PureRed, weightA: 0.55, colorB: Color().TileColor, weightB: 0.45),
+        128: Color().mixColorBetween(Color().TileColor, weightA: 0.7, colorB: Color().TileGoldColor, weightB: 0.3),
+        256: Color().mixColorBetween(Color().TileColor, weightA: 0.6, colorB: Color().TileGoldColor, weightB: 0.4),
+        512: Color().mixColorBetween(Color().TileColor, weightA: 0.5, colorB: Color().TileGoldColor, weightB: 0.5),
+        1024: Color().mixColorBetween(Color().TileColor, weightA: 0.4, colorB: Color().TileGoldColor, weightB: 0.6),
+        2048: Color().mixColorBetween(Color().TileColor, weightA: 0.3, colorB: Color().TileGoldColor, weightB: 0.7)
     ]
     
     var value: Int = 0 {
         didSet {
-            backgroundColor = colorMap[value]
+            if value > 2048 {
+                backgroundColor = UIColor.blackColor()
+            } else {
+                backgroundColor = colorMap[value]
+            }
             if value == 0 {
                 contentLabel.text = ""
             } else {
                 contentLabel.text = "\(value)"
+                show()
             }
         }
     }
     
-    var contentLabel: UILabel = {
+    lazy var contentLabel: UILabel = {
         var label = UILabel()
         label.textColor = UIColor.whiteColor()
-        label.font = UIFont.boldSystemFontOfSize(27)
+        label.font = UIFont.boldSystemFontOfSize(27) // originContentFont
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -241,27 +228,30 @@ class TZFETileView: UIView {
     
     init(frame: CGRect, value: Int) {
         super.init(frame: frame)
+        
         self.value = value
         backgroundColor = colorMap[self.value]
-        contentLabel.text = "\(self.value)"
+        self.contentLabel.text = (value == 0) ? "" : "\(self.value)"
         
         addSubview(contentLabel)
         
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": contentLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": contentLabel]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": self.contentLabel]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": self.contentLabel]))
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    // MARK: event response
+    // MARK: private methods
     
-    func show(index: Int) {
-        
-    }
-    
-    func disappear(index: Int) {
-        
+    func show() {
+        UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.transform = CGAffineTransformMakeScale(1.1, 1.1)
+            }) { (finished: Bool) -> Void in
+                UIView.animateWithDuration(0.05, animations: { () -> Void in
+                    self.transform = CGAffineTransformIdentity
+                })
+        }
     }
 }
