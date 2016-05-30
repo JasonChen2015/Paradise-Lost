@@ -43,7 +43,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         tileView.addGestureRecognizer(panGesture)
         view.addSubview(tileView)
         
-        initialData()
+        initData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -55,7 +55,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         }
     }
     
-    func initialData() {
+    func initData() {
         lastTiles = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
         // tiles
         if let tmp = UserDefaultManager.valueFromKeyEnum(.TZFETilesRecord) {
@@ -89,7 +89,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         tiles = TileManager.addANewValueToTile(tiles)
         refreshTileView()
         
-        tileView.setValueOfScore(0)
+        score = 0
         refreshScore()
         
         // save to user default
