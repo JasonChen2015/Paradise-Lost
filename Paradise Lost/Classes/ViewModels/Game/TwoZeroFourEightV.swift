@@ -104,7 +104,7 @@ class TwoZeroFourEightV: UIView {
     
     private var scoreTextLabel: UILabel = {
         var label = UILabel()
-        label.text = "Score:"
+        label.text = LanguageManager.getAppLanguageString("game.2048.scoretextlabel.text")
         label.textColor = Color().Kurotobi
         label.font = UIFont.boldSystemFontOfSize(27)
         label.textAlignment = .Right
@@ -131,7 +131,7 @@ class TwoZeroFourEightV: UIView {
     
     private var highScoreTextLabel: UILabel = {
         var label = UILabel()
-        label.text = "High Score:"
+        label.text = LanguageManager.getAppLanguageString("game.2048.highscoretextlabel.text")
         label.textColor = Color().Kurotobi
         label.font = UIFont.boldSystemFontOfSize(27)
         label.textAlignment = .Center
@@ -152,7 +152,7 @@ class TwoZeroFourEightV: UIView {
     private var newButton: UIButton = {
         var button = UIButton(type: .System)
         button.setTitleColor(Color().Kurotobi, forState: .Normal)
-        button.setTitle("New Game", forState: .Normal)
+        button.setTitle(LanguageManager.getAppLanguageString("game.2048.newbutton.title"), forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -160,7 +160,7 @@ class TwoZeroFourEightV: UIView {
     private var exitButton: UIButton = {
         var button = UIButton(type: .System)
         button.setTitleColor(Color().Kurotobi, forState: .Normal)
-        button.setTitle("Exit", forState: .Normal)
+        button.setTitle(LanguageManager.getAppLanguageString("game.2048.exitbutton.title"), forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

@@ -36,9 +36,9 @@ class TileManager {
         let val = Int(arc4random_uniform(10))
         var value = 0
         if val < 9 {
-            value = 2 // 80%
+            value = 2 // 90%
         } else {
-            value = 4 // 20%
+            value = 4 // 10%
         }
         while hasPos {
             // get new position

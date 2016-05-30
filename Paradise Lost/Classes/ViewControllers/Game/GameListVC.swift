@@ -14,7 +14,7 @@ class GameListVC: UniversalTableViewController {
     // MARK: life cycle
     
     override func viewDidLoad() {
-        viewName = "Game List"
+        viewName = LanguageManager.getAppLanguageString("game.viewname")
         itemNames = CellItemManager.nameArrayFromItems(items)
         
         super.viewDidLoad()

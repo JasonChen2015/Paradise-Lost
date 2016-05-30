@@ -14,7 +14,7 @@ class ToolListVC: UniversalTableViewController {
     // MARK: life cycle
     
     override func viewDidLoad() {
-        viewName = "Tool List"
+        viewName = LanguageManager.getAppLanguageString("tool.viewname")
         itemNames = CellItemManager.nameArrayFromItems(items)
         
         super.viewDidLoad()

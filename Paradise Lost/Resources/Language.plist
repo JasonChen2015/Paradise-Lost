@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ch</key>
+	<dict>
+		<key>game.tabbaritem.title</key>
+		<string>游戏</string>
+		<key>game.viewname</key>
+		<string>游戏列表</string>
+		<key>tool.tabbaritem.title</key>
+		<string>工具</string>
+		<key>tool.viewname</key>
+		<string>工具列表</string>
+		<key>game.2048.scoretextlabel.text</key>
+		<string>得分：</string>
+		<key>game.2048.highscoretextlabel.text</key>
+		<string>最高分：</string>
+		<key>game.2048.newbutton.title</key>
+		<string>新游戏</string>
+		<key>game.2048.newbutton.message</key>
+		<string>将要重新开始游戏。</string>
+		<key>game.2048.exitbutton.title</key>
+		<string>退出</string>
+		<key>game.2048.gameover.message</key>
+		<string>游戏结束！</string>
+	</dict>
+	<key>en</key>
+	<dict>
+		<key>game.tabbaritem.title</key>
+		<string>Games</string>
+		<key>game.viewname</key>
+		<string>Game List</string>
+		<key>tool.tabbaritem.title</key>
+		<string>Tools</string>
+		<key>tool.viewname</key>
+		<string>Tool List</string>
+		<key>game.2048.scoretextlabel.text</key>
+		<string>Score:</string>
+		<key>game.2048.highscoretextlabel.text</key>
+		<string>High Score:</string>
+		<key>game.2048.newbutton.title</key>
+		<string>New Game</string>
+		<key>game.2048.newbutton.message</key>
+		<string>You will have a new game.</string>
+		<key>game.2048.exitbutton.title</key>
+		<string>Exit</string>
+		<key>game.2048.gameover.message</key>
+		<string>Game Over!</string>
+	</dict>
+</dict>
+</plist>

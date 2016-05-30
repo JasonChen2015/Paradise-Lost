@@ -18,9 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         // initialize environment
+        UserDefaultManager.registerDefaultsFromSettingsBundle()
+        LanguageManager.setAppLanguage()
         
         // let the Launching Screen stay for several seconds
-        NSThread.sleepForTimeInterval(2.0)
+        NSThread.sleepForTimeInterval(1.0)
 
         // set root view controller
 
@@ -29,12 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let gameListVCtrl = GameListVC()
         let gameListNavCtrl = UINavigationController(rootViewController: gameListVCtrl)
-        gameListNavCtrl.tabBarItem.title = "Games"
+        gameListNavCtrl.tabBarItem.title = LanguageManager.getAppLanguageString("game.tabbaritem.title")
         gameListNavCtrl.tabBarItem.image = UIImage(named: "GameNavItem")
 
         let toolListVCtrl = ToolListVC()
         let toolListNavCtrl = UINavigationController(rootViewController: toolListVCtrl)
-        toolListNavCtrl.tabBarItem.title = "Tools"
+        toolListNavCtrl.tabBarItem.title = LanguageManager.getAppLanguageString("tool.tabbaritem.title")
         toolListNavCtrl.tabBarItem.image = UIImage(named: "ToolNavItem")
 
         let tabBarController = UITabBarController()

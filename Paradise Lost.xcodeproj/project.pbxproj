@@ -16,6 +16,17 @@
 		96687FE81CE5898200149A59 /* ToolItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96687FE71CE5898000149A59 /* ToolItems.plist */; };
 		96687FEA1CE58AB300149A59 /* GameItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96687FE91CE58AB200149A59 /* GameItems.plist */; };
 		96687FEC1CE5AB3400149A59 /* CellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96687FEB1CE5AB3400149A59 /* CellItem.swift */; };
+		9672179F1CFBF5F7002D77B7 /* BarCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9672179E1CFBF5F7002D77B7 /* BarCodeVC.swift */; };
+		967217A21CFBF6D4002D77B7 /* BarCodeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967217A11CFBF6D4002D77B7 /* BarCodeV.swift */; };
+		967217A41CFBFA6D002D77B7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 967217A31CFBFA6C002D77B7 /* Settings.bundle */; };
+		967217A61CFBFD00002D77B7 /* Language.plist in Resources */ = {isa = PBXBuildFile; fileRef = 967217A51CFBFD00002D77B7 /* Language.plist */; };
+		967217A81CFC0CD2002D77B7 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967217A71CFC0CD2002D77B7 /* LanguageManager.swift */; };
+		967217CA1CFC1D74002D77B7 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967217C41CFC1D74002D77B7 /* libzbar.a */; };
+		967217D01CFC1DC9002D77B7 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 967217CF1CFC1DC9002D77B7 /* libiconv.tbd */; };
+		967217D31CFC1E0E002D77B7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967217D21CFC1E0E002D77B7 /* CoreMedia.framework */; };
+		967217D51CFC1E16002D77B7 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967217D41CFC1E16002D77B7 /* CoreVideo.framework */; };
+		967217D71CFC1E1F002D77B7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967217D61CFC1E1F002D77B7 /* QuartzCore.framework */; };
+		967217D91CFC1E26002D77B7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967217D81CFC1E26002D77B7 /* AVFoundation.framework */; };
 		96753A371CE5D8BE0079FB8F /* TwoZeroFourEightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96753A361CE5D8BE0079FB8F /* TwoZeroFourEightVC.swift */; };
 		96753A391CE5D8EB0079FB8F /* GameListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96753A381CE5D8EB0079FB8F /* GameListVC.swift */; };
 		96753A3B1CE5D8F50079FB8F /* ToolListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96753A3A1CE5D8F50079FB8F /* ToolListVC.swift */; };
@@ -58,6 +69,38 @@
 		96687FE71CE5898000149A59 /* ToolItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ToolItems.plist; path = Resources/ToolItems.plist; sourceTree = "<group>"; };
 		96687FE91CE58AB200149A59 /* GameItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = GameItems.plist; path = Resources/GameItems.plist; sourceTree = "<group>"; };
 		96687FEB1CE5AB3400149A59 /* CellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CellItem.swift; path = Classes/DataStructures/CellItem.swift; sourceTree = "<group>"; };
+		9672179E1CFBF5F7002D77B7 /* BarCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarCodeVC.swift; path = Classes/ViewControllers/Tool/BarCodeVC.swift; sourceTree = "<group>"; };
+		967217A11CFBF6D4002D77B7 /* BarCodeV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BarCodeV.swift; path = Classes/ViewModels/Tool/BarCodeV.swift; sourceTree = "<group>"; };
+		967217A31CFBFA6C002D77B7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
+		967217A51CFBFD00002D77B7 /* Language.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Language.plist; path = Resources/Language.plist; sourceTree = "<group>"; };
+		967217A71CFC0CD2002D77B7 /* LanguageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LanguageManager.swift; path = Classes/Models/LanguageManager.swift; sourceTree = "<group>"; };
+		967217B01CFC1D74002D77B7 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
+		967217B11CFC1D74002D77B7 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		967217B21CFC1D74002D77B7 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
+		967217B31CFC1D74002D77B7 /* ImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScanner.h; sourceTree = "<group>"; };
+		967217B41CFC1D74002D77B7 /* Processor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Processor.h; sourceTree = "<group>"; };
+		967217B51CFC1D74002D77B7 /* Scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Scanner.h; sourceTree = "<group>"; };
+		967217B61CFC1D74002D77B7 /* Symbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Symbol.h; sourceTree = "<group>"; };
+		967217B71CFC1D74002D77B7 /* Video.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Video.h; sourceTree = "<group>"; };
+		967217B81CFC1D74002D77B7 /* Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Window.h; sourceTree = "<group>"; };
+		967217B91CFC1D74002D77B7 /* zbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zbar.h; sourceTree = "<group>"; };
+		967217BA1CFC1D74002D77B7 /* ZBarCameraSimulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarCameraSimulator.h; sourceTree = "<group>"; };
+		967217BB1CFC1D74002D77B7 /* ZBarCaptureReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarCaptureReader.h; sourceTree = "<group>"; };
+		967217BC1CFC1D74002D77B7 /* ZBarHelpController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarHelpController.h; sourceTree = "<group>"; };
+		967217BD1CFC1D74002D77B7 /* ZBarImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarImage.h; sourceTree = "<group>"; };
+		967217BE1CFC1D74002D77B7 /* ZBarImageScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarImageScanner.h; sourceTree = "<group>"; };
+		967217BF1CFC1D74002D77B7 /* ZBarReaderController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderController.h; sourceTree = "<group>"; };
+		967217C01CFC1D74002D77B7 /* ZBarReaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderView.h; sourceTree = "<group>"; };
+		967217C11CFC1D74002D77B7 /* ZBarReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarReaderViewController.h; sourceTree = "<group>"; };
+		967217C21CFC1D74002D77B7 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
+		967217C31CFC1D74002D77B7 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
+		967217C41CFC1D74002D77B7 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
+		967217CF1CFC1DC9002D77B7 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		967217D21CFC1E0E002D77B7 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		967217D41CFC1E16002D77B7 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		967217D61CFC1E1F002D77B7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		967217D81CFC1E26002D77B7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		967217DA1CFC1EEC002D77B7 /* Paradise_Lost_Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Paradise_Lost_Bridging_Header.h; path = Classes/Paradise_Lost_Bridging_Header.h; sourceTree = "<group>"; };
 		96753A361CE5D8BE0079FB8F /* TwoZeroFourEightVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TwoZeroFourEightVC.swift; path = Classes/ViewControllers/Game/TwoZeroFourEightVC.swift; sourceTree = "<group>"; };
 		96753A381CE5D8EB0079FB8F /* GameListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameListVC.swift; path = Classes/ViewControllers/Game/GameListVC.swift; sourceTree = "<group>"; };
 		96753A3A1CE5D8F50079FB8F /* ToolListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ToolListVC.swift; path = Classes/ViewControllers/Tool/ToolListVC.swift; sourceTree = "<group>"; };
@@ -84,6 +127,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967217CA1CFC1D74002D77B7 /* libzbar.a in Frameworks */,
+				967217D01CFC1DC9002D77B7 /* libiconv.tbd in Frameworks */,
+				967217D91CFC1E26002D77B7 /* AVFoundation.framework in Frameworks */,
+				967217D71CFC1E1F002D77B7 /* QuartzCore.framework in Frameworks */,
+				967217D51CFC1E16002D77B7 /* CoreVideo.framework in Frameworks */,
+				967217D31CFC1E0E002D77B7 /* CoreMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +161,87 @@
 			name = Game;
 			sourceTree = "<group>";
 		};
+		967217A01CFBF6A9002D77B7 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				967217A11CFBF6D4002D77B7 /* BarCodeV.swift */,
+			);
+			name = Tool;
+			sourceTree = "<group>";
+		};
+		967217A91CFC1D2A002D77B7 /* ThirdParties */ = {
+			isa = PBXGroup;
+			children = (
+				967217AC1CFC1D74002D77B7 /* ZBarSDK */,
+			);
+			name = ThirdParties;
+			sourceTree = "<group>";
+		};
+		967217AC1CFC1D74002D77B7 /* ZBarSDK */ = {
+			isa = PBXGroup;
+			children = (
+				967217AD1CFC1D74002D77B7 /* Headers */,
+				967217C41CFC1D74002D77B7 /* libzbar.a */,
+			);
+			name = ZBarSDK;
+			path = ThirdParties/ZBarSDK;
+			sourceTree = "<group>";
+		};
+		967217AD1CFC1D74002D77B7 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				967217AE1CFC1D74002D77B7 /* ZBarSDK */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		967217AE1CFC1D74002D77B7 /* ZBarSDK */ = {
+			isa = PBXGroup;
+			children = (
+				967217AF1CFC1D74002D77B7 /* zbar */,
+				967217B91CFC1D74002D77B7 /* zbar.h */,
+				967217BA1CFC1D74002D77B7 /* ZBarCameraSimulator.h */,
+				967217BB1CFC1D74002D77B7 /* ZBarCaptureReader.h */,
+				967217BC1CFC1D74002D77B7 /* ZBarHelpController.h */,
+				967217BD1CFC1D74002D77B7 /* ZBarImage.h */,
+				967217BE1CFC1D74002D77B7 /* ZBarImageScanner.h */,
+				967217BF1CFC1D74002D77B7 /* ZBarReaderController.h */,
+				967217C01CFC1D74002D77B7 /* ZBarReaderView.h */,
+				967217C11CFC1D74002D77B7 /* ZBarReaderViewController.h */,
+				967217C21CFC1D74002D77B7 /* ZBarSDK.h */,
+				967217C31CFC1D74002D77B7 /* ZBarSymbol.h */,
+			);
+			path = ZBarSDK;
+			sourceTree = "<group>";
+		};
+		967217AF1CFC1D74002D77B7 /* zbar */ = {
+			isa = PBXGroup;
+			children = (
+				967217B01CFC1D74002D77B7 /* Decoder.h */,
+				967217B11CFC1D74002D77B7 /* Exception.h */,
+				967217B21CFC1D74002D77B7 /* Image.h */,
+				967217B31CFC1D74002D77B7 /* ImageScanner.h */,
+				967217B41CFC1D74002D77B7 /* Processor.h */,
+				967217B51CFC1D74002D77B7 /* Scanner.h */,
+				967217B61CFC1D74002D77B7 /* Symbol.h */,
+				967217B71CFC1D74002D77B7 /* Video.h */,
+				967217B81CFC1D74002D77B7 /* Window.h */,
+			);
+			path = zbar;
+			sourceTree = "<group>";
+		};
+		967217D11CFC1DD4002D77B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				967217CF1CFC1DC9002D77B7 /* libiconv.tbd */,
+				967217D81CFC1E26002D77B7 /* AVFoundation.framework */,
+				967217D61CFC1E1F002D77B7 /* QuartzCore.framework */,
+				967217D41CFC1E16002D77B7 /* CoreVideo.framework */,
+				967217D21CFC1E0E002D77B7 /* CoreMedia.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		96753A341CE5D8630079FB8F /* Game */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +256,7 @@
 			children = (
 				96753A3A1CE5D8F50079FB8F /* ToolListVC.swift */,
 				96753A3C1CE5D9590079FB8F /* FileExplorerVC.swift */,
+				9672179E1CFBF5F7002D77B7 /* BarCodeVC.swift */,
 			);
 			name = Tool;
 			sourceTree = "<group>";
@@ -133,6 +264,7 @@
 		96DCF8011CE422CE00A08658 = {
 			isa = PBXGroup;
 			children = (
+				967217D11CFC1DD4002D77B7 /* Frameworks */,
 				96DCF80C1CE422CF00A08658 /* Paradise Lost */,
 				96687FE01CE5714000149A59 /* LICENSE */,
 				96687FE11CE5714000149A59 /* README.md */,
@@ -155,6 +287,7 @@
 		96DCF80C1CE422CF00A08658 /* Paradise Lost */ = {
 			isa = PBXGroup;
 			children = (
+				967217A91CFC1D2A002D77B7 /* ThirdParties */,
 				96DCF83B1CE4240400A08658 /* Classes */,
 				96DCF83C1CE4244C00A08658 /* Views */,
 				96DCF83D1CE4246600A08658 /* Resources */,
@@ -183,6 +316,7 @@
 		96DCF83B1CE4240400A08658 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				967217DA1CFC1EEC002D77B7 /* Paradise_Lost_Bridging_Header.h */,
 				96DCF83E1CE4250700A08658 /* AppDelegate.swift */,
 				96DCF8471CE4258E00A08658 /* DataStructures */,
 				96DCF85B1CE487B900A08658 /* Models */,
@@ -204,10 +338,12 @@
 		96DCF83D1CE4246600A08658 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				967217A31CFBFA6C002D77B7 /* Settings.bundle */,
 				96DCF8421CE4251F00A08658 /* Assets.xcassets */,
 				96DCF8431CE4251F00A08658 /* Info.plist */,
 				96687FE91CE58AB200149A59 /* GameItems.plist */,
 				96687FE71CE5898000149A59 /* ToolItems.plist */,
+				967217A51CFBFD00002D77B7 /* Language.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -233,8 +369,9 @@
 		96DCF8481CE425CD00A08658 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				962AF9F51CE9641200B7E128 /* Game */,
 				96DCF8591CE4794E00A08658 /* UniversalTableView.swift */,
+				962AF9F51CE9641200B7E128 /* Game */,
+				967217A01CFBF6A9002D77B7 /* Tool */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -246,6 +383,7 @@
 				96B84F021CF6D04200817793 /* UserDefaultManager.swift */,
 				9664D2951CF7FAE400630EAE /* TileManager.swift */,
 				96BDAE191CF82A0700FFB05D /* AlertManager.swift */,
+				967217A71CFC0CD2002D77B7 /* LanguageManager.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -355,6 +493,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967217A41CFBFA6D002D77B7 /* Settings.bundle in Resources */,
 				96687FE61CE57ED700149A59 /* Launch Screen.storyboard in Resources */,
 				96DCF8441CE4251F00A08658 /* Assets.xcassets in Resources */,
 				96687FE21CE5714000149A59 /* LICENSE in Resources */,
@@ -362,6 +501,7 @@
 				96DCF8501CE4275700A08658 /* Main.storyboard in Resources */,
 				96687FE81CE5898200149A59 /* ToolItems.plist in Resources */,
 				96687FEA1CE58AB300149A59 /* GameItems.plist in Resources */,
+				967217A61CFBFD00002D77B7 /* Language.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,14 +531,17 @@
 				96DCF8401CE4250700A08658 /* AppDelegate.swift in Sources */,
 				9664D2961CF7FAE400630EAE /* TileManager.swift in Sources */,
 				96753A411CE5DD170079FB8F /* FileSharing.swift in Sources */,
+				9672179F1CFBF5F7002D77B7 /* BarCodeVC.swift in Sources */,
 				96BDAE1A1CF82A0700FFB05D /* AlertManager.swift in Sources */,
 				965BA4B41CEAF29C003988E2 /* Color.swift in Sources */,
 				96753A391CE5D8EB0079FB8F /* GameListVC.swift in Sources */,
 				96DCF85A1CE4794E00A08658 /* UniversalTableView.swift in Sources */,
 				96753A3B1CE5D8F50079FB8F /* ToolListVC.swift in Sources */,
 				96753A371CE5D8BE0079FB8F /* TwoZeroFourEightVC.swift in Sources */,
+				967217A21CFBF6D4002D77B7 /* BarCodeV.swift in Sources */,
 				962AF9F41CE9640D00B7E128 /* TwoZeroFourEightV.swift in Sources */,
 				96753A3D1CE5D9590079FB8F /* FileExplorerVC.swift in Sources */,
+				967217A81CFC0CD2002D77B7 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,9 +688,15 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Paradise Lost/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Paradise",
+					Lost/ThirdParties/ZBarSDK,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-Lost";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "./Paradise Lost/Classes/Paradise_Lost_Bridging_Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -561,9 +710,15 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Paradise Lost/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Paradise",
+					Lost/ThirdParties/ZBarSDK,
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-Lost";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "./Paradise Lost/Classes/Paradise_Lost_Bridging_Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
