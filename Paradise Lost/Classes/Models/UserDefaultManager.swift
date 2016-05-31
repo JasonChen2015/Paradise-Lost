@@ -14,6 +14,8 @@ class UserDefaultManager {
         case TZFEHighScore      // Int
         case TZFEScoreRecord    // Int
         case TZFETilesRecord    // [Int]
+        case BarCodeSoundOn     // Bool
+        case BarCodeVibraOn     // Bool
         
         var value: String {
             switch self {
@@ -23,6 +25,10 @@ class UserDefaultManager {
                 return "TZFEScoreRecord"
             case .TZFETilesRecord:
                 return "TZFETilesRecord"
+            case .BarCodeSoundOn:
+                return "BarCodeSoundOn"
+            case .BarCodeVibraOn:
+                return "BarCodeVibraOn"
             }
         }
     }

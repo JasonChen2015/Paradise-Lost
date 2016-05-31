@@ -24,6 +24,26 @@
 		<string>退出</string>
 		<key>game.2048.gameover.message</key>
 		<string>游戏结束！</string>
+		<key>tool.barcode.titlelabel.text</key>
+		<string>二维码扫描</string>
+		<key>tool.barcode.reader.label.text</key>
+		<string>按下并开始扫描。</string>
+		<key>tool.barcode.resultlabel.text</key>
+		<string>扫描结果：</string>
+		<key>tool.barcode.resultText.text</key>
+		<string>木有结果哦～</string>
+		<key>tool.barcode.clearbutton.title</key>
+		<string>清除</string>
+		<key>tool.barcode.copybutton.title</key>
+		<string>复制</string>
+		<key>tool.barcode.nosound.message</key>
+		<string>不能读取声音文件。</string>
+		<key>tool.barcode.initinput.message</key>
+		<string>出现错误啦：</string>
+		<key>tool.barcode.noinput.message</key>
+		<string>不能添加AVCaptureDeviceInput。</string>
+		<key>tool.barcode.nooutput.message</key>
+		<string>不能添加AVCaptureDeviceOutput。</string>
 	</dict>
 	<key>en</key>
 	<dict>
@@ -47,6 +67,26 @@
 		<string>Exit</string>
 		<key>game.2048.gameover.message</key>
 		<string>Game Over!</string>
+		<key>tool.barcode.titlelabel.text</key>
+		<string>Bar Code Scan</string>
+		<key>tool.barcode.reader.label.text</key>
+		<string>Tap on and start capture code.</string>
+		<key>tool.barcode.resultlabel.text</key>
+		<string>Scan result:</string>
+		<key>tool.barcode.resultText.text</key>
+		<string>No result for scanning~</string>
+		<key>tool.barcode.clearbutton.title</key>
+		<string>Clear</string>
+		<key>tool.barcode.copybutton.title</key>
+		<string>Copy</string>
+		<key>tool.barcode.nosound.message</key>
+		<string>Can not initialize sound file.</string>
+		<key>tool.barcode.initinput.message</key>
+		<string>Error occur:</string>
+		<key>tool.barcode.noinput.message</key>
+		<string>Can not add AVCaptureDeviceInput.</string>
+		<key>tool.barcode.nooutput.message</key>
+		<string>Can not add AVCaptureDeviceOutput.</string>
 	</dict>
 </dict>
 </plist>

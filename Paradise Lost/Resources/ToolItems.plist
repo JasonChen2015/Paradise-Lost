@@ -20,5 +20,14 @@
 		<key>needNavigation</key>
 		<false/>
 	</dict>
+	<key>3</key>
+	<dict>
+		<key>name</key>
+		<string>Bar Code Scan</string>
+		<key>segueId</key>
+		<string>BarCodeVC</string>
+		<key>needNavigation</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

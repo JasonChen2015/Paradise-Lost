@@ -157,8 +157,6 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         }
     }
     
-    // MARK: private methods
-    
     func refreshTileView() {
         for index in 0...15 {
             // if no change then not set value
