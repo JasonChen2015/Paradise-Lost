@@ -11,7 +11,7 @@ import AVFoundation
 
 class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCodeViewDelegate {
     
-    var mainView: BarCodeV!
+    var mainView: BarCodeView!
     let captureSession: AVCaptureSession = AVCaptureSession()
     var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
     
@@ -41,7 +41,7 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainView = BarCodeV(frame: UIScreen.mainScreen().bounds)
+        mainView = BarCodeView(frame: UIScreen.mainScreen().bounds)
         mainView.delegate = self
         view.addSubview(mainView)
         

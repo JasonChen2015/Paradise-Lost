@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		962AF9F41CE9640D00B7E128 /* TwoZeroFourEightV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962AF9F31CE9640D00B7E128 /* TwoZeroFourEightV.swift */; };
+		962AF9F41CE9640D00B7E128 /* TwoZeroFourEightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */; };
 		965BA4B41CEAF29C003988E2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4B31CEAF29C003988E2 /* Color.swift */; };
 		9664D2961CF7FAE400630EAE /* TileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664D2951CF7FAE400630EAE /* TileManager.swift */; };
 		96687FE21CE5714000149A59 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 96687FE01CE5714000149A59 /* LICENSE */; };
@@ -54,7 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		962AF9F31CE9640D00B7E128 /* TwoZeroFourEightV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoZeroFourEightV.swift; sourceTree = "<group>"; };
+		962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoZeroFourEightView.swift; sourceTree = "<group>"; };
 		965BA4B31CEAF29C003988E2 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		9664D2951CF7FAE400630EAE /* TileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileManager.swift; sourceTree = "<group>"; };
 		96687FE01CE5714000149A59 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		962AF9F51CE9641200B7E128 /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				962AF9F31CE9640D00B7E128 /* TwoZeroFourEightV.swift */,
+				962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -420,7 +420,7 @@
 				96BDAE1A1CF82A0700FFB05D /* AlertManager.swift in Sources */,
 				967217A81CFC0CD2002D77B7 /* LanguageManager.swift in Sources */,
 				96DCF85A1CE4794E00A08658 /* UniversalTableViewController.swift in Sources */,
-				962AF9F41CE9640D00B7E128 /* TwoZeroFourEightV.swift in Sources */,
+				962AF9F41CE9640D00B7E128 /* TwoZeroFourEightView.swift in Sources */,
 				967217A21CFBF6D4002D77B7 /* BarCodeView.swift in Sources */,
 				96753A391CE5D8EB0079FB8F /* GameListVC.swift in Sources */,
 				96753A371CE5D8BE0079FB8F /* TwoZeroFourEightVC.swift in Sources */,

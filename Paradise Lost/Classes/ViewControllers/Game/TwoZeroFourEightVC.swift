@@ -14,7 +14,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     var lastTiles: [Int] = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
     var score: Int = 0
     var highScore: Int = 0
-    var tileView: TwoZeroFourEightV!
+    var tileView: TwoZeroFourEightView!
     
     // MARK: life cycle
     
@@ -38,7 +38,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         panGesture.maximumNumberOfTouches = 1
         panGesture.minimumNumberOfTouches = 1
         
-        tileView = TwoZeroFourEightV(frame: UIScreen.mainScreen().bounds)
+        tileView = TwoZeroFourEightView(frame: UIScreen.mainScreen().bounds)
         tileView.delegate = self
         tileView.addGestureRecognizer(panGesture)
         view.addSubview(tileView)

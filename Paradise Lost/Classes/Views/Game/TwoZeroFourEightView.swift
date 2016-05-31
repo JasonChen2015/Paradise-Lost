@@ -1,5 +1,5 @@
 //
-//  TwoZeroFourEightV.swift
+//  TwoZeroFourEightView.swift
 //  Paradise Lost
 //
 //  Created by Jason Chen on 5/16/16.
@@ -14,7 +14,7 @@ protocol TwoZeroFourEightViewDelegate {
     func exitButtonAction()
 }
 
-class TwoZeroFourEightV: UIView {
+class TwoZeroFourEightView: UIView {
     
     /// the length of a tile
     let length = 86

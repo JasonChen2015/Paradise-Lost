@@ -15,7 +15,7 @@ protocol BarCodeViewDelegate {
     func tapReader()
 }
 
-class BarCodeV: UIView {
+class BarCodeView: UIView {
     
     var delegate: BarCodeViewDelegate? = nil
     var isSoundOn: Bool {
