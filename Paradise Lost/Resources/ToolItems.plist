@@ -23,7 +23,7 @@
 	<key>3</key>
 	<dict>
 		<key>name</key>
-		<string>Bar Code Scan</string>
+		<string>tool.barcode.titlelabel.text</string>
 		<key>segueId</key>
 		<string>BarCodeVC</string>
 		<key>needNavigation</key>

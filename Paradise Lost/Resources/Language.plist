@@ -12,6 +12,8 @@
 		<string>工具</string>
 		<key>tool.viewname</key>
 		<string>工具列表</string>
+		<key>game.2048.titlelabel.text</key>
+		<string>2048</string>
 		<key>game.2048.scoretextlabel.text</key>
 		<string>得分：</string>
 		<key>game.2048.highscoretextlabel.text</key>
@@ -44,6 +46,8 @@
 		<string>不能添加AVCaptureDeviceInput。</string>
 		<key>tool.barcode.nooutput.message</key>
 		<string>不能添加AVCaptureDeviceOutput。</string>
+		<key>game.sudoku.titlelabel.text</key>
+		<string>数独</string>
 	</dict>
 	<key>en</key>
 	<dict>
@@ -55,6 +59,8 @@
 		<string>Tools</string>
 		<key>tool.viewname</key>
 		<string>Tool List</string>
+		<key>game.2048.titlelabel.text</key>
+		<string>2048</string>
 		<key>game.2048.scoretextlabel.text</key>
 		<string>Score:</string>
 		<key>game.2048.highscoretextlabel.text</key>
@@ -87,6 +93,8 @@
 		<string>Can not add AVCaptureDeviceInput.</string>
 		<key>tool.barcode.nooutput.message</key>
 		<string>Can not add AVCaptureDeviceOutput.</string>
+		<key>game.sudoku.titlelabel.text</key>
+		<string>Sudoku</string>
 	</dict>
 </dict>
 </plist>

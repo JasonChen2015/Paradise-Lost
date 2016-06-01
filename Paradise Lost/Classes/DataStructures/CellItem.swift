@@ -31,8 +31,9 @@ class CellItemManager {
         }
         for index in 1...dict.count {
             if let info = dict.objectForKey("\(index)") as? NSDictionary {
+                let titleURL = info.objectForKey("name") as! String
                 let item = CellItem(
-                    name: info.objectForKey("name") as! String,
+                    name: LanguageManager.getAppLanguageString(titleURL),
                     segueId: info.objectForKey("segueId") as! String,
                     needNavigation: info.objectForKey("needNavigation") as! Bool)
                 items.append(item)

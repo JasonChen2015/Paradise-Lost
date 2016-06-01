@@ -5,7 +5,7 @@
 	<key>1</key>
 	<dict>
 		<key>name</key>
-		<string>2048</string>
+		<string>game.2048.titlelabel.text</string>
 		<key>segueId</key>
 		<string>TwoZeroFourEightVC</string>
 		<key>needNavigation</key>
@@ -14,7 +14,7 @@
 	<key>2</key>
 	<dict>
 		<key>name</key>
-		<string>Sudoku</string>
+		<string>game.sudoku.titlelabel.text</string>
 		<key>segueId</key>
 		<string></string>
 		<key>needNavigation</key>

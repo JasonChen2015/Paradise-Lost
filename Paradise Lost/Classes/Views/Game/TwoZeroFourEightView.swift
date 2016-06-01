@@ -92,7 +92,7 @@ class TwoZeroFourEightView: UIView {
     
     private var titleLabel: UILabel = {
         var label = UILabel()
-        label.text = "2048"
+        label.text = LanguageManager.getAppLanguageString("game.2048.titlelabel.text")
         label.textColor = Color().Kokiake
         label.font = UIFont.boldSystemFontOfSize(54)
         label.textAlignment = .Center

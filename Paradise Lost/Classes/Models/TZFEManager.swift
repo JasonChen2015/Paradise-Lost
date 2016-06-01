@@ -1,5 +1,5 @@
 //
-//  TileManager.swift
+//  TZFEManager.swift
 //  Paradise Lost
 //
 //  Created by Jason Chen on 5/17/16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TileManager {
+class TZFEManager {
     
     enum Direction {
         case None
