@@ -78,8 +78,9 @@ class BarCodeView: UIView {
         
         let gesture = UITapGestureRecognizer(target: self, action: "tapReader")
         reader.addGestureRecognizer(gesture)
-        
-        // constraints
+    }
+    
+    override func layoutSubviews() {
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-84-[v0(40)]-20-[v1(334)]-[v2(30)]-[v3(54)]-[v4(25)]-20-[v5(36)]-69-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel, "v1": reader, "v2": resultLabel, "v3": resultText, "v4": clearButton, "v5": soundImage]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-586-[v0(25)]-20-[v1(36)]-69-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": copyButton, "v1": vibraImage]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel]))

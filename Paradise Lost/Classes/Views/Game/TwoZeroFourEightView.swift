@@ -68,7 +68,9 @@ class TwoZeroFourEightView: UIView {
         
         newButton.addTarget(self, action: "newGame", forControlEvents: .TouchUpInside)
         exitButton.addTarget(self, action: "exitGame", forControlEvents: .TouchUpInside)
-        
+    }
+    
+    override func layoutSubviews() {
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-54-[v0(60)]-[v1(30)]-[v2(374)]-[v3(30)]-[v4(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel, "v1": scoreTextLabel, "v2": tilesBackground, "v3": highScoreTextLabel, "v4": highScoreNumLabel]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[v0(30)]-[v1]-[v2(30)]-[v3(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": scoreNumLabel, "v1": tilesBackground, "v2": newButton, "v3": exitButton]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel]))
@@ -166,11 +168,6 @@ class TwoZeroFourEightView: UIView {
     func setValueOfTile(index: Int, value: Int) {
         let tile = tilesSet[index] as! TZFETileView
         tile.value = value
-        if value == 2 || value == 4 {
-            tile.contentLabel.textColor = Color().DarkGrayishOrange
-        } else {
-            tile.contentLabel.textColor = Color().LightGrayishOrange
-        }
     }
     
     func setValueOfScore(value: Int) {
@@ -211,6 +208,11 @@ class TZFETileView: UIView {
             } else {
                 contentLabel.text = "\(value)"
                 show()
+            }
+            if value == 2 || value == 4 {
+                contentLabel.textColor = Color().DarkGrayishOrange
+            } else {
+                contentLabel.textColor = Color().LightGrayishOrange
             }
         }
     }
