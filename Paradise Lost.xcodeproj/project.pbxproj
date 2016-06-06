@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		962AF9F41CE9640D00B7E128 /* TwoZeroFourEightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */; };
+		964064B81D0026AF00612CE9 /* SudokuPuzzles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 964064B71D0026AE00612CE9 /* SudokuPuzzles.plist */; };
 		965BA4B41CEAF29C003988E2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4B31CEAF29C003988E2 /* Color.swift */; };
 		965D1D7B1CFE870D00FD6812 /* SudokuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D1D7A1CFE870D00FD6812 /* SudokuVC.swift */; };
 		965D1D7D1CFE881800FD6812 /* SudokuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D1D7C1CFE881700FD6812 /* SudokuView.swift */; };
+		965D1D7F1CFECD5900FD6812 /* SudokuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D1D7E1CFECD5900FD6812 /* SudokuManager.swift */; };
 		9664D2961CF7FAE400630EAE /* TZFEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664D2951CF7FAE400630EAE /* TZFEManager.swift */; };
 		96687FE21CE5714000149A59 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 96687FE01CE5714000149A59 /* LICENSE */; };
 		96687FE31CE5714000149A59 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 96687FE11CE5714000149A59 /* README.md */; };
@@ -57,9 +59,11 @@
 
 /* Begin PBXFileReference section */
 		962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoZeroFourEightView.swift; sourceTree = "<group>"; };
+		964064B71D0026AE00612CE9 /* SudokuPuzzles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SudokuPuzzles.plist; path = Resources/SudokuPuzzles.plist; sourceTree = "<group>"; };
 		965BA4B31CEAF29C003988E2 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		965D1D7A1CFE870D00FD6812 /* SudokuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuVC.swift; sourceTree = "<group>"; };
 		965D1D7C1CFE881700FD6812 /* SudokuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuView.swift; sourceTree = "<group>"; };
+		965D1D7E1CFECD5900FD6812 /* SudokuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuManager.swift; sourceTree = "<group>"; };
 		9664D2951CF7FAE400630EAE /* TZFEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TZFEManager.swift; sourceTree = "<group>"; };
 		96687FE01CE5714000149A59 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		96687FE11CE5714000149A59 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				96687FE91CE58AB200149A59 /* GameItems.plist */,
 				96687FE71CE5898000149A59 /* ToolItems.plist */,
 				967217A51CFBFD00002D77B7 /* Language.plist */,
+				964064B71D0026AE00612CE9 /* SudokuPuzzles.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -270,11 +275,12 @@
 		96DCF85B1CE487B900A08658 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				96753A401CE5DD170079FB8F /* FileSharing.swift */,
-				96B84F021CF6D04200817793 /* UserDefaultManager.swift */,
-				9664D2951CF7FAE400630EAE /* TZFEManager.swift */,
-				96BDAE191CF82A0700FFB05D /* AlertManager.swift */,
 				967217A71CFC0CD2002D77B7 /* LanguageManager.swift */,
+				96BDAE191CF82A0700FFB05D /* AlertManager.swift */,
+				96B84F021CF6D04200817793 /* UserDefaultManager.swift */,
+				96753A401CE5DD170079FB8F /* FileSharing.swift */,
+				9664D2951CF7FAE400630EAE /* TZFEManager.swift */,
+				965D1D7E1CFECD5900FD6812 /* SudokuManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 				96687FE31CE5714000149A59 /* README.md in Resources */,
 				96687FE81CE5898200149A59 /* ToolItems.plist in Resources */,
 				96EF08C71CFD2A2700D89D53 /* Main.storyboard in Resources */,
+				964064B81D0026AF00612CE9 /* SudokuPuzzles.plist in Resources */,
 				96687FEA1CE58AB300149A59 /* GameItems.plist in Resources */,
 				967217A61CFBFD00002D77B7 /* Language.plist in Resources */,
 			);
@@ -421,6 +428,7 @@
 				96687FEC1CE5AB3400149A59 /* CellItem.swift in Sources */,
 				965BA4B41CEAF29C003988E2 /* Color.swift in Sources */,
 				96753A411CE5DD170079FB8F /* FileSharing.swift in Sources */,
+				965D1D7F1CFECD5900FD6812 /* SudokuManager.swift in Sources */,
 				96B84F031CF6D04200817793 /* UserDefaultManager.swift in Sources */,
 				9664D2961CF7FAE400630EAE /* TZFEManager.swift in Sources */,
 				96BDAE1A1CF82A0700FFB05D /* AlertManager.swift in Sources */,

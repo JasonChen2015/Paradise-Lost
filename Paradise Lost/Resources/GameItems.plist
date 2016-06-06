@@ -16,7 +16,7 @@
 		<key>name</key>
 		<string>game.sudoku.titlelabel.text</string>
 		<key>segueId</key>
-		<string></string>
+		<string>SudokuVC</string>
 		<key>needNavigation</key>
 		<false/>
 	</dict>

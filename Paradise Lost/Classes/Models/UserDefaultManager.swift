@@ -11,11 +11,14 @@ import Foundation
 class UserDefaultManager {
     
     enum UserKey {
-        case TZFEHighScore      // Int
-        case TZFEScoreRecord    // Int
-        case TZFETilesRecord    // [Int]
-        case BarCodeSoundOn     // Bool
-        case BarCodeVibraOn     // Bool
+        case TZFEHighScore      // Int      // the highest score
+        case TZFEScoreRecord    // Int      // current score
+        case TZFETilesRecord    // [Int]    // current tiles position
+        case BarCodeSoundOn     // Bool     // if open sound
+        case BarCodeVibraOn     // Bool     // if open vibra
+        case SudokuNumber       // Int      // the number of sudoku puzzle
+        case SudokuTime         // Int      // current used time(seconds)
+        case SudokuUserGrid     // String   // current sudoku position
         
         var value: String {
             switch self {
@@ -29,6 +32,12 @@ class UserDefaultManager {
                 return "BarCodeSoundOn"
             case .BarCodeVibraOn:
                 return "BarCodeVibraOn"
+            case .SudokuNumber:
+                return "SudokuNumber"
+            case .SudokuTime:
+                return "SudokuTime"
+            case .SudokuUserGrid:
+                return "SudokuUserGrid"
             }
         }
     }
