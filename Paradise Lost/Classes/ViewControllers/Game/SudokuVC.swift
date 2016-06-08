@@ -13,14 +13,24 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
     var mainView: SudokuView!
     var gridView: SudokuGridView!
     
-    var selectedPoint: (Int, Int) = (0, 0)
-    
     var sudokuDict: NSDictionary?
     var totalNum: Int = 0
-    var currentNum: Int = 0
+    var currentNum: Int = 0 {
+        didSet {
+            if mainView != nil {
+                mainView.setNumber(currentNum)
+            }
+        }
+    }
     
     /// include the stable number
-    var stableSudoku: [Int] = []
+    var stableSudoku: [Int] = [] {
+        didSet {
+            if gridView != nil {
+                gridView.stableSudoku = stableSudoku
+            }
+        }
+    }
     
     /// the state shown on user interface
     var userSudoku: [Int] = [] {
@@ -39,6 +49,15 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         }
     }
     
+    var selectedPoint: (Int, Int) = (0, 0) {
+        didSet {
+            if gridView != nil {
+                gridView.selectedPoint = selectedPoint
+            }
+        }
+    }
+    
+    /// the time used
     var currentSecond: Int = 0 {
         didSet {
             // save to user default
@@ -154,7 +173,7 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         }
         userSudoku = stableSudoku
         selectedPoint = (0, 0)
-        gridView.selectedPoint = (0, 0)
+        currentSecond = 0
         runGame = false
     }
     
@@ -214,12 +233,10 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         if runGame {
             userSudoku = stableSudoku
             selectedPoint = (0, 0)
-            gridView.selectedPoint = (0, 0)
         }
     }
     
     func loadNextPuzzle() {
-        // TODO: save the current puzzle
         if !runGame {
             if currentNum < totalNum {
                 currentNum = currentNum + 1
@@ -228,13 +245,14 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
                 resetGameAction(false)
                 mainView.resetScreen()
                 
-                AlertManager.showTips(self, message: "You will run the next puzzle1", handler: nil)
+                AlertManager.showTips(self, message: "You will run the next puzzle", handler: nil)
+            } else {
+                AlertManager.showTips(self, message: "It's the last puzzle!", handler: nil)
             }
         }
     }
     
     func loadPrevPuzzle() {
-        // TODO: save the current puzzle
         if !runGame {
             if currentNum > 1 {
                 currentNum = currentNum - 1
@@ -243,7 +261,9 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
                 resetGameAction(false)
                 mainView.resetScreen()
                 
-                AlertManager.showTips(self, message: "You will run the previous puzzle1", handler: nil)
+                AlertManager.showTips(self, message: "You will run the previous puzzle", handler: nil)
+            } else {
+                AlertManager.showTips(self, message: "It's the first puzzle!", handler: nil)
             }
         }
     }

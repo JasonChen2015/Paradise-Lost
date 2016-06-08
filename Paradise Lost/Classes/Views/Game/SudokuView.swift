@@ -20,7 +20,14 @@ class SudokuView: UIView {
     private var didStartGame: Bool = false
     
     private var timer: NSTimer = NSTimer()
-    var seconds: Int = 0
+    var seconds: Int = 0 {
+        didSet {
+            if seconds == 0 {
+                stopTimer()
+                timeNumberLabel.text = "0:0:0"
+            }
+        }
+    }
     
     var delegate: SudokuViewDelegate? = nil
     
@@ -42,6 +49,7 @@ class SudokuView: UIView {
         addSubview(startButton)
         addSubview(resetButton)
         addSubview(exitButton)
+        addSubview(numberLabel)
         addSubview(timeLabel)
         addSubview(timeNumberLabel)
         
@@ -52,11 +60,12 @@ class SudokuView: UIView {
     
     override func layoutSubviews() {
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-40-[v0(35)]-434-[v1(30)]-8-[v2(30)]-8-[v3(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel, "v1": startButton, "v2": resetButton, "v3": exitButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-529-[v0(30)]-[v1(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": timeLabel, "v1": timeNumberLabel]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-509-[v2(30)]-[v0(30)]-[v1(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": timeLabel, "v1": timeNumberLabel, "v2": numberLabel]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-294-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": startButton]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-294-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": resetButton]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-294-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": exitButton]))
+        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-294-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": numberLabel]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-294-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": timeLabel]))
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-294-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": timeNumberLabel]))
     }
@@ -123,6 +132,19 @@ class SudokuView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    private var numberLabel: UILabel = {
+        var label = UILabel()
+        label.text = "NO. 1"
+        label.font = UIFont.boldSystemFontOfSize(25)
+        label.textAlignment = .Center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label;
+    }()
+    
+    func setNumber(number: Int) {
+        numberLabel.text = "NO. \(number)"
+    }
     
     private var timeLabel: UILabel = {
         var label = UILabel()
@@ -306,7 +328,6 @@ class SudokuGridView: UIView {
             // judge
             let i = Int(9 * pos.x / viewWidth) + 1
             let j = Int(9 * pos.y / viewHeight) + 1
-            selectedPoint = (i, j)
             delegate?.didTapPoint(x: i, y: j)
         }
     }
