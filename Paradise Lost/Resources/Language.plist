@@ -4,6 +4,10 @@
 <dict>
 	<key>ch</key>
 	<dict>
+		<key>alert.tips.title</key>
+		<string>提示</string>
+		<key>alert.isee.title</key>
+		<string>我知道啦</string>
 		<key>game.tabbaritem.title</key>
 		<string>游戏</string>
 		<key>game.viewname</key>
@@ -32,7 +36,7 @@
 		<string>按下并开始扫描。</string>
 		<key>tool.barcode.resultlabel.text</key>
 		<string>扫描结果：</string>
-		<key>tool.barcode.resultText.text</key>
+		<key>tool.barcode.resulttext.text</key>
 		<string>木有结果哦～</string>
 		<key>tool.barcode.clearbutton.title</key>
 		<string>清除</string>
@@ -48,9 +52,37 @@
 		<string>不能添加AVCaptureDeviceOutput。</string>
 		<key>game.sudoku.titlelabel.text</key>
 		<string>数独</string>
+		<key>game.sudoku.startbutton.title1</key>
+		<string>开始</string>
+		<key>game.sudoku.startbutton.title2</key>
+		<string>暂停</string>
+		<key>game.sudoku.resetbutton.title</key>
+		<string>重玩</string>
+		<key>game.sudoku.exitbutton.title</key>
+		<string>退出</string>
+		<key>game.sudoku.timelabel.text</key>
+		<string>耗时：</string>
+		<key>game.sudoku.gameover.message</key>
+		<string>你已经完成谜题。</string>
+		<key>game.sudoku.loadfailed.message</key>
+		<string>加载谜题失败。ToT</string>
+		<key>game.sudoku.reset.message</key>
+		<string>重新开始游戏！</string>
+		<key>game.sudoku.runnext.message</key>
+		<string>你将要开始下一个谜题。</string>
+		<key>game.sudoku.runprev.message</key>
+		<string>你将要开始上一个谜题。</string>
+		<key>game.sudoku.nonext.message</key>
+		<string>已经是最后一个谜题！</string>
+		<key>game.sudoku.noprev.message</key>
+		<string>已经是第一个谜题！</string>
 	</dict>
 	<key>en</key>
 	<dict>
+		<key>alert.tips.title</key>
+		<string>TIPS</string>
+		<key>alert.isee.title</key>
+		<string>I see</string>
 		<key>game.tabbaritem.title</key>
 		<string>Games</string>
 		<key>game.viewname</key>
@@ -79,7 +111,7 @@
 		<string>Tap on and start capture code.</string>
 		<key>tool.barcode.resultlabel.text</key>
 		<string>Scan result:</string>
-		<key>tool.barcode.resultText.text</key>
+		<key>tool.barcode.resulttext.text</key>
 		<string>No result for scanning~</string>
 		<key>tool.barcode.clearbutton.title</key>
 		<string>Clear</string>
@@ -95,6 +127,30 @@
 		<string>Can not add AVCaptureDeviceOutput.</string>
 		<key>game.sudoku.titlelabel.text</key>
 		<string>Sudoku</string>
+		<key>game.sudoku.startbutton.title1</key>
+		<string>Start</string>
+		<key>game.sudoku.startbutton.title2</key>
+		<string>Pause</string>
+		<key>game.sudoku.resetbutton.title</key>
+		<string>Reset</string>
+		<key>game.sudoku.exitbutton.title</key>
+		<string>Exit</string>
+		<key>game.sudoku.timelabel.text</key>
+		<string>Time:</string>
+		<key>game.sudoku.gameover.message</key>
+		<string>You&apos;d finished the puzzle.</string>
+		<key>game.sudoku.loadfailed.message</key>
+		<string>Can not load puzzle. ToT</string>
+		<key>game.sudoku.reset.message</key>
+		<string>Reset the game!</string>
+		<key>game.sudoku.runnext.message</key>
+		<string>You will run the next puzzle.</string>
+		<key>game.sudoku.runprev.message</key>
+		<string>You will run the previous puzzle.</string>
+		<key>game.sudoku.nonext.message</key>
+		<string>It&apos;s the last puzzle!</string>
+		<key>game.sudoku.noprev.message</key>
+		<string>It&apos;s the first puzzle!</string>
 	</dict>
 </dict>
 </plist>

@@ -9,10 +9,9 @@
 import UIKit
 
 protocol SudokuViewDelegate {
-    func startGameAction(didStartGame: Bool)
+    func startGameAction(didStartGame: Bool, usedSec: Int)
     func resetGameAction(needAlert: Bool)
-    func exitGameAction()
-    func refreshTimer(seconds: Int)
+    func exitGameAction(usedSec: Int)
 }
 
 class SudokuView: UIView {
@@ -75,14 +74,23 @@ class SudokuView: UIView {
     func startGame() {
         didStartGame = !didStartGame
         if didStartGame {
-            startButton.setTitle("Pause", forState: .Normal)
+            startButton.setTitle(LanguageManager.getAppLanguageString("game.sudoku.startbutton.title2"), forState: .Normal)
             runTimer()
         } else {
-            startButton.setTitle("Start", forState: .Normal)
+            startButton.setTitle(LanguageManager.getAppLanguageString("game.sudoku.startbutton.title1"), forState: .Normal)
             stopTimer()
         }
         
-        delegate?.startGameAction(didStartGame)
+        delegate?.startGameAction(didStartGame, usedSec: seconds)
+    }
+    
+    func resetScreen() {
+        didStartGame = false
+        // timer
+        stopTimer()
+        showSecondText()
+        // button
+        startButton.setTitle(LanguageManager.getAppLanguageString("game.sudoku.startbutton.title1"), forState: .Normal)
     }
     
     func resetGame() {
@@ -90,18 +98,8 @@ class SudokuView: UIView {
         delegate?.resetGameAction(true)
     }
     
-    func resetScreen() {
-        didStartGame = false
-        // timer
-        stopTimer()
-        seconds = 0
-        timeNumberLabel.text = "0:0:0"
-        // button
-        startButton.setTitle("Start", forState: .Normal)
-    }
-    
     func exitGame() {
-        delegate?.exitGameAction()
+        delegate?.exitGameAction(seconds)
     }
     
     func runTimer() {
@@ -112,14 +110,17 @@ class SudokuView: UIView {
         timer.invalidate()
     }
     
-    func addASecond() {
-        seconds = seconds + 1
+    func showSecondText() {
         var minute: Int = seconds / 60
         let hours: Int = minute / 60
         minute = minute % 60
         let second: Int = seconds % 60
         timeNumberLabel.text = "\(hours):\(minute):\(second)"
-        delegate?.refreshTimer(seconds)
+    }
+    
+    func addASecond() {
+        seconds = seconds + 1
+        showSecondText()
     }
     
     // MARK: getters and setters
@@ -148,7 +149,7 @@ class SudokuView: UIView {
     
     private var timeLabel: UILabel = {
         var label = UILabel()
-        label.text = "Time:"
+        label.text = LanguageManager.getAppLanguageString("game.sudoku.timelabel.text")
         label.font = UIFont.boldSystemFontOfSize(25)
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -165,28 +166,28 @@ class SudokuView: UIView {
     
     private var startButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle("Start", forState: .Normal)
+        button.setTitle(LanguageManager.getAppLanguageString("game.sudoku.startbutton.title1"), forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private var resetButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle("Reset", forState: .Normal)
+        button.setTitle(LanguageManager.getAppLanguageString("game.sudoku.resetbutton.title"), forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private var exitButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle("Exit", forState: .Normal)
+        button.setTitle(LanguageManager.getAppLanguageString("game.sudoku.exitbutton.title"), forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 }
 
 protocol SudokuGridViewDelegate {
-    func didTapPoint(x x: Int, y: Int)
+    func didRefreshSudoku(uSudoku: [Int])
 }
 
 class SudokuGridView: UIView {
@@ -198,7 +199,7 @@ class SudokuGridView: UIView {
     
     var canEnable: Bool = false {
         didSet {
-            setNeedsDisplay()
+            selectedPoint = (0, 0)
         }
     }
     
@@ -283,14 +284,14 @@ class SudokuGridView: UIView {
                     var attributes: [String: AnyObject] = [:]
                     if stableSudoku[i + j * 9] != 0 {
                         // stable number
-                        attributes = [NSFontAttributeName: UIFont.boldSystemFontOfSize(24)]
+                        attributes = [NSFontAttributeName: UIFont(name: "Helvetica-Bold", size: 24)!]
                     } else {
                         // number can be changed
                         if !canEnable {
                             // game pause thus do not show typed number
                             continue
                         }
-                        attributes = [NSFontAttributeName: UIFont.systemFontOfSize(22)]
+                        attributes = [NSFontAttributeName: UIFont(name: "Courier", size: 22)!]
                     }
                     let centerX = gridWidth * CGFloat(i) + gridWidth / 2
                     let centerY = gridHeight * CGFloat(j) + gridHeight / 2
@@ -325,18 +326,30 @@ class SudokuGridView: UIView {
                 return
             }
             let pos = sender.locationInView(self)
-            // judge
+            // get point
             let i = Int(9 * pos.x / viewWidth) + 1
             let j = Int(9 * pos.y / viewHeight) + 1
-            delegate?.didTapPoint(x: i, y: j)
+            selectedPoint = (i, j)
         }
+    }
+    
+    func putNumberToPoint(number: Int) {
+        let (x, y) = selectedPoint
+        if x != 0 && y != 0 {
+            let index = x - 1 + (y - 1) * 9
+            if stableSudoku[index] == 0 {
+                // not a stable number
+                sudoku = SudokuManager.putNumber(sudoku, index: index, number: number)
+                delegate?.didRefreshSudoku(sudoku)
+            }
+        }
+        
     }
 }
 
 protocol SudokuPanelViewDelegate {
     func didTapNumber(number: Int)
 }
-
 
 /**
     3 * 4 panel to control the input, includes 0 ~ 9 number and previous, clear, next button

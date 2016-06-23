@@ -94,7 +94,7 @@ class BarCodeView: UIView {
     // MARK: event response
     
     func clearResult() {
-        resultText.text = LanguageManager.getAppLanguageString("tool.barcode.resultText.text")
+        resultText.text = LanguageManager.getAppLanguageString("tool.barcode.resulttext.text")
     }
     
     func copyResult() {
@@ -117,7 +117,7 @@ class BarCodeView: UIView {
     
     func hasResult(result: String) {
         if result.isEmpty {
-            resultText.text = LanguageManager.getAppLanguageString("tool.barcode.resultText.text")
+            resultText.text = LanguageManager.getAppLanguageString("tool.barcode.resulttext.text")
         } else {
             resultText.text = result
         }
@@ -165,7 +165,7 @@ class BarCodeView: UIView {
     
     private var resultText: UITextView = {
         var textView = UITextView()
-        textView.text = LanguageManager.getAppLanguageString("tool.barcode.resultText.text")
+        textView.text = LanguageManager.getAppLanguageString("tool.barcode.resulttext.text")
         textView.textAlignment = .Center
         textView.font = UIFont.systemFontOfSize(20)
         textView.userInteractionEnabled = false

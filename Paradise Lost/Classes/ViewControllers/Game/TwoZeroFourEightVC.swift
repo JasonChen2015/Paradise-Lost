@@ -58,7 +58,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     func initData() {
         lastTiles = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
         // tiles
-        if let tmp = UserDefaultManager.valueFromKeyEnum(.TZFETilesRecord) {
+        if let tmp = UserDefaultManager.objectFromKeyEnum(.TZFETilesRecord) {
             tiles = tmp as! [Int]
         } else {
             tiles = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -67,14 +67,14 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         }
         refreshTileView()
         // score
-        if let tmp = UserDefaultManager.valueFromKeyEnum(.TZFEScoreRecord) {
+        if let tmp = UserDefaultManager.objectFromKeyEnum(.TZFEScoreRecord) {
             score = tmp as! Int
         } else {
             score = 0
         }
         refreshScore()
         // high score
-        if let tmp = UserDefaultManager.valueFromKeyEnum(.TZFEHighScore) {
+        if let tmp = UserDefaultManager.objectFromKeyEnum(.TZFEHighScore) {
             highScore = tmp as! Int
         } else {
             highScore = 0
@@ -93,8 +93,8 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         refreshScore()
         
         // save to user default
-        UserDefaultManager.setValue(tiles, forKeyEnum: .TZFETilesRecord)
-        UserDefaultManager.setValue(score, forKeyEnum: .TZFEScoreRecord)
+        UserDefaultManager.setObject(tiles, forKeyEnum: .TZFETilesRecord)
+        UserDefaultManager.setObject(score, forKeyEnum: .TZFEScoreRecord)
     }
     
     // MARK: TwoZeroFourEightViewDelegate
@@ -142,14 +142,14 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
                 refreshScore()
                 if score > highScore {
                     highScore = score
-                    UserDefaultManager.setValue(highScore, forKeyEnum: .TZFEHighScore)
+                    UserDefaultManager.setObject(highScore, forKeyEnum: .TZFEHighScore)
                     refreshHighScore()
                 }
                 tiles = TZFEManager.addANewValueToTile(tiles)
                 refreshTileView()
                 
-                UserDefaultManager.setValue(tiles, forKeyEnum: .TZFETilesRecord)
-                UserDefaultManager.setValue(score, forKeyEnum: .TZFEScoreRecord)
+                UserDefaultManager.setObject(tiles, forKeyEnum: .TZFETilesRecord)
+                UserDefaultManager.setObject(score, forKeyEnum: .TZFEScoreRecord)
             }
             if !TZFEManager.hasMoveOnTiles(tiles) {
                 gameOver()

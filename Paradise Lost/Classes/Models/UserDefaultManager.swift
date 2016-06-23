@@ -17,8 +17,7 @@ class UserDefaultManager {
         case BarCodeSoundOn     // Bool     // if open sound
         case BarCodeVibraOn     // Bool     // if open vibra
         case SudokuNumber       // Int      // the number of sudoku puzzle
-        case SudokuTime         // Int      // current used time(seconds)
-        case SudokuUserGrid     // String   // current sudoku position
+        case SudokuUserGrid     // [:]      // user sudoku puzzles
         
         var value: String {
             switch self {
@@ -34,8 +33,6 @@ class UserDefaultManager {
                 return "BarCodeVibraOn"
             case .SudokuNumber:
                 return "SudokuNumber"
-            case .SudokuTime:
-                return "SudokuTime"
             case .SudokuUserGrid:
                 return "SudokuUserGrid"
             }
@@ -68,22 +65,22 @@ class UserDefaultManager {
     }
     
     // should be private
-    class func valueFromKeyString(key: String) -> AnyObject? {
+    class func objectFromKeyString(key: String) -> AnyObject? {
         return NSUserDefaults.standardUserDefaults().objectForKey(key)
     }
     
-    class func valueFromKeyEnum(key: UserKey) -> AnyObject? {
-        return valueFromKeyString(key.value)
+    class func objectFromKeyEnum(key: UserKey) -> AnyObject? {
+        return objectFromKeyString(key.value)
     }
     
     // should be private
-    class func setValue(value: AnyObject?, forKeyString key: String) {
+    class func setObject(value: AnyObject?, forKeyString key: String) {
         let defaults = NSUserDefaults()
         defaults.setObject(value, forKey: key)
         defaults.synchronize()
     }
     
-    class func setValue(value:AnyObject?, forKeyEnum key: UserKey) {
-        setValue(value, forKeyString: key.value)
+    class func setObject(value:AnyObject?, forKeyEnum key: UserKey) {
+        setObject(value, forKeyString: key.value)
     }
 }

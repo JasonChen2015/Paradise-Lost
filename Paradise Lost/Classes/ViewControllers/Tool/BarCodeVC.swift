@@ -58,13 +58,13 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
     }
     
     func initData() {
-        if let tmp = UserDefaultManager.valueFromKeyEnum(.BarCodeSoundOn) {
+        if let tmp = UserDefaultManager.objectFromKeyEnum(.BarCodeSoundOn) {
             isSoundOn = tmp as! Bool
         } else {
             isSoundOn = true
         }
         mainView.isSoundOn = isSoundOn
-        if let tmp = UserDefaultManager.valueFromKeyEnum(.BarCodeVibraOn) {
+        if let tmp = UserDefaultManager.objectFromKeyEnum(.BarCodeVibraOn) {
             isVibraOn = tmp as! Bool
         } else {
             isVibraOn = true
@@ -130,12 +130,12 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
     
     func tapSoundImage() {
         isSoundOn = !isSoundOn
-        UserDefaultManager.setValue(isSoundOn, forKeyEnum: .BarCodeSoundOn)
+        UserDefaultManager.setObject(isSoundOn, forKeyEnum: .BarCodeSoundOn)
     }
     
     func tapVibraImage() {
         isVibraOn = !isVibraOn
-        UserDefaultManager.setValue(isVibraOn, forKeyEnum: .BarCodeVibraOn)
+        UserDefaultManager.setObject(isVibraOn, forKeyEnum: .BarCodeVibraOn)
     }
     
     func tapReader() {

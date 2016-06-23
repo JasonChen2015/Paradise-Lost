@@ -89,25 +89,38 @@ class SudokuManager {
         return temp
     }
     
-    class func getSudokuFromString(str: String) -> [Int] {
+    class func getSudokuFromString(str: String) -> ([Int], Bool) {
+        var zero: [Int] = []
+        for _ in 0..<81 {
+            zero.append(0)
+        }
+        var success = true
+        
         var temp: [Int] = []
         if str.characters.count != 81 {
             // the str is not in right format thus return a 0 array
-            for _ in 0..<81 {
-                temp.append(0)
-            }
+            temp = zero
+            success = false
         } else {
             for char in str.characters {
-                temp.append(Int(String(char))!)
+                // check each character is in 0..9
+                if "0" <= String(char) && String(char) <= "9" {
+                    temp.append(Int(String(char))!)
+                } else {
+                    temp = zero
+                    success = false
+                    break
+                }
             }
         }
-        return temp
+        return (temp, success)
     }
     
-    class func getSudokuFromDictionary(dict: NSDictionary, atIndex index: Int) -> [Int] {
+    class func getSudokuFromDictionary(dict: NSDictionary, atIndex index: Int) -> ([Int], Bool) {
         if let str = dict.objectForKey("\(index)") {
             return getSudokuFromString(str as! String)
+        } else {
+            return ([], false)
         }
-        return []
     }
 }
