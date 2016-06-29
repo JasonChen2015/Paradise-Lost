@@ -52,9 +52,9 @@ class SudokuView: UIView {
         addSubview(timeLabel)
         addSubview(timeNumberLabel)
         
-        startButton.addTarget(self, action: "startGame", forControlEvents: .TouchUpInside)
-        resetButton.addTarget(self, action: "resetGame", forControlEvents: .TouchUpInside)
-        exitButton.addTarget(self, action: "exitGame", forControlEvents: .TouchUpInside)
+        startButton.addTarget(self, action: #selector(SudokuView.startGame), forControlEvents: .TouchUpInside)
+        resetButton.addTarget(self, action: #selector(SudokuView.resetGame), forControlEvents: .TouchUpInside)
+        exitButton.addTarget(self, action: #selector(SudokuView.exitGame), forControlEvents: .TouchUpInside)
     }
     
     override func layoutSubviews() {
@@ -103,7 +103,7 @@ class SudokuView: UIView {
     }
     
     func runTimer() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "addASecond", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(SudokuView.addASecond), userInfo: nil, repeats: true)
     }
     
     func stopTimer() {
@@ -314,7 +314,7 @@ class SudokuGridView: UIView {
     }
     
     private func setupView() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SudokuGridView.handleTapGesture(_:)))
         addGestureRecognizer(tapGesture)
     }
     
@@ -460,7 +460,7 @@ class SudokuPanelView: UIView {
     
     private func setupView() {
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SudokuGridView.handleTapGesture(_:)))
         addGestureRecognizer(tapGesture)
     }
     

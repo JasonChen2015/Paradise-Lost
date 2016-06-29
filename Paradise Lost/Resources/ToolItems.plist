@@ -14,11 +14,11 @@
 	<key>2</key>
 	<dict>
 		<key>name</key>
-		<string>Text Editor</string>
+		<string>tool.texteditor.title</string>
 		<key>segueId</key>
-		<string></string>
+		<string>TextEditorVC</string>
 		<key>needNavigation</key>
-		<false/>
+		<true/>
 	</dict>
 	<key>3</key>
 	<dict>

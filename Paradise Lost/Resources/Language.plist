@@ -76,6 +76,8 @@
 		<string>已经是最后一个谜题！</string>
 		<key>game.sudoku.noprev.message</key>
 		<string>已经是第一个谜题！</string>
+		<key>tool.texteditor.title</key>
+		<string>文本编辑器</string>
 	</dict>
 	<key>en</key>
 	<dict>
@@ -151,6 +153,8 @@
 		<string>It&apos;s the last puzzle!</string>
 		<key>game.sudoku.noprev.message</key>
 		<string>It&apos;s the first puzzle!</string>
+		<key>tool.texteditor.title</key>
+		<string>Text Editor</string>
 	</dict>
 </dict>
 </plist>

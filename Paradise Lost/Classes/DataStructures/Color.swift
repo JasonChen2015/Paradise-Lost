@@ -15,6 +15,7 @@ struct Color {
     var CosmicLatte = UIColor(hex: 0xfff8e7)
     
     // japanese tradictional color
+    // refer: https://en.wikipedia.org/wiki/Traditional_colors_of_Japan
     var Kokiake = UIColor(hex: 0x7b3b3a)
     var Kurotobi = UIColor(hex: 0x351e1c)
     var Kakitsubata = UIColor(hex: 0x491e3c)
@@ -31,6 +32,9 @@ struct Color {
     var BrightRed = UIColor(hex: 0xfc5e2e) // 16
     var VividRed = UIColor(hex: 0xff3333) // 32
     var PureRed = UIColor(hex: 0xff0000) // 64
+    
+    //
+    var LightGray = UIColor(hex: 0xcccccc)
     
     func mixColorBetween(colorA: UIColor, weightA: CGFloat = 0.5, colorB: UIColor, weightB: CGFloat = 0.5) -> UIColor {
         let c1 = colorA.RGBComponents

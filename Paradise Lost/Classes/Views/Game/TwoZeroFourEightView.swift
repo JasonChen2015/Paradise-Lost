@@ -66,8 +66,8 @@ class TwoZeroFourEightView: UIView {
         addSubview(newButton)
         addSubview(exitButton)
         
-        newButton.addTarget(self, action: "newGame", forControlEvents: .TouchUpInside)
-        exitButton.addTarget(self, action: "exitGame", forControlEvents: .TouchUpInside)
+        newButton.addTarget(self, action: #selector(TwoZeroFourEightView.newGame), forControlEvents: .TouchUpInside)
+        exitButton.addTarget(self, action: #selector(TwoZeroFourEightView.exitGame), forControlEvents: .TouchUpInside)
     }
     
     override func layoutSubviews() {

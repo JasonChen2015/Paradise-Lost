@@ -68,15 +68,15 @@ class BarCodeView: UIView {
         
         // action
         
-        clearButton.addTarget(self, action: "clearResult", forControlEvents: .TouchUpInside)
-        copyButton.addTarget(self, action: "copyResult", forControlEvents: .TouchUpInside)
+        clearButton.addTarget(self, action: #selector(BarCodeView.clearResult), forControlEvents: .TouchUpInside)
+        copyButton.addTarget(self, action: #selector(BarCodeView.copyResult), forControlEvents: .TouchUpInside)
         
-        let soundTap = UITapGestureRecognizer(target: self, action: "changeSound")
+        let soundTap = UITapGestureRecognizer(target: self, action: #selector(BarCodeView.changeSound))
         soundImage.addGestureRecognizer(soundTap)
-        let vibraTap = UITapGestureRecognizer(target: self, action: "changeVibra")
+        let vibraTap = UITapGestureRecognizer(target: self, action: #selector(BarCodeView.changeVibra))
         vibraImage.addGestureRecognizer(vibraTap)
         
-        let gesture = UITapGestureRecognizer(target: self, action: "tapReader")
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(BarCodeView.tapReader))
         reader.addGestureRecognizer(gesture)
     }
     

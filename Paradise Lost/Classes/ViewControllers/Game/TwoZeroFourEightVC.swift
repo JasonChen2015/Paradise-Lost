@@ -34,7 +34,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor.whiteColor()
         
-        let panGesture = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(TwoZeroFourEightVC.handlePanGesture(_:)))
         panGesture.maximumNumberOfTouches = 1
         panGesture.minimumNumberOfTouches = 1
         

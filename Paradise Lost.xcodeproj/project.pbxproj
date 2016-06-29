@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		962AF9F41CE9640D00B7E128 /* TwoZeroFourEightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */; };
+		962EC31C1D238145008E2D44 /* TextEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962EC31B1D238145008E2D44 /* TextEditorVC.swift */; };
+		962EC31E1D238252008E2D44 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962EC31D1D238252008E2D44 /* TextEditorView.swift */; };
 		964064B81D0026AF00612CE9 /* SudokuPuzzles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 964064B71D0026AE00612CE9 /* SudokuPuzzles.plist */; };
 		965BA4B41CEAF29C003988E2 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965BA4B31CEAF29C003988E2 /* Color.swift */; };
 		965D1D7B1CFE870D00FD6812 /* SudokuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965D1D7A1CFE870D00FD6812 /* SudokuVC.swift */; };
@@ -59,6 +61,8 @@
 
 /* Begin PBXFileReference section */
 		962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoZeroFourEightView.swift; sourceTree = "<group>"; };
+		962EC31B1D238145008E2D44 /* TextEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorVC.swift; sourceTree = "<group>"; };
+		962EC31D1D238252008E2D44 /* TextEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
 		964064B71D0026AE00612CE9 /* SudokuPuzzles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SudokuPuzzles.plist; path = Resources/SudokuPuzzles.plist; sourceTree = "<group>"; };
 		965BA4B31CEAF29C003988E2 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		965D1D7A1CFE870D00FD6812 /* SudokuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SudokuVC.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				967217A11CFBF6D4002D77B7 /* BarCodeView.swift */,
+				962EC31D1D238252008E2D44 /* TextEditorView.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -155,6 +160,7 @@
 				96753A3A1CE5D8F50079FB8F /* ToolListVC.swift */,
 				96753A3C1CE5D9590079FB8F /* FileExplorerVC.swift */,
 				9672179E1CFBF5F7002D77B7 /* BarCodeVC.swift */,
+				962EC31B1D238145008E2D44 /* TextEditorVC.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -429,6 +435,7 @@
 				96753A411CE5DD170079FB8F /* FileSharing.swift in Sources */,
 				965D1D7F1CFECD5900FD6812 /* SudokuManager.swift in Sources */,
 				96B84F031CF6D04200817793 /* UserDefaultManager.swift in Sources */,
+				962EC31E1D238252008E2D44 /* TextEditorView.swift in Sources */,
 				9664D2961CF7FAE400630EAE /* TZFEManager.swift in Sources */,
 				96BDAE1A1CF82A0700FFB05D /* AlertManager.swift in Sources */,
 				967217A81CFC0CD2002D77B7 /* LanguageManager.swift in Sources */,
@@ -441,6 +448,7 @@
 				96753A371CE5D8BE0079FB8F /* TwoZeroFourEightVC.swift in Sources */,
 				96753A3B1CE5D8F50079FB8F /* ToolListVC.swift in Sources */,
 				96753A3D1CE5D9590079FB8F /* FileExplorerVC.swift in Sources */,
+				962EC31C1D238145008E2D44 /* TextEditorVC.swift in Sources */,
 				9672179F1CFBF5F7002D77B7 /* BarCodeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,7 +513,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -550,7 +558,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -580,7 +588,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Paradise Lost/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-Lost";
@@ -600,7 +608,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Paradise Lost/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-Lost";
