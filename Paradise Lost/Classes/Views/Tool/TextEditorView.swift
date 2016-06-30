@@ -8,9 +8,12 @@
 
 import UIKit
 
-class TextEditorView: UIView, UITextFieldDelegate, UITextViewDelegate {
+class TextEditorView: UIView {
     
-    var originFrame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+    /// flag that text of textField or textView has been modified
+    var isModified: Bool = false
+    /// to store the original frame of view
+    private var originFrame: CGRect = CGRect(x: 0, y: 0, width: 0, height: 0)
     
     // MARK: life cycle
     
@@ -35,7 +38,7 @@ class TextEditorView: UIView, UITextFieldDelegate, UITextViewDelegate {
         mainTextView.delegate = self
         
         nameLabel.userInteractionEnabled = true
-        let tapNameLabelGesture = UITapGestureRecognizer(target: self, action: #selector(TextEditorView.tapNameLabel))
+        let tapNameLabelGesture = UITapGestureRecognizer(target: self, action: #selector(TextEditorView.resignAllResponder))
         nameLabel.addGestureRecognizer(tapNameLabelGesture)
     }
     
@@ -48,7 +51,7 @@ class TextEditorView: UIView, UITextFieldDelegate, UITextViewDelegate {
     
     // MARK: event response
     
-    func tapNameLabel() {
+    func resignAllResponder() {
         // to hide keyboard
         UIApplication.sharedApplication().sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, forEvent: nil)
     }
@@ -85,9 +88,29 @@ class TextEditorView: UIView, UITextFieldDelegate, UITextViewDelegate {
     
     // MARK: getters and setters
     
+    func getFileName() -> String {
+        if let name = nameTextField.text {
+            // remove the leading and trailing white spaces
+            let temp = name.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            nameTextField.text = temp
+            return temp
+        } else {
+            return ""
+        }
+    }
+    
+    func getFileContent() -> String {
+        return mainTextView.text
+    }
+    
+    func loadFile(fileName: String, content: String) {
+        nameTextField.text = fileName
+        mainTextView.text = content
+    }
+    
     private var nameLabel: UILabel = {
         var label = UILabel()
-        label.text = "File name:"
+        label.text = LanguageManager.getAppLanguageString("tool.texteditor.namelabel.text")
         label.font = UIFont.systemFontOfSize(14)
         label.textAlignment = .Right
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -96,6 +119,9 @@ class TextEditorView: UIView, UITextFieldDelegate, UITextViewDelegate {
     
     private var nameTextField: UITextField = {
         var textField = UITextField()
+        textField.layer.borderColor = Color().LightGray.CGColor
+        textField.layer.borderWidth = 0.5
+        textField.layer.cornerRadius = 5.0
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -108,4 +134,20 @@ class TextEditorView: UIView, UITextFieldDelegate, UITextViewDelegate {
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
+}
+
+extension TextEditorView: UITextFieldDelegate, UITextViewDelegate {
+    // when tap return at nameTextField, hide keyboard
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return false
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        isModified = true
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        isModified = true
+    }
 }

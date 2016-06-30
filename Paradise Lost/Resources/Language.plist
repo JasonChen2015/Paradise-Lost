@@ -8,6 +8,8 @@
 		<string>提示</string>
 		<key>alert.isee.title</key>
 		<string>我知道啦</string>
+		<key>alert.continue.title</key>
+		<string>继续</string>
 		<key>game.tabbaritem.title</key>
 		<string>游戏</string>
 		<key>game.viewname</key>
@@ -78,6 +80,22 @@
 		<string>已经是第一个谜题！</string>
 		<key>tool.texteditor.title</key>
 		<string>文本编辑器</string>
+		<key>tool.texteditor.namelabel.text</key>
+		<string>文件名：</string>
+		<key>tool.texteditor.rightbar.text</key>
+		<string>保存</string>
+		<key>tool.texteditor.leftbar.text</key>
+		<string>返回</string>
+		<key>tool.texteditor.nofilename.message</key>
+		<string>请输入文件名。</string>
+		<key>tool.texteditor.norename.message</key>
+		<string>不能用此文件名保存，并且将以原文件名保存。</string>
+		<key>tool.texteditor.savesuccess.message</key>
+		<string>成功保存文件于</string>
+		<key>tool.texteditor.savefail.message</key>
+		<string>啊哦，保存文件不成功。</string>
+		<key>tool.texteditor.saveforget.message</key>
+		<string>尚未保存该文件！</string>
 	</dict>
 	<key>en</key>
 	<dict>
@@ -85,6 +103,8 @@
 		<string>TIPS</string>
 		<key>alert.isee.title</key>
 		<string>I see</string>
+		<key>alert.continue.title</key>
+		<string>Continue</string>
 		<key>game.tabbaritem.title</key>
 		<string>Games</string>
 		<key>game.viewname</key>
@@ -155,6 +175,22 @@
 		<string>It&apos;s the first puzzle!</string>
 		<key>tool.texteditor.title</key>
 		<string>Text Editor</string>
+		<key>tool.texteditor.namelabel.text</key>
+		<string>File name: </string>
+		<key>tool.texteditor.rightbar.text</key>
+		<string>Save</string>
+		<key>tool.texteditor.leftbar.text</key>
+		<string>Return</string>
+		<key>tool.texteditor.nofilename.message</key>
+		<string>You should input the file name.</string>
+		<key>tool.texteditor.norename.message</key>
+		<string>You can&apos;t save with the file name and it&apos;ll save as the original name.</string>
+		<key>tool.texteditor.savesuccess.message</key>
+		<string>You&apos;ve saved file at</string>
+		<key>tool.texteditor.savefail.message</key>
+		<string>Oops, can not save the file.</string>
+		<key>tool.texteditor.saveforget.message</key>
+		<string>You&apos;ve not saved this file!</string>
 	</dict>
 </dict>
 </plist>

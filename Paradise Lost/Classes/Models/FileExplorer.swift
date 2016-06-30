@@ -1,5 +1,5 @@
 //
-//  CellItem.swift
+//  FileExplorer.swift
 //  Paradise Lost
 //
 //  Created by Jason Chen on 5/13/16.
