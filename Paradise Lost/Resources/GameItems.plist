@@ -20,5 +20,14 @@
 		<key>needNavigation</key>
 		<false/>
 	</dict>
+	<key>3</key>
+	<dict>
+		<key>name</key>
+		<string>game.jumping.title.text</string>
+		<key>segueId</key>
+		<string>JumpingVC</string>
+		<key>needNavigation</key>
+		<false/>
+	</dict>
 </dict>
 </plist>

@@ -96,6 +96,10 @@
 		<string>啊哦，保存文件不成功。</string>
 		<key>tool.texteditor.saveforget.message</key>
 		<string>尚未保存该文件！</string>
+		<key>game.jumping.title.text</key>
+		<string>跳着</string>
+		<key>game.jumping.exitbutton.text</key>
+		<string>退出</string>
 	</dict>
 	<key>en</key>
 	<dict>
@@ -191,6 +195,10 @@
 		<string>Oops, can not save the file.</string>
 		<key>tool.texteditor.saveforget.message</key>
 		<string>You&apos;ve not saved this file!</string>
+		<key>game.jumping.title.text</key>
+		<string>Jumping</string>
+		<key>game.jumping.exitbutton.text</key>
+		<string>Exit</string>
 	</dict>
 </dict>
 </plist>
