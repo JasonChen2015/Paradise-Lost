@@ -21,7 +21,7 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
     let motionManager = CMMotionManager()
     var exitButton = SKLabelNode()
     
-    let MaxPlayerVelocityX: CGFloat = 500
+    let MaxPlayerVelocityX: CGFloat = 600
     
     struct BodyMask {
         static let player: UInt32 = 1 << 0
@@ -71,10 +71,13 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
         physicsBody = boderBody
         
         physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
+        physicsWorld.speed = 1.0
         physicsWorld.contactDelegate = self
         
         motionManager.accelerometerUpdateInterval = 0.2
         startMonitoringAccelertation()
+        
+        // TODO: add SKAction of platform
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -111,6 +114,7 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    // TODO: no effect
     func updatePlayer() {
         if player.position.x < 0 {
             player.position.x = size.width
