@@ -286,6 +286,7 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
     func gameOver() {
         AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("game.sudoku.gameover.message"), handler: nil)
         runGame = false
+        mainView.stopTimer()
     }
     
     func clearGame() {
