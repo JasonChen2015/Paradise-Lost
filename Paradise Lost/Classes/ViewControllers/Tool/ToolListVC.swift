@@ -9,13 +9,13 @@
 import UIKit
 
 class ToolListVC: UniversalTableViewController {
-    private var items = CellItemManager.itemsFromPlist("ToolItems")
+    private var items = TableCellItemManager.itemsFromPlist("ToolItems")
     
     // MARK: life cycle
     
     override func viewDidLoad() {
         viewName = LanguageManager.getAppLanguageString("tool.viewname")
-        itemNames = CellItemManager.nameArrayFromItems(items)
+        itemNames = TableCellItemManager.nameArrayFromItems(items)
         
         super.viewDidLoad()
     }
@@ -24,12 +24,12 @@ class ToolListVC: UniversalTableViewController {
     
     override func cellButtonAction(cell: UITableViewCell) {
         if let indexPath = tableView.indexPathForCell(cell) {
-            let className = CellItemManager.classNameFromItems(items, atIndex: indexPath.row)
+            let className = TableCellItemManager.classNameFromItems(items, atIndex: indexPath.row)
             if let aClass = NSClassFromString(className) {
                 if aClass is UIViewController.Type {
                     let viewController = (aClass as! UIViewController.Type).init()
                     
-                    if CellItemManager.needNavigationFromItems(items, atIndex: indexPath.row) {
+                    if TableCellItemManager.needNavigationFromItems(items, atIndex: indexPath.row) {
                         self.navigationController?.pushViewController(viewController, animated: true)
                     } else {
                         self.presentViewController(viewController, animated: false) { (_) in }

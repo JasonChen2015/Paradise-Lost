@@ -25,7 +25,7 @@
 		96687FE31CE5714000149A59 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 96687FE11CE5714000149A59 /* README.md */; };
 		96687FE81CE5898200149A59 /* ToolItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96687FE71CE5898000149A59 /* ToolItems.plist */; };
 		96687FEA1CE58AB300149A59 /* GameItems.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96687FE91CE58AB200149A59 /* GameItems.plist */; };
-		96687FEC1CE5AB3400149A59 /* CellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96687FEB1CE5AB3400149A59 /* CellItem.swift */; };
+		96687FEC1CE5AB3400149A59 /* TableCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96687FEB1CE5AB3400149A59 /* TableCellItem.swift */; };
 		9672179F1CFBF5F7002D77B7 /* BarCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9672179E1CFBF5F7002D77B7 /* BarCodeVC.swift */; };
 		967217A21CFBF6D4002D77B7 /* BarCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967217A11CFBF6D4002D77B7 /* BarCodeView.swift */; };
 		967217A41CFBFA6D002D77B7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 967217A31CFBFA6C002D77B7 /* Settings.bundle */; };
@@ -82,7 +82,7 @@
 		96687FE11CE5714000149A59 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		96687FE71CE5898000149A59 /* ToolItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ToolItems.plist; path = Resources/ToolItems.plist; sourceTree = "<group>"; };
 		96687FE91CE58AB200149A59 /* GameItems.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = GameItems.plist; path = Resources/GameItems.plist; sourceTree = "<group>"; };
-		96687FEB1CE5AB3400149A59 /* CellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellItem.swift; sourceTree = "<group>"; };
+		96687FEB1CE5AB3400149A59 /* TableCellItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellItem.swift; sourceTree = "<group>"; };
 		9672179E1CFBF5F7002D77B7 /* BarCodeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarCodeVC.swift; sourceTree = "<group>"; };
 		967217A11CFBF6D4002D77B7 /* BarCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarCodeView.swift; sourceTree = "<group>"; };
 		967217A31CFBFA6C002D77B7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Resources/Settings.bundle; sourceTree = "<group>"; };
@@ -275,7 +275,7 @@
 		96DCF8471CE4258E00A08658 /* DataStructures */ = {
 			isa = PBXGroup;
 			children = (
-				96687FEB1CE5AB3400149A59 /* CellItem.swift */,
+				96687FEB1CE5AB3400149A59 /* TableCellItem.swift */,
 				965BA4B31CEAF29C003988E2 /* Color.swift */,
 				9632B8411D24C61A008C718A /* File.swift */,
 			);
@@ -446,7 +446,7 @@
 			files = (
 				9632B8401D24B11F008C718A /* LogFileManager.swift in Sources */,
 				96DCF8401CE4250700A08658 /* AppDelegate.swift in Sources */,
-				96687FEC1CE5AB3400149A59 /* CellItem.swift in Sources */,
+				96687FEC1CE5AB3400149A59 /* TableCellItem.swift in Sources */,
 				965BA4B41CEAF29C003988E2 /* Color.swift in Sources */,
 				96753A411CE5DD170079FB8F /* FileExplorer.swift in Sources */,
 				965D1D7F1CFECD5900FD6812 /* SudokuManager.swift in Sources */,
