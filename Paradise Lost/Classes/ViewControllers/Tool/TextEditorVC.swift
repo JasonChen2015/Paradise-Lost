@@ -16,7 +16,16 @@ class TextEditorVC: UIViewController {
     /// the information of the edited file
     var file: File = File()
     
-    private var fileManager = FileExplorer()!
+    private var fileManager = FileExplorerManager() {
+        didSet {
+            if fileManager.documentDir == "" {
+                AlertManager.showTips(self, message: "Can not initialize Text Editor.", handler: { (_) -> Void in
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                    return
+                })
+            }
+        }
+    }
     private var originFilePath: String = ""
     
     // MARK: life cycle
@@ -35,7 +44,7 @@ class TextEditorVC: UIViewController {
         
         // load data
         if file.getFileName() == "" {
-            let filePath = fileManager.documentDir! + "/editor"
+            let filePath = fileManager.documentDir + "/editor"
             file = File(filePath: filePath, fileName: "untitled.txt")
         }
         originFilePath = file.getFullPath()

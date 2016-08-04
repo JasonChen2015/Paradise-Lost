@@ -5,7 +5,7 @@
 	<key>1</key>
 	<dict>
 		<key>name</key>
-		<string>File Explorer</string>
+		<string>tool.explorer.title</string>
 		<key>segueId</key>
 		<string>FileExplorerVC</string>
 		<key>needNavigation</key>

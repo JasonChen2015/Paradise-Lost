@@ -35,7 +35,7 @@
 		96753A391CE5D8EB0079FB8F /* GameListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96753A381CE5D8EB0079FB8F /* GameListVC.swift */; };
 		96753A3B1CE5D8F50079FB8F /* ToolListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96753A3A1CE5D8F50079FB8F /* ToolListVC.swift */; };
 		96753A3D1CE5D9590079FB8F /* FileExplorerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96753A3C1CE5D9590079FB8F /* FileExplorerVC.swift */; };
-		96753A411CE5DD170079FB8F /* FileExplorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96753A401CE5DD170079FB8F /* FileExplorer.swift */; };
+		96753A411CE5DD170079FB8F /* FileExplorerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96753A401CE5DD170079FB8F /* FileExplorerManager.swift */; };
 		96B84F031CF6D04200817793 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96B84F021CF6D04200817793 /* UserDefaultManager.swift */; };
 		96BDAE1A1CF82A0700FFB05D /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96BDAE191CF82A0700FFB05D /* AlertManager.swift */; };
 		96DCF8231CE422D000A08658 /* Paradise_LostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF8221CE422D000A08658 /* Paradise_LostTests.swift */; };
@@ -92,7 +92,7 @@
 		96753A381CE5D8EB0079FB8F /* GameListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListVC.swift; sourceTree = "<group>"; };
 		96753A3A1CE5D8F50079FB8F /* ToolListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolListVC.swift; sourceTree = "<group>"; };
 		96753A3C1CE5D9590079FB8F /* FileExplorerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExplorerVC.swift; sourceTree = "<group>"; };
-		96753A401CE5DD170079FB8F /* FileExplorer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExplorer.swift; sourceTree = "<group>"; };
+		96753A401CE5DD170079FB8F /* FileExplorerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileExplorerManager.swift; sourceTree = "<group>"; };
 		96B84F021CF6D04200817793 /* UserDefaultManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		96BDAE191CF82A0700FFB05D /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		96DCF80A1CE422CF00A08658 /* Paradise Lost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paradise Lost.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -297,7 +297,7 @@
 				96BDAE191CF82A0700FFB05D /* AlertManager.swift */,
 				967217A71CFC0CD2002D77B7 /* LanguageManager.swift */,
 				96B84F021CF6D04200817793 /* UserDefaultManager.swift */,
-				96753A401CE5DD170079FB8F /* FileExplorer.swift */,
+				96753A401CE5DD170079FB8F /* FileExplorerManager.swift */,
 				9632B83F1D24B11F008C718A /* LogFileManager.swift */,
 				9664D2951CF7FAE400630EAE /* TZFEManager.swift */,
 				965D1D7E1CFECD5900FD6812 /* SudokuManager.swift */,
@@ -448,7 +448,7 @@
 				96DCF8401CE4250700A08658 /* AppDelegate.swift in Sources */,
 				96687FEC1CE5AB3400149A59 /* TableCellItem.swift in Sources */,
 				965BA4B41CEAF29C003988E2 /* Color.swift in Sources */,
-				96753A411CE5DD170079FB8F /* FileExplorer.swift in Sources */,
+				96753A411CE5DD170079FB8F /* FileExplorerManager.swift in Sources */,
 				965D1D7F1CFECD5900FD6812 /* SudokuManager.swift in Sources */,
 				9632B8421D24C61A008C718A /* File.swift in Sources */,
 				96B84F031CF6D04200817793 /* UserDefaultManager.swift in Sources */,

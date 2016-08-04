@@ -100,6 +100,8 @@
 		<string>跳着</string>
 		<key>game.jumping.exitbutton.text</key>
 		<string>退出</string>
+		<key>tool.explorer.title</key>
+		<string>文件浏览</string>
 	</dict>
 	<key>en</key>
 	<dict>
@@ -199,6 +201,8 @@
 		<string>Jumping</string>
 		<key>game.jumping.exitbutton.text</key>
 		<string>Exit</string>
+		<key>tool.explorer.title</key>
+		<string>File Explorer</string>
 	</dict>
 </dict>
 </plist>

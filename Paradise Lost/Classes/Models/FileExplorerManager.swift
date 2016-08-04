@@ -8,21 +8,19 @@
 
 import Foundation
 
-class FileExplorer {
+class FileExplorerManager {
     /// document directory, i.e. ~/Documents
-    var documentDir : String? = ""
+    var documentDir = ""
     /// file manager
     var fileManager = NSFileManager.defaultManager()
     
     // MARK: self attribute
     
-    init?() {
+    init() {
         var paths = NSSearchPathForDirectoriesInDomains(
             .DocumentDirectory, .UserDomainMask, true)
         if paths.count > 0 {
             self.documentDir = paths[0] as String
-        } else {
-            return nil
         }
     }
     

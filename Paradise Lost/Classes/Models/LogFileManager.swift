@@ -10,23 +10,26 @@ import Foundation
 
 class LogFileManager {
     class func printLogFile<T>(message: T, file: String = #file, method: String = #function, line: Int = #line) {
-        if let fs = FileExplorer() {
-            // get the file
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let filePath: String = fs.documentDir! + "/log/\(dateFormatter.stringFromDate(NSDate())).log"
-            if !fs.isFileOrFolderExist(filePath) {
-                fs.createFileWithDirectory(filePath)
-            }
-            
-            // set the log message
-            dateFormatter.dateFormat = "HH:mm:ss"
-            let timestamp = dateFormatter.stringFromDate(NSDate())
-            let text: String = "<\(timestamp)> \(method)[\((file as NSString).lastPathComponent) \(line)]:\n\(message)\n"
-            
-            // append to log file
-            fs.appendToFile(filePath, contents: text)
+        let fs = FileExplorerManager()
+        if fs.documentDir == "" {
+            return
         }
+        
+        // get the file
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let filePath: String = fs.documentDir + "/log/\(dateFormatter.stringFromDate(NSDate())).log"
+        if !fs.isFileOrFolderExist(filePath) {
+            fs.createFileWithDirectory(filePath)
+        }
+        
+        // set the log message
+        dateFormatter.dateFormat = "HH:mm:ss"
+        let timestamp = dateFormatter.stringFromDate(NSDate())
+        let text: String = "<\(timestamp)> \(method)[\((file as NSString).lastPathComponent) \(line)]:\n\(message)\n"
+        
+        // append to log file
+        fs.appendToFile(filePath, contents: text)
     }
     
     class func deleteLogFile(beforeDate: NSDate) {
