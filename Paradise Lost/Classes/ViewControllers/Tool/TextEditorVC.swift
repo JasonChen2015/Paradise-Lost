@@ -86,7 +86,7 @@ class TextEditorVC: UIViewController {
             AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.texteditor.nofilename.message"), handler: nil)
             return
         }
-        file.changeFileName(fileName)
+        file.name = fileName
         
         // check file path
         var toFilePath = file.getFullPath()

@@ -54,10 +54,11 @@ struct File {
         self.name = newName
     }
     
-    mutating func changeFileName(newFileName: String) {
-        let url = NSURL(fileURLWithPath: newFileName)
-        self.extensions = url.pathExtension!
-        self.name = (url.URLByDeletingPathExtension?.lastPathComponent)!
+    mutating func setAttributes() {
+        let attr = FileExplorerManager().getAttributesOfFileOrFolder(getFullPath())
+        size = attr![NSFileSize] as! Int
+        createDate = attr![NSFileCreationDate] as! NSDate
+        modifyDate = attr![NSFileModificationDate] as! NSDate
     }
     
     func getFullPath() -> String {

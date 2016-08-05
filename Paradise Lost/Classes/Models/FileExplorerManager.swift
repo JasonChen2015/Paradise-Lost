@@ -177,7 +177,7 @@ class FileExplorerManager {
      - returns: an NSDictionary of key/value pairs containing the attributes of
      the item at the path in question
      */
-    func getAttributesOfAFileOrFolder(absolutePath: String) -> [NSObject: AnyObject]? {
+    func getAttributesOfFileOrFolder(absolutePath: String) -> [NSObject: AnyObject]? {
         do {
             let attributes = try fileManager.attributesOfItemAtPath(absolutePath)
             return attributes
