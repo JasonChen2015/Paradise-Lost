@@ -78,7 +78,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource, UICollection
                 break
             }
             // set name
-            aCell.nameLabel.text = file.getFileName()
+            aCell.nameLabel.text = file.name
         }
         return aCell
     }
@@ -125,7 +125,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource, UICollection
         currentDir = explorer.documentDir
         let files = explorer.getFileListFromFolder(currentDir)
         for file in files {
-            let aFile = File(filePath: currentDir, fileName: file)
+            let aFile = File(path: currentDir, name: file)
             items.append(aFile)
         }
     }
@@ -149,7 +149,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource, UICollection
         let filelist = explorer.getFileListFromFolder(fullpath)
         if filelist.count > 0 {
             for i in 0..<filelist.count {
-                items.insert(File(filePath: currentDir, fileName: filelist[i]), atIndex: i + 1)
+                items.insert(File(path: currentDir, name: filelist[i]), atIndex: i + 1)
                 collectionView.insertItemsAtIndexPaths([NSIndexPath(forRow: i + 1, inSection: 0)])
             }
         }

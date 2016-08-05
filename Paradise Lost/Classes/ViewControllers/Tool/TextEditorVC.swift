@@ -43,17 +43,17 @@ class TextEditorVC: UIViewController {
         view.addSubview(mainView)
         
         // load data
-        if file.getFileName() == "" {
+        if file.name == "" {
             let filePath = fileManager.documentDir + "/editor"
-            file = File(filePath: filePath, fileName: "untitled.txt")
+            file = File(path: filePath, name: "untitled.txt")
         }
         originFilePath = file.getFullPath()
         if fileManager.isFileOrFolderExist(originFilePath) {
             let text = fileManager.getUTF8FileContent(file.getFullPath())
-            mainView.loadFile(file.getFileName(), content: text)
+            mainView.loadFile(file.name, content: text)
         } else {
             fileManager.createFileWithDirectory(originFilePath)
-            mainView.loadFile(file.getFileName(), content: "")
+            mainView.loadFile(file.name, content: "")
         }
     }
     

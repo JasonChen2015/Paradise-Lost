@@ -16,50 +16,42 @@ import Foundation
  */
 
 struct File {
-    var name: String
-    var path: String
-    var extensions: String
-    var size: Int?
-    var createDate: NSDate?
-    var modifyDate: NSDate?
+    var name: String = "" {
+        didSet {
+            getExtensionsFromName()
+        }
+    }
+    var path: String = ""
+    var extensions: String = ""
+    var size: Int = 0
+    var createDate: NSDate = NSDate(timeIntervalSince1970: 0)
+    var modifyDate: NSDate = NSDate(timeIntervalSince1970: 0)
     
     // suitable for nil
     init() {
-        self.name = ""
-        self.path = ""
-        self.extensions = ""
     }
     
-    init(name: String, path: String, extensions: String) {
-        self.name = name
+    init(path: String, name: String) {
         self.path = path
-        self.extensions = extensions
-    }
-    
-    init(filePath: String, fileName: String) {
-        self.path = filePath
-        let url = NSURL(fileURLWithPath: fileName)
-        self.name = (url.URLByDeletingPathExtension?.lastPathComponent)!
-        self.extensions = url.pathExtension!
+        self.name = name
     }
     
     init(absolutePath: String) {
         let url = NSURL(fileURLWithPath: absolutePath)
-        self.name = (url.URLByDeletingPathExtension?.lastPathComponent)!
-        self.extensions = url.pathExtension!
-        var n = absolutePath.characters.count - name.characters.count - 1 // '/'
-        if extensions.characters.count > 0 {
-            n = n - extensions.characters.count - 1 // '.'
-        }
+        self.name = (url.lastPathComponent)!
+        let n = absolutePath.characters.count - name.characters.count - 1 // '/'
         self.path = absolutePath.substringToIndex(absolutePath.startIndex.advancedBy(n))
+    }
+    
+    mutating func getExtensionsFromName() {
+        if name.characters.first != "." {
+            let temp = name.componentsSeparatedByString(".")
+            self.extensions = (temp.count == 2) ? temp[1] : ""
+        }
     }
     
     mutating func changeName(newName: String) {
         self.name = newName
-    }
-    
-    mutating func changeExtensions(newExtensions: String) {
-        self.extensions = newExtensions
     }
     
     mutating func changeFileName(newFileName: String) {
@@ -68,18 +60,10 @@ struct File {
         self.name = (url.URLByDeletingPathExtension?.lastPathComponent)!
     }
     
-    func getFileName() -> String {
-        if extensions == "" {
-            return name
-        } else {
-            return name + "." + extensions
-        }
-    }
-    
     func getFullPath() -> String {
         if name == "" {
             return ""
         }
-        return path + "/" + getFileName()
+        return path + "/" + name 
     }
 }
