@@ -8,17 +8,13 @@
 
 import UIKit
 
-class FileExplorerVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate {
+class FileExplorerVC: UIViewController, UICollectionViewDataSource,
+                        UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate,
+                        UIPopoverPresentationControllerDelegate, FilePopoverViewControllerDelegate {
     
     let cellReuseIdentifier: String = "CollectionViewCell"
     var collectionView: UICollectionView!
     
-    /// restore the cells
-    var items: [File] = []
-    /// selected item
-    var selectedItem: Int = 0
-    /// selected fullpath of file to be moved
-    var selectedFilePath: String = ""
     /// file explorer manager
     var explorer = FileExplorerManager() {
         didSet {
@@ -30,6 +26,20 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource, UICollection
             }
         }
     }
+    
+    /// restore the cells
+    var items: [File] = []
+    
+    /// selected item
+    var selectedItem: Int = 0
+    /// selected fullpath of file to be moved
+    var selectedFilePath: String = ""
+    
+    /// flag the move file action
+    var hasMoveFile: Bool = false
+    ///
+    var movedFileFullPath: String = ""
+    
     /// record the current directory of absolute path
     var currentDir = "" {
         didSet {
@@ -42,7 +52,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadDate()
+        loadData()
         
         // add quick tool
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+",
@@ -165,6 +175,45 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource, UICollection
         return .None
     }
     
+    // MARK: FilePopoverViewControllerDelegate
+    
+    func didClickCreateButton() {
+        // show alert to choose create file or folder
+        let alertCtrl = UIAlertController(title: "Create File or Folder", message: "", preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let newFileAction = UIAlertAction(title: "Create File", style: .Default) { (action: UIAlertAction!) -> Void in
+            let filename = (alertCtrl.textFields?.first)! as UITextField
+            self.createFileOrFolder(filename.text!, isFile: true)
+        }
+        let newFolderAction = UIAlertAction(title: "Create Folder", style: .Default) { (action: UIAlertAction!) -> Void in
+            let filename = (alertCtrl.textFields?.first)! as UITextField
+            self.createFileOrFolder(filename.text!, isFile: false)
+        }
+        alertCtrl.addTextFieldWithConfigurationHandler { (filenamne: UITextField!) -> Void in
+            filenamne.placeholder = "please input file name"
+        }
+        alertCtrl.addAction(cancelAction)
+        alertCtrl.addAction(newFileAction)
+        alertCtrl.addAction(newFolderAction)
+        
+        // show the alert view
+        self.presentViewController(alertCtrl, animated: true, completion: nil)
+    }
+    
+    func didClickPasteButton() {
+        hasMoveFile = false
+        let aFile = File(absolutePath: movedFileFullPath)
+        let destination = "\(currentDir)/\(aFile.name)"
+        if explorer.moveFileOrFolder(fromFullPath: movedFileFullPath, toFullPath: destination, willCover: false) {
+            // move success
+            AlertManager.showTips(self, message: "File from \(movedFileFullPath) is moved to \(destination)", handler: nil)
+            reloadCell(currentDir)
+        } else {
+            AlertManager.showTips(self, message: "Can not move file from \(movedFileFullPath) to \(destination)", handler: nil)
+        }
+        movedFileFullPath = ""
+    }
+    
     // MARK: event response
     
     func goToUpperDirectory() {
@@ -177,17 +226,19 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource, UICollection
     
     func extraOperation() {
         // use pop over to show the menu
-        let vc = FilePopoverVC()
-        vc.preferredContentSize = CGSize(width: 90, height: 120)
-        vc.modalPresentationStyle = .Popover
+        let popVC = FilePopoverVC()
+        popVC.preferredContentSize = CGSize(width: 90, height: 80)
+        popVC.modalPresentationStyle = .Popover
+        popVC.delegate = self
+        popVC.enablePaste = hasMoveFile
         
-        let popvc = vc.popoverPresentationController
-        popvc?.delegate = self
-        popvc?.permittedArrowDirections = .Up
-        popvc?.sourceView = view
-        popvc?.sourceRect = CGRect(x: view.frame.width - 35, y: 50, width: 1, height: 1)
+        let popPC = popVC.popoverPresentationController
+        popPC?.delegate = self
+        popPC?.permittedArrowDirections = .Up
+        popPC?.sourceView = view
+        popPC?.sourceRect = CGRect(x: view.frame.width - 35, y: 50, width: 1, height: 1)
         
-        presentViewController(vc, animated: true, completion: nil)
+        presentViewController(popVC, animated: true, completion: nil)
     }
     
     // UIAlertAction handler for long press item
@@ -202,7 +253,8 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func moveFile(alert: UIAlertAction?) {
-        print("move file")
+        hasMoveFile = true
+        movedFileFullPath = items[selectedItem].getFullPath()
     }
     
     func confirmDeleteFile(alert: UIAlertAction?) {
@@ -221,9 +273,30 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
+    func createFileOrFolder(fileName: String, isFile: Bool) {
+        if fileName == "" {
+            // alert nil file name
+            AlertManager.showTips(self, message: "The name must not be empty.", handler: nil)
+        } else {
+            let fullPath = "\(currentDir)/\(fileName)"
+            if explorer.isFileOrFolderExist(fullPath) {
+                // alert the file or folder has existed
+                AlertManager.showTips(self, message: "The file or folder is already existed.", handler: nil)
+            } else {
+                if isFile {
+                    explorer.createFile(fullPath)
+                } else {
+                    explorer.createDirectory(fullPath)
+                }
+                // refresh the items
+                reloadCell(currentDir)
+            }
+        }
+    }
+    
     // MARK: private methods
     
-    private func loadDate() {
+    private func loadData() {
         // add the "button" at first place for upper directory
         items.insert(File(), atIndex: 0)
         
@@ -307,7 +380,16 @@ class FileCollectionViewCell: UICollectionViewCell {
     }()
 }
 
+protocol FilePopoverViewControllerDelegate {
+    func didClickCreateButton()
+    func didClickPasteButton()
+}
+
 class FilePopoverVC: UIViewController {
+    
+    var delegate: FilePopoverViewControllerDelegate? = nil
+    
+    var enablePaste: Bool = false
     
     // MARK: life cycle
     
@@ -330,6 +412,7 @@ class FilePopoverVC: UIViewController {
         pasteBtn.setTitle("Paste", forState: .Normal)
         pasteBtn.titleLabel?.textAlignment = .Center
         pasteBtn.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
+        pasteBtn.enabled = enablePaste
         pasteBtn.addTarget(self, action: #selector(tapPasteBtn), forControlEvents: .TouchUpInside)
         view.addSubview(pasteBtn)
     }
@@ -337,12 +420,14 @@ class FilePopoverVC: UIViewController {
     // MARK: event response
     
     func tapCreateBtn() {
-        //TODO:
-        print("did tap create")
+        dismissViewControllerAnimated(true, completion: {
+            self.delegate?.didClickCreateButton()
+        })
     }
     
     func tapPasteBtn() {
-        //TODO:
-        print("did tap paste")
+        dismissViewControllerAnimated(true, completion: {
+            self.delegate?.didClickPasteButton()
+        })
     }
 }
