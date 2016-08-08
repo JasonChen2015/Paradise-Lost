@@ -9,8 +9,8 @@
 import UIKit
 
 class FileExplorerVC: UIViewController, UICollectionViewDataSource,
-                        UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate,
-                        UIPopoverPresentationControllerDelegate, FilePopoverViewControllerDelegate {
+                      UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate,
+                      UIPopoverPresentationControllerDelegate, FilePopoverViewControllerDelegate {
     
     let cellReuseIdentifier: String = "CollectionViewCell"
     var collectionView: UICollectionView!
@@ -19,9 +19,11 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     var explorer = FileExplorerManager() {
         didSet {
             if explorer.documentDir == "" {
-                AlertManager.showTips(self, message: "Can not initialize File Explorer.", handler: { (_) -> Void in
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                    return
+                AlertManager.showTips(self,
+                                      message: LanguageManager.getAppLanguageString("tool.explorer.init.message"),
+                                      handler: { (_) -> Void in
+                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                        return
                 })
             }
         }
@@ -37,7 +39,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     
     /// flag the move file action
     var hasMoveFile: Bool = false
-    ///
+    /// store the full path of be-moved file
     var movedFileFullPath: String = ""
     
     /// record the current directory of absolute path
@@ -107,6 +109,8 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
             case .File:
                 aCell.imageView.image = UIImage(named: "File")
             default:
+                // maybe the file or folder that has no right to read or write
+                aCell.imageView.image = nil
                 break
             }
             // set name
@@ -134,11 +138,11 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
             let df = NSDateFormatter()
             df.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let msg =
-                "path=\(file.path)\n" +
-                "name=\(file.name)\n" +
-                "size=\(file.size)\n" +
-                "create date=\(df.stringFromDate(file.createDate))\n" +
-                "modify date=\(df.stringFromDate(file.modifyDate))"
+                "\(LanguageManager.getAppLanguageString("tool.explorer.fileinfo.path"))=\(file.path)\n" +
+                "\(LanguageManager.getAppLanguageString("tool.explorer.fileinfo.name"))=\(file.name)\n" +
+                "\(LanguageManager.getAppLanguageString("tool.explorer.fileinfo.size"))=\(file.size)\n" +
+                "\(LanguageManager.getAppLanguageString("tool.explorer.fileinfo.createdate"))=\(df.stringFromDate(file.createDate))\n" +
+                "\(LanguageManager.getAppLanguageString("tool.explorer.fileinfo.modifydate"))=\(df.stringFromDate(file.modifyDate))"
             AlertManager.showTips(self, message: msg, handler: nil)
             break
         default:
@@ -160,7 +164,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
                     AlertManager.showActionSheetToHandleFile(
                         self,
                         title: "",
-                        message: "What do you want to do with \(file.name)?",
+                        message: "\(LanguageManager.getAppLanguageString("tool.explorer.longpress.message")) \(file.name)?",
                         openHDL: (explorer.getFileType(file.getFullPath()) == FileExplorerManager.FileType.File) ? openFile : nil,
                         moveHDL: moveFile,
                         deleteHDL: confirmDeleteFile)
@@ -179,18 +183,18 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     
     func didClickCreateButton() {
         // show alert to choose create file or folder
-        let alertCtrl = UIAlertController(title: "Create File or Folder", message: "", preferredStyle: .Alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-        let newFileAction = UIAlertAction(title: "Create File", style: .Default) { (action: UIAlertAction!) -> Void in
+        let alertCtrl = UIAlertController(title: LanguageManager.getAppLanguageString("tool.explorer.create.title"), message: "", preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: LanguageManager.getAppLanguageString("alert.cancel.title"), style: .Cancel, handler: nil)
+        let newFileAction = UIAlertAction(title: LanguageManager.getAppLanguageString("tool.explorer.create.createfile.title"), style: .Default) { (action: UIAlertAction!) -> Void in
             let filename = (alertCtrl.textFields?.first)! as UITextField
             self.createFileOrFolder(filename.text!, isFile: true)
         }
-        let newFolderAction = UIAlertAction(title: "Create Folder", style: .Default) { (action: UIAlertAction!) -> Void in
+        let newFolderAction = UIAlertAction(title: LanguageManager.getAppLanguageString("tool.explorer.create.createfolder.title"), style: .Default) { (action: UIAlertAction!) -> Void in
             let filename = (alertCtrl.textFields?.first)! as UITextField
             self.createFileOrFolder(filename.text!, isFile: false)
         }
         alertCtrl.addTextFieldWithConfigurationHandler { (filenamne: UITextField!) -> Void in
-            filenamne.placeholder = "please input file name"
+            filenamne.placeholder = LanguageManager.getAppLanguageString("tool.explorer.create.placeholder")
         }
         alertCtrl.addAction(cancelAction)
         alertCtrl.addAction(newFileAction)
@@ -206,10 +210,10 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         let destination = "\(currentDir)/\(aFile.name)"
         if explorer.moveFileOrFolder(fromFullPath: movedFileFullPath, toFullPath: destination, willCover: false) {
             // move success
-            AlertManager.showTips(self, message: "File from \(movedFileFullPath) is moved to \(destination)", handler: nil)
+            AlertManager.showTips(self, message: "\(LanguageManager.getAppLanguageString("tool.explorer.paste.success1")) \(movedFileFullPath) \(LanguageManager.getAppLanguageString("tool.explorer.paste.success2")) \(destination)", handler: nil)
             reloadCell(currentDir)
         } else {
-            AlertManager.showTips(self, message: "Can not move file from \(movedFileFullPath) to \(destination)", handler: nil)
+            AlertManager.showTips(self, message: "\(LanguageManager.getAppLanguageString("tool.explorer.paste.error1")) \(movedFileFullPath) \(LanguageManager.getAppLanguageString("tool.explorer.paste.error2")) \(destination)", handler: nil)
         }
         movedFileFullPath = ""
     }
@@ -220,7 +224,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         if let upperURL = NSURL(fileURLWithPath: currentDir).URLByDeletingLastPathComponent {
             reloadCell(upperURL.relativePath!)
         } else {
-            AlertManager.showTips(self, message: "Can't go to the upper directory.", handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.explorer.upper.error"), handler: nil)
         }
     }
     
@@ -259,7 +263,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     
     func confirmDeleteFile(alert: UIAlertAction?) {
         AlertManager.showTipsWithContinue(self,
-                                          message: "You will no longer be possessing the file " + items[selectedItem].getFullPath(),
+                                          message: "\(LanguageManager.getAppLanguageString("tool.explorer.delete.message")) \(items[selectedItem].getFullPath())",
                                           handler: nil,
                                           cHandler: deleteFile)
     }
@@ -269,19 +273,19 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
             // refresh the user interface
             reloadCell(currentDir)
         } else {
-            AlertManager.showTips(self, message: "Can not delete the file or folder.", handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.explorer.delete.error"), handler: nil)
         }
     }
     
     func createFileOrFolder(fileName: String, isFile: Bool) {
         if fileName == "" {
             // alert nil file name
-            AlertManager.showTips(self, message: "The name must not be empty.", handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.explorer.create.empty"), handler: nil)
         } else {
             let fullPath = "\(currentDir)/\(fileName)"
             if explorer.isFileOrFolderExist(fullPath) {
                 // alert the file or folder has existed
-                AlertManager.showTips(self, message: "The file or folder is already existed.", handler: nil)
+                AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.explorer.create.exist"), handler: nil)
             } else {
                 if isFile {
                     explorer.createFile(fullPath)
@@ -312,6 +316,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     private func reloadCell(fullpath: String) {
         // do not go out of the sandbox
         if fullpath == "/var/mobile/Containers/Data/Application" {
+            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.explorer.upper.error"), handler: nil)
             return
         }
         // do enter the folder
@@ -401,7 +406,7 @@ class FilePopoverVC: UIViewController {
     private func setupComponents() {
         let createBtn = UIButton(type: .System)
         createBtn.frame = CGRect(x: 0, y: 0, width: 90, height: 40)
-        createBtn.setTitle("Create", forState: .Normal)
+        createBtn.setTitle(LanguageManager.getAppLanguageString("tool.explorer.popover.create"), forState: .Normal)
         createBtn.titleLabel?.textAlignment = .Center
         createBtn.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
         createBtn.addTarget(self, action: #selector(tapCreateBtn), forControlEvents: .TouchUpInside)
@@ -409,7 +414,7 @@ class FilePopoverVC: UIViewController {
  
         let pasteBtn = UIButton(type: .System)
         pasteBtn.frame = CGRect(x: 0, y: 40, width: 90, height: 40)
-        pasteBtn.setTitle("Paste", forState: .Normal)
+        pasteBtn.setTitle(LanguageManager.getAppLanguageString("tool.explorer.popover.paste"), forState: .Normal)
         pasteBtn.titleLabel?.textAlignment = .Center
         pasteBtn.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
         pasteBtn.enabled = enablePaste

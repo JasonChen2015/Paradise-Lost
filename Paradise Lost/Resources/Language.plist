@@ -10,6 +10,8 @@
 		<string>我知道啦</string>
 		<key>alert.continue.title</key>
 		<string>继续</string>
+		<key>alert.cancel.title</key>
+		<string>取消</string>
 		<key>game.tabbaritem.title</key>
 		<string>游戏</string>
 		<key>game.viewname</key>
@@ -102,6 +104,50 @@
 		<string>退出</string>
 		<key>tool.explorer.title</key>
 		<string>文件浏览</string>
+		<key>tool.explorer.popover.create</key>
+		<string>新建</string>
+		<key>tool.explorer.popover.paste</key>
+		<string>粘贴</string>
+		<key>tool.explorer.init.message</key>
+		<string>不能初始化“文件浏览”</string>
+		<key>tool.explorer.fileinfo.path</key>
+		<string>路径</string>
+		<key>tool.explorer.fileinfo.name</key>
+		<string>文件名</string>
+		<key>tool.explorer.fileinfo.size</key>
+		<string>大小</string>
+		<key>tool.explorer.fileinfo.createdate</key>
+		<string>创建日期</string>
+		<key>tool.explorer.fileinfo.modifydate</key>
+		<string>修改日期</string>
+		<key>tool.explorer.longpress.message</key>
+		<string>你将要处理</string>
+		<key>tool.explorer.create.title</key>
+		<string>创建文件或文件夹</string>
+		<key>tool.explorer.create.createfile.title</key>
+		<string>创建文件</string>
+		<key>tool.explorer.create.createfolder.title</key>
+		<string>创建文件夹</string>
+		<key>tool.explorer.create.placeholder</key>
+		<string>请输入名字</string>
+		<key>tool.explorer.upper.error</key>
+		<string>不能进入上一层目录。</string>
+		<key>tool.explorer.delete.message</key>
+		<string>你将再也不能拥有</string>
+		<key>tool.explorer.delete.error</key>
+		<string>不能删除此文件或者文件夹。</string>
+		<key>tool.explorer.paste.success1</key>
+		<string>文件</string>
+		<key>tool.explorer.paste.success2</key>
+		<string>已经移动到</string>
+		<key>tool.explorer.paste.error1</key>
+		<string>不能移动</string>
+		<key>tool.explorer.paste.error2</key>
+		<string>到</string>
+		<key>tool.explorer.create.empty</key>
+		<string>输入内容不能为空。</string>
+		<key>tool.explorer.create.exist</key>
+		<string>文件或者文件夹已存在。</string>
 	</dict>
 	<key>en</key>
 	<dict>
@@ -111,6 +157,8 @@
 		<string>I see</string>
 		<key>alert.continue.title</key>
 		<string>Continue</string>
+		<key>alert.cancel.title</key>
+		<string>Cancel</string>
 		<key>game.tabbaritem.title</key>
 		<string>Games</string>
 		<key>game.viewname</key>
@@ -203,6 +251,50 @@
 		<string>Exit</string>
 		<key>tool.explorer.title</key>
 		<string>File Explorer</string>
+		<key>tool.explorer.popover.create</key>
+		<string>Create</string>
+		<key>tool.explorer.popover.paste</key>
+		<string>Paste</string>
+		<key>tool.explorer.init.message</key>
+		<string>Can not initialize File Explorer.</string>
+		<key>tool.explorer.fileinfo.path</key>
+		<string>PATH</string>
+		<key>tool.explorer.fileinfo.name</key>
+		<string>NAME</string>
+		<key>tool.explorer.fileinfo.size</key>
+		<string>SIZE</string>
+		<key>tool.explorer.fileinfo.createdate</key>
+		<string>CREATE_DATE</string>
+		<key>tool.explorer.fileinfo.modifydate</key>
+		<string>MODIFY_DATE</string>
+		<key>tool.explorer.longpress.message</key>
+		<string>What do you want to do with</string>
+		<key>tool.explorer.create.title</key>
+		<string>Create File or Folder</string>
+		<key>tool.explorer.create.createfile.title</key>
+		<string>Create File</string>
+		<key>tool.explorer.create.createfolder.title</key>
+		<string>Create Folder</string>
+		<key>tool.explorer.create.placeholder</key>
+		<string>please input file name</string>
+		<key>tool.explorer.upper.error</key>
+		<string>Can&apos;t go to the upper directory.</string>
+		<key>tool.explorer.delete.message</key>
+		<string>You will no longer be possessing the file</string>
+		<key>tool.explorer.delete.error</key>
+		<string>Can&apos;t delete the file or folder.</string>
+		<key>tool.explorer.paste.success1</key>
+		<string>File from</string>
+		<key>tool.explorer.paste.success2</key>
+		<string>is moved to</string>
+		<key>tool.explorer.paste.error1</key>
+		<string>Can not move file from</string>
+		<key>tool.explorer.paste.error2</key>
+		<string>to</string>
+		<key>tool.explorer.create.empty</key>
+		<string>The name must not be empty.</string>
+		<key>tool.explorer.create.exist</key>
+		<string>The file or folder is already existed.</string>
 	</dict>
 </dict>
 </plist>
