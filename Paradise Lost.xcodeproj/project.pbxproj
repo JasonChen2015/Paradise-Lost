@@ -106,7 +106,6 @@
 		96DCF8421CE4251F00A08658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		96DCF8431CE4251F00A08658 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		96DCF8591CE4794E00A08658 /* UniversalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalTableViewController.swift; sourceTree = "<group>"; };
-		96EF08C51CFD2A2700D89D53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		96EF08CB1CFD71A000D89D53 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Audio; path = Resources/Audio; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -202,7 +201,6 @@
 			isa = PBXGroup;
 			children = (
 				96DCF83B1CE4240400A08658 /* Classes */,
-				96DCF83C1CE4244C00A08658 /* Storyboards */,
 				96DCF83D1CE4246600A08658 /* Resources */,
 			);
 			path = "Paradise Lost";
@@ -236,14 +234,6 @@
 				96DCF8461CE4258400A08658 /* ViewControllers */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		96DCF83C1CE4244C00A08658 /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				96EF08C41CFD2A2700D89D53 /* Main.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		96DCF83D1CE4246600A08658 /* Resources */ = {
@@ -502,17 +492,6 @@
 			targetProxy = 96DCF82A1CE422D000A08658 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		96EF08C41CFD2A2700D89D53 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				96EF08C51CFD2A2700D89D53 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		96DCF8301CE422D000A08658 /* Debug */ = {
