@@ -55,10 +55,17 @@ struct File {
     }
     
     mutating func setAttributes() {
-        let attr = FileExplorerManager().getAttributesOfFileOrFolder(getFullPath())
-        size = attr![NSFileSize] as! Int
-        createDate = attr![NSFileCreationDate] as! NSDate
-        modifyDate = attr![NSFileModificationDate] as! NSDate
+        if let attr = FileExplorerManager().getAttributesOfFileOrFolder(getFullPath()) {
+            if let tsize = attr[NSFileSize] {
+                size = tsize as! Int
+            }
+            if let tcreateDate = attr[NSFileCreationDate] {
+                createDate = tcreateDate as! NSDate
+            }
+            if let tmodifyDate = attr[NSFileModificationDate] {
+                modifyDate = tmodifyDate as! NSDate
+            }
+        }
     }
     
     func getFullPath() -> String {
