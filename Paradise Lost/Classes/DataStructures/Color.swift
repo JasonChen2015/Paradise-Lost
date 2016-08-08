@@ -40,10 +40,10 @@ struct Color {
         let c1 = colorA.RGBComponents
         let c2 = colorB.RGBComponents
         
-        let red = c1.red * weightA + c2.red * weightB
-        let green = c1.green * weightA + c2.green * weightB
-        let blue = c1.blue * weightA + c2.blue * weightB
-        let alpha = c1.alpha * weightA + c2.alpha * weightB
+        let red = (c1.red * weightA + c2.red * weightB) / (weightA + weightB)
+        let green = (c1.green * weightA + c2.green * weightB) / (weightA + weightB)
+        let blue = (c1.blue * weightA + c2.blue * weightB) / (weightA + weightB)
+        let alpha = (c1.alpha * weightA + c2.alpha * weightB) / (weightA + weightB)
         
         return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
