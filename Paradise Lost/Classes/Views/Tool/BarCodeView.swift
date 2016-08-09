@@ -176,6 +176,7 @@ class BarCodeView: UIView {
     private var clearButton: UIButton = {
         var button = UIButton(type: .System)
         button.setTitle(LanguageManager.getAppLanguageString("tool.barcode.clearbutton.title"), forState: .Normal)
+        button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -183,6 +184,7 @@ class BarCodeView: UIView {
     private var copyButton: UIButton = {
         var button = UIButton(type: .System)
         button.setTitle(LanguageManager.getAppLanguageString("tool.barcode.copybutton.title"), forState: .Normal)
+        button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

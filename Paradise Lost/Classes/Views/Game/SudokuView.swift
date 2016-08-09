@@ -167,6 +167,7 @@ class SudokuView: UIView {
     private var startButton: UIButton = {
         var button = UIButton(type: .System)
         button.setTitle(LanguageManager.getAppLanguageString("game.sudoku.startbutton.title1"), forState: .Normal)
+        button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -174,6 +175,7 @@ class SudokuView: UIView {
     private var resetButton: UIButton = {
         var button = UIButton(type: .System)
         button.setTitle(LanguageManager.getAppLanguageString("game.sudoku.resetbutton.title"), forState: .Normal)
+        button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -181,6 +183,7 @@ class SudokuView: UIView {
     private var exitButton: UIButton = {
         var button = UIButton(type: .System)
         button.setTitle(LanguageManager.getAppLanguageString("game.sudoku.exitbutton.title"), forState: .Normal)
+        button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

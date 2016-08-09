@@ -105,6 +105,7 @@ class UniversalTableViewCell: UITableViewCell {
     let actionButton: UIButton = {
         let button = UIButton(type: .System)
         button.setTitle("Go", forState: .Normal)
+        button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

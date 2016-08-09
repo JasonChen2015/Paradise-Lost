@@ -153,6 +153,7 @@ class TwoZeroFourEightView: UIView {
         var button = UIButton(type: .System)
         button.setTitleColor(Color().Kurotobi, forState: .Normal)
         button.setTitle(LanguageManager.getAppLanguageString("game.2048.newbutton.title"), forState: .Normal)
+        button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -161,6 +162,7 @@ class TwoZeroFourEightView: UIView {
         var button = UIButton(type: .System)
         button.setTitleColor(Color().Kurotobi, forState: .Normal)
         button.setTitle(LanguageManager.getAppLanguageString("game.2048.exitbutton.title"), forState: .Normal)
+        button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
