@@ -50,7 +50,9 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
             
             // check
             if SudokuManager.checkCorrect(userSudoku) {
-                gameOver()
+                if mainView != nil { // because when game first loading will update here,
+                    gameOver()       // but view still being initialized
+                }
             }
         }
     }

@@ -18,7 +18,7 @@ class LogFileManager {
         // get the file
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        let filePath: String = fs.documentDir + "/log/\(dateFormatter.stringFromDate(NSDate())).log"
+        let filePath: String = "\(fs.documentDir)/log/\(dateFormatter.stringFromDate(NSDate())).log"
         if !fs.isFileOrFolderExist(filePath) {
             fs.createFileWithDirectory(filePath)
         }

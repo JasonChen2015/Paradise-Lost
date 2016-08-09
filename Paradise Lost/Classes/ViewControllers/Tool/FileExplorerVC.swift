@@ -76,7 +76,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         collectionView.registerClass(FileCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
         // add long press gesture
-        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(FileExplorerVC.longPressGesture))
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(FileExplorerVC.longPressGesture(_:)))
         longPress.minimumPressDuration = 0.5
         collectionView.addGestureRecognizer(longPress)
         
