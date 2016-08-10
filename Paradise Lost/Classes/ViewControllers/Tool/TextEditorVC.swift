@@ -11,7 +11,7 @@ import UIKit
 class TextEditorVC: UIViewController {
     
     var mainView: TextEditorView!
-    var isEdit: Bool = false
+    private var isEdit: Bool = false
     
     /// the information of the edited file
     var file: File = File()

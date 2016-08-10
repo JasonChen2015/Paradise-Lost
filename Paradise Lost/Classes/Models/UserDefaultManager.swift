@@ -64,8 +64,7 @@ class UserDefaultManager {
         NSUserDefaults.standardUserDefaults().synchronize()
     }
     
-    // should be private
-    class func objectFromKeyString(key: String) -> AnyObject? {
+    private class func objectFromKeyString(key: String) -> AnyObject? {
         return NSUserDefaults.standardUserDefaults().objectForKey(key)
     }
     
@@ -73,8 +72,7 @@ class UserDefaultManager {
         return objectFromKeyString(key.value)
     }
     
-    // should be private
-    class func setObject(value: AnyObject?, forKeyString key: String) {
+    private class func setObject(value: AnyObject?, forKeyString key: String) {
         let defaults = NSUserDefaults()
         defaults.setObject(value, forKey: key)
         defaults.synchronize()

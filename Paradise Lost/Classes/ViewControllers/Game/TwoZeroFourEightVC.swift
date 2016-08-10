@@ -55,7 +55,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         }
     }
     
-    func initData() {
+    private func initData() {
         lastTiles = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
         // tiles
         if let tmp = UserDefaultManager.objectFromKeyEnum(.TZFETilesRecord) {
@@ -82,7 +82,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         refreshHighScore()
     }
     
-    func resetData(alert: UIAlertAction?) {
+    private func resetData(alert: UIAlertAction?) {
         lastTiles = [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1]
         tiles = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         tiles = TZFEManager.addANewValueToTile(tiles)
@@ -157,7 +157,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
         }
     }
     
-    func refreshTileView() {
+    private func refreshTileView() {
         for index in 0...15 {
             // if no change then not set value
             if lastTiles[index] != tiles[index] {

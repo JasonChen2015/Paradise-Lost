@@ -17,13 +17,13 @@ protocol TwoZeroFourEightViewDelegate {
 class TwoZeroFourEightView: UIView {
     
     /// the length of a tile
-    let length = 86
+    private let length = 86
     
     /// distance between two tile
-    let padding = 6
+    private let padding = 6
     
     /// restore the (dimension * dimension) of tile
-    var tilesSet: [UIView] = []
+    private var tilesSet: [UIView] = []
     
     var delegate: TwoZeroFourEightViewDelegate? = nil
     
@@ -247,7 +247,7 @@ class TZFETileView: UIView {
     
     // MARK: private methods
     
-    func show() {
+    private func show() {
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.transform = CGAffineTransformMakeScale(1.1, 1.1)
             }) { (finished: Bool) -> Void in

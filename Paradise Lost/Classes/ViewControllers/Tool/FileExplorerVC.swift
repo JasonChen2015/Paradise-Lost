@@ -12,7 +12,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
                       UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate,
                       UIPopoverPresentationControllerDelegate, FilePopoverViewControllerDelegate {
     
-    let cellReuseIdentifier: String = "CollectionViewCell"
+    private let cellReuseIdentifier: String = "CollectionViewCell"
     var collectionView: UICollectionView!
     
     /// file explorer manager
@@ -30,20 +30,20 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     }
     
     /// restore the cells
-    var items: [File] = []
+    private var items: [File] = []
     
     /// selected item
-    var selectedItem: Int = 0
+    private var selectedItem: Int = 0
     /// selected fullpath of file to be moved
-    var selectedFilePath: String = ""
+    private var selectedFilePath: String = ""
     
     /// flag the move file action
-    var hasMoveFile: Bool = false
+    private var hasMoveFile: Bool = false
     /// store the full path of be-moved file
-    var movedFileFullPath: String = ""
+    private var movedFileFullPath: String = ""
     
     /// record the current directory of absolute path
-    var currentDir = "" {
+    private var currentDir = "" {
         didSet {
             navigationItem.title = currentDir.componentsSeparatedByString("/").last
         }
@@ -369,7 +369,7 @@ class FileCollectionViewCell: UICollectionViewCell {
     
     // MARK: getters and setters
     
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFontOfSize(14)
         label.textAlignment = .Center
@@ -377,7 +377,7 @@ class FileCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage()
         image.translatesAutoresizingMaskIntoConstraints = false

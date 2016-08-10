@@ -9,8 +9,9 @@
 import UIKit
 
 class UniversalTableViewController: UITableViewController, UniversalTableViewCellDelegate {
+    
     /// The identifier for reused cell
-    var cellReuseIdentifier: String = "Cell"
+    private var cellReuseIdentifier: String = "Cell"
     
     /// The name for title of navigation item
     var viewName: String = ""
@@ -78,7 +79,7 @@ class UniversalTableViewCell: UITableViewCell {
     
     // MARK: private methods
     
-    func setupCell() {
+    private func setupCell() {
         addSubview(nameLabel)
         addSubview(actionButton)
         
@@ -94,7 +95,7 @@ class UniversalTableViewCell: UITableViewCell {
     
     // MARK: getters and setters
     
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "default label"
         label.font = UIFont.boldSystemFontOfSize(14)
@@ -102,7 +103,7 @@ class UniversalTableViewCell: UITableViewCell {
         return label
     }()
     
-    let actionButton: UIButton = {
+    private let actionButton: UIButton = {
         let button = UIButton(type: .System)
         button.setTitle("Go", forState: .Normal)
         button.exclusiveTouch = true

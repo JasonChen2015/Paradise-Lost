@@ -15,15 +15,16 @@ protocol JumpingSceneDelegate {
 }
 
 class JumpingScene: SKScene, SKPhysicsContactDelegate {
+    
     var actionDelegate: JumpingSceneDelegate? = nil
     
-    let player = SKSpriteNode(imageNamed: "player")
-    let motionManager = CMMotionManager()
-    var exitButton = SKLabelNode()
+    private let player = SKSpriteNode(imageNamed: "player")
+    private let motionManager = CMMotionManager()
+    private var exitButton = SKLabelNode()
     
-    let MaxPlayerVelocityX: CGFloat = 600
+    private let MaxPlayerVelocityX: CGFloat = 600
     
-    struct BodyMask {
+    private struct BodyMask {
         static let player: UInt32 = 1 << 0
         static let boder: UInt32 = 1 << 1
     }
@@ -82,7 +83,7 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(currentTime: NSTimeInterval) {
         updatePlayerAccelerationFromMotionManager()
-        updatePlayer()
+        //updatePlayer()
     }
     
     // MARK: event reponse
@@ -108,18 +109,15 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func updatePlayerAccelerationFromMotionManager() {
+    // MARK: private methods
+    
+    private func updatePlayerAccelerationFromMotionManager() {
         if let acceleration = motionManager.accelerometerData?.acceleration {
             player.physicsBody?.velocity.dx = MaxPlayerVelocityX * CGFloat(acceleration.x)
         }
     }
     
-    // TODO: no effect
-    func updatePlayer() {
-        if player.position.x < 0 {
-            player.position.x = size.width
-        } else if player.position.x > size.width {
-            player.position.x = 0
-        }
+    private func updatePlayer() {
+        // TODO:
     }
 }

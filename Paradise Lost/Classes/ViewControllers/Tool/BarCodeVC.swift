@@ -12,17 +12,17 @@ import AVFoundation
 class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCodeViewDelegate {
     
     var mainView: BarCodeView!
-    let captureSession: AVCaptureSession = AVCaptureSession()
-    var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
+    private let captureSession: AVCaptureSession = AVCaptureSession()
+    private var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
     
-    var glassSound: SystemSoundID = 0 // in swift make sure to initialize the ID to 0
-    var isSoundOn: Bool = true
-    var isVibraOn: Bool = true
+    private var glassSound: SystemSoundID = 0 // in swift make sure to initialize the ID to 0
+    private var isSoundOn: Bool = true
+    private var isVibraOn: Bool = true
     
-    var canCapture: Bool = true
-    var isCapturing: Bool = false
+    private var canCapture: Bool = true
+    private var isCapturing: Bool = false
     
-    let captureObjectType = [
+    private let captureObjectType = [
         AVMetadataObjectTypeQRCode,
         AVMetadataObjectTypeEAN8Code,
         AVMetadataObjectTypeEAN13Code
@@ -57,7 +57,7 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
         super.didReceiveMemoryWarning()
     }
     
-    func initData() {
+    private func initData() {
         if let tmp = UserDefaultManager.objectFromKeyEnum(.BarCodeSoundOn) {
             isSoundOn = tmp as! Bool
         } else {
@@ -78,7 +78,7 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
         }
     }
     
-    func setupCapture() {
+    private func setupCapture() {
         let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
         // input
         var deviceInput = AVCaptureDeviceInput()

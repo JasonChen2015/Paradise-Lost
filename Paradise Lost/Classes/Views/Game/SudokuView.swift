@@ -110,17 +110,19 @@ class SudokuView: UIView {
         timer.invalidate()
     }
     
-    func showSecondText() {
+    // MARK: private methods
+    
+    @objc private func addASecond() {
+        seconds = seconds + 1
+        showSecondText()
+    }
+    
+    private func showSecondText() {
         var minute: Int = seconds / 60
         let hours: Int = minute / 60
         minute = minute % 60
         let second: Int = seconds % 60
         timeNumberLabel.text = "\(hours):\(minute):\(second)"
-    }
-    
-    func addASecond() {
-        seconds = seconds + 1
-        showSecondText()
     }
     
     // MARK: getters and setters

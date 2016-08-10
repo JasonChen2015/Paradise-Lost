@@ -87,8 +87,7 @@ class TZFEManager {
         08 09 10 11
         12 13 14 15
     */
-    // private methods
-    class func rotateTileItemsToGeneral(items: [Int], fromDirection direct: Direction) -> [Int] {
+    private class func rotateTileItemsToGeneral(items: [Int], fromDirection direct: Direction) -> [Int] {
         var temp = items
         switch direct {
         case .None:
@@ -120,8 +119,7 @@ class TZFEManager {
         return temp
     }
     
-    // private methods
-    class func mergeTileItemsToLeft(items: [Int]) -> ([Int], Int, Bool) {
+    private class func mergeTileItemsToLeft(items: [Int]) -> ([Int], Int, Bool) {
         var temp = items
         var score = 0
         var hasMove = false
