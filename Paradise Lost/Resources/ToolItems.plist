@@ -32,7 +32,7 @@
 	<key>4</key>
 	<dict>
 		<key>name</key>
-		<string>tool.marquee.title</string>
+		<string>tool.marquee.namelabel.text</string>
 		<key>segueId</key>
 		<string>MarqueeVC</string>
 		<key>needNavigation</key>
