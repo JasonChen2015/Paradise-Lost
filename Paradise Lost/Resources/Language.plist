@@ -148,6 +148,24 @@
 		<string>输入内容不能为空。</string>
 		<key>tool.explorer.create.exist</key>
 		<string>文件或者文件夹已存在。</string>
+		<key>tool.marquee.namelabel.text</key>
+		<string>跑马灯文字</string>
+		<key>tool.marquee.colorseg.text</key>
+		<string>文字颜色</string>
+		<key>tool.marquee.colorseg.back</key>
+		<string>背景颜色</string>
+		<key>tool.marquee.contentlabel.text</key>
+		<string>内容 ：</string>
+		<key>tool.marquee.contenttext.text</key>
+		<string>这是一段示例文字。</string>
+		<key>tool.marquee.speedlabel.text</key>
+		<string>速度 ：</string>
+		<key>tool.marquee.speedseg.rate</key>
+		<string>移动速率</string>
+		<key>tool.marquee.speedseg.duration</key>
+		<string>持续时间</string>
+		<key>tool.marquee.showbtn.title</key>
+		<string>展示</string>
 	</dict>
 	<key>en</key>
 	<dict>
@@ -295,6 +313,24 @@
 		<string>The name must not be empty.</string>
 		<key>tool.explorer.create.exist</key>
 		<string>The file or folder is already existed.</string>
+		<key>tool.marquee.namelabel.text</key>
+		<string>Marquee Text</string>
+		<key>tool.marquee.colorseg.text</key>
+		<string>Text Color</string>
+		<key>tool.marquee.colorseg.back</key>
+		<string>Background Color</string>
+		<key>tool.marquee.contentlabel.text</key>
+		<string>Text :</string>
+		<key>tool.marquee.contenttext.text</key>
+		<string>This is a demo.</string>
+		<key>tool.marquee.speedlabel.text</key>
+		<string>Speed :</string>
+		<key>tool.marquee.speedseg.rate</key>
+		<string>Rate</string>
+		<key>tool.marquee.speedseg.duration</key>
+		<string>Duration</string>
+		<key>tool.marquee.showbtn.title</key>
+		<string>Show</string>
 	</dict>
 </dict>
 </plist>

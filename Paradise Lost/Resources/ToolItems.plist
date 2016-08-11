@@ -29,5 +29,14 @@
 		<key>needNavigation</key>
 		<true/>
 	</dict>
+	<key>4</key>
+	<dict>
+		<key>name</key>
+		<string>tool.marquee.title</string>
+		<key>segueId</key>
+		<string>MarqueeVC</string>
+		<key>needNavigation</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

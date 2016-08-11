@@ -43,6 +43,9 @@
 		96DCF8401CE4250700A08658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF83E1CE4250700A08658 /* AppDelegate.swift */; };
 		96DCF8441CE4251F00A08658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 96DCF8421CE4251F00A08658 /* Assets.xcassets */; };
 		96DCF85A1CE4794E00A08658 /* UniversalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCF8591CE4794E00A08658 /* UniversalTableViewController.swift */; };
+		96E72CEB1D5ADA7B00B16522 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E72CEA1D5ADA7B00B16522 /* MarqueeLabel.swift */; };
+		96E72CED1D5ADBFA00B16522 /* MarqueeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E72CEC1D5ADBFA00B16522 /* MarqueeVC.swift */; };
+		96E72CEF1D5ADC0A00B16522 /* MarqueeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E72CEE1D5ADC0A00B16522 /* MarqueeView.swift */; };
 		96EF08CC1CFD71A100D89D53 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = 96EF08CB1CFD71A000D89D53 /* Audio */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +109,9 @@
 		96DCF8421CE4251F00A08658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		96DCF8431CE4251F00A08658 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		96DCF8591CE4794E00A08658 /* UniversalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalTableViewController.swift; sourceTree = "<group>"; };
+		96E72CEA1D5ADA7B00B16522 /* MarqueeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
+		96E72CEC1D5ADBFA00B16522 /* MarqueeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeVC.swift; sourceTree = "<group>"; };
+		96E72CEE1D5ADC0A00B16522 /* MarqueeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeView.swift; sourceTree = "<group>"; };
 		96EF08CB1CFD71A000D89D53 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Audio; path = Resources/Audio; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,6 +155,7 @@
 			children = (
 				967217A11CFBF6D4002D77B7 /* BarCodeView.swift */,
 				962EC31D1D238252008E2D44 /* TextEditorView.swift */,
+				96E72CEE1D5ADC0A00B16522 /* MarqueeView.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -171,6 +178,7 @@
 				96753A3C1CE5D9590079FB8F /* FileExplorerVC.swift */,
 				9672179E1CFBF5F7002D77B7 /* BarCodeVC.swift */,
 				962EC31B1D238145008E2D44 /* TextEditorVC.swift */,
+				96E72CEC1D5ADBFA00B16522 /* MarqueeVC.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -275,6 +283,7 @@
 		96DCF8481CE425CD00A08658 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				96E72CEA1D5ADA7B00B16522 /* MarqueeLabel.swift */,
 				962AF9F51CE9641200B7E128 /* Game */,
 				967217A01CFBF6A9002D77B7 /* Tool */,
 			);
@@ -444,10 +453,13 @@
 				962EC31E1D238252008E2D44 /* TextEditorView.swift in Sources */,
 				9664D2961CF7FAE400630EAE /* TZFEManager.swift in Sources */,
 				96BDAE1A1CF82A0700FFB05D /* AlertManager.swift in Sources */,
+				96E72CEF1D5ADC0A00B16522 /* MarqueeView.swift in Sources */,
+				96E72CED1D5ADBFA00B16522 /* MarqueeVC.swift in Sources */,
 				967217A81CFC0CD2002D77B7 /* LanguageManager.swift in Sources */,
 				965D1D7B1CFE870D00FD6812 /* SudokuVC.swift in Sources */,
 				965D1D7D1CFE881800FD6812 /* SudokuView.swift in Sources */,
 				96DCF85A1CE4794E00A08658 /* UniversalTableViewController.swift in Sources */,
+				96E72CEB1D5ADA7B00B16522 /* MarqueeLabel.swift in Sources */,
 				962AF9F41CE9640D00B7E128 /* TwoZeroFourEightView.swift in Sources */,
 				96134CBA1D2BA67C00232FCD /* JumpingScene.swift in Sources */,
 				967217A21CFBF6D4002D77B7 /* BarCodeView.swift in Sources */,
