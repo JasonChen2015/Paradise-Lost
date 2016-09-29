@@ -372,6 +372,7 @@
 				TargetAttributes = {
 					96DCF8091CE422CF00A08658 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = ESYE4DY6PK;
 					};
 					96DCF81D1CE422D000A08658 = {
 						CreatedOnToolsVersion = 7.2;
@@ -442,34 +443,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9632B8401D24B11F008C718A /* LogFileManager.swift in Sources */,
 				96DCF8401CE4250700A08658 /* AppDelegate.swift in Sources */,
 				96687FEC1CE5AB3400149A59 /* TableCellItem.swift in Sources */,
 				965BA4B41CEAF29C003988E2 /* Color.swift in Sources */,
-				96753A411CE5DD170079FB8F /* FileExplorerManager.swift in Sources */,
-				965D1D7F1CFECD5900FD6812 /* SudokuManager.swift in Sources */,
 				9632B8421D24C61A008C718A /* File.swift in Sources */,
-				96B84F031CF6D04200817793 /* UserDefaultManager.swift in Sources */,
-				962EC31E1D238252008E2D44 /* TextEditorView.swift in Sources */,
-				9664D2961CF7FAE400630EAE /* TZFEManager.swift in Sources */,
 				96BDAE1A1CF82A0700FFB05D /* AlertManager.swift in Sources */,
-				96E72CEF1D5ADC0A00B16522 /* MarqueeView.swift in Sources */,
-				96E72CED1D5ADBFA00B16522 /* MarqueeVC.swift in Sources */,
 				967217A81CFC0CD2002D77B7 /* LanguageManager.swift in Sources */,
-				965D1D7B1CFE870D00FD6812 /* SudokuVC.swift in Sources */,
-				965D1D7D1CFE881800FD6812 /* SudokuView.swift in Sources */,
-				96DCF85A1CE4794E00A08658 /* UniversalTableViewController.swift in Sources */,
+				96B84F031CF6D04200817793 /* UserDefaultManager.swift in Sources */,
+				96753A411CE5DD170079FB8F /* FileExplorerManager.swift in Sources */,
+				9632B8401D24B11F008C718A /* LogFileManager.swift in Sources */,
+				9664D2961CF7FAE400630EAE /* TZFEManager.swift in Sources */,
+				965D1D7F1CFECD5900FD6812 /* SudokuManager.swift in Sources */,
 				96E72CEB1D5ADA7B00B16522 /* MarqueeLabel.swift in Sources */,
 				962AF9F41CE9640D00B7E128 /* TwoZeroFourEightView.swift in Sources */,
+				965D1D7D1CFE881800FD6812 /* SudokuView.swift in Sources */,
 				96134CBA1D2BA67C00232FCD /* JumpingScene.swift in Sources */,
 				967217A21CFBF6D4002D77B7 /* BarCodeView.swift in Sources */,
+				962EC31E1D238252008E2D44 /* TextEditorView.swift in Sources */,
+				96E72CEF1D5ADC0A00B16522 /* MarqueeView.swift in Sources */,
+				96DCF85A1CE4794E00A08658 /* UniversalTableViewController.swift in Sources */,
 				96753A391CE5D8EB0079FB8F /* GameListVC.swift in Sources */,
 				96753A371CE5D8BE0079FB8F /* TwoZeroFourEightVC.swift in Sources */,
+				965D1D7B1CFE870D00FD6812 /* SudokuVC.swift in Sources */,
+				96134CB81D2BA5C200232FCD /* JumpingVC.swift in Sources */,
 				96753A3B1CE5D8F50079FB8F /* ToolListVC.swift in Sources */,
 				96753A3D1CE5D9590079FB8F /* FileExplorerVC.swift in Sources */,
-				96134CB81D2BA5C200232FCD /* JumpingVC.swift in Sources */,
-				962EC31C1D238145008E2D44 /* TextEditorVC.swift in Sources */,
 				9672179F1CFBF5F7002D77B7 /* BarCodeVC.swift in Sources */,
+				962EC31C1D238145008E2D44 /* TextEditorVC.swift in Sources */,
+				96E72CED1D5ADBFA00B16522 /* MarqueeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,7 +597,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN__ARC_BRIDGE_CAST_NONARC = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Paradise Lost/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
@@ -616,7 +617,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_WARN__ARC_BRIDGE_CAST_NONARC = NO;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "$(SRCROOT)/Paradise Lost/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;

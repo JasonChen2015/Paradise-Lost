@@ -23,6 +23,7 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
     private var isCapturing: Bool = false
     
     private let captureObjectType = [
+        AVMetadataObjectTypeUPCECode,
         AVMetadataObjectTypeQRCode,
         AVMetadataObjectTypeEAN8Code,
         AVMetadataObjectTypeEAN13Code
