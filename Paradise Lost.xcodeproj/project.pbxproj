@@ -47,6 +47,9 @@
 		96E72CED1D5ADBFA00B16522 /* MarqueeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E72CEC1D5ADBFA00B16522 /* MarqueeVC.swift */; };
 		96E72CEF1D5ADC0A00B16522 /* MarqueeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96E72CEE1D5ADC0A00B16522 /* MarqueeView.swift */; };
 		96EF08CC1CFD71A100D89D53 /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = 96EF08CB1CFD71A000D89D53 /* Audio */; };
+		96F354641D9D0D8900D0B3FB /* LifeGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F354631D9D0D8900D0B3FB /* LifeGameVC.swift */; };
+		96F354661D9D0E2800D0B3FB /* LifeGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F354651D9D0E2800D0B3FB /* LifeGameView.swift */; };
+		96F354681D9D1AA000D0B3FB /* LifeGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F354671D9D1AA000D0B3FB /* LifeGameManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +116,9 @@
 		96E72CEC1D5ADBFA00B16522 /* MarqueeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeVC.swift; sourceTree = "<group>"; };
 		96E72CEE1D5ADC0A00B16522 /* MarqueeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarqueeView.swift; sourceTree = "<group>"; };
 		96EF08CB1CFD71A000D89D53 /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Audio; path = Resources/Audio; sourceTree = "<group>"; };
+		96F354631D9D0D8900D0B3FB /* LifeGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeGameVC.swift; sourceTree = "<group>"; };
+		96F354651D9D0E2800D0B3FB /* LifeGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeGameView.swift; sourceTree = "<group>"; };
+		96F354671D9D1AA000D0B3FB /* LifeGameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeGameManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +152,7 @@
 				962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */,
 				965D1D7C1CFE881700FD6812 /* SudokuView.swift */,
 				96134CB91D2BA67C00232FCD /* JumpingScene.swift */,
+				96F354651D9D0E2800D0B3FB /* LifeGameView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -167,6 +174,7 @@
 				96753A361CE5D8BE0079FB8F /* TwoZeroFourEightVC.swift */,
 				965D1D7A1CFE870D00FD6812 /* SudokuVC.swift */,
 				96134CB71D2BA5C200232FCD /* JumpingVC.swift */,
+				96F354631D9D0D8900D0B3FB /* LifeGameVC.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -300,6 +308,7 @@
 				9632B83F1D24B11F008C718A /* LogFileManager.swift */,
 				9664D2951CF7FAE400630EAE /* TZFEManager.swift */,
 				965D1D7E1CFECD5900FD6812 /* SudokuManager.swift */,
+				96F354671D9D1AA000D0B3FB /* LifeGameManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -449,12 +458,14 @@
 				9632B8421D24C61A008C718A /* File.swift in Sources */,
 				96BDAE1A1CF82A0700FFB05D /* AlertManager.swift in Sources */,
 				967217A81CFC0CD2002D77B7 /* LanguageManager.swift in Sources */,
+				96F354661D9D0E2800D0B3FB /* LifeGameView.swift in Sources */,
 				96B84F031CF6D04200817793 /* UserDefaultManager.swift in Sources */,
 				96753A411CE5DD170079FB8F /* FileExplorerManager.swift in Sources */,
 				9632B8401D24B11F008C718A /* LogFileManager.swift in Sources */,
 				9664D2961CF7FAE400630EAE /* TZFEManager.swift in Sources */,
 				965D1D7F1CFECD5900FD6812 /* SudokuManager.swift in Sources */,
 				96E72CEB1D5ADA7B00B16522 /* MarqueeLabel.swift in Sources */,
+				96F354641D9D0D8900D0B3FB /* LifeGameVC.swift in Sources */,
 				962AF9F41CE9640D00B7E128 /* TwoZeroFourEightView.swift in Sources */,
 				965D1D7D1CFE881800FD6812 /* SudokuView.swift in Sources */,
 				96134CBA1D2BA67C00232FCD /* JumpingScene.swift in Sources */,
@@ -470,6 +481,7 @@
 				96753A3D1CE5D9590079FB8F /* FileExplorerVC.swift in Sources */,
 				9672179F1CFBF5F7002D77B7 /* BarCodeVC.swift in Sources */,
 				962EC31C1D238145008E2D44 /* TextEditorVC.swift in Sources */,
+				96F354681D9D1AA000D0B3FB /* LifeGameManager.swift in Sources */,
 				96E72CED1D5ADBFA00B16522 /* MarqueeVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,5 +29,14 @@
 		<key>needNavigation</key>
 		<false/>
 	</dict>
+	<key>4</key>
+	<dict>
+		<key>name</key>
+		<string>game.life.title.text</string>
+		<key>segueId</key>
+		<string>LifeGameVC</string>
+		<key>needNavigation</key>
+		<false/>
+	</dict>
 </dict>
 </plist>

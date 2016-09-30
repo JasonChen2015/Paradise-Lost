@@ -166,6 +166,8 @@
 		<string>持续时间</string>
 		<key>tool.marquee.showbtn.title</key>
 		<string>展示</string>
+		<key>game.life.title.text</key>
+		<string>生命游戏</string>
 	</dict>
 	<key>en</key>
 	<dict>
@@ -331,6 +333,8 @@
 		<string>Duration</string>
 		<key>tool.marquee.showbtn.title</key>
 		<string>Show</string>
+		<key>game.life.title.text</key>
+		<string>Game of Life</string>
 	</dict>
 </dict>
 </plist>
