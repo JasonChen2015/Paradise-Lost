@@ -99,6 +99,7 @@ class SudokuView: UIView {
     }
     
     func exitGame() {
+        stopTimer()
         delegate?.exitGameAction(seconds)
     }
     
@@ -107,7 +108,9 @@ class SudokuView: UIView {
     }
     
     func stopTimer() {
-        timer.invalidate()
+        if timer.valid {
+            timer.invalidate()
+        }
     }
     
     // MARK: private methods
