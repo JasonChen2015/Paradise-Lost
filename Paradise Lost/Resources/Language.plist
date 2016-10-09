@@ -168,6 +168,22 @@
 		<string>展示</string>
 		<key>game.life.title.text</key>
 		<string>生命游戏</string>
+		<key>game.life.startbutton.text</key>
+		<string>开始</string>
+		<key>game.life.stopbutton.text</key>
+		<string>停止</string>
+		<key>game.life.clearbutton.text</key>
+		<string>清除</string>
+		<key>game.life.exitbutton.text</key>
+		<string>退出</string>
+		<key>game.life.speedlabel.text</key>
+		<string>速率(s)：</string>
+		<key>game.life.gridsizelabel.text</key>
+		<string>格子大小：</string>
+		<key>game.life.addbutton.text</key>
+		<string>添加</string>
+		<key>game.life.editbutton.text</key>
+		<string>编辑</string>
 	</dict>
 	<key>en</key>
 	<dict>
@@ -335,6 +351,22 @@
 		<string>Show</string>
 		<key>game.life.title.text</key>
 		<string>Game of Life</string>
+		<key>game.life.startbutton.text</key>
+		<string>Start</string>
+		<key>game.life.stopbutton.text</key>
+		<string>Stop</string>
+		<key>game.life.clearbutton.text</key>
+		<string>Clear</string>
+		<key>game.life.exitbutton.text</key>
+		<string>Exit</string>
+		<key>game.life.speedlabel.text</key>
+		<string>Speed(s): </string>
+		<key>game.life.gridsizelabel.text</key>
+		<string>Grid Size: </string>
+		<key>game.life.addbutton.text</key>
+		<string>Add</string>
+		<key>game.life.editbutton.text</key>
+		<string>Edit</string>
 	</dict>
 </dict>
 </plist>

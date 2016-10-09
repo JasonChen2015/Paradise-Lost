@@ -12,7 +12,11 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
     
     var mainView: LifeGameView!
     var gridView: LifeGameGridView!
+    var editGridView: LifeGameEditGridView!
     var manager: LifeGameManager!
+    
+    var editX: Int! = 0
+    var editY: Int! = 0
     
     var timer: NSTimer = NSTimer()
     
@@ -33,10 +37,10 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
         // initial data
         
         manager = LifeGameManager()
-        manager.height = 200
-        manager.width = 200
-        // Glider
-        manager.addGliderAtPoint(x: 20, y: 20, axes: .First)
+        manager.row = 200
+        manager.column = 200
+        // initial patterns
+        manager.addGliderGunAtPoint(x: 20, y: 20)
         
         // view
         
@@ -46,10 +50,14 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
         
         gridView = LifeGameGridView(frame: CGRect(x: 7, y: 200, width: 400, height: 400))
         gridView.gridArray = manager.getStatus()
-        gridView.gridWidth = manager.height
-        gridView.gridHeight = manager.width
+        gridView.gridColumn = manager.row
+        gridView.gridRow = manager.column
         gridView.gridSize = 2
         view.addSubview(gridView)
+        
+        editGridView = LifeGameEditGridView(frame: CGRect(x: 7, y: 168, width: 400, height: 400))
+        editGridView.hidden = true
+        view.addSubview(editGridView)
     }
     
     // MARK: LifeGameViewDelegate
@@ -75,8 +83,21 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func chooseGridStyle(index: Int) {
-        //manager.addStyle()
+    func editGridAction(x x: Int, y: Int) {
+        editGridView.hidden = !editGridView.hidden
+        if !editGridView.hidden {
+            editX = x
+            editY = y
+            editGridView.gridArray = manager.getEditable(x, y: y, rows: 20, columns: 20)
+        } else {
+            manager.setEditable(editX, y: editY, rows: 20, columns: 20, array: editGridView.gridArray)
+            gridView.gridArray = manager.getStatus()
+        }
+    }
+    
+    func addGridAction(x x: Int, y: Int, index: Int) {
+        manager.addStyle(manager.getLiftGameGridStyleFromIndex(index), x: x, y: y)
+        gridView.gridArray = manager.getStatus()
     }
     
     // MARK: private methods
