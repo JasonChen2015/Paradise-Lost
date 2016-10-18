@@ -19,6 +19,8 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
     var editY: Int! = 0
     
     var timer: NSTimer = NSTimer()
+    var generateSpeed: Double = 0
+    var isGameRunnig: Bool = false
     
     // MARK: life cycle
     
@@ -63,9 +65,11 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
     // MARK: LifeGameViewDelegate
     
     func startGameAction(isGaming: Bool, speed: Double, gridSize: Int) {
+        isGameRunnig = isGaming
         if isGaming {
             gridView.gridSize = gridSize
-            timer = NSTimer.scheduledTimerWithTimeInterval(speed, target: self, selector: #selector(LifeGameVC.generateNextStatus), userInfo: nil, repeats: true)
+            generateSpeed = speed
+            restartTimer(generateSpeed)
         } else {
             timer.invalidate()
         }
@@ -102,8 +106,18 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
     
     // MARK: private methods
     
+    func restartTimer(speed: Double) {
+        timer.invalidate()
+        timer = NSTimer.scheduledTimerWithTimeInterval(speed, target: self, selector: #selector(LifeGameVC.generateNextStatus), userInfo: nil, repeats: false)
+    }
+    
     func generateNextStatus() {
         manager.generate()
         gridView.gridArray = manager.getStatus()
+        dispatch_async(dispatch_get_main_queue()) {
+            if self.isGameRunnig {
+                self.restartTimer(self.generateSpeed)
+            }
+        }
     }
 }
