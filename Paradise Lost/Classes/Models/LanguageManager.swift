@@ -11,6 +11,7 @@ import Foundation
 class LanguageManager {
     
     static var language: String!
+    static var dict: NSDictionary?
     
     class func setAppLanguage() {
         if let lang = NSUserDefaults.standardUserDefaults().objectForKey("language") {
@@ -18,6 +19,13 @@ class LanguageManager {
         } else {
             language = "en" // default value
         }
+        dict = getAppLanguageDict()
+    }
+    
+    class  func defaultNullString() -> String {
+        if language == "en" { return "Null" }
+        if language == "ch" { return "空字符串" }
+        return "Null"
     }
     
     class func getAppLanguageDict() -> NSDictionary? {
@@ -29,13 +37,22 @@ class LanguageManager {
     }
     
     class func getAppLanguageString(key: String) -> String {
-        guard let appDict = getAppLanguageDict() else {
-            return language == "en" ? "Null String" : "空字符串"
+        if dict != nil {
+            if let str = dict!.objectForKey(language)?.objectForKey(key) {
+                return (str as! String)
+            }
         }
-        if let str = appDict.objectForKey(language)?.objectForKey(key) {
-            return (str as! String)
-        } else {
-            return "Null"
+        return defaultNullString()
+    }
+    
+    class func getString(forKey key: String, inSet: String) -> String {
+        if dict != nil {
+            if let value = dict!.objectForKey(inSet)?.objectForKey(key) {
+                if let str = value.objectForKey(language) {
+                    return (str as! String);
+                }
+            }
         }
+        return defaultNullString()
     }
 }

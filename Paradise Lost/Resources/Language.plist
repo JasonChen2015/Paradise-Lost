@@ -405,14 +405,14 @@
 		<key>tabbaritem.title</key>
 		<dict>
 			<key>ch</key>
-			<string>取消</string>
+			<string>工具</string>
 			<key>en</key>
 			<string>Tools</string>
 		</dict>
 		<key>viewname</key>
 		<dict>
 			<key>ch</key>
-			<string>取消</string>
+			<string>工具列表</string>
 			<key>en</key>
 			<string>Tool List</string>
 		</dict>
@@ -421,23 +421,23 @@
 		<key>tabbaritem.title</key>
 		<dict>
 			<key>ch</key>
-			<string>取消</string>
+			<string>游戏</string>
 			<key>en</key>
 			<string>Games</string>
 		</dict>
 		<key>viewname</key>
 		<dict>
 			<key>ch</key>
-			<string>取消</string>
+			<string>游戏列表</string>
 			<key>en</key>
 			<string>Game List</string>
 		</dict>
 		<key>2048.titlelabel</key>
 		<dict>
 			<key>ch</key>
-			<string>取消</string>
+			<string>2018</string>
 			<key>en</key>
-			<string>Cancel</string>
+			<string>2048</string>
 		</dict>
 	<dict/>
 </dict>
