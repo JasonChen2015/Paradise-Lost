@@ -44,7 +44,7 @@ struct File {
     }
     
     mutating func getExtensionsFromName() {
-        if name.characters.first != "." {
+        if name.characters.first != "." { // handle invisible file under unix
             let temp = name.componentsSeparatedByString(".")
             self.extensions = (temp.count == 2) ? temp[1] : ""
         }
