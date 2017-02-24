@@ -85,10 +85,6 @@
 		96BDAE191CF82A0700FFB05D /* AlertManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		96C851B21E5FCA9000F1B286 /* CheckJailBroken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckJailBroken.swift; sourceTree = "<group>"; };
 		96DCF80A1CE422CF00A08658 /* Paradise Lost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Paradise Lost.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		96DCF8221CE422D000A08658 /* Paradise_LostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paradise_LostTests.swift; sourceTree = "<group>"; };
-		96DCF8241CE422D000A08658 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		96DCF82D1CE422D000A08658 /* Paradise_LostUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Paradise_LostUITests.swift; sourceTree = "<group>"; };
-		96DCF82F1CE422D000A08658 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96DCF83E1CE4250700A08658 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96DCF8421CE4251F00A08658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		96DCF8431CE4251F00A08658 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
@@ -164,8 +160,6 @@
 				96DCF80C1CE422CF00A08658 /* Paradise Lost */,
 				96687FE01CE5714000149A59 /* LICENSE */,
 				96687FE11CE5714000149A59 /* README.md */,
-				96DCF8211CE422D000A08658 /* Paradise LostTests */,
-				96DCF82C1CE422D000A08658 /* Paradise LostUITests */,
 				96DCF80B1CE422CF00A08658 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -185,24 +179,6 @@
 				96DCF83D1CE4246600A08658 /* Resources */,
 			);
 			path = "Paradise Lost";
-			sourceTree = "<group>";
-		};
-		96DCF8211CE422D000A08658 /* Paradise LostTests */ = {
-			isa = PBXGroup;
-			children = (
-				96DCF8221CE422D000A08658 /* Paradise_LostTests.swift */,
-				96DCF8241CE422D000A08658 /* Info.plist */,
-			);
-			path = "Paradise LostTests";
-			sourceTree = "<group>";
-		};
-		96DCF82C1CE422D000A08658 /* Paradise LostUITests */ = {
-			isa = PBXGroup;
-			children = (
-				96DCF82D1CE422D000A08658 /* Paradise_LostUITests.swift */,
-				96DCF82F1CE422D000A08658 /* Info.plist */,
-			);
-			path = "Paradise LostUITests";
 			sourceTree = "<group>";
 		};
 		96DCF83B1CE4240400A08658 /* Classes */ = {

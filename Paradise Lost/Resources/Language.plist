@@ -368,5 +368,77 @@
 		<key>game.life.editbutton.text</key>
 		<string>Edit</string>
 	</dict>
+	<key>public</key>
+	<dict/>
+	<key>alert</key>
+	<dict>
+		<key>tips</key>
+		<dict>
+			<key>ch</key>
+			<string>提示</string>
+			<key>en</key>
+			<string>TIPS</string>
+		</dict>
+		<key>isee</key>
+		<dict>
+			<key>ch</key>
+			<string>我知道啦</string>
+			<key>en</key>
+			<string>I see</string>
+		</dict>
+		<key>continue</key>
+		<dict>
+			<key>ch</key>
+			<string>继续</string>
+			<key>en</key>
+			<string>Continue</string>
+		</dict>
+		<key>cancel</key>
+		<dict>
+			<key>ch</key>
+			<string>取消</string>
+			<key>en</key>
+			<string>Cancel</string>
+		</dict>
+	</dict>
+	<key>tool</key>
+		<key>tabbaritem.title</key>
+		<dict>
+			<key>ch</key>
+			<string>取消</string>
+			<key>en</key>
+			<string>Tools</string>
+		</dict>
+		<key>viewname</key>
+		<dict>
+			<key>ch</key>
+			<string>取消</string>
+			<key>en</key>
+			<string>Tool List</string>
+		</dict>
+	<dict/>
+	<key>game</key>
+		<key>tabbaritem.title</key>
+		<dict>
+			<key>ch</key>
+			<string>取消</string>
+			<key>en</key>
+			<string>Games</string>
+		</dict>
+		<key>viewname</key>
+		<dict>
+			<key>ch</key>
+			<string>取消</string>
+			<key>en</key>
+			<string>Game List</string>
+		</dict>
+		<key>2048.titlelabel</key>
+		<dict>
+			<key>ch</key>
+			<string>取消</string>
+			<key>en</key>
+			<string>Cancel</string>
+		</dict>
+	<dict/>
 </dict>
 </plist>
