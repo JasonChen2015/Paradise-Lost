@@ -101,7 +101,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     
     func newButtonAction() {
         AlertManager.showTips(self,
-            message: LanguageManager.getAppLanguageString("game.2048.newbutton.message"), handler: resetData)
+            message: LanguageManager.getGameString(forKey: "2048.newbutton.message"), handler: resetData)
     }
     
     func exitButtonAction() {
@@ -176,6 +176,6 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     
     func gameOver() {
         AlertManager.showTips(self,
-            message: LanguageManager.getAppLanguageString("game.2048.gameover.message"), handler: resetData)
+            message: LanguageManager.getGameString(forKey: "2048.gameover.message"), handler: resetData)
     }
 }

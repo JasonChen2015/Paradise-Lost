@@ -477,7 +477,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-Lost";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Paradise Lost/Classes/Models/Paradise Lost-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -503,7 +503,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jakechen.Paradise-Lost";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Paradise Lost/Classes/Models/Paradise Lost-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

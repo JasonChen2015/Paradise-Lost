@@ -2,443 +2,642 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ch</key>
-	<dict>
-		<key>alert.tips.title</key>
-		<string>提示</string>
-		<key>alert.isee.title</key>
-		<string>我知道啦</string>
-		<key>alert.continue.title</key>
-		<string>继续</string>
-		<key>alert.cancel.title</key>
-		<string>取消</string>
-		<key>game.tabbaritem.title</key>
-		<string>游戏</string>
-		<key>game.viewname</key>
-		<string>游戏列表</string>
-		<key>tool.tabbaritem.title</key>
-		<string>工具</string>
-		<key>tool.viewname</key>
-		<string>工具列表</string>
-		<key>game.2048.titlelabel.text</key>
-		<string>2048</string>
-		<key>game.2048.scoretextlabel.text</key>
-		<string>得分：</string>
-		<key>game.2048.highscoretextlabel.text</key>
-		<string>最高分：</string>
-		<key>game.2048.newbutton.title</key>
-		<string>新游戏</string>
-		<key>game.2048.newbutton.message</key>
-		<string>将要重新开始游戏。</string>
-		<key>game.2048.exitbutton.title</key>
-		<string>退出</string>
-		<key>game.2048.gameover.message</key>
-		<string>游戏结束！</string>
-		<key>tool.barcode.titlelabel.text</key>
-		<string>二维码扫描</string>
-		<key>tool.barcode.reader.label.text</key>
-		<string>按下并开始扫描。</string>
-		<key>tool.barcode.resultlabel.text</key>
-		<string>扫描结果：</string>
-		<key>tool.barcode.resulttext.text</key>
-		<string>木有结果哦～</string>
-		<key>tool.barcode.clearbutton.title</key>
-		<string>清除</string>
-		<key>tool.barcode.copybutton.title</key>
-		<string>复制</string>
-		<key>tool.barcode.nosound.message</key>
-		<string>不能读取声音文件。</string>
-		<key>tool.barcode.initinput.message</key>
-		<string>出现错误啦：</string>
-		<key>tool.barcode.noinput.message</key>
-		<string>不能添加AVCaptureDeviceInput。</string>
-		<key>tool.barcode.nooutput.message</key>
-		<string>不能添加AVCaptureDeviceOutput。</string>
-		<key>game.sudoku.titlelabel.text</key>
-		<string>数独</string>
-		<key>game.sudoku.startbutton.title1</key>
-		<string>开始</string>
-		<key>game.sudoku.startbutton.title2</key>
-		<string>暂停</string>
-		<key>game.sudoku.resetbutton.title</key>
-		<string>重玩</string>
-		<key>game.sudoku.exitbutton.title</key>
-		<string>退出</string>
-		<key>game.sudoku.timelabel.text</key>
-		<string>耗时：</string>
-		<key>game.sudoku.gameover.message</key>
-		<string>你已经完成谜题。</string>
-		<key>game.sudoku.loadfailed.message</key>
-		<string>加载谜题失败。ToT</string>
-		<key>game.sudoku.reset.message</key>
-		<string>重新开始游戏！</string>
-		<key>game.sudoku.runnext.message</key>
-		<string>你将要开始下一个谜题。</string>
-		<key>game.sudoku.runprev.message</key>
-		<string>你将要开始上一个谜题。</string>
-		<key>game.sudoku.nonext.message</key>
-		<string>已经是最后一个谜题！</string>
-		<key>game.sudoku.noprev.message</key>
-		<string>已经是第一个谜题！</string>
-		<key>tool.texteditor.title</key>
-		<string>文本编辑器</string>
-		<key>tool.texteditor.namelabel.text</key>
-		<string>文件名：</string>
-		<key>tool.texteditor.rightbar.text</key>
-		<string>保存</string>
-		<key>tool.texteditor.leftbar.text</key>
-		<string>返回</string>
-		<key>tool.texteditor.nofilename.message</key>
-		<string>请输入文件名。</string>
-		<key>tool.texteditor.norename.message</key>
-		<string>不能用此文件名保存，并且将以原文件名保存。</string>
-		<key>tool.texteditor.savesuccess.message</key>
-		<string>成功保存文件于</string>
-		<key>tool.texteditor.savefail.message</key>
-		<string>啊哦，保存文件不成功。</string>
-		<key>tool.texteditor.saveforget.message</key>
-		<string>尚未保存该文件！</string>
-		<key>game.jumping.title.text</key>
-		<string>跳着</string>
-		<key>game.jumping.exitbutton.text</key>
-		<string>退出</string>
-		<key>tool.explorer.title</key>
-		<string>文件浏览</string>
-		<key>tool.explorer.popover.create</key>
-		<string>新建</string>
-		<key>tool.explorer.popover.paste</key>
-		<string>粘贴</string>
-		<key>tool.explorer.init.message</key>
-		<string>不能初始化“文件浏览”</string>
-		<key>tool.explorer.fileinfo.path</key>
-		<string>路径</string>
-		<key>tool.explorer.fileinfo.name</key>
-		<string>文件名</string>
-		<key>tool.explorer.fileinfo.size</key>
-		<string>大小</string>
-		<key>tool.explorer.fileinfo.createdate</key>
-		<string>创建日期</string>
-		<key>tool.explorer.fileinfo.modifydate</key>
-		<string>修改日期</string>
-		<key>tool.explorer.longpress.message</key>
-		<string>你将要处理</string>
-		<key>tool.explorer.create.title</key>
-		<string>创建文件或文件夹</string>
-		<key>tool.explorer.create.createfile.title</key>
-		<string>创建文件</string>
-		<key>tool.explorer.create.createfolder.title</key>
-		<string>创建文件夹</string>
-		<key>tool.explorer.create.placeholder</key>
-		<string>请输入名字</string>
-		<key>tool.explorer.upper.error</key>
-		<string>不能进入上一层目录。</string>
-		<key>tool.explorer.delete.message</key>
-		<string>你将再也不能拥有</string>
-		<key>tool.explorer.delete.error</key>
-		<string>不能删除此文件或者文件夹。</string>
-		<key>tool.explorer.paste.success1</key>
-		<string>文件</string>
-		<key>tool.explorer.paste.success2</key>
-		<string>已经移动到</string>
-		<key>tool.explorer.paste.error1</key>
-		<string>不能移动</string>
-		<key>tool.explorer.paste.error2</key>
-		<string>到</string>
-		<key>tool.explorer.create.empty</key>
-		<string>输入内容不能为空。</string>
-		<key>tool.explorer.create.exist</key>
-		<string>文件或者文件夹已存在。</string>
-		<key>tool.marquee.namelabel.text</key>
-		<string>跑马灯文字</string>
-		<key>tool.marquee.colorseg.text</key>
-		<string>文字颜色</string>
-		<key>tool.marquee.colorseg.back</key>
-		<string>背景颜色</string>
-		<key>tool.marquee.contentlabel.text</key>
-		<string>内容 ：</string>
-		<key>tool.marquee.contenttext.text</key>
-		<string>这是一段示例文字。</string>
-		<key>tool.marquee.speedlabel.text</key>
-		<string>速度 ：</string>
-		<key>tool.marquee.speedseg.rate</key>
-		<string>移动速率</string>
-		<key>tool.marquee.speedseg.duration</key>
-		<string>持续时间</string>
-		<key>tool.marquee.showbtn.title</key>
-		<string>展示</string>
-		<key>game.life.title.text</key>
-		<string>生命游戏</string>
-		<key>game.life.startbutton.text</key>
-		<string>开始</string>
-		<key>game.life.stopbutton.text</key>
-		<string>停止</string>
-		<key>game.life.clearbutton.text</key>
-		<string>清除</string>
-		<key>game.life.exitbutton.text</key>
-		<string>退出</string>
-		<key>game.life.speedlabel.text</key>
-		<string>速率(s)：</string>
-		<key>game.life.gridsizelabel.text</key>
-		<string>格子大小：</string>
-		<key>game.life.addbutton.text</key>
-		<string>添加</string>
-		<key>game.life.editbutton.text</key>
-		<string>编辑</string>
-	</dict>
-	<key>en</key>
-	<dict>
-		<key>alert.tips.title</key>
-		<string>TIPS</string>
-		<key>alert.isee.title</key>
-		<string>I see</string>
-		<key>alert.continue.title</key>
-		<string>Continue</string>
-		<key>alert.cancel.title</key>
-		<string>Cancel</string>
-		<key>game.tabbaritem.title</key>
-		<string>Games</string>
-		<key>game.viewname</key>
-		<string>Game List</string>
-		<key>tool.tabbaritem.title</key>
-		<string>Tools</string>
-		<key>tool.viewname</key>
-		<string>Tool List</string>
-		<key>game.2048.titlelabel.text</key>
-		<string>2048</string>
-		<key>game.2048.scoretextlabel.text</key>
-		<string>Score:</string>
-		<key>game.2048.highscoretextlabel.text</key>
-		<string>High Score:</string>
-		<key>game.2048.newbutton.title</key>
-		<string>New Game</string>
-		<key>game.2048.newbutton.message</key>
-		<string>You will have a new game.</string>
-		<key>game.2048.exitbutton.title</key>
-		<string>Exit</string>
-		<key>game.2048.gameover.message</key>
-		<string>Game Over!</string>
-		<key>tool.barcode.titlelabel.text</key>
-		<string>Bar Code Scan</string>
-		<key>tool.barcode.reader.label.text</key>
-		<string>Tap on and start capture code.</string>
-		<key>tool.barcode.resultlabel.text</key>
-		<string>Scan result:</string>
-		<key>tool.barcode.resulttext.text</key>
-		<string>No result for scanning~</string>
-		<key>tool.barcode.clearbutton.title</key>
-		<string>Clear</string>
-		<key>tool.barcode.copybutton.title</key>
-		<string>Copy</string>
-		<key>tool.barcode.nosound.message</key>
-		<string>Can not initialize sound file.</string>
-		<key>tool.barcode.initinput.message</key>
-		<string>Error occur:</string>
-		<key>tool.barcode.noinput.message</key>
-		<string>Can not add AVCaptureDeviceInput.</string>
-		<key>tool.barcode.nooutput.message</key>
-		<string>Can not add AVCaptureDeviceOutput.</string>
-		<key>game.sudoku.titlelabel.text</key>
-		<string>Sudoku</string>
-		<key>game.sudoku.startbutton.title1</key>
-		<string>Start</string>
-		<key>game.sudoku.startbutton.title2</key>
-		<string>Pause</string>
-		<key>game.sudoku.resetbutton.title</key>
-		<string>Reset</string>
-		<key>game.sudoku.exitbutton.title</key>
-		<string>Exit</string>
-		<key>game.sudoku.timelabel.text</key>
-		<string>Time:</string>
-		<key>game.sudoku.gameover.message</key>
-		<string>You&apos;d finished the puzzle.</string>
-		<key>game.sudoku.loadfailed.message</key>
-		<string>Can not load puzzle. ToT</string>
-		<key>game.sudoku.reset.message</key>
-		<string>Reset the game!</string>
-		<key>game.sudoku.runnext.message</key>
-		<string>You will run the next puzzle.</string>
-		<key>game.sudoku.runprev.message</key>
-		<string>You will run the previous puzzle.</string>
-		<key>game.sudoku.nonext.message</key>
-		<string>It&apos;s the last puzzle!</string>
-		<key>game.sudoku.noprev.message</key>
-		<string>It&apos;s the first puzzle!</string>
-		<key>tool.texteditor.title</key>
-		<string>Text Editor</string>
-		<key>tool.texteditor.namelabel.text</key>
-		<string>File name: </string>
-		<key>tool.texteditor.rightbar.text</key>
-		<string>Save</string>
-		<key>tool.texteditor.leftbar.text</key>
-		<string>Return</string>
-		<key>tool.texteditor.nofilename.message</key>
-		<string>You should input the file name.</string>
-		<key>tool.texteditor.norename.message</key>
-		<string>You can&apos;t save with the file name and it&apos;ll save as the original name.</string>
-		<key>tool.texteditor.savesuccess.message</key>
-		<string>You&apos;ve saved file at</string>
-		<key>tool.texteditor.savefail.message</key>
-		<string>Oops, can not save the file.</string>
-		<key>tool.texteditor.saveforget.message</key>
-		<string>You&apos;ve not saved this file!</string>
-		<key>game.jumping.title.text</key>
-		<string>Jumping</string>
-		<key>game.jumping.exitbutton.text</key>
-		<string>Exit</string>
-		<key>tool.explorer.title</key>
-		<string>File Explorer</string>
-		<key>tool.explorer.popover.create</key>
-		<string>Create</string>
-		<key>tool.explorer.popover.paste</key>
-		<string>Paste</string>
-		<key>tool.explorer.init.message</key>
-		<string>Can not initialize File Explorer.</string>
-		<key>tool.explorer.fileinfo.path</key>
-		<string>PATH</string>
-		<key>tool.explorer.fileinfo.name</key>
-		<string>NAME</string>
-		<key>tool.explorer.fileinfo.size</key>
-		<string>SIZE</string>
-		<key>tool.explorer.fileinfo.createdate</key>
-		<string>CREATE_DATE</string>
-		<key>tool.explorer.fileinfo.modifydate</key>
-		<string>MODIFY_DATE</string>
-		<key>tool.explorer.longpress.message</key>
-		<string>What do you want to do with</string>
-		<key>tool.explorer.create.title</key>
-		<string>Create File or Folder</string>
-		<key>tool.explorer.create.createfile.title</key>
-		<string>Create File</string>
-		<key>tool.explorer.create.createfolder.title</key>
-		<string>Create Folder</string>
-		<key>tool.explorer.create.placeholder</key>
-		<string>please input file name</string>
-		<key>tool.explorer.upper.error</key>
-		<string>Can&apos;t go to the upper directory.</string>
-		<key>tool.explorer.delete.message</key>
-		<string>You will no longer be possessing the file</string>
-		<key>tool.explorer.delete.error</key>
-		<string>Can&apos;t delete the file or folder.</string>
-		<key>tool.explorer.paste.success1</key>
-		<string>File from</string>
-		<key>tool.explorer.paste.success2</key>
-		<string>is moved to</string>
-		<key>tool.explorer.paste.error1</key>
-		<string>Can not move file from</string>
-		<key>tool.explorer.paste.error2</key>
-		<string>to</string>
-		<key>tool.explorer.create.empty</key>
-		<string>The name must not be empty.</string>
-		<key>tool.explorer.create.exist</key>
-		<string>The file or folder is already existed.</string>
-		<key>tool.marquee.namelabel.text</key>
-		<string>Marquee Text</string>
-		<key>tool.marquee.colorseg.text</key>
-		<string>Text Color</string>
-		<key>tool.marquee.colorseg.back</key>
-		<string>Background Color</string>
-		<key>tool.marquee.contentlabel.text</key>
-		<string>Text :</string>
-		<key>tool.marquee.contenttext.text</key>
-		<string>This is a demo.</string>
-		<key>tool.marquee.speedlabel.text</key>
-		<string>Speed :</string>
-		<key>tool.marquee.speedseg.rate</key>
-		<string>Rate</string>
-		<key>tool.marquee.speedseg.duration</key>
-		<string>Duration</string>
-		<key>tool.marquee.showbtn.title</key>
-		<string>Show</string>
-		<key>game.life.title.text</key>
-		<string>Game of Life</string>
-		<key>game.life.startbutton.text</key>
-		<string>Start</string>
-		<key>game.life.stopbutton.text</key>
-		<string>Stop</string>
-		<key>game.life.clearbutton.text</key>
-		<string>Clear</string>
-		<key>game.life.exitbutton.text</key>
-		<string>Exit</string>
-		<key>game.life.speedlabel.text</key>
-		<string>Speed(s): </string>
-		<key>game.life.gridsizelabel.text</key>
-		<string>Grid Size: </string>
-		<key>game.life.addbutton.text</key>
-		<string>Add</string>
-		<key>game.life.editbutton.text</key>
-		<string>Edit</string>
-	</dict>
 	<key>public</key>
-	<dict/>
+	<dict>
+		<key>exit</key>
+		<dict>
+			<key>zh</key>
+			<string>退出</string>
+			<key>en</key>
+			<string>Exit</string>
+		</dict>
+		<key>copy</key>
+		<dict>
+			<key>zh</key>
+			<string>复制</string>
+			<key>en</key>
+			<string>Copy</string>
+		</dict>
+		<key>start</key>
+		<dict>
+			<key>zh</key>
+			<string>开始</string>
+			<key>en</key>
+			<string>Start</string>
+		</dict>
+		<key>pause</key>
+		<dict>
+			<key>zh</key>
+			<string>暂停</string>
+			<key>en</key>
+			<string>Pause</string>
+		</dict>
+		<key>return</key>
+		<dict>
+			<key>zh</key>
+			<string>返回</string>
+			<key>en</key>
+			<string>Return</string>
+		</dict>
+		<key>stop</key>
+		<dict>
+			<key>zh</key>
+			<string>停止</string>
+			<key>en</key>
+			<string>Stop</string>
+		</dict>
+		<key>clear</key>
+		<dict>
+			<key>zh</key>
+			<string>清除</string>
+			<key>en</key>
+			<string>Clear</string>
+		</dict>
+	</dict>
 	<key>alert</key>
 	<dict>
 		<key>tips</key>
 		<dict>
-			<key>ch</key>
+			<key>zh</key>
 			<string>提示</string>
 			<key>en</key>
 			<string>TIPS</string>
 		</dict>
 		<key>isee</key>
 		<dict>
-			<key>ch</key>
+			<key>zh</key>
 			<string>我知道啦</string>
 			<key>en</key>
 			<string>I see</string>
 		</dict>
 		<key>continue</key>
 		<dict>
-			<key>ch</key>
+			<key>zh</key>
 			<string>继续</string>
 			<key>en</key>
 			<string>Continue</string>
 		</dict>
 		<key>cancel</key>
 		<dict>
-			<key>ch</key>
+			<key>zh</key>
 			<string>取消</string>
 			<key>en</key>
 			<string>Cancel</string>
 		</dict>
+		<key>open</key>
+		<dict>
+			<key>zh</key>
+			<string>打开</string>
+			<key>en</key>
+			<string>Open</string>
+		</dict>
+		<key>move</key>
+		<dict>
+			<key>zh</key>
+			<string>移动</string>
+			<key>en</key>
+			<string>Move</string>
+		</dict>
+		<key>delete</key>
+		<dict>
+			<key>zh</key>
+			<string>删除</string>
+			<key>en</key>
+			<string>Delete</string>
+		</dict>
 	</dict>
 	<key>tool</key>
+	<dict>
 		<key>tabbaritem.title</key>
 		<dict>
-			<key>ch</key>
+			<key>zh</key>
 			<string>工具</string>
 			<key>en</key>
 			<string>Tools</string>
 		</dict>
 		<key>viewname</key>
 		<dict>
-			<key>ch</key>
+			<key>zh</key>
 			<string>工具列表</string>
 			<key>en</key>
 			<string>Tool List</string>
 		</dict>
-	<dict/>
+		<key>barcode.titlelabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>二维码扫描</string>
+			<key>en</key>
+			<string>Bar Code Scan</string>
+		</dict>
+		<key>barcode.reader.label.text</key>
+		<dict>
+			<key>zh</key>
+			<string>按下并开始扫描。</string>
+			<key>en</key>
+			<string>Tap on and start to capture code.</string>
+		</dict>
+		<key>barcode.resultlabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>扫描结果：</string>
+			<key>en</key>
+			<string>Scan result:</string>
+		</dict>
+		<key>barcode.resulttext.text</key>
+		<dict>
+			<key>zh</key>
+			<string>木有结果哦～</string>
+			<key>en</key>
+			<string>No result for scanning~</string>
+		</dict>
+		<key>barcode.nosound.message</key>
+		<dict>
+			<key>zh</key>
+			<string>不能读取声音文件。</string>
+			<key>en</key>
+			<string>Can not initialize sound file.</string>
+		</dict>
+		<key>barcode.initinput.message</key>
+		<dict>
+			<key>zh</key>
+			<string>出现错误啦：</string>
+			<key>en</key>
+			<string>Error occur:</string>
+		</dict>
+		<key>barcode.noinput.message</key>
+		<dict>
+			<key>zh</key>
+			<string>不能添加AVCaptureDeviceInput。</string>
+			<key>en</key>
+			<string>Cannot add AVCaptureDeviceInput.</string>
+		</dict>
+		<key>barcode.nooutput.message</key>
+		<dict>
+			<key>zh</key>
+			<string>不能添加AVCaptureDeviceOutput。</string>
+			<key>en</key>
+			<string>Cannot add AVCaptureDeviceOutput.</string>
+		</dict>
+		<key>texteditor.title</key>
+		<dict>
+			<key>zh</key>
+			<string>文本编辑器</string>
+			<key>en</key>
+			<string>Text Editor</string>
+		</dict>
+		<key>texteditor.openfail.message</key>
+		<dict>
+			<key>zh</key>
+			<string>不能初始化文本编辑器</string>
+			<key>en</key>
+			<string>Can&apos;t initialize Text Editor.</string>
+		</dict>
+		<key>texteditor.namelabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>文件名：</string>
+			<key>en</key>
+			<string>File name:</string>
+		</dict>
+		<key>texteditor.rightbar.text</key>
+		<dict>
+			<key>zh</key>
+			<string>保存</string>
+			<key>en</key>
+			<string>Save</string>
+		</dict>
+		<key>texteditor.nofilename.message</key>
+		<dict>
+			<key>zh</key>
+			<string>请输入文件名。</string>
+			<key>en</key>
+			<string>You should input the file name.</string>
+		</dict>
+		<key>texteditor.norename.message</key>
+		<dict>
+			<key>zh</key>
+			<string>不能用此文件名保存，并且将以原文件名保存。</string>
+			<key>en</key>
+			<string>You can&apos;t save with the file name and it&apos;ll save as the original name.</string>
+		</dict>
+		<key>texteditor.savesuccess.message</key>
+		<dict>
+			<key>zh</key>
+			<string>成功保存文件于</string>
+			<key>en</key>
+			<string>You&apos;ve saved file at</string>
+		</dict>
+		<key>texteditor.savefail.message</key>
+		<dict>
+			<key>zh</key>
+			<string>啊哦，保存文件不成功。</string>
+			<key>en</key>
+			<string>Oops, can not save the file.</string>
+		</dict>
+		<key>texteditor.saveforget.message</key>
+		<dict>
+			<key>zh</key>
+			<string>尚未保存该文件！</string>
+			<key>en</key>
+			<string>You&apos;ve not saved this file!</string>
+		</dict>
+		<key>explorer.title</key>
+		<dict>
+			<key>zh</key>
+			<string>文件浏览</string>
+			<key>en</key>
+			<string>File Explorer</string>
+		</dict>
+		<key>explorer.popover.create</key>
+		<dict>
+			<key>zh</key>
+			<string>新建</string>
+			<key>en</key>
+			<string>Create</string>
+		</dict>
+		<key>explorer.popover.paste</key>
+		<dict>
+			<key>zh</key>
+			<string>粘贴</string>
+			<key>en</key>
+			<string>Paste</string>
+		</dict>
+		<key>explorer.init.message</key>
+		<dict>
+			<key>zh</key>
+			<string>不能初始化“文件浏览”.</string>
+			<key>en</key>
+			<string>Cannot initialize File Explorer.</string>
+		</dict>
+		<key>explorer.fileinfo.path</key>
+		<dict>
+			<key>zh</key>
+			<string>路径</string>
+			<key>en</key>
+			<string>PATH</string>
+		</dict>
+		<key>explorer.fileinfo.name</key>
+		<dict>
+			<key>zh</key>
+			<string>文件名</string>
+			<key>en</key>
+			<string>NAME</string>
+		</dict>
+		<key>explorer.fileinfo.size</key>
+		<dict>
+			<key>zh</key>
+			<string>大小</string>
+			<key>en</key>
+			<string>SIZE</string>
+		</dict>
+		<key>explorer.fileinfo.createdate</key>
+		<dict>
+			<key>zh</key>
+			<string>创建日期</string>
+			<key>en</key>
+			<string>CREATE_DATE</string>
+		</dict>
+		<key>explorer.fileinfo.modifydate</key>
+		<dict>
+			<key>zh</key>
+			<string>修改日期</string>
+			<key>en</key>
+			<string>MODIFY_DAY</string>
+		</dict>
+		<key>explorer.longpress.message</key>
+		<dict>
+			<key>zh</key>
+			<string>你将要处理</string>
+			<key>en</key>
+			<string>What do you want to do with</string>
+		</dict>
+		<key>explorer.create.title</key>
+		<dict>
+			<key>zh</key>
+			<string>创建文件或文件夹</string>
+			<key>en</key>
+			<string>Create File or Folder</string>
+		</dict>
+		<key>explorer.create.createfile.title</key>
+		<dict>
+			<key>zh</key>
+			<string>创建文件</string>
+			<key>en</key>
+			<string>Create File</string>
+		</dict>
+		<key>explorer.create.createfolder.title</key>
+		<dict>
+			<key>zh</key>
+			<string>创建文件夹</string>
+			<key>en</key>
+			<string>Create Folder</string>
+		</dict>
+		<key>explorer.create.placeholde</key>
+		<dict>
+			<key>zh</key>
+			<string>请输入名字</string>
+			<key>en</key>
+			<string>please input file name</string>
+		</dict>
+		<key>explorer.upper.error</key>
+		<dict>
+			<key>zh</key>
+			<string>不能进入上一层目录。</string>
+			<key>en</key>
+			<string>Can&apos;t go to the upper directory.</string>
+		</dict>
+		<key>explorer.delete.message</key>
+		<dict>
+			<key>zh</key>
+			<string>你将再也不能拥有</string>
+			<key>en</key>
+			<string>You will no longer be possessing the file</string>
+		</dict>
+		<key>explorer.delete.error</key>
+		<dict>
+			<key>zh</key>
+			<string>不能删除此文件或者文件夹。</string>
+			<key>en</key>
+			<string>Can&apos;t delete the file or folder.</string>
+		</dict>
+		<key>explorer.paste.success1</key>
+		<dict>
+			<key>zh</key>
+			<string>文件</string>
+			<key>en</key>
+			<string>File from</string>
+		</dict>
+		<key>explorer.paste.success2</key>
+		<dict>
+			<key>zh</key>
+			<string>已经移动到</string>
+			<key>en</key>
+			<string>is moved to</string>
+		</dict>
+		<key>explorer.paste.error1</key>
+		<dict>
+			<key>zh</key>
+			<string>不能移动</string>
+			<key>en</key>
+			<string>Can&apos;t move file from</string>
+		</dict>
+		<key>explorer.paste.error2</key>
+		<dict>
+			<key>zh</key>
+			<string>到</string>
+			<key>en</key>
+			<string>to</string>
+		</dict>
+		<key>explorer.create.empty</key>
+		<dict>
+			<key>zh</key>
+			<string>输入内容不能为空。</string>
+			<key>en</key>
+			<string>The name must not be empty.</string>
+		</dict>
+		<key>explorer.create.exist</key>
+		<dict>
+			<key>zh</key>
+			<string>文件或者文件夹已存在</string>
+			<key>en</key>
+			<string>The file or folder is already existed.</string>
+		</dict>
+		<key>marquee.namelabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>跑马灯文字</string>
+			<key>en</key>
+			<string>Marquee Text</string>
+		</dict>
+		<key>marquee.colorseg.text</key>
+		<dict>
+			<key>zh</key>
+			<string>文字颜色</string>
+			<key>en</key>
+			<string>Text Color</string>
+		</dict>
+		<key>marquee.colorseg.back</key>
+		<dict>
+			<key>zh</key>
+			<string>背景颜色</string>
+			<key>en</key>
+			<string>Background Color</string>
+		</dict>
+		<key>marquee.contentlabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>内容：</string>
+			<key>en</key>
+			<string>Text:</string>
+		</dict>
+		<key>marquee.contenttext.text</key>
+		<dict>
+			<key>zh</key>
+			<string>这是一段示例文字。</string>
+			<key>en</key>
+			<string>This is a demo.</string>
+		</dict>
+		<key>marquee.speedlabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>速度：</string>
+			<key>en</key>
+			<string>Speed:</string>
+		</dict>
+		<key>marquee.speedseg.rate</key>
+		<dict>
+			<key>zh</key>
+			<string>移动速率</string>
+			<key>en</key>
+			<string>Rate</string>
+		</dict>
+		<key>marquee.speedseg.duration</key>
+		<dict>
+			<key>zh</key>
+			<string>持续时间</string>
+			<key>en</key>
+			<string>Duration</string>
+		</dict>
+		<key>marquee.showbtn.title</key>
+		<dict>
+			<key>zh</key>
+			<string>展示</string>
+			<key>en</key>
+			<string>Show</string>
+		</dict>
+		<key>New item - 10</key>
+		<dict/>
+	</dict>
 	<key>game</key>
+	<dict>
 		<key>tabbaritem.title</key>
 		<dict>
-			<key>ch</key>
+			<key>zh</key>
 			<string>游戏</string>
 			<key>en</key>
 			<string>Games</string>
 		</dict>
 		<key>viewname</key>
 		<dict>
-			<key>ch</key>
+			<key>zh</key>
 			<string>游戏列表</string>
 			<key>en</key>
 			<string>Game List</string>
 		</dict>
-		<key>2048.titlelabel</key>
+		<key>2048.titlelabel.text</key>
 		<dict>
-			<key>ch</key>
-			<string>2018</string>
+			<key>zh</key>
+			<string>2048</string>
 			<key>en</key>
 			<string>2048</string>
 		</dict>
-	<dict/>
+		<key>2048.scoretextlabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>得分：</string>
+			<key>en</key>
+			<string>Score:</string>
+		</dict>
+		<key>2048.highscoretextlabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>最高分：</string>
+			<key>en</key>
+			<string>High Score:</string>
+		</dict>
+		<key>2048.newbutton.title</key>
+		<dict>
+			<key>zh</key>
+			<string>新游戏</string>
+			<key>en</key>
+			<string>New Game</string>
+		</dict>
+		<key>2048.newbutton.message</key>
+		<dict>
+			<key>zh</key>
+			<string>将要重新开始游戏。</string>
+			<key>en</key>
+			<string>You will have a new game.</string>
+		</dict>
+		<key>2048.gameover.message</key>
+		<dict>
+			<key>zh</key>
+			<string>游戏结束！</string>
+			<key>en</key>
+			<string>Game Over!</string>
+		</dict>
+		<key>sudoku.titlelabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>数独</string>
+			<key>en</key>
+			<string>Sudoku</string>
+		</dict>
+		<key>sudoku.resetbutton.title</key>
+		<dict>
+			<key>zh</key>
+			<string>重玩</string>
+			<key>en</key>
+			<string>Reset</string>
+		</dict>
+		<key>sudoku.timelabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>耗时：</string>
+			<key>en</key>
+			<string>Time:</string>
+		</dict>
+		<key>sudoku.gameover.message</key>
+		<dict>
+			<key>zh</key>
+			<string>你已经完成谜题。</string>
+			<key>en</key>
+			<string>You&apos;d finished the puzzle.</string>
+		</dict>
+		<key>sudoku.loadfailed.message</key>
+		<dict>
+			<key>zh</key>
+			<string>加载谜题失败。ToT</string>
+			<key>en</key>
+			<string>Cannot load puzzles. ToT</string>
+		</dict>
+		<key>sudoku.reset.message</key>
+		<dict>
+			<key>zh</key>
+			<string>重新开始游戏！</string>
+			<key>en</key>
+			<string>Reset the game.</string>
+		</dict>
+		<key>sudoku.runnext.message</key>
+		<dict>
+			<key>zh</key>
+			<string>你将要开始下一个谜题。</string>
+			<key>en</key>
+			<string>You will run the next puzzle.</string>
+		</dict>
+		<key>sudoku.runprev.message</key>
+		<dict>
+			<key>zh</key>
+			<string>你将要开始上一个谜题。</string>
+			<key>en</key>
+			<string>You will run the previous puzzle.</string>
+		</dict>
+		<key>sudoku.nonext.message</key>
+		<dict>
+			<key>zh</key>
+			<string>已经是最后一个谜题！</string>
+			<key>en</key>
+			<string>It&apos;s the last puzzle!</string>
+		</dict>
+		<key>sudoku.noprev.message</key>
+		<dict>
+			<key>zh</key>
+			<string>已经是第一个谜题！</string>
+			<key>en</key>
+			<string>It&apos;s the first puzzle!</string>
+		</dict>
+		<key>jumping.title.text</key>
+		<dict>
+			<key>zh</key>
+			<string>跳着</string>
+			<key>en</key>
+			<string>Jumping</string>
+		</dict>
+		<key>life.title.text</key>
+		<dict>
+			<key>zh</key>
+			<string>生命游戏</string>
+			<key>en</key>
+			<string>Game of Life</string>
+		</dict>
+		<key>life.speedlabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>速率(s)：</string>
+			<key>en</key>
+			<string>Speed(s):</string>
+		</dict>
+		<key>life.gridsizelabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>格子大小：</string>
+			<key>en</key>
+			<string>Grid Size:</string>
+		</dict>
+		<key>life.addbutton.text</key>
+		<dict>
+			<key>zh</key>
+			<string>添加</string>
+			<key>en</key>
+			<string>Add</string>
+		</dict>
+		<key>life.editbutton.text</key>
+		<dict>
+			<key>zh</key>
+			<string>编辑</string>
+			<key>en</key>
+			<string>Edit</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

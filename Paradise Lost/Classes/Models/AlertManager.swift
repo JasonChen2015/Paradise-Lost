@@ -16,9 +16,9 @@ class AlertManager {
     class func showTips(viewController: UIViewController,
                         message: String,
                         handler:(UIAlertAction -> Void)?) {
-        let alertCtrl = UIAlertController(title: LanguageManager.getAppLanguageString("alert.tips.title"),
+        let alertCtrl = UIAlertController(title: LanguageManager.getAlertString(forKey: "tips"),
                                           message: message, preferredStyle: .Alert)
-        let iSeeAction = UIAlertAction(title: LanguageManager.getAppLanguageString("alert.isee.title"),
+        let iSeeAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "isee"),
                                        style: .Default, handler: handler)
         alertCtrl.addAction(iSeeAction)
         
@@ -32,11 +32,11 @@ class AlertManager {
                                     message: String,
                                     handler:(UIAlertAction -> Void)?,
                                     cHandler:(UIAlertAction -> Void)?) {
-        let alertCtrl = UIAlertController(title: LanguageManager.getAppLanguageString("alert.tips.title"),
+        let alertCtrl = UIAlertController(title: LanguageManager.getAlertString(forKey: "tips"),
                                           message: message, preferredStyle: .Alert)
-        let iSeeAction = UIAlertAction(title: LanguageManager.getAppLanguageString("alert.isee.title"),
+        let iSeeAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "isee"),
                                        style: .Default, handler: handler)
-        let continueAction = UIAlertAction(title: LanguageManager.getAppLanguageString("alert.continue.title"),
+        let continueAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "continue"),
                                            style: .Destructive, handler: cHandler)
         alertCtrl.addAction(iSeeAction)
         alertCtrl.addAction(continueAction)
@@ -54,10 +54,10 @@ class AlertManager {
                                            moveHDL: ((UIAlertAction) -> Void)?,
                                            deleteHDL: ((UIAlertAction) -> Void)?) {
         let alertCtrl = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
-        let openAction = UIAlertAction(title: "Open", style: .Default, handler: openHDL)
-        let moveAction = UIAlertAction(title: "Move", style: .Default, handler: moveHDL)
-        let deleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: deleteHDL)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let openAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "open"), style: .Default, handler: openHDL)
+        let moveAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "move"), style: .Default, handler: moveHDL)
+        let deleteAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "delete"), style: .Destructive, handler: deleteHDL)
+        let cancelAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "cancel"), style: .Cancel, handler: nil)
         alertCtrl.addAction(cancelAction)
         if openHDL != nil {
             alertCtrl.addAction(openAction)

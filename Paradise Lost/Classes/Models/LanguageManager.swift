@@ -24,7 +24,7 @@ class LanguageManager {
     
     class  func defaultNullString() -> String {
         if language == "en" { return "Null" }
-        if language == "ch" { return "空字符串" }
+        if language == "zh" { return "空字符串" }
         return "Null"
     }
     
@@ -43,6 +43,22 @@ class LanguageManager {
             }
         }
         return defaultNullString()
+    }
+    
+    class func getPublicString(forKey key: String) -> String {
+        return getString(forKey: key, inSet: "public")
+    }
+    
+    class func getAlertString(forKey key: String) -> String {
+        return getString(forKey: key, inSet: "alert")
+    }
+    
+    class func getToolString(forKey key: String) -> String {
+        return getString(forKey: key, inSet: "tool")
+    }
+    
+    class func getGameString(forKey key: String) -> String {
+        return getString(forKey: key, inSet: "game")
     }
     
     class func getString(forKey key: String, inSet: String) -> String {

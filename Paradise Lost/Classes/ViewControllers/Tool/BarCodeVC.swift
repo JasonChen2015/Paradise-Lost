@@ -75,7 +75,7 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
         if let soundURL = NSBundle.mainBundle().URLForResource("Audio/Glass", withExtension: "aiff") {
             AudioServicesCreateSystemSoundID(soundURL, &glassSound)
         } else {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.barcode.nosound.message"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "barcode.nosound.message"), handler: nil)
         }
     }
     
@@ -86,13 +86,13 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
         do {
             deviceInput = try AVCaptureDeviceInput(device: device)
         } catch let error as NSError {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.barcode.initinput.message") + " \(error.localizedDescription).", handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "barcode.initinput.message") + " \(error.localizedDescription).", handler: nil)
             return
         }
         if captureSession.canAddInput(deviceInput) {
             captureSession.addInput(deviceInput)
         } else {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.barcode.noinput.message"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "barcode.noinput.message"), handler: nil)
             return
         }
         // output
@@ -102,7 +102,7 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
             metaDateOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
             metaDateOutput.metadataObjectTypes = captureObjectType
         } else {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.barcode.nooutput.message"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "barcode.nooutput.message"), handler: nil)
             return
         }
         captureSession.stopRunning()

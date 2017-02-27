@@ -19,7 +19,7 @@ class TextEditorVC: UIViewController {
     private var fileManager = FileExplorerManager() {
         didSet {
             if fileManager.documentDir == "" {
-                AlertManager.showTips(self, message: "Can not initialize Text Editor.", handler: { (_) -> Void in
+                AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "texteditor.openfail.message"), handler: { (_) -> Void in
                     self.dismissViewControllerAnimated(true, completion: nil)
                     return
                 })
@@ -35,9 +35,9 @@ class TextEditorVC: UIViewController {
         
         // navigation bar
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: LanguageManager.getAppLanguageString("tool.texteditor.rightbar.text"), style: .Plain, target: self, action: #selector(TextEditorVC.saveToFile))
+            title: LanguageManager.getToolString(forKey: "texteditor.rightbar.text"), style: .Plain, target: self, action: #selector(TextEditorVC.saveToFile))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: LanguageManager.getAppLanguageString("tool.texteditor.leftbar.text"), style: .Plain, target: self, action: #selector(TextEditorVC.exitEditor))
+            title: LanguageManager.getPublicString(forKey: "return"), style: .Plain, target: self, action: #selector(TextEditorVC.exitEditor))
         
         mainView = TextEditorView(frame: UIScreen.mainScreen().bounds)
         view.addSubview(mainView)
@@ -83,7 +83,7 @@ class TextEditorVC: UIViewController {
         // check file name
         let fileName = mainView.getFileName()
         if fileName == "" {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.texteditor.nofilename.message"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "texteditor.nofilename.message"), handler: nil)
             return
         }
         file.name = fileName
@@ -93,7 +93,7 @@ class TextEditorVC: UIViewController {
         if originFilePath != toFilePath {
             if !fileManager.renameFile(originFilePath, newName: mainView.getFileName()) {
                 // alert that can not rename the file and will save the file at original path
-                AlertManager.showTipsWithContinue(self, message: LanguageManager.getAppLanguageString("tool.texteditor.norename.message"), handler: { (_) -> Void in
+                AlertManager.showTipsWithContinue(self, message: LanguageManager.getToolString(forKey: "texteditor.norename.message"), handler: { (_) -> Void in
                     // do not save
                     return
                 }, cHandler: { (_) -> Void in
@@ -104,23 +104,23 @@ class TextEditorVC: UIViewController {
         
         // check file exist
         if !fileManager.isFileOrFolderExist(toFilePath) {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.texteditor.savefail.message"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "texteditor.savefail.message"), handler: nil)
             return
         }
         
         // write to file
         if fileManager.coverToFile(toFilePath, contents: mainView.getFileContent()) {
             mainView.isModified = false
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.texteditor.savesuccess.message") + " " + file.getFullPath(), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "texteditor.savesuccess.message") + " " + file.getFullPath(), handler: nil)
         } else {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.texteditor.savefail.message"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "texteditor.savefail.message"), handler: nil)
         }
     }
     
     func exitEditor() {
         mainView.resignAllResponder()
         if mainView.isModified {
-            AlertManager.showTipsWithContinue(self, message: LanguageManager.getAppLanguageString("tool.texteditor.saveforget.message"), handler: nil, cHandler: { (_) -> Void in
+            AlertManager.showTipsWithContinue(self, message: LanguageManager.getToolString(forKey: "texteditor.saveforget.message"), handler: nil, cHandler: { (_) -> Void in
                 self.navigationController?.popViewControllerAnimated(true)
             })
             return

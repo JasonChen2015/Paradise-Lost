@@ -5,7 +5,7 @@
 	<key>1</key>
 	<dict>
 		<key>name</key>
-		<string>tool.explorer.title</string>
+		<string>explorer.title</string>
 		<key>segueId</key>
 		<string>FileExplorerVC</string>
 		<key>needNavigation</key>
@@ -14,7 +14,7 @@
 	<key>2</key>
 	<dict>
 		<key>name</key>
-		<string>tool.texteditor.title</string>
+		<string>texteditor.title</string>
 		<key>segueId</key>
 		<string>TextEditorVC</string>
 		<key>needNavigation</key>
@@ -23,7 +23,7 @@
 	<key>3</key>
 	<dict>
 		<key>name</key>
-		<string>tool.barcode.titlelabel.text</string>
+		<string>barcode.titlelabel.text</string>
 		<key>segueId</key>
 		<string>BarCodeVC</string>
 		<key>needNavigation</key>
@@ -32,7 +32,7 @@
 	<key>4</key>
 	<dict>
 		<key>name</key>
-		<string>tool.marquee.namelabel.text</string>
+		<string>marquee.namelabel.text</string>
 		<key>segueId</key>
 		<string>MarqueeVC</string>
 		<key>needNavigation</key>

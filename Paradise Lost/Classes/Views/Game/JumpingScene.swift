@@ -40,7 +40,7 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
         
         // title
         let title = SKLabelNode(fontNamed: "Chalkduster")
-        title.text = LanguageManager.getAppLanguageString("game.jumping.title.text")
+        title.text = LanguageManager.getGameString(forKey: "jumping.title.text")
         title.fontSize = 25
         title.fontColor = SKColor.blackColor()
         title.position = CGPoint(x: size.width / 2, y: size.height - 64)
@@ -48,7 +48,7 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
         
         // button
         exitButton = SKLabelNode(fontNamed: "BradleyHandITCTT-Bold")
-        exitButton.text = LanguageManager.getAppLanguageString("game.jumping.exitbutton.text")
+        exitButton.text = LanguageManager.getPublicString(forKey: "exit")
         exitButton.fontSize = 15
         exitButton.fontColor = SKColor.blackColor()
         exitButton.position = CGPoint(x: size.width - 60, y: size.height - 84)

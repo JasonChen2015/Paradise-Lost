@@ -21,7 +21,22 @@ struct TableCellItem {
 }
 
 class TableCellItemManager {
-    class func itemsFromPlist(name: String) -> [TableCellItem] {
+    
+    enum MainTabType {
+        case Tool
+        case Game
+        
+        var value: String {
+            switch self {
+            case .Tool:
+                return "tool"
+            case .Game:
+                return "game"
+            }
+        }
+    }
+    
+    class func itemsFromPlist(name: String, ofType type: MainTabType) -> [TableCellItem] {
         var items: [TableCellItem] = []
         guard let itemsPath = NSBundle.mainBundle().pathForResource(name, ofType: "plist") else {
             return []
@@ -33,7 +48,7 @@ class TableCellItemManager {
             if let info = dict.objectForKey("\(index)") as? NSDictionary {
                 let titleURL = info.objectForKey("name") as! String
                 let item = TableCellItem(
-                    name: LanguageManager.getAppLanguageString(titleURL),
+                    name: LanguageManager.getString(forKey: titleURL, inSet: type.value),
                     segueId: info.objectForKey("segueId") as! String,
                     needNavigation: info.objectForKey("needNavigation") as! Bool)
                 items.append(item)

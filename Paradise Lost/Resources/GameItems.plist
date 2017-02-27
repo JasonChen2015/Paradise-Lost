@@ -5,7 +5,7 @@
 	<key>1</key>
 	<dict>
 		<key>name</key>
-		<string>game.2048.titlelabel.text</string>
+		<string>2048.titlelabel.text</string>
 		<key>segueId</key>
 		<string>TwoZeroFourEightVC</string>
 		<key>needNavigation</key>
@@ -14,7 +14,7 @@
 	<key>2</key>
 	<dict>
 		<key>name</key>
-		<string>game.sudoku.titlelabel.text</string>
+		<string>sudoku.titlelabel.text</string>
 		<key>segueId</key>
 		<string>SudokuVC</string>
 		<key>needNavigation</key>
@@ -23,7 +23,7 @@
 	<key>3</key>
 	<dict>
 		<key>name</key>
-		<string>game.jumping.title.text</string>
+		<string>jumping.title.text</string>
 		<key>segueId</key>
 		<string>JumpingVC</string>
 		<key>needNavigation</key>
@@ -32,7 +32,7 @@
 	<key>4</key>
 	<dict>
 		<key>name</key>
-		<string>game.life.title.text</string>
+		<string>life.title.text</string>
 		<key>segueId</key>
 		<string>LifeGameVC</string>
 		<key>needNavigation</key>

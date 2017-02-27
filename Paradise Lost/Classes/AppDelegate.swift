@@ -31,12 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let gameListVCtrl = GameListVC()
         let gameListNavCtrl = UINavigationController(rootViewController: gameListVCtrl)
-        gameListNavCtrl.tabBarItem.title = LanguageManager.getAppLanguageString("game.tabbaritem.title")
+        gameListNavCtrl.tabBarItem.title = LanguageManager.getGameString(forKey: "tabbaritem.title")
         gameListNavCtrl.tabBarItem.image = UIImage(named: "GameNavItem")
 
         let toolListVCtrl = ToolListVC()
         let toolListNavCtrl = UINavigationController(rootViewController: toolListVCtrl)
-        toolListNavCtrl.tabBarItem.title = LanguageManager.getAppLanguageString("tool.tabbaritem.title")
+        toolListNavCtrl.tabBarItem.title = LanguageManager.getToolString(forKey: "tabbaritem.title")
         toolListNavCtrl.tabBarItem.image = UIImage(named: "ToolNavItem")
 
         let tabBarController = UITabBarController()

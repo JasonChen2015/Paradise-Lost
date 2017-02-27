@@ -94,7 +94,7 @@ class BarCodeView: UIView {
     // MARK: event response
     
     func clearResult() {
-        resultText.text = LanguageManager.getAppLanguageString("tool.barcode.resulttext.text")
+        resultText.text = LanguageManager.getToolString(forKey: "barcode.resulttext.text")
     }
     
     func copyResult() {
@@ -117,7 +117,7 @@ class BarCodeView: UIView {
     
     func hasResult(result: String) {
         if result.isEmpty {
-            resultText.text = LanguageManager.getAppLanguageString("tool.barcode.resulttext.text")
+            resultText.text = LanguageManager.getToolString(forKey: "barcode.resulttext.text")
         } else {
             resultText.text = result
         }
@@ -127,7 +127,7 @@ class BarCodeView: UIView {
     
     private var titleLabel: UILabel = {
         var label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("tool.barcode.titlelabel.text")
+        label.text = LanguageManager.getToolString(forKey: "barcode.titlelabel.text")
         label.font = UIFont.boldSystemFontOfSize(36)
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -139,7 +139,7 @@ class BarCodeView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("tool.barcode.reader.label.text")
+        label.text = LanguageManager.getToolString(forKey: "barcode.reader.label.text")
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
@@ -156,7 +156,7 @@ class BarCodeView: UIView {
     
     private var resultLabel: UILabel = {
         var label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("tool.barcode.resultlabel.text")
+        label.text = LanguageManager.getToolString(forKey: "barcode.resultlabel.text")
         label.font = UIFont.boldSystemFontOfSize(20)
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -165,7 +165,7 @@ class BarCodeView: UIView {
     
     private var resultText: UITextView = {
         var textView = UITextView()
-        textView.text = LanguageManager.getAppLanguageString("tool.barcode.resulttext.text")
+        textView.text = LanguageManager.getToolString(forKey: "barcode.resulttext.text")
         textView.textAlignment = .Center
         textView.font = UIFont.systemFontOfSize(20)
         textView.userInteractionEnabled = false
@@ -175,7 +175,7 @@ class BarCodeView: UIView {
     
     private var clearButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getAppLanguageString("tool.barcode.clearbutton.title"), forState: .Normal)
+        button.setTitle(LanguageManager.getPublicString(forKey: "clear"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -183,7 +183,7 @@ class BarCodeView: UIView {
     
     private var copyButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getAppLanguageString("tool.barcode.copybutton.title"), forState: .Normal)
+        button.setTitle(LanguageManager.getPublicString(forKey: "copy"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

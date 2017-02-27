@@ -126,7 +126,7 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         super.viewDidAppear(animated)
         
         if !loadDataSuccess {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("game.sudoku.loadfailed.message"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getGameString(forKey: "sudoku.loadfailed.message"), handler: nil)
         }
         
         // do not let the screen display closed until dismiss
@@ -239,7 +239,7 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
     
     func resetGameAction(needAlert: Bool) {
         if needAlert {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("game.sudoku.reset.message"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getGameString(forKey: "sudoku.reset.message"), handler: nil)
         }
         gridView.stableSudoku = stableSudoku
         gridView.sudoku = stableSudoku
@@ -286,7 +286,7 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
     // MARK: event response
     
     func gameOver() {
-        AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("game.sudoku.gameover.message"), handler: nil)
+        AlertManager.showTips(self, message: LanguageManager.getGameString(forKey: "sudoku.gameover.message"), handler: nil)
         runGame = false
         mainView.stopTimer()
     }
@@ -308,9 +308,9 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
                 }
                 prepareGame()
                 
-                AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("game.sudoku.runnext.message"), handler: nil)
+                AlertManager.showTips(self, message: LanguageManager.getGameString(forKey: "sudoku.runnext.message"), handler: nil)
             } else {
-                AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("game.sudoku.nonext.message"), handler: nil)
+                AlertManager.showTips(self, message: LanguageManager.getGameString(forKey: "sudoku.nonext.message"), handler: nil)
             }
         }
     }
@@ -325,9 +325,9 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
                 }
                 prepareGame()
                 
-                AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("game.sudoku.runprev.message"), handler: nil)
+                AlertManager.showTips(self, message: LanguageManager.getGameString(forKey: "sudoku.runprev.message"), handler: nil)
             } else {
-                AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("game.sudoku.noprev.message"), handler: nil)
+                AlertManager.showTips(self, message: LanguageManager.getGameString(forKey: "sudoku.noprev.message"), handler: nil)
             }
         }
     }

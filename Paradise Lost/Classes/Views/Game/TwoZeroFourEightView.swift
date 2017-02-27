@@ -94,7 +94,7 @@ class TwoZeroFourEightView: UIView {
     
     private var titleLabel: UILabel = {
         var label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("game.2048.titlelabel.text")
+        label.text = LanguageManager.getGameString(forKey: "2048.titlelabel.text")
         label.textColor = Color().Kokiake
         label.font = UIFont.boldSystemFontOfSize(54)
         label.textAlignment = .Center
@@ -104,7 +104,7 @@ class TwoZeroFourEightView: UIView {
     
     private var scoreTextLabel: UILabel = {
         var label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("game.2048.scoretextlabel.text")
+        label.text = LanguageManager.getGameString(forKey: "2048.scoretextlabel.text")
         label.textColor = Color().Kurotobi
         label.font = UIFont.boldSystemFontOfSize(27)
         label.textAlignment = .Right
@@ -131,7 +131,7 @@ class TwoZeroFourEightView: UIView {
     
     private var highScoreTextLabel: UILabel = {
         var label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("game.2048.highscoretextlabel.text")
+        label.text = LanguageManager.getGameString(forKey: "2048.highscoretextlabel.text")
         label.textColor = Color().Kurotobi
         label.font = UIFont.boldSystemFontOfSize(27)
         label.textAlignment = .Center
@@ -152,7 +152,7 @@ class TwoZeroFourEightView: UIView {
     private var newButton: UIButton = {
         var button = UIButton(type: .System)
         button.setTitleColor(Color().Kurotobi, forState: .Normal)
-        button.setTitle(LanguageManager.getAppLanguageString("game.2048.newbutton.title"), forState: .Normal)
+        button.setTitle(LanguageManager.getGameString(forKey: "2048.newbutton.title"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -161,7 +161,7 @@ class TwoZeroFourEightView: UIView {
     private var exitButton: UIButton = {
         var button = UIButton(type: .System)
         button.setTitleColor(Color().Kurotobi, forState: .Normal)
-        button.setTitle(LanguageManager.getAppLanguageString("game.2048.exitbutton.title"), forState: .Normal)
+        button.setTitle(LanguageManager.getPublicString(forKey: "exit"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

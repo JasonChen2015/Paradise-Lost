@@ -20,7 +20,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         didSet {
             if explorer.documentDir == "" {
                 AlertManager.showTips(self,
-                                      message: LanguageManager.getAppLanguageString("tool.explorer.init.message"),
+                                      message: LanguageManager.getToolString(forKey: "explorer.init.message"),
                                       handler: { (_) -> Void in
                                         self.dismissViewControllerAnimated(true, completion: nil)
                                         return
@@ -138,11 +138,11 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
             let df = NSDateFormatter()
             df.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let msg =
-                "\(LanguageManager.getAppLanguageString("tool.explorer.fileinfo.path"))=\(file.path)\n" +
-                "\(LanguageManager.getAppLanguageString("tool.explorer.fileinfo.name"))=\(file.name)\n" +
-                "\(LanguageManager.getAppLanguageString("tool.explorer.fileinfo.size"))=\(file.size)\n" +
-                "\(LanguageManager.getAppLanguageString("tool.explorer.fileinfo.createdate"))=\(df.stringFromDate(file.createDate))\n" +
-                "\(LanguageManager.getAppLanguageString("tool.explorer.fileinfo.modifydate"))=\(df.stringFromDate(file.modifyDate))"
+                "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.path"))=\(file.path)\n" +
+                "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.name"))=\(file.name)\n" +
+                "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.size"))=\(file.size)\n" +
+                "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.createdate"))=\(df.stringFromDate(file.createDate))\n" +
+                "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.modifydate"))=\(df.stringFromDate(file.modifyDate))"
             AlertManager.showTips(self, message: msg, handler: nil)
             break
         default:
@@ -164,7 +164,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
                     AlertManager.showActionSheetToHandleFile(
                         self,
                         title: "",
-                        message: "\(LanguageManager.getAppLanguageString("tool.explorer.longpress.message")) \(file.name)?",
+                        message: "\(LanguageManager.getToolString(forKey: "explorer.longpress.message")) \(file.name)?",
                         openHDL: (explorer.getFileType(file.getFullPath()) == FileExplorerManager.FileType.File) ? openFile : nil,
                         moveHDL: moveFile,
                         deleteHDL: confirmDeleteFile)
@@ -183,18 +183,18 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     
     func didClickCreateButton() {
         // show alert to choose create file or folder
-        let alertCtrl = UIAlertController(title: LanguageManager.getAppLanguageString("tool.explorer.create.title"), message: "", preferredStyle: .Alert)
+        let alertCtrl = UIAlertController(title: LanguageManager.getToolString(forKey: "explorer.create.title"), message: "", preferredStyle: .Alert)
         let cancelAction = UIAlertAction(title: LanguageManager.getAppLanguageString("alert.cancel.title"), style: .Cancel, handler: nil)
-        let newFileAction = UIAlertAction(title: LanguageManager.getAppLanguageString("tool.explorer.create.createfile.title"), style: .Default) { (action: UIAlertAction!) -> Void in
+        let newFileAction = UIAlertAction(title: LanguageManager.getToolString(forKey: "explorer.create.createfile.title"), style: .Default) { (action: UIAlertAction!) -> Void in
             let filename = (alertCtrl.textFields?.first)! as UITextField
             self.createFileOrFolder(filename.text!, isFile: true)
         }
-        let newFolderAction = UIAlertAction(title: LanguageManager.getAppLanguageString("tool.explorer.create.createfolder.title"), style: .Default) { (action: UIAlertAction!) -> Void in
+        let newFolderAction = UIAlertAction(title: LanguageManager.getToolString(forKey: "explorer.create.createfolder.title"), style: .Default) { (action: UIAlertAction!) -> Void in
             let filename = (alertCtrl.textFields?.first)! as UITextField
             self.createFileOrFolder(filename.text!, isFile: false)
         }
         alertCtrl.addTextFieldWithConfigurationHandler { (filenamne: UITextField!) -> Void in
-            filenamne.placeholder = LanguageManager.getAppLanguageString("tool.explorer.create.placeholder")
+            filenamne.placeholder = LanguageManager.getToolString(forKey: "explorer.create.placeholder")
         }
         alertCtrl.addAction(cancelAction)
         alertCtrl.addAction(newFileAction)
@@ -210,10 +210,10 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         let destination = "\(currentDir)/\(aFile.name)"
         if explorer.moveFileOrFolder(fromFullPath: movedFileFullPath, toFullPath: destination, willCover: false) {
             // move success
-            AlertManager.showTips(self, message: "\(LanguageManager.getAppLanguageString("tool.explorer.paste.success1")) \(movedFileFullPath) \(LanguageManager.getAppLanguageString("tool.explorer.paste.success2")) \(destination)", handler: nil)
+            AlertManager.showTips(self, message: "\(LanguageManager.getToolString(forKey: "explorer.paste.success1")) \(movedFileFullPath) \(LanguageManager.getToolString(forKey: "explorer.paste.success2")) \(destination)", handler: nil)
             reloadCell(currentDir)
         } else {
-            AlertManager.showTips(self, message: "\(LanguageManager.getAppLanguageString("tool.explorer.paste.error1")) \(movedFileFullPath) \(LanguageManager.getAppLanguageString("tool.explorer.paste.error2")) \(destination)", handler: nil)
+            AlertManager.showTips(self, message: "\(LanguageManager.getToolString(forKey: "explorer.paste.error1")) \(movedFileFullPath) \(LanguageManager.getToolString(forKey: "explorer.paste.error2")) \(destination)", handler: nil)
         }
         movedFileFullPath = ""
     }
@@ -224,7 +224,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         if let upperURL = NSURL(fileURLWithPath: currentDir).URLByDeletingLastPathComponent {
             reloadCell(upperURL.relativePath!)
         } else {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.explorer.upper.error"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "explorer.upper.error"), handler: nil)
         }
     }
     
@@ -263,7 +263,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     
     func confirmDeleteFile(alert: UIAlertAction?) {
         AlertManager.showTipsWithContinue(self,
-                                          message: "\(LanguageManager.getAppLanguageString("tool.explorer.delete.message")) \(items[selectedItem].getFullPath())",
+                                          message: "\(LanguageManager.getToolString(forKey: "explorer.delete.message")) \(items[selectedItem].getFullPath())",
                                           handler: nil,
                                           cHandler: deleteFile)
     }
@@ -273,19 +273,19 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
             // refresh the user interface
             reloadCell(currentDir)
         } else {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.explorer.delete.error"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "explorer.delete.error"), handler: nil)
         }
     }
     
     func createFileOrFolder(fileName: String, isFile: Bool) {
         if fileName == "" {
             // alert nil file name
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.explorer.create.empty"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "explorer.create.empty"), handler: nil)
         } else {
             let fullPath = "\(currentDir)/\(fileName)"
             if explorer.isFileOrFolderExist(fullPath) {
                 // alert the file or folder has existed
-                AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.explorer.create.exist"), handler: nil)
+                AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "explorer.create.exist"), handler: nil)
             } else {
                 if isFile {
                     explorer.createFile(fullPath)
@@ -316,7 +316,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     private func reloadCell(fullpath: String) {
         // do not go out of the sandbox
         if fullpath == "/var/mobile/Containers/Data/Application" {
-            AlertManager.showTips(self, message: LanguageManager.getAppLanguageString("tool.explorer.upper.error"), handler: nil)
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "explorer.upper.error"), handler: nil)
             return
         }
         // do enter the folder
@@ -406,7 +406,7 @@ class FilePopoverVC: UIViewController {
     private func setupComponents() {
         let createBtn = UIButton(type: .System)
         createBtn.frame = CGRect(x: 0, y: 0, width: 90, height: 40)
-        createBtn.setTitle(LanguageManager.getAppLanguageString("tool.explorer.popover.create"), forState: .Normal)
+        createBtn.setTitle(LanguageManager.getToolString(forKey: "explorer.popover.create"), forState: .Normal)
         createBtn.titleLabel?.textAlignment = .Center
         createBtn.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
         createBtn.addTarget(self, action: #selector(tapCreateBtn), forControlEvents: .TouchUpInside)
@@ -414,7 +414,7 @@ class FilePopoverVC: UIViewController {
  
         let pasteBtn = UIButton(type: .System)
         pasteBtn.frame = CGRect(x: 0, y: 40, width: 90, height: 40)
-        pasteBtn.setTitle(LanguageManager.getAppLanguageString("tool.explorer.popover.paste"), forState: .Normal)
+        pasteBtn.setTitle(LanguageManager.getToolString(forKey: "explorer.popover.paste"), forState: .Normal)
         pasteBtn.titleLabel?.textAlignment = .Center
         pasteBtn.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
         pasteBtn.enabled = enablePaste

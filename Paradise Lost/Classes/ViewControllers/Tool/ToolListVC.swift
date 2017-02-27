@@ -9,12 +9,12 @@
 import UIKit
 
 class ToolListVC: UniversalTableViewController {
-    private var items = TableCellItemManager.itemsFromPlist("ToolItems")
+    private var items = TableCellItemManager.itemsFromPlist("ToolItems", ofType: .Tool)
     
     // MARK: life cycle
     
     override func viewDidLoad() {
-        viewName = LanguageManager.getAppLanguageString("tool.viewname")
+        viewName = LanguageManager.getToolString(forKey: "viewname")
         itemNames = TableCellItemManager.nameArrayFromItems(items)
         
         super.viewDidLoad()

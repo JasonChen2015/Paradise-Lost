@@ -9,12 +9,12 @@
 import UIKit
 
 class GameListVC: UniversalTableViewController {
-    private var items = TableCellItemManager.itemsFromPlist("GameItems")
+    private var items = TableCellItemManager.itemsFromPlist("GameItems", ofType: .Game)
     
     // MARK: life cycle
     
     override func viewDidLoad() {
-        viewName = LanguageManager.getAppLanguageString("game.viewname")
+        viewName = LanguageManager.getGameString(forKey: "viewname")
         itemNames = TableCellItemManager.nameArrayFromItems(items)
         
         super.viewDidLoad()

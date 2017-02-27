@@ -74,10 +74,10 @@ class SudokuView: UIView {
     func startGame() {
         didStartGame = !didStartGame
         if didStartGame {
-            startButton.setTitle(LanguageManager.getAppLanguageString("game.sudoku.startbutton.title2"), forState: .Normal)
+            startButton.setTitle(LanguageManager.getPublicString(forKey: "pause"), forState: .Normal)
             runTimer()
         } else {
-            startButton.setTitle(LanguageManager.getAppLanguageString("game.sudoku.startbutton.title1"), forState: .Normal)
+            startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
             stopTimer()
         }
         
@@ -90,7 +90,7 @@ class SudokuView: UIView {
         stopTimer()
         showSecondText()
         // button
-        startButton.setTitle(LanguageManager.getAppLanguageString("game.sudoku.startbutton.title1"), forState: .Normal)
+        startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
     }
     
     func resetGame() {
@@ -132,7 +132,7 @@ class SudokuView: UIView {
     
     private var titleLabel: UILabel = {
         var label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("game.sudoku.titlelabel.text")
+        label.text = LanguageManager.getGameString(forKey: "sudoku.titlelabel.text")
         label.font = UIFont.boldSystemFontOfSize(36)
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -154,7 +154,7 @@ class SudokuView: UIView {
     
     private var timeLabel: UILabel = {
         var label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("game.sudoku.timelabel.text")
+        label.text = LanguageManager.getGameString(forKey: "sudoku.timelabel.text")
         label.font = UIFont.boldSystemFontOfSize(25)
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -171,7 +171,7 @@ class SudokuView: UIView {
     
     private var startButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getAppLanguageString("game.sudoku.startbutton.title1"), forState: .Normal)
+        button.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -179,7 +179,7 @@ class SudokuView: UIView {
     
     private var resetButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getAppLanguageString("game.sudoku.resetbutton.title"), forState: .Normal)
+        button.setTitle(LanguageManager.getGameString(forKey: "sudoku.resetbutton.title"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -187,7 +187,7 @@ class SudokuView: UIView {
     
     private var exitButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getAppLanguageString("game.sudoku.exitbutton.title"), forState: .Normal)
+        button.setTitle(LanguageManager.getPublicString(forKey: "exit"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

@@ -270,7 +270,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
     
     private var nameLabel: UILabel = {
        let label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("tool.marquee.namelabel.text")
+        label.text = LanguageManager.getToolString(forKey: "marquee.namelabel.text")
         label.font = UIFont.boldSystemFontOfSize(20)
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -279,8 +279,8 @@ class MarqueeView: UIView, UITextFieldDelegate {
     
     private var colorSegment: UISegmentedControl = {
         let segment = UISegmentedControl()
-        segment.insertSegmentWithTitle(LanguageManager.getAppLanguageString("tool.marquee.colorseg.text"), atIndex: 0, animated: true)
-        segment.insertSegmentWithTitle(LanguageManager.getAppLanguageString("tool.marquee.colorseg.back"), atIndex: 1, animated: true)
+        segment.insertSegmentWithTitle(LanguageManager.getToolString(forKey: "marquee.colorseg.text"), atIndex: 0, animated: true)
+        segment.insertSegmentWithTitle(LanguageManager.getToolString(forKey: "marquee.colorseg.back"), atIndex: 1, animated: true)
         segment.translatesAutoresizingMaskIntoConstraints = false
         return segment
     }()
@@ -359,7 +359,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
     
     private var contentLabel: UILabel = {
         let label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("tool.marquee.contentlabel.text")
+        label.text = LanguageManager.getToolString(forKey: "marquee.contentlabel.text")
         label.textAlignment = .Left
         label.font = UIFont.systemFontOfSize(16)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -368,7 +368,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
     
     private var contentText: UITextField = {
         let text = UITextField()
-        text.text = LanguageManager.getAppLanguageString("tool.marquee.contenttext.text")
+        text.text = LanguageManager.getToolString(forKey: "marquee.contenttext.text")
         text.font = UIFont.systemFontOfSize(18)
         text.layer.borderColor = Color().LightGray.CGColor
         text.layer.borderWidth = 1.0
@@ -378,7 +378,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
     
     private var speedLabel: UILabel = {
         let label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("tool.marquee.speedlabel.text")
+        label.text = LanguageManager.getToolString(forKey: "marquee.speedlabel.text")
         label.textAlignment = .Left
         label.font = UIFont.systemFontOfSize(16)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -387,8 +387,8 @@ class MarqueeView: UIView, UITextFieldDelegate {
     
     private var speedSegment: UISegmentedControl = {
         let segment = UISegmentedControl()
-        segment.insertSegmentWithTitle(LanguageManager.getAppLanguageString("tool.marquee.speedseg.rate"), atIndex: 0, animated: true)
-        segment.insertSegmentWithTitle(LanguageManager.getAppLanguageString("tool.marquee.speedseg.duration"), atIndex: 1, animated: true)
+        segment.insertSegmentWithTitle(LanguageManager.getToolString(forKey: "marquee.speedseg.rate"), atIndex: 0, animated: true)
+        segment.insertSegmentWithTitle(LanguageManager.getToolString(forKey: "marquee.speedseg.duration"), atIndex: 1, animated: true)
         segment.translatesAutoresizingMaskIntoConstraints = false
         return segment
     }()
@@ -427,7 +427,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
     
     private var showBtn: UIButton = {
         let button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getAppLanguageString("tool.marquee.showbtn.title"), forState: .Normal)
+        button.setTitle(LanguageManager.getToolString(forKey: "marquee.showbtn.title"), forState: .Normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

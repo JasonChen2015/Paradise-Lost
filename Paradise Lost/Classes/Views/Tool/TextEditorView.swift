@@ -110,7 +110,7 @@ class TextEditorView: UIView {
     
     private var nameLabel: UILabel = {
         var label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("tool.texteditor.namelabel.text")
+        label.text = LanguageManager.getToolString(forKey: "texteditor.namelabel.text")
         label.font = UIFont.systemFontOfSize(14)
         label.textAlignment = .Right
         label.translatesAutoresizingMaskIntoConstraints = false

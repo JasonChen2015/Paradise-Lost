@@ -20,7 +20,7 @@
 			<key>Key</key>
 			<string>language</string>
 			<key>DefaultValue</key>
-			<string>ch</string>
+			<string>zh</string>
 			<key>Titles</key>
 			<array>
 				<string>English</string>
@@ -29,7 +29,7 @@
 			<key>Values</key>
 			<array>
 				<string>en</string>
-				<string>ch</string>
+				<string>zh</string>
 			</array>
 		</dict>
 		<dict>

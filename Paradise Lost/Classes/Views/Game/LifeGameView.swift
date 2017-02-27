@@ -122,16 +122,16 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         willStart = !willStart
         delegate?.startGameAction(willStart, speed: getDoubleFromText(speedText, num: 1.0), gridSize: getIntFromText(gridSizeText, num: 2))
         if willStart {
-            startButton.setTitle(LanguageManager.getAppLanguageString("game.life.stopbutton.text"), forState: .Normal)
+            startButton.setTitle(LanguageManager.getPublicString(forKey: "stop"), forState: .Normal)
         } else {
-            startButton.setTitle(LanguageManager.getAppLanguageString("game.life.startbutton.text"), forState: .Normal)
+            startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
         }
     }
     
     func clearGame() {
         resignAllResponder()
         willStart = false
-        startButton.setTitle(LanguageManager.getAppLanguageString("game.life.startbutton.text"), forState: .Normal)
+        startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
         delegate?.clearGameAction()
     }
     
@@ -176,7 +176,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     private var titleLabel: UILabel = {
         var label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("game.life.title.text")
+        label.text = LanguageManager.getGameString(forKey: "life.title.text")
         label.textAlignment = .Center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -184,7 +184,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     private var startButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getAppLanguageString("game.life.startbutton.text"), forState: .Normal)
+        button.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -192,7 +192,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     private var clearButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getAppLanguageString("game.life.clearbutton.text"), forState: .Normal)
+        button.setTitle(LanguageManager.getPublicString(forKey: "clear"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -200,7 +200,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     private var exitButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getAppLanguageString("game.life.exitbutton.text"), forState: .Normal)
+        button.setTitle(LanguageManager.getPublicString(forKey: "exit"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -208,7 +208,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     private var speedLabel: UILabel = {
         var label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("game.life.speedlabel.text")
+        label.text = LanguageManager.getGameString(forKey: "life.speedlabel.text")
         label.textAlignment = .Right
         label.font = UIFont.systemFontOfSize(14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -228,7 +228,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     private var gridSizeLabel: UILabel = {
         var label = UILabel()
-        label.text = LanguageManager.getAppLanguageString("game.life.gridsizelabel.text")
+        label.text = LanguageManager.getGameString(forKey: "life.gridsizelabel.text")
         label.textAlignment = .Right
         label.font = UIFont.systemFontOfSize(14)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -281,7 +281,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     private var addButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getAppLanguageString("game.life.addbutton.text"), forState: .Normal)
+        button.setTitle(LanguageManager.getGameString(forKey: "life.addbutton.text"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -289,7 +289,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     private var editButton: UIButton = {
         var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getAppLanguageString("game.life.editbutton.text"), forState: .Normal)
+        button.setTitle(LanguageManager.getGameString(forKey: "life.editbutton.text"), forState: .Normal)
         button.exclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
