@@ -9,7 +9,7 @@
 import Foundation
 
 class CheckJailBroken {
-    let probablePath: [String] = [
+    static let probablePath: [String] = [
         "/Applications/Cydia.app"
         , "/Library/MobileSubstrate/MobileSubstrate.dylib"
         , "/bin/bash"
@@ -19,11 +19,11 @@ class CheckJailBroken {
         //, "cydia://package/com.example.package" // openURL
     ]
     
-    let testPath: String = "/private/jailbreak.txt"
+    static let testPath: String = "/private/jailbreak.txt"
     
     class func isJailBroken() -> Bool {
         #if !(TARGET_IPHONE_SIMULATOR)
-            var fem = FileExplorerManager()
+            let fem = FileExplorerManager()
             for path in probablePath {
                 if fem.isFileOrFolderExist(path) {
                     return true
