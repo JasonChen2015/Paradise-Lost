@@ -23,7 +23,7 @@ class CheckJailBroken {
     
     class func isJailBroken() -> Bool {
         #if !(TARGET_IPHONE_SIMULATOR)
-            let fem = FileExplorerManager()
+            let fem = FileExplorerManager.shareInstance
             for path in probablePath {
                 if fem.isFileOrFolderExist(path) {
                     return true

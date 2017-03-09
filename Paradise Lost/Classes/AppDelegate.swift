@@ -16,10 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-
+        
         // initialize environment
         UserDefaultManager.registerDefaultsFromSettingsBundle()
         LanguageManager.setAppLanguage()
+        
+        // check jailbroken
+        if CheckJailBroken.isJailBroken() {
+            LogFileManager.printLogFile("This device is jailbroken!")
+            return false
+        }
         
         // let the Launching Screen stay for several seconds
         NSThread.sleepForTimeInterval(1.0)
