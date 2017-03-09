@@ -16,7 +16,7 @@ class TextEditorVC: UIViewController {
     /// the information of the edited file
     var file: File = File()
     
-    private var fileManager = FileExplorerManager() {
+    private var fileManager = FileExplorerManager.shareInstance {
         didSet {
             if fileManager.documentDir == "" {
                 AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "texteditor.openfail.message"), handler: { (_) -> Void in

@@ -9,6 +9,9 @@
 import Foundation
 
 class FileExplorerManager {
+    // singleton
+    static let shareInstance = FileExplorerManager()
+    
     /// document directory, i.e. ~/Documents
     var documentDir = ""
     /// file manager

@@ -16,7 +16,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     var collectionView: UICollectionView!
     
     /// file explorer manager
-    var explorer = FileExplorerManager() {
+    var explorer = FileExplorerManager.shareInstance {
         didSet {
             if explorer.documentDir == "" {
                 AlertManager.showTips(self,

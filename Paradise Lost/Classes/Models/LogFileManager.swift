@@ -10,7 +10,7 @@ import Foundation
 
 class LogFileManager {
     class func printLogFile<T>(message: T, file: String = #file, method: String = #function, line: Int = #line) {
-        let fs = FileExplorerManager()
+        let fs = FileExplorerManager.shareInstance
         if fs.documentDir == "" {
             return
         }
