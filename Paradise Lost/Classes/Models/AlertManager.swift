@@ -45,25 +45,34 @@ class AlertManager {
     }
     
     /**
-        show an action sheet with button "open", "move", "delete" and "cancel" in FileExplorer
+        show an action sheet with button "open", "move", "rename", "delete" and "cancel" in FileExplorer
      */
     class func showActionSheetToHandleFile(viewController: UIViewController,
                                            title: String,
                                            message: String,
                                            openHDL: ((UIAlertAction) -> Void)?,
                                            moveHDL: ((UIAlertAction) -> Void)?,
+                                           renameDL: ((UIAlertAction) -> Void)?,
                                            deleteHDL: ((UIAlertAction) -> Void)?) {
         let alertCtrl = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
-        let openAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "open"), style: .Default, handler: openHDL)
-        let moveAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "move"), style: .Default, handler: moveHDL)
-        let deleteAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "delete"), style: .Destructive, handler: deleteHDL)
         let cancelAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "cancel"), style: .Cancel, handler: nil)
         alertCtrl.addAction(cancelAction)
         if openHDL != nil {
+            let openAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "open"), style: .Default, handler: openHDL)
             alertCtrl.addAction(openAction)
         }
-        alertCtrl.addAction(moveAction)
-        alertCtrl.addAction(deleteAction)
+        if moveHDL != nil {
+            let moveAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "move"), style: .Default, handler: moveHDL)
+            alertCtrl.addAction(moveAction)
+        }
+        if renameDL != nil {
+            let renameAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "rename"), style: .Default, handler: renameDL)
+            alertCtrl.addAction(renameAction)
+        }
+        if deleteHDL != nil {
+            let deleteAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "delete"), style: .Destructive, handler: deleteHDL)
+            alertCtrl.addAction(deleteAction)
+        }
         
         viewController.presentViewController(alertCtrl, animated: true, completion: nil)
     }

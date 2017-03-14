@@ -167,6 +167,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
                         message: "\(LanguageManager.getToolString(forKey: "explorer.longpress.message")) \(file.name)?",
                         openHDL: (explorer.getFileType(file.getFullPath()) == FileExplorerManager.FileType.File) ? openFile : nil,
                         moveHDL: moveFile,
+                        renameDL: renameFile,
                         deleteHDL: confirmDeleteFile)
                 }
             }
@@ -184,7 +185,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     func didClickCreateButton() {
         // show alert to choose create file or folder
         let alertCtrl = UIAlertController(title: LanguageManager.getToolString(forKey: "explorer.create.title"), message: "", preferredStyle: .Alert)
-        let cancelAction = UIAlertAction(title: LanguageManager.getAppLanguageString("alert.cancel.title"), style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "cancel"), style: .Cancel, handler: nil)
         let newFileAction = UIAlertAction(title: LanguageManager.getToolString(forKey: "explorer.create.createfile.title"), style: .Default) { (action: UIAlertAction!) -> Void in
             let filename = (alertCtrl.textFields?.first)! as UITextField
             self.createFileOrFolder(filename.text!, isFile: true)
@@ -259,6 +260,34 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     func moveFile(alert: UIAlertAction?) {
         hasMoveFile = true
         movedFileFullPath = items[selectedItem].getFullPath()
+    }
+    
+    func renameFile(alert: UIAlertAction?) {
+        let alertCtrl = UIAlertController(title: LanguageManager.getAlertString(forKey: "rename"), message: LanguageManager.getToolString(forKey: "explorer.rename.message"), preferredStyle: .Alert)
+        alertCtrl.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+            let file = self.items[self.selectedItem]
+            textField.placeholder = file.name
+            textField.text = file.name
+        }
+        let confirmAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "confirm"), style: .Default) { (action: UIAlertAction!) -> Void in
+            var result = LanguageManager.getToolString(forKey: "explorer.rename.fail")
+            if let textField = alertCtrl.textFields?.first {
+                let file = self.items[self.selectedItem]
+                if file.name == textField.text! {
+                    result = LanguageManager.getToolString(forKey: "explorer.rename.nochange")
+                } else if self.explorer.renameFile(file.getFullPath(), newName: textField.text!) {
+                    // rename success
+                    result = LanguageManager.getToolString(forKey: "explorer.rename.success")
+                    self.reloadCell(self.currentDir)
+                }
+            }
+            AlertManager.showTips(self, message: result, handler: nil)
+        }
+        let cancelAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "cancel"), style: .Cancel, handler: nil)
+        alertCtrl.addAction(confirmAction)
+        alertCtrl.addAction(cancelAction)
+        
+        self.presentViewController(alertCtrl, animated: true, completion: nil)
     }
     
     func confirmDeleteFile(alert: UIAlertAction?) {

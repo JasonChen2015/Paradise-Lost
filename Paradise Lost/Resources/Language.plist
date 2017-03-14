@@ -98,12 +98,26 @@
 			<key>en</key>
 			<string>Move</string>
 		</dict>
+		<key>rename</key>
+		<dict>
+			<key>zh</key>
+			<string>重命名</string>
+			<key>en</key>
+			<string>Rename</string>
+		</dict>
 		<key>delete</key>
 		<dict>
 			<key>zh</key>
 			<string>删除</string>
 			<key>en</key>
 			<string>Delete</string>
+		</dict>
+		<key>confirm</key>
+		<dict>
+			<key>zh</key>
+			<string>确认</string>
+			<key>en</key>
+			<string>Confirm</string>
 		</dict>
 	</dict>
 	<key>tool</key>
@@ -332,7 +346,7 @@
 			<key>en</key>
 			<string>Create Folder</string>
 		</dict>
-		<key>explorer.create.placeholde</key>
+		<key>explorer.create.placeholder</key>
 		<dict>
 			<key>zh</key>
 			<string>请输入名字</string>
@@ -387,6 +401,34 @@
 			<string>到</string>
 			<key>en</key>
 			<string>to</string>
+		</dict>
+		<key>explorer.rename.message</key>
+		<dict>
+			<key>zh</key>
+			<string>请输入新名字。</string>
+			<key>en</key>
+			<string>Please Input new name.</string>
+		</dict>
+		<key>explorer.rename.success</key>
+		<dict>
+			<key>zh</key>
+			<string>重命名成功</string>
+			<key>en</key>
+			<string>Rename success!</string>
+		</dict>
+		<key>explorer.rename.nochange</key>
+		<dict>
+			<key>zh</key>
+			<string>没有变更名字哦！</string>
+			<key>en</key>
+			<string>No change!</string>
+		</dict>
+		<key>explorer.rename.fail</key>
+		<dict>
+			<key>zh</key>
+			<string>重命名失败 TAT</string>
+			<key>en</key>
+			<string>Rename fail TAT</string>
 		</dict>
 		<key>explorer.create.empty</key>
 		<dict>
@@ -465,8 +507,13 @@
 			<key>en</key>
 			<string>Show</string>
 		</dict>
-		<key>New item - 10</key>
-		<dict/>
+		<key>audio.namelabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>音乐盒</string>
+			<key>en</key>
+			<string>Audio Tool</string>
+		</dict>
 	</dict>
 	<key>game</key>
 	<dict>
