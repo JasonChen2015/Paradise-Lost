@@ -38,5 +38,14 @@
 		<key>needNavigation</key>
 		<true/>
 	</dict>
+	<key>5</key>
+	<dict>
+		<key>name</key>
+		<string>audio.namelabel.text</string>
+		<key>segueId</key>
+		<string>AudioToolVC</string>
+		<key>needNavigation</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
