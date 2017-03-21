@@ -19,6 +19,7 @@ class AudioToolVC: UIViewController, AudioToolViewDelegate {
                           AVFormatIDKey: NSNumber(unsignedInt: kAudioFormatMPEG4AAC),
                           AVNumberOfChannelsKey: NSNumber(int: 1),
                           AVEncoderAudioQualityKey: NSNumber(long: AVAudioQuality.Medium.rawValue)]
+    var timer: NSTimer!
     
     // MARK: life cycle
     
@@ -68,9 +69,19 @@ class AudioToolVC: UIViewController, AudioToolViewDelegate {
         } catch {
             AlertManager.showTips(self, message: "Cannot record audio.", handler: nil)
         }
+        
+        // set timer to force quit record
+        resetTimer()
     }
     
     // MARK: private methods
+    
+    private func resetTimer() {
+        if timer != nil {
+            timer.invalidate()
+        }
+        timer = NSTimer(timeInterval: 60.0, target: self, selector: #selector(AudioToolVC.stopAudio), userInfo: nil, repeats: false)
+    }
     
     private func setupAudio() {
         let audioSession = AVAudioSession.sharedInstance()
