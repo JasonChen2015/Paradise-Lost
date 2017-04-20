@@ -32,7 +32,7 @@ class CheckJailBroken {
             
             if fem.createFile(testPath) {
                 if fem.coverToFile(testPath, contents: "This is not a test.") {
-                    fem.removeFileOrFolder(testPath)
+                    let _ = fem.removeFileOrFolder(testPath)
                     return true
                 }
             }

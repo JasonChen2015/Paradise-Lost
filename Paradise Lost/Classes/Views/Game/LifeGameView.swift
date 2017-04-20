@@ -9,11 +9,11 @@
 import UIKit
 
 protocol LifeGameViewDelegate {
-    func startGameAction(isGaming: Bool, speed: Double, gridSize: Int)
+    func startGameAction(_ isGaming: Bool, speed: Double, gridSize: Int)
     func clearGameAction()
     func exitGameAction()
-    func editGridAction(x x: Int, y: Int)
-    func addGridAction(x x: Int, y: Int, index: Int)
+    func editGridAction(x: Int, y: Int)
+    func addGridAction(x: Int, y: Int, index: Int)
 }
 
 class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -21,7 +21,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     var delegate: LifeGameViewDelegate? = nil
     let gridStyle = LifeGameManager.style
     
-    private var willStart: Bool = false
+    fileprivate var willStart: Bool = false
     
     var chosenStyle: Int! = 0
     
@@ -34,7 +34,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         super.init(coder: aDecoder)
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         addSubview(titleLabel)
         addSubview(startButton)
         addSubview(clearButton)
@@ -63,58 +63,58 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         let tapView = UITapGestureRecognizer(target: self, action: #selector(LifeGameView.resignAllResponder))
         addGestureRecognizer(tapView)
         
-        startButton.addTarget(self, action: #selector(LifeGameView.startGame), forControlEvents: .TouchUpInside)
-        clearButton.addTarget(self, action: #selector(LifeGameView.clearGame), forControlEvents: .TouchUpInside)
-        exitButton.addTarget(self, action: #selector(LifeGameView.exitGame), forControlEvents: .TouchUpInside)
-        addButton.addTarget(self, action: #selector(LifeGameView.addGrid), forControlEvents: .TouchUpInside)
-        editButton.addTarget(self, action: #selector(LifeGameView.editGrid), forControlEvents: .TouchUpInside)
+        startButton.addTarget(self, action: #selector(LifeGameView.startGame), for: .touchUpInside)
+        clearButton.addTarget(self, action: #selector(LifeGameView.clearGame), for: .touchUpInside)
+        exitButton.addTarget(self, action: #selector(LifeGameView.exitGame), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(LifeGameView.addGrid), for: .touchUpInside)
+        editButton.addTarget(self, action: #selector(LifeGameView.editGrid), for: .touchUpInside)
     }
     
     override func layoutSubviews() {
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-40-[v0(35)]-8-[v1(30)]-8-[v2(20)]-8-[v3(20)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel, "v1": startButton, "v2": speedLabel, "v3": gridStyleText]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-83-[v0(30)]-8-[v1(20)]-8-[v2(20)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": exitButton, "v1": speedText, "v2": gridXText]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-83-[v0(30)]-8-[v1(20)]-8-[v2(20)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": clearButton, "v1": gridSizeLabel, "v2": gridYText]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-121-[v0(20)]-8-[v1(20)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": gridSizeText, "v1": editButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-149-[v0(20)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": addButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-40-[v0]-40-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-40-[v0]-20-[v1(==v0)]-20-[v2(==v0)]-40-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": startButton, "v1":clearButton, "v2": exitButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-46-[v0(80)]-8-[v1(50)]-46-[v2(80)]-8-[v3(50)]-46-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": speedLabel, "v1": speedText, "v2": gridSizeLabel, "v3": gridSizeText]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-40-[v0]-[v2(40)]-[v3(==v2)]-[v4(50)]-[v1(50)]-40-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": gridStyleText, "v1": editButton, "v2": gridXText, "v3": gridYText, "v4": addButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[v0(35)]-8-[v1(30)]-8-[v2(20)]-8-[v3(20)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel, "v1": startButton, "v2": speedLabel, "v3": gridStyleText]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-83-[v0(30)]-8-[v1(20)]-8-[v2(20)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": exitButton, "v1": speedText, "v2": gridXText]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-83-[v0(30)]-8-[v1(20)]-8-[v2(20)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": clearButton, "v1": gridSizeLabel, "v2": gridYText]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-121-[v0(20)]-8-[v1(20)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": gridSizeText, "v1": editButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-149-[v0(20)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": addButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0]-40-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0]-20-[v1(==v0)]-20-[v2(==v0)]-40-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": startButton, "v1":clearButton, "v2": exitButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-46-[v0(80)]-8-[v1(50)]-46-[v2(80)]-8-[v3(50)]-46-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": speedLabel, "v1": speedText, "v2": gridSizeLabel, "v3": gridSizeText]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0]-[v2(40)]-[v3(==v2)]-[v4(50)]-[v1(50)]-40-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": gridStyleText, "v1": editButton, "v2": gridXText, "v3": gridYText, "v4": addButton]))
     }
     
     // MARK: UITextFieldDelegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }
     
     // MARK: UIPickerViewDelegate
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return gridStyle.count
     }
     
     // MARK: UIPickerViewDataSource
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         gridStyleText.text = gridStyle[row]
         chosenStyle = row
         resignAllResponder()
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return gridStyle[row]
     }
     
     // MARK: event response
     
     func resignAllResponder() {
-        UIApplication.sharedApplication().sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, forEvent: nil)
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     func startGame() {
@@ -122,16 +122,16 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         willStart = !willStart
         delegate?.startGameAction(willStart, speed: getDoubleFromText(speedText, num: 1.0), gridSize: getIntFromText(gridSizeText, num: 2))
         if willStart {
-            startButton.setTitle(LanguageManager.getPublicString(forKey: "stop"), forState: .Normal)
+            startButton.setTitle(LanguageManager.getPublicString(forKey: "stop"), for: UIControlState())
         } else {
-            startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
+            startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), for: UIControlState())
         }
     }
     
     func clearGame() {
         resignAllResponder()
         willStart = false
-        startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
+        startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), for: UIControlState())
         delegate?.clearGameAction()
     }
     
@@ -152,7 +152,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     // MARK: private methods
     
-    private func getDoubleFromText(textfield: UITextField, num: Double) -> Double {
+    fileprivate func getDoubleFromText(_ textfield: UITextField, num: Double) -> Double {
         if textfield.text != nil {
             if let number = Double(textfield.text!) {
                 return number
@@ -162,7 +162,7 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         return num
     }
     
-    private func getIntFromText(textfield: UITextField, num: Int) -> Int {
+    fileprivate func getIntFromText(_ textfield: UITextField, num: Int) -> Int {
         if textfield.text != nil {
             if let number = Int(textfield.text!) {
                 return number
@@ -174,123 +174,123 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     // MARK: getters and setters
     
-    private var titleLabel: UILabel = {
+    fileprivate var titleLabel: UILabel = {
         var label = UILabel()
         label.text = LanguageManager.getGameString(forKey: "life.title.text")
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var startButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var startButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle(LanguageManager.getPublicString(forKey: "start"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private var clearButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getPublicString(forKey: "clear"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var clearButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle(LanguageManager.getPublicString(forKey: "clear"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private var exitButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getPublicString(forKey: "exit"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var exitButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle(LanguageManager.getPublicString(forKey: "exit"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private var speedLabel: UILabel = {
+    fileprivate var speedLabel: UILabel = {
         var label = UILabel()
         label.text = LanguageManager.getGameString(forKey: "life.speedlabel.text")
-        label.textAlignment = .Right
-        label.font = UIFont.systemFontOfSize(14)
+        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var speedText: UITextField = {
+    fileprivate var speedText: UITextField = {
         var text = UITextField()
         text.text = "1"
-        text.font = UIFont.systemFontOfSize(18)
-        text.keyboardType = .NumbersAndPunctuation
-        text.layer.borderColor = Color().LightGray.CGColor
+        text.font = UIFont.systemFont(ofSize: 18)
+        text.keyboardType = .numbersAndPunctuation
+        text.layer.borderColor = Color().LightGray.cgColor
         text.layer.borderWidth = 0.5
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var gridSizeLabel: UILabel = {
+    fileprivate var gridSizeLabel: UILabel = {
         var label = UILabel()
         label.text = LanguageManager.getGameString(forKey: "life.gridsizelabel.text")
-        label.textAlignment = .Right
-        label.font = UIFont.systemFontOfSize(14)
+        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var gridSizeText: UITextField = {
+    fileprivate var gridSizeText: UITextField = {
         var text = UITextField()
         text.text = "2"
-        text.font = UIFont.systemFontOfSize(18)
-        text.keyboardType = .NumbersAndPunctuation
-        text.layer.borderColor = Color().LightGray.CGColor
+        text.font = UIFont.systemFont(ofSize: 18)
+        text.keyboardType = .numbersAndPunctuation
+        text.layer.borderColor = Color().LightGray.cgColor
         text.layer.borderWidth = 0.5
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var gridStylePicker: UIPickerView = UIPickerView()
+    fileprivate var gridStylePicker: UIPickerView = UIPickerView()
     
-    private var gridStyleText: UITextField = {
+    fileprivate var gridStyleText: UITextField = {
         var text = UITextField()
-        text.text = LifeGameManager.LifeGameGridStyle.GliderGun.value
-        text.layer.borderColor = Color().LightGray.CGColor
+        text.text = LifeGameManager.LifeGameGridStyle.gliderGun.value
+        text.layer.borderColor = Color().LightGray.cgColor
         text.layer.borderWidth = 0.5
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var gridXText: UITextField = {
-        var text = UITextField()
-        text.text = "1"
-        text.font = UIFont.systemFontOfSize(18)
-        text.keyboardType = .NumbersAndPunctuation
-        text.layer.borderColor = Color().LightGray.CGColor
-        text.layer.borderWidth = 0.5
-        text.translatesAutoresizingMaskIntoConstraints = false
-        return text
-    }()
-    
-    private var gridYText: UITextField = {
+    fileprivate var gridXText: UITextField = {
         var text = UITextField()
         text.text = "1"
-        text.font = UIFont.systemFontOfSize(18)
-        text.keyboardType = .NumbersAndPunctuation
-        text.layer.borderColor = Color().LightGray.CGColor
+        text.font = UIFont.systemFont(ofSize: 18)
+        text.keyboardType = .numbersAndPunctuation
+        text.layer.borderColor = Color().LightGray.cgColor
         text.layer.borderWidth = 0.5
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var addButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getGameString(forKey: "life.addbutton.text"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var gridYText: UITextField = {
+        var text = UITextField()
+        text.text = "1"
+        text.font = UIFont.systemFont(ofSize: 18)
+        text.keyboardType = .numbersAndPunctuation
+        text.layer.borderColor = Color().LightGray.cgColor
+        text.layer.borderWidth = 0.5
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
+    
+    fileprivate var addButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle(LanguageManager.getGameString(forKey: "life.addbutton.text"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private var editButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getGameString(forKey: "life.editbutton.text"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var editButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle(LanguageManager.getGameString(forKey: "life.editbutton.text"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -306,20 +306,20 @@ class LifeGameGridView: UIView {
     var gridRow: Int = 200
     var gridSize: Int = 2
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         // points
         if gridArray.count == 1 { // no data then no print point
             return
         }
         for i in 0...(gridColumn - 1) {
-            if i * gridSize > Int(UIScreen.mainScreen().bounds.width) { break }
+            if i * gridSize > Int(UIScreen.main.bounds.width) { break }
             for j in 0...(gridRow - 1) {
-                if j * gridSize > Int(UIScreen.mainScreen().bounds.height) { break }
+                if j * gridSize > Int(UIScreen.main.bounds.height) { break }
                 // draw rect of point
                 let point = UIBezierPath(rect: CGRect(x: i * gridSize, y: j * gridSize, width: gridSize, height: gridSize))
-                var color: UIColor = UIColor.whiteColor()
+                var color: UIColor = UIColor.white
                 if gridArray[i][j] == 1 { // populate
-                    color = UIColor.blackColor()
+                    color = UIColor.black
                 }
                 color.setFill()
                 point.fill()
@@ -347,21 +347,21 @@ class LifeGameEditGridView: UIView {
     var gridHeight: Int = 20
     var gridSize: Int = 2
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         // lines
         let line = UIBezierPath()
         line.lineWidth = 2.0
         for i in 0...20 {
-            line.moveToPoint(CGPoint(x: 0, y: i * 20))
-            line.addLineToPoint(CGPoint(x: 400, y: i * 20))
-            line.moveToPoint(CGPoint(x: i * 20, y: 0))
-            line.addLineToPoint(CGPoint(x: i * 20, y: 400))
+            line.move(to: CGPoint(x: 0, y: i * 20))
+            line.addLine(to: CGPoint(x: 400, y: i * 20))
+            line.move(to: CGPoint(x: i * 20, y: 0))
+            line.addLine(to: CGPoint(x: i * 20, y: 400))
         }
-        UIColor.grayColor().setStroke()
+        UIColor.gray.setStroke()
         line.stroke()
         // grid
         if gridArray.count != 1 {
-            UIColor.blackColor().setFill()
+            UIColor.black.setFill()
             for i in 0...19 {
                 for j in 0...19 {
                     if gridArray[i][j] == 1 {
@@ -375,7 +375,7 @@ class LifeGameEditGridView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
         setupView()
     }
     
@@ -383,16 +383,16 @@ class LifeGameEditGridView: UIView {
         super.init(coder: aDecoder)
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(LifeGameEditGridView.handleTapGesture(_:)))
         addGestureRecognizer(tapGesture)
     }
     
     // MARK: event response
     
-    func handleTapGesture(sender: UITapGestureRecognizer) {
-        if sender.state == .Ended {
-            let pos = sender.locationInView(self)
+    func handleTapGesture(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            let pos = sender.location(in: self)
             let x = Int(pos.x / 20)
             let y = Int(pos.y / 20)
             gridArray[x][y] = 1 - gridArray[x][y]

@@ -18,13 +18,13 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
     
     var actionDelegate: JumpingSceneDelegate? = nil
     
-    private let player = SKSpriteNode(imageNamed: "player")
-    private let motionManager = CMMotionManager()
-    private var exitButton = SKLabelNode()
+    fileprivate let player = SKSpriteNode(imageNamed: "player")
+    fileprivate let motionManager = CMMotionManager()
+    fileprivate var exitButton = SKLabelNode()
     
-    private let MaxPlayerVelocityX: CGFloat = 600
+    fileprivate let MaxPlayerVelocityX: CGFloat = 600
     
-    private struct BodyMask {
+    fileprivate struct BodyMask {
         static let player: UInt32 = 1 << 0
         static let boder: UInt32 = 1 << 1
     }
@@ -35,14 +35,14 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
         stopMonitoringAccelertation()
     }
     
-    override func didMoveToView(view: SKView) {
-        backgroundColor = SKColor.whiteColor()
+    override func didMove(to view: SKView) {
+        backgroundColor = SKColor.white
         
         // title
         let title = SKLabelNode(fontNamed: "Chalkduster")
         title.text = LanguageManager.getGameString(forKey: "jumping.title.text")
         title.fontSize = 25
-        title.fontColor = SKColor.blackColor()
+        title.fontColor = SKColor.black
         title.position = CGPoint(x: size.width / 2, y: size.height - 64)
         addChild(title)
         
@@ -50,7 +50,7 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
         exitButton = SKLabelNode(fontNamed: "BradleyHandITCTT-Bold")
         exitButton.text = LanguageManager.getPublicString(forKey: "exit")
         exitButton.fontSize = 15
-        exitButton.fontColor = SKColor.blackColor()
+        exitButton.fontColor = SKColor.black
         exitButton.position = CGPoint(x: size.width - 60, y: size.height - 84)
         addChild(exitButton)
         
@@ -66,7 +66,7 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
         addChild(player)
         
         // border
-        let boderBody = SKPhysicsBody(edgeLoopFromRect: frame)
+        let boderBody = SKPhysicsBody(edgeLoopFrom: frame)
         boderBody.friction = 0
         //boderBody.categoryBitMask = BodyMask.boder
         physicsBody = boderBody
@@ -81,43 +81,43 @@ class JumpingScene: SKScene, SKPhysicsContactDelegate {
         // TODO: add SKAction of platform
     }
     
-    override func update(currentTime: NSTimeInterval) {
+    override func update(_ currentTime: TimeInterval) {
         updatePlayerAccelerationFromMotionManager()
         //updatePlayer()
     }
     
     // MARK: event reponse
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            let location = touch.locationInNode(self)
-            if exitButton.containsPoint(location) {
+            let location = touch.location(in: self)
+            if exitButton.contains(location) {
                 actionDelegate?.exitGame()
             }
         }
     }
     
     func startMonitoringAccelertation() {
-        if motionManager.accelerometerAvailable {
+        if motionManager.isAccelerometerAvailable {
             motionManager.startAccelerometerUpdates()
         }
     }
     
     func stopMonitoringAccelertation() {
-        if motionManager.accelerometerAvailable && motionManager.accelerometerActive {
+        if motionManager.isAccelerometerAvailable && motionManager.isAccelerometerActive {
             motionManager.stopAccelerometerUpdates()
         }
     }
     
     // MARK: private methods
     
-    private func updatePlayerAccelerationFromMotionManager() {
+    fileprivate func updatePlayerAccelerationFromMotionManager() {
         if let acceleration = motionManager.accelerometerData?.acceleration {
             player.physicsBody?.velocity.dx = MaxPlayerVelocityX * CGFloat(acceleration.x)
         }
     }
     
-    private func updatePlayer() {
+    fileprivate func updatePlayer() {
         // TODO:
     }
 }

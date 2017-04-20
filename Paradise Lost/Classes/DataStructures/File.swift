@@ -24,8 +24,8 @@ struct File {
     var path: String = ""
     var extensions: String = ""
     var size: Int = 0
-    var createDate: NSDate = NSDate(timeIntervalSince1970: 0)
-    var modifyDate: NSDate = NSDate(timeIntervalSince1970: 0)
+    var createDate: Date = Date(timeIntervalSince1970: 0)
+    var modifyDate: Date = Date(timeIntervalSince1970: 0)
     
     // suitable for nil
     init() {
@@ -37,33 +37,33 @@ struct File {
     }
     
     init(absolutePath: String) {
-        let url = NSURL(fileURLWithPath: absolutePath)
-        self.name = (url.lastPathComponent)!
+        let url = URL(fileURLWithPath: absolutePath)
+        self.name = url.lastPathComponent
         let n = absolutePath.characters.count - name.characters.count - 1 // '/'
-        self.path = absolutePath.substringToIndex(absolutePath.startIndex.advancedBy(n))
+        self.path = absolutePath.substring(to: absolutePath.characters.index(absolutePath.startIndex, offsetBy: n))
     }
     
     mutating func getExtensionsFromName() {
         if name.characters.first != "." { // handle invisible file under unix
-            let temp = name.componentsSeparatedByString(".")
+            let temp = name.components(separatedBy: ".")
             self.extensions = (temp.count == 2) ? temp[1] : ""
         }
     }
     
-    mutating func changeName(newName: String) {
+    mutating func changeName(_ newName: String) {
         self.name = newName
     }
     
     mutating func setAttributes() {
         if let attr = FileExplorerManager().getAttributesOfFileOrFolder(getFullPath()) {
-            if let tsize = attr[NSFileSize] {
+            if let tsize = attr[FileAttributeKey.size] {
                 size = tsize as! Int
             }
-            if let tcreateDate = attr[NSFileCreationDate] {
-                createDate = tcreateDate as! NSDate
+            if let tcreateDate = attr[FileAttributeKey.creationDate] {
+                createDate = tcreateDate as! Date
             }
-            if let tmodifyDate = attr[NSFileModificationDate] {
-                modifyDate = tmodifyDate as! NSDate
+            if let tmodifyDate = attr[FileAttributeKey.modificationDate] {
+                modifyDate = tmodifyDate as! Date
             }
         }
     }

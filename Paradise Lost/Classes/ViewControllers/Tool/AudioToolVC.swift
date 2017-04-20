@@ -15,18 +15,18 @@ class AudioToolVC: UIViewController, AudioToolViewDelegate {
     
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
-    let recordSettings = [AVSampleRateKey: NSNumber(float: 44100.0),
-                          AVFormatIDKey: NSNumber(unsignedInt: kAudioFormatMPEG4AAC),
-                          AVNumberOfChannelsKey: NSNumber(int: 1),
-                          AVEncoderAudioQualityKey: NSNumber(long: AVAudioQuality.Medium.rawValue)]
-    var timer: NSTimer!
+    let recordSettings = [AVSampleRateKey: NSNumber(value: 44100.0 as Float),
+                          AVFormatIDKey: NSNumber(value: kAudioFormatMPEG4AAC as UInt32),
+                          AVNumberOfChannelsKey: NSNumber(value: 1 as Int32),
+                          AVEncoderAudioQualityKey: NSNumber(value: AVAudioQuality.medium.rawValue as Int)]
+    var timer: Timer!
     
     // MARK: life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainView = AudioToolView(frame: UIScreen.mainScreen().bounds)
+        mainView = AudioToolView(frame: UIScreen.main.bounds)
         mainView.delegate = self
         view.addSubview(mainView)
         
@@ -53,7 +53,7 @@ class AudioToolVC: UIViewController, AudioToolViewDelegate {
     func playAudio() {
         stopAudio()
         do {
-            try audioPlayer = AVAudioPlayer(contentsOfURL: audioRecorder.url)
+            try audioPlayer = AVAudioPlayer(contentsOf: audioRecorder.url)
             audioPlayer.play()
         } catch {
             AlertManager.showTips(self, message: "Cannot play audio.", handler: nil)
@@ -76,26 +76,26 @@ class AudioToolVC: UIViewController, AudioToolViewDelegate {
     
     // MARK: private methods
     
-    private func resetTimer() {
+    fileprivate func resetTimer() {
         if timer != nil {
             timer.invalidate()
         }
-        timer = NSTimer(timeInterval: 60.0, target: self, selector: #selector(AudioToolVC.stopAudio), userInfo: nil, repeats: false)
+        timer = Timer(timeInterval: 60.0, target: self, selector: #selector(AudioToolVC.stopAudio), userInfo: nil, repeats: false)
     }
     
-    private func setupAudio() {
+    fileprivate func setupAudio() {
         let audioSession = AVAudioSession.sharedInstance()
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            try audioRecorder = AVAudioRecorder(URL: soundUrl()!, settings: recordSettings)
+            try audioRecorder = AVAudioRecorder(url: soundUrl()!, settings: recordSettings)
         } catch {
             AlertManager.showTips(self, message: "Cannot setup audio tools.", handler: nil)
         }
     }
     
-    private func soundUrl() -> NSURL? {
+    fileprivate func soundUrl() -> URL? {
         let fileManager = FileExplorerManager.shareInstance
-        let t = fileManager.documentDir.stringByAppendingString("/audio/test.m4a")
-        return NSURL(string: t)
+        let t = fileManager.documentDir + "/audio/test.m4a"
+        return URL(string: t)
     }
 }

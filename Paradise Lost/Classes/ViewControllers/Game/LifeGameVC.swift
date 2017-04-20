@@ -18,23 +18,23 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
     var editX: Int! = 0
     var editY: Int! = 0
     
-    var timer: NSTimer = NSTimer()
+    var timer: Timer = Timer()
     var generateSpeed: Double = 0
     var isGameRunnig: Bool = false
     
     // MARK: life cycle
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return false
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return .Portrait
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return .portrait
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.whiteColor()
+        view.backgroundColor = UIColor.white
         
         // initial data
         
@@ -46,7 +46,7 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
         
         // view
         
-        mainView = LifeGameView(frame: UIScreen.mainScreen().bounds)
+        mainView = LifeGameView(frame: UIScreen.main.bounds)
         mainView.delegate = self
         view.addSubview(mainView)
         
@@ -58,13 +58,13 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
         view.addSubview(gridView)
         
         editGridView = LifeGameEditGridView(frame: CGRect(x: 7, y: 168, width: 400, height: 400))
-        editGridView.hidden = true
+        editGridView.isHidden = true
         view.addSubview(editGridView)
     }
     
     // MARK: LifeGameViewDelegate
     
-    func startGameAction(isGaming: Bool, speed: Double, gridSize: Int) {
+    func startGameAction(_ isGaming: Bool, speed: Double, gridSize: Int) {
         isGameRunnig = isGaming
         if isGaming {
             gridView.gridSize = gridSize
@@ -76,7 +76,7 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
     }
     
     func clearGameAction() {
-        if timer.valid {
+        if timer.isValid {
             timer.invalidate()
         }
         manager.clearStatus()
@@ -84,12 +84,12 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
     }
     
     func exitGameAction() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func editGridAction(x x: Int, y: Int) {
-        editGridView.hidden = !editGridView.hidden
-        if !editGridView.hidden {
+    func editGridAction(x: Int, y: Int) {
+        editGridView.isHidden = !editGridView.isHidden
+        if !editGridView.isHidden {
             editX = x
             editY = y
             editGridView.gridArray = manager.getEditable(x, y: y, rows: 20, columns: 20)
@@ -99,22 +99,22 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
         }
     }
     
-    func addGridAction(x x: Int, y: Int, index: Int) {
+    func addGridAction(x: Int, y: Int, index: Int) {
         manager.addStyle(manager.getLiftGameGridStyleFromIndex(index), x: x, y: y)
         gridView.gridArray = manager.getStatus()
     }
     
     // MARK: private methods
     
-    func restartTimer(speed: Double) {
+    func restartTimer(_ speed: Double) {
         timer.invalidate()
-        timer = NSTimer.scheduledTimerWithTimeInterval(speed, target: self, selector: #selector(LifeGameVC.generateNextStatus), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: speed, target: self, selector: #selector(LifeGameVC.generateNextStatus), userInfo: nil, repeats: false)
     }
     
     func generateNextStatus() {
         manager.generate()
         gridView.gridArray = manager.getStatus()
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             if self.isGameRunnig {
                 self.restartTimer(self.generateSpeed)
             }

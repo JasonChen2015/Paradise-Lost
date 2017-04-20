@@ -23,7 +23,7 @@ class AudioToolView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         setupView()
     }
     
@@ -31,23 +31,23 @@ class AudioToolView: UIView {
         super.init(coder: aDecoder)
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         addSubview(nameLabel)
         addSubview(stopButton)
         addSubview(playButton)
         addSubview(recordButton)
         
-        stopButton.addTarget(self, action: #selector(AudioToolView.doStop), forControlEvents: .TouchUpInside)
-        playButton.addTarget(self, action: #selector(AudioToolView.doPlay), forControlEvents: .TouchUpInside)
-        recordButton.addTarget(self, action: #selector(AudioToolView.doRecord), forControlEvents: .TouchUpInside)
+        stopButton.addTarget(self, action: #selector(AudioToolView.doStop), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(AudioToolView.doPlay), for: .touchUpInside)
+        recordButton.addTarget(self, action: #selector(AudioToolView.doRecord), for: .touchUpInside)
     }
     
     override func layoutSubviews() {
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-84-[v0]-[v1]-[v2]-[v3]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel, "v1": stopButton, "v2":playButton, "v3":recordButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[v0]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[v0]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": stopButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[v0]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": playButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[v0]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": recordButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-84-[v0]-[v1]-[v2]-[v3]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel, "v1": stopButton, "v2":playButton, "v3":recordButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": stopButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": playButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": recordButton]))
     }
     
     // MARK: event response
@@ -66,33 +66,33 @@ class AudioToolView: UIView {
     
     // MARK: getters and setters
     
-    private var nameLabel: UILabel = {
+    fileprivate var nameLabel: UILabel = {
         var label = UILabel()
         label.text = LanguageManager.getToolString(forKey: "audio.namelabel.text")
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var stopButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle("stop", forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var stopButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle("stop", for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
  
-    private var playButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle("play", forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var playButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle("play", for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private var recordButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle("record", forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var recordButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle("record", for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

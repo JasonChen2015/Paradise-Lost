@@ -11,14 +11,14 @@ import Foundation
 class TZFEManager {
     
     enum Direction {
-        case None
-        case Up
-        case Down
-        case Left
-        case Right
+        case none
+        case up
+        case down
+        case left
+        case right
     }
     
-    class func addANewValueToTile(items: [Int]) -> [Int] {
+    class func addANewValueToTile(_ items: [Int]) -> [Int] {
         var temp = items
         var hasPos = true
         var s = 0
@@ -51,7 +51,7 @@ class TZFEManager {
         return temp
     }
     
-    class func hasMoveOnTiles(items: [Int]) -> Bool {
+    class func hasMoveOnTiles(_ items: [Int]) -> Bool {
         var s = 0
         // judge if has position to put a new value
         for i in 0..<items.count {
@@ -87,28 +87,28 @@ class TZFEManager {
         08 09 10 11
         12 13 14 15
     */
-    private class func rotateTileItemsToGeneral(items: [Int], fromDirection direct: Direction) -> [Int] {
+    fileprivate class func rotateTileItemsToGeneral(_ items: [Int], fromDirection direct: Direction) -> [Int] {
         var temp = items
         switch direct {
-        case .None:
+        case .none:
             break
-        case .Up:
+        case .up:
             for i in 0..<4 {
                 for j in 0..<4 {
                     temp[i + j * 4] = items[i * 4 + 3 - j]
                 }
             }
             break
-        case .Down:
+        case .down:
             for i in 0..<4 {
                 for j in 0..<4 {
                     temp[i + j * 4] = items[12 - i * 4 + j]
                 }
             }
             break
-        case .Left:
+        case .left:
             break
-        case .Right:
+        case .right:
             for i in 0..<4 {
                 for j in 0..<4 {
                     temp[i + j * 4] = items[3 - i + j * 4]
@@ -119,7 +119,7 @@ class TZFEManager {
         return temp
     }
     
-    private class func mergeTileItemsToLeft(items: [Int]) -> ([Int], Int, Bool) {
+    fileprivate class func mergeTileItemsToLeft(_ items: [Int]) -> ([Int], Int, Bool) {
         var temp = items
         var score = 0
         var hasMove = false
@@ -170,30 +170,30 @@ class TZFEManager {
         return (temp, score, hasMove)
     }
     
-    class func mergeAsideFromItems(items: [Int], atDirection direct: Direction) -> ([Int], Int, Bool) {
+    class func mergeAsideFromItems(_ items: [Int], atDirection direct: Direction) -> ([Int], Int, Bool) {
         var temp  = items
         var score = 0
         var hasMove = false
         switch direct {
-        case .None:
+        case .none:
             break
-        case .Up:
-            temp = rotateTileItemsToGeneral(items, fromDirection: .Up)
+        case .up:
+            temp = rotateTileItemsToGeneral(items, fromDirection: .up)
             (temp, score, hasMove) = mergeTileItemsToLeft(temp)
-            temp = rotateTileItemsToGeneral(temp, fromDirection: .Down)
+            temp = rotateTileItemsToGeneral(temp, fromDirection: .down)
             break
-        case .Down:
-            temp = rotateTileItemsToGeneral(items, fromDirection: .Down)
+        case .down:
+            temp = rotateTileItemsToGeneral(items, fromDirection: .down)
             (temp, score, hasMove) = mergeTileItemsToLeft(temp)
-            temp = rotateTileItemsToGeneral(temp, fromDirection: .Up)
+            temp = rotateTileItemsToGeneral(temp, fromDirection: .up)
             break
-        case .Left:
+        case .left:
             (temp, score, hasMove) = mergeTileItemsToLeft(items)
             break
-        case .Right:
-            temp = rotateTileItemsToGeneral(items, fromDirection: .Right)
+        case .right:
+            temp = rotateTileItemsToGeneral(items, fromDirection: .right)
             (temp, score, hasMove) = mergeTileItemsToLeft(temp)
-            temp = rotateTileItemsToGeneral(temp, fromDirection: .Right)
+            temp = rotateTileItemsToGeneral(temp, fromDirection: .right)
             break
         }
         return (temp, score, hasMove)

@@ -12,17 +12,17 @@ import AVFoundation
 class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCodeViewDelegate {
     
     var mainView: BarCodeView!
-    private let captureSession: AVCaptureSession = AVCaptureSession()
-    private var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
+    fileprivate let captureSession: AVCaptureSession = AVCaptureSession()
+    fileprivate var previewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
     
-    private var glassSound: SystemSoundID = 0 // in swift make sure to initialize the ID to 0
-    private var isSoundOn: Bool = true
-    private var isVibraOn: Bool = true
+    fileprivate var glassSound: SystemSoundID = 0 // in swift make sure to initialize the ID to 0
+    fileprivate var isSoundOn: Bool = true
+    fileprivate var isVibraOn: Bool = true
     
-    private var canCapture: Bool = true
-    private var isCapturing: Bool = false
+    fileprivate var canCapture: Bool = true
+    fileprivate var isCapturing: Bool = false
     
-    private let captureObjectType = [
+    fileprivate let captureObjectType = [
         AVMetadataObjectTypeUPCECode,
         AVMetadataObjectTypeQRCode,
         AVMetadataObjectTypeEAN8Code,
@@ -31,25 +31,25 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
     
     // MARK: life cycle
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return true
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return .Portrait
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return .portrait
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainView = BarCodeView(frame: UIScreen.mainScreen().bounds)
+        mainView = BarCodeView(frame: UIScreen.main.bounds)
         mainView.delegate = self
         view.addSubview(mainView)
         
         initData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupCapture()
     }
@@ -58,29 +58,29 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
         super.didReceiveMemoryWarning()
     }
     
-    private func initData() {
-        if let tmp = UserDefaultManager.objectFromKeyEnum(.BarCodeSoundOn) {
+    fileprivate func initData() {
+        if let tmp = UserDefaultManager.objectFromKeyEnum(.barCodeSoundOn) {
             isSoundOn = tmp as! Bool
         } else {
             isSoundOn = true
         }
         mainView.isSoundOn = isSoundOn
-        if let tmp = UserDefaultManager.objectFromKeyEnum(.BarCodeVibraOn) {
+        if let tmp = UserDefaultManager.objectFromKeyEnum(.barCodeVibraOn) {
             isVibraOn = tmp as! Bool
         } else {
             isVibraOn = true
         }
         mainView.isVibraOn = isVibraOn
         
-        if let soundURL = NSBundle.mainBundle().URLForResource("Audio/Glass", withExtension: "aiff") {
-            AudioServicesCreateSystemSoundID(soundURL, &glassSound)
+        if let soundURL = Bundle.main.url(forResource: "Audio/Glass", withExtension: "aiff") {
+            AudioServicesCreateSystemSoundID(soundURL as CFURL, &glassSound)
         } else {
             AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "barcode.nosound.message"), handler: nil)
         }
     }
     
-    private func setupCapture() {
-        let device = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+    fileprivate func setupCapture() {
+        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         // input
         var deviceInput = AVCaptureDeviceInput()
         do {
@@ -99,7 +99,7 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
         let metaDateOutput = AVCaptureMetadataOutput()
         if captureSession.canAddOutput(metaDateOutput) {
             captureSession.addOutput(metaDateOutput)
-            metaDateOutput.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
+            metaDateOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
             metaDateOutput.metadataObjectTypes = captureObjectType
         } else {
             AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "barcode.nooutput.message"), handler: nil)
@@ -114,13 +114,13 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
     
     // MARK: AVCaptureMetadataOutputObjectsDelegate
     
-    func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
+    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
         for metaData in metadataObjects {
             let readableObject = metaData as! AVMetadataMachineReadableCodeObject
             let code = readableObject.stringValue
             
-            if !code.isEmpty {
-                presentResult(code)
+            if !(code?.isEmpty)! {
+                presentResult(code!)
                 return
             }
         }
@@ -131,12 +131,12 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
     
     func tapSoundImage() {
         isSoundOn = !isSoundOn
-        UserDefaultManager.setObject(isSoundOn, forKeyEnum: .BarCodeSoundOn)
+        UserDefaultManager.setObject(isSoundOn as AnyObject, forKeyEnum: .barCodeSoundOn)
     }
     
     func tapVibraImage() {
         isVibraOn = !isVibraOn
-        UserDefaultManager.setObject(isVibraOn, forKeyEnum: .BarCodeVibraOn)
+        UserDefaultManager.setObject(isVibraOn as AnyObject, forKeyEnum: .barCodeVibraOn)
     }
     
     func tapReader() {
@@ -147,13 +147,13 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
         }
     }
     
-    func copyButtonAction(result: String?) {
-        UIPasteboard.generalPasteboard().string = result
+    func copyButtonAction(_ result: String?) {
+        UIPasteboard.general.string = result
     }
     
     // MARK: event response
     
-    func presentResult(result: String) {
+    func presentResult(_ result: String) {
         captureSession.stopRunning()
         isCapturing = false
         previewLayer.removeFromSuperlayer()

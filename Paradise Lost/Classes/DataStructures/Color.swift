@@ -36,7 +36,7 @@ struct Color {
     //
     var LightGray = UIColor(hex: 0xcccccc)
     
-    func mixColorBetween(colorA: UIColor, weightA: CGFloat = 0.5, colorB: UIColor, weightB: CGFloat = 0.5) -> UIColor {
+    func mixColorBetween(_ colorA: UIColor, weightA: CGFloat = 0.5, colorB: UIColor, weightB: CGFloat = 0.5) -> UIColor {
         let c1 = colorA.RGBComponents
         let c2 = colorB.RGBComponents
         

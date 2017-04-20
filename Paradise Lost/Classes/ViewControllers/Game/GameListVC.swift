@@ -9,7 +9,7 @@
 import UIKit
 
 class GameListVC: UniversalTableViewController {
-    private var items = TableCellItemManager.itemsFromPlist("GameItems", ofType: .Game)
+    fileprivate var items = TableCellItemManager.itemsFromPlist("GameItems", ofType: .game)
     
     // MARK: life cycle
     
@@ -22,8 +22,8 @@ class GameListVC: UniversalTableViewController {
     
     // MARK: event response
     
-    override func cellButtonAction(cell: UITableViewCell) {
-        if let indexPath = tableView.indexPathForCell(cell) {
+    override func cellButtonAction(_ cell: UITableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
             let className = TableCellItemManager.classNameFromItems(items, atIndex: indexPath.row)
             if let aClass = NSClassFromString(className) {
                 if aClass is UIViewController.Type {
@@ -32,7 +32,7 @@ class GameListVC: UniversalTableViewController {
                     if TableCellItemManager.needNavigationFromItems(items, atIndex: indexPath.row) {
                         self.navigationController?.pushViewController(viewController, animated: true)
                     } else {
-                        self.presentViewController(viewController, animated: false) { (_) in }
+                        self.present(viewController, animated: false) { (_) in }
                     }
                 }
             }

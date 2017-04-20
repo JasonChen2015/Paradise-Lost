@@ -45,8 +45,8 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         didSet {
             // save to user default
             let str = SudokuManager.getStringFromSudoku(userSudoku)
-            userDict["\(currentNum)"] = str
-            UserDefaultManager.setObject(userDict, forKeyEnum: .SudokuUserGrid)
+            userDict["\(currentNum)"] = str as AnyObject
+            UserDefaultManager.setObject(userDict as AnyObject, forKeyEnum: .sudokuUserGrid)
             
             // check
             if SudokuManager.checkCorrect(userSudoku) {
@@ -61,8 +61,8 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
     var currentSecond: Int = 0 {
         didSet {
             // save to user default
-            userDict["s-\(currentNum)"] = currentSecond
-            UserDefaultManager.setObject(userDict, forKeyEnum: .SudokuUserGrid)
+            userDict["s-\(currentNum)"] = currentSecond as AnyObject
+            UserDefaultManager.setObject(userDict as AnyObject, forKeyEnum: .sudokuUserGrid)
         }
     }
     
@@ -78,15 +78,15 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
     
     // MARK: life cycle
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return false
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return .Portrait
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
+        return .portrait
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
@@ -95,7 +95,7 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         
         // load data
         loadDict()
-        if let num = UserDefaultManager.objectFromKeyEnum(.SudokuNumber) {
+        if let num = UserDefaultManager.objectFromKeyEnum(.sudokuNumber) {
             currentNum = num as! Int
         } else {
             currentNum = 1
@@ -107,7 +107,7 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         }
         
         // load view
-        mainView = SudokuView(frame: UIScreen.mainScreen().bounds)
+        mainView = SudokuView(frame: UIScreen.main.bounds)
         mainView.delegate = self
         view.addSubview(mainView)
         
@@ -122,7 +122,7 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         prepareGame()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if !loadDataSuccess {
@@ -130,15 +130,15 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         }
         
         // do not let the screen display closed until dismiss
-        UIApplication.sharedApplication().idleTimerDisabled = true
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         mainView.stopTimer()
         if runGame {
             currentSecond = mainView.seconds
         }
-        UIApplication.sharedApplication().idleTimerDisabled = false
+        UIApplication.shared.isIdleTimerDisabled = false
         
         super.viewWillDisappear(animated)
     }
@@ -165,7 +165,7 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
      */
     func loadDict() {
         // get dictionary from plist
-        guard let dictPath = NSBundle.mainBundle().pathForResource("SudokuPuzzles", ofType: "plist") else {
+        guard let dictPath = Bundle.main.path(forResource: "SudokuPuzzles", ofType: "plist") else {
             return
         }
         guard let dict = NSDictionary(contentsOfFile: dictPath) else {
@@ -174,14 +174,14 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         sudokuDict = dict
         
         // get the total number of sudoku in dictionary
-        guard let total = sudokuDict.objectForKey("count") else {
+        guard let total = sudokuDict.object(forKey: "count") else {
             sudokuDict = [:]
             totalNum = 0
             return
         }
         totalNum = total as! Int
         
-        guard let udict = UserDefaultManager.objectFromKeyEnum(.SudokuUserGrid) else {
+        guard let udict = UserDefaultManager.objectFromKeyEnum(.sudokuUserGrid) else {
             return
         }
         userDict = udict as! [String: AnyObject]
@@ -229,7 +229,7 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
     
     // MARK: SudokuViewDelegate
     
-    func startGameAction(didStartGame: Bool, usedSec: Int) {
+    func startGameAction(_ didStartGame: Bool, usedSec: Int) {
         runGame = didStartGame
         if !runGame {
             // tap pause button
@@ -237,7 +237,7 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         }
     }
     
-    func resetGameAction(needAlert: Bool) {
+    func resetGameAction(_ needAlert: Bool) {
         if needAlert {
             AlertManager.showTips(self, message: LanguageManager.getGameString(forKey: "sudoku.reset.message"), handler: nil)
         }
@@ -248,20 +248,20 @@ class SudokuVC: UIViewController, SudokuViewDelegate, SudokuGridViewDelegate, Su
         runGame = false
     }
     
-    func exitGameAction(usedSec: Int) {
+    func exitGameAction(_ usedSec: Int) {
         currentSecond = usedSec
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: SudokuGridViewDelegate
     
-    func didRefreshSudoku(uSudoku: [Int]) {
+    func didRefreshSudoku(_ uSudoku: [Int]) {
         userSudoku = uSudoku
     }
     
     // MARK: SudokuPanelViewDelegate
     
-    func didTapNumber(number: Int) {
+    func didTapNumber(_ number: Int) {
         if number > 9 {
             switch number {
             case 10:

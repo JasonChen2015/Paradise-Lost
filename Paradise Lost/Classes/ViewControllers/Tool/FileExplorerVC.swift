@@ -12,7 +12,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
                       UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate,
                       UIPopoverPresentationControllerDelegate, FilePopoverViewControllerDelegate {
     
-    private let cellReuseIdentifier: String = "CollectionViewCell"
+    fileprivate let cellReuseIdentifier: String = "CollectionViewCell"
     var collectionView: UICollectionView!
     
     /// file explorer manager
@@ -22,7 +22,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
                 AlertManager.showTips(self,
                                       message: LanguageManager.getToolString(forKey: "explorer.init.message"),
                                       handler: { (_) -> Void in
-                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                        self.dismiss(animated: true, completion: nil)
                                         return
                 })
             }
@@ -30,22 +30,22 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     }
     
     /// restore the cells
-    private var items: [File] = []
+    fileprivate var items: [File] = []
     
     /// selected item
-    private var selectedItem: Int = 0
+    fileprivate var selectedItem: Int = 0
     /// selected fullpath of file to be moved
-    private var selectedFilePath: String = ""
+    fileprivate var selectedFilePath: String = ""
     
     /// flag the move file action
-    private var hasMoveFile: Bool = false
+    fileprivate var hasMoveFile: Bool = false
     /// store the full path of be-moved file
-    private var movedFileFullPath: String = ""
+    fileprivate var movedFileFullPath: String = ""
     
     /// record the current directory of absolute path
-    private var currentDir = "" {
+    fileprivate var currentDir = "" {
         didSet {
-            navigationItem.title = currentDir.componentsSeparatedByString("/").last
+            navigationItem.title = currentDir.components(separatedBy: "/").last
         }
     }
     
@@ -58,22 +58,22 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         
         // add quick tool
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+",
-                                                            style: .Plain,
+                                                            style: .plain,
                                                             target: self,
                                                             action: #selector(FileExplorerVC.extraOperation))
         navigationItem.rightBarButtonItem?.setTitleTextAttributes(
-            [NSFontAttributeName: UIFont.boldSystemFontOfSize(28)], forState: .Normal)
+            [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 28)], for: UIControlState())
         
         // set up collection view
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.itemSize = CGSize(width: 80, height: 90)
         flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         
-        collectionView = UICollectionView(frame: UIScreen.mainScreen().bounds, collectionViewLayout: flowLayout)
+        collectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: flowLayout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor.whiteColor()
-        collectionView.registerClass(FileCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+        collectionView.backgroundColor = UIColor.white
+        collectionView.register(FileCollectionViewCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
         // add long press gesture
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(FileExplorerVC.longPressGesture(_:)))
@@ -85,17 +85,17 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     
     // MARK: UICollectionViewDataSource
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let aCell = collectionView.dequeueReusableCellWithReuseIdentifier(cellReuseIdentifier,
-                                                                          forIndexPath: indexPath) as! FileCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let aCell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier,
+                                                                          for: indexPath) as! FileCollectionViewCell
         if indexPath.row == 0 {  // deal with the first item - "button" for upper directory
             aCell.imageView.image = UIImage(named: "UpperDir")
             aCell.nameLabel.text = ""
@@ -103,10 +103,10 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
             // set image
             let file = items[indexPath.row]
             switch explorer.getFileType(file.getFullPath()) {
-            case .Folder:
+            case .folder:
                 aCell.imageView.image = UIImage(named: "Folder")
                 break
-            case .File:
+            case .file:
                 aCell.imageView.image = UIImage(named: "File")
             default:
                 // maybe the file or folder that has no right to read or write
@@ -121,7 +121,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     
     // MARK: UICollectionViewDelegateFlowLayout
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {  // deal with the first item - "button" for upper directory
             goToUpperDirectory()
         }
@@ -129,20 +129,20 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         let file = items[indexPath.row]
         let fullpath = file.getFullPath()
         switch explorer.getFileType(fullpath) {
-        case .Folder:
+        case .folder:
             // go into the folder
             reloadCell(fullpath)
             break
-        case .File:
+        case .file:
             // show information of the file
-            let df = NSDateFormatter()
+            let df = DateFormatter()
             df.dateFormat = "yyyy-MM-dd HH:mm:ss"
             let msg =
                 "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.path"))=\(file.path)\n" +
                 "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.name"))=\(file.name)\n" +
                 "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.size"))=\(file.size)\n" +
-                "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.createdate"))=\(df.stringFromDate(file.createDate))\n" +
-                "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.modifydate"))=\(df.stringFromDate(file.modifyDate))"
+                "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.createdate"))=\(df.string(from: file.createDate))\n" +
+                "\(LanguageManager.getToolString(forKey: "explorer.fileinfo.modifydate"))=\(df.string(from: file.modifyDate))"
             AlertManager.showTips(self, message: msg, handler: nil)
             break
         default:
@@ -152,10 +152,10 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     
     // MARK: UIGestureRecognizerDelegate
     
-    func longPressGesture(recognize: UILongPressGestureRecognizer) {
-        if recognize.state == .Began {
-            let point = recognize.locationInView(collectionView)
-            if let indexPath = collectionView.indexPathForItemAtPoint(point) {
+    func longPressGesture(_ recognize: UILongPressGestureRecognizer) {
+        if recognize.state == .began {
+            let point = recognize.location(in: collectionView)
+            if let indexPath = collectionView.indexPathForItem(at: point) {
                 // record the selected index of items
                 selectedItem = indexPath.row
                 if selectedItem != 0 {
@@ -165,7 +165,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
                         self,
                         title: "",
                         message: "\(LanguageManager.getToolString(forKey: "explorer.longpress.message")) \(file.name)?",
-                        openHDL: (explorer.getFileType(file.getFullPath()) == FileExplorerManager.FileType.File) ? openFile : nil,
+                        openHDL: (explorer.getFileType(file.getFullPath()) == FileExplorerManager.FileType.file) ? openFile : nil,
                         moveHDL: moveFile,
                         renameDL: renameFile,
                         deleteHDL: confirmDeleteFile)
@@ -176,25 +176,25 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     
     // MARK: UIPopoverPresentationControllerDelegate
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
     // MARK: FilePopoverViewControllerDelegate
     
     func didClickCreateButton() {
         // show alert to choose create file or folder
-        let alertCtrl = UIAlertController(title: LanguageManager.getToolString(forKey: "explorer.create.title"), message: "", preferredStyle: .Alert)
-        let cancelAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "cancel"), style: .Cancel, handler: nil)
-        let newFileAction = UIAlertAction(title: LanguageManager.getToolString(forKey: "explorer.create.createfile.title"), style: .Default) { (action: UIAlertAction!) -> Void in
+        let alertCtrl = UIAlertController(title: LanguageManager.getToolString(forKey: "explorer.create.title"), message: "", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "cancel"), style: .cancel, handler: nil)
+        let newFileAction = UIAlertAction(title: LanguageManager.getToolString(forKey: "explorer.create.createfile.title"), style: .default) { (action: UIAlertAction!) -> Void in
             let filename = (alertCtrl.textFields?.first)! as UITextField
             self.createFileOrFolder(filename.text!, isFile: true)
         }
-        let newFolderAction = UIAlertAction(title: LanguageManager.getToolString(forKey: "explorer.create.createfolder.title"), style: .Default) { (action: UIAlertAction!) -> Void in
+        let newFolderAction = UIAlertAction(title: LanguageManager.getToolString(forKey: "explorer.create.createfolder.title"), style: .default) { (action: UIAlertAction!) -> Void in
             let filename = (alertCtrl.textFields?.first)! as UITextField
             self.createFileOrFolder(filename.text!, isFile: false)
         }
-        alertCtrl.addTextFieldWithConfigurationHandler { (filenamne: UITextField!) -> Void in
+        alertCtrl.addTextField { (filenamne: UITextField!) -> Void in
             filenamne.placeholder = LanguageManager.getToolString(forKey: "explorer.create.placeholder")
         }
         alertCtrl.addAction(cancelAction)
@@ -202,7 +202,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         alertCtrl.addAction(newFolderAction)
         
         // show the alert view
-        self.presentViewController(alertCtrl, animated: true, completion: nil)
+        self.present(alertCtrl, animated: true, completion: nil)
     }
     
     func didClickPasteButton() {
@@ -222,8 +222,8 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     // MARK: event response
     
     func goToUpperDirectory() {
-        if let upperURL = NSURL(fileURLWithPath: currentDir).URLByDeletingLastPathComponent {
-            reloadCell(upperURL.relativePath!)
+        if let upperURL = NSURL(fileURLWithPath: currentDir).deletingLastPathComponent {
+            reloadCell(upperURL.relativePath)
         } else {
             AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "explorer.upper.error"), handler: nil)
         }
@@ -233,43 +233,43 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         // use pop over to show the menu
         let popVC = FilePopoverVC()
         popVC.preferredContentSize = CGSize(width: 90, height: 80)
-        popVC.modalPresentationStyle = .Popover
+        popVC.modalPresentationStyle = .popover
         popVC.delegate = self
         popVC.enablePaste = hasMoveFile
         
         let popPC = popVC.popoverPresentationController
         popPC?.delegate = self
-        popPC?.permittedArrowDirections = .Up
+        popPC?.permittedArrowDirections = .up
         popPC?.sourceView = view
         popPC?.sourceRect = CGRect(x: view.frame.width - 35, y: 50, width: 1, height: 1)
         
-        presentViewController(popVC, animated: true, completion: nil)
+        present(popVC, animated: true, completion: nil)
     }
     
     // UIAlertAction handler for long press item
     
-    func openFile(alert: UIAlertAction?) {
+    func openFile(_ alert: UIAlertAction?) {
         let fullPath = items[selectedItem].getFullPath()
-        if explorer.getFileType(fullPath) == FileExplorerManager.FileType.File {
+        if explorer.getFileType(fullPath) == FileExplorerManager.FileType.file {
             let vc = TextEditorVC()
             vc.file = File(absolutePath: fullPath)
             navigationController?.pushViewController(vc, animated: true)
         }
     }
     
-    func moveFile(alert: UIAlertAction?) {
+    func moveFile(_ alert: UIAlertAction?) {
         hasMoveFile = true
         movedFileFullPath = items[selectedItem].getFullPath()
     }
     
-    func renameFile(alert: UIAlertAction?) {
-        let alertCtrl = UIAlertController(title: LanguageManager.getAlertString(forKey: "rename"), message: LanguageManager.getToolString(forKey: "explorer.rename.message"), preferredStyle: .Alert)
-        alertCtrl.addTextFieldWithConfigurationHandler { (textField: UITextField!) -> Void in
+    func renameFile(_ alert: UIAlertAction?) {
+        let alertCtrl = UIAlertController(title: LanguageManager.getAlertString(forKey: "rename"), message: LanguageManager.getToolString(forKey: "explorer.rename.message"), preferredStyle: .alert)
+        alertCtrl.addTextField { (textField: UITextField!) -> Void in
             let file = self.items[self.selectedItem]
             textField.placeholder = file.name
             textField.text = file.name
         }
-        let confirmAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "confirm"), style: .Default) { (action: UIAlertAction!) -> Void in
+        let confirmAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "confirm"), style: .default) { (action: UIAlertAction!) -> Void in
             var result = LanguageManager.getToolString(forKey: "explorer.rename.fail")
             if let textField = alertCtrl.textFields?.first {
                 let file = self.items[self.selectedItem]
@@ -283,21 +283,21 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
             }
             AlertManager.showTips(self, message: result, handler: nil)
         }
-        let cancelAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "cancel"), style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: LanguageManager.getAlertString(forKey: "cancel"), style: .cancel, handler: nil)
         alertCtrl.addAction(confirmAction)
         alertCtrl.addAction(cancelAction)
         
-        self.presentViewController(alertCtrl, animated: true, completion: nil)
+        self.present(alertCtrl, animated: true, completion: nil)
     }
     
-    func confirmDeleteFile(alert: UIAlertAction?) {
+    func confirmDeleteFile(_ alert: UIAlertAction?) {
         AlertManager.showTipsWithContinue(self,
                                           message: "\(LanguageManager.getToolString(forKey: "explorer.delete.message")) \(items[selectedItem].getFullPath())",
                                           handler: nil,
                                           cHandler: deleteFile)
     }
     
-    func deleteFile(alert: UIAlertAction) {
+    func deleteFile(_ alert: UIAlertAction) {
         if explorer.removeFileOrFolder(items[selectedItem].getFullPath()) {
             // refresh the user interface
             reloadCell(currentDir)
@@ -306,7 +306,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         }
     }
     
-    func createFileOrFolder(fileName: String, isFile: Bool) {
+    func createFileOrFolder(_ fileName: String, isFile: Bool) {
         if fileName == "" {
             // alert nil file name
             AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "explorer.create.empty"), handler: nil)
@@ -317,9 +317,9 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
                 AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "explorer.create.exist"), handler: nil)
             } else {
                 if isFile {
-                    explorer.createFile(fullPath)
+                    let _ = explorer.createFile(fullPath)
                 } else {
-                    explorer.createDirectory(fullPath)
+                    let _ = explorer.createDirectory(fullPath)
                 }
                 // refresh the items
                 reloadCell(currentDir)
@@ -329,9 +329,9 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     
     // MARK: private methods
     
-    private func loadData() {
+    fileprivate func loadData() {
         // add the "button" at first place for upper directory
-        items.insert(File(), atIndex: 0)
+        items.insert(File(), at: 0)
         
         currentDir = explorer.documentDir
         let files = explorer.getFileListFromFolder(currentDir)
@@ -342,7 +342,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         }
     }
     
-    private func reloadCell(fullpath: String) {
+    fileprivate func reloadCell(_ fullpath: String) {
         // do not go out of the sandbox
         if fullpath == "/var/mobile/Containers/Data/Application" {
             AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "explorer.upper.error"), handler: nil)
@@ -354,8 +354,8 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         // delete the old items
         let n = items.count
         for _ in 1..<n {
-            items.removeAtIndex(1)
-            collectionView.deleteItemsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)])
+            items.remove(at: 1)
+            collectionView.deleteItems(at: [IndexPath(row: 1, section: 0)])
         }
         
         // create the new items
@@ -364,8 +364,8 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
             for i in 0..<filelist.count {
                 var aFile = File(path: currentDir, name: filelist[i])
                 aFile.setAttributes()
-                items.insert(aFile, atIndex: i + 1)
-                collectionView.insertItemsAtIndexPaths([NSIndexPath(forRow: i + 1, inSection: 0)])
+                items.insert(aFile, at: i + 1)
+                collectionView.insertItems(at: [IndexPath(row: i + 1, section: 0)])
             }
         }
     }
@@ -387,26 +387,26 @@ class FileCollectionViewCell: UICollectionViewCell {
     
     // MARK: private methods
     
-    private func setupCell() {
+    fileprivate func setupCell() {
         addSubview(nameLabel)
         addSubview(imageView)
         
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[v0(64)]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v1(64)]-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel, "v1": imageView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0(64)]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": imageView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v1(64)]-[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel, "v1": imageView]))
     }
     
     // MARK: getters and setters
     
-    private let nameLabel: UILabel = {
+    fileprivate let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFontOfSize(14)
-        label.textAlignment = .Center
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let imageView: UIImageView = {
+    fileprivate let imageView: UIImageView = {
         let image = UIImageView()
         image.image = UIImage()
         image.translatesAutoresizingMaskIntoConstraints = false
@@ -432,35 +432,35 @@ class FilePopoverVC: UIViewController {
         setupComponents()
     }
     
-    private func setupComponents() {
-        let createBtn = UIButton(type: .System)
+    fileprivate func setupComponents() {
+        let createBtn = UIButton(type: .system)
         createBtn.frame = CGRect(x: 0, y: 0, width: 90, height: 40)
-        createBtn.setTitle(LanguageManager.getToolString(forKey: "explorer.popover.create"), forState: .Normal)
-        createBtn.titleLabel?.textAlignment = .Center
-        createBtn.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
-        createBtn.addTarget(self, action: #selector(tapCreateBtn), forControlEvents: .TouchUpInside)
+        createBtn.setTitle(LanguageManager.getToolString(forKey: "explorer.popover.create"), for: UIControlState())
+        createBtn.titleLabel?.textAlignment = .center
+        createBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        createBtn.addTarget(self, action: #selector(tapCreateBtn), for: .touchUpInside)
         view.addSubview(createBtn)
  
-        let pasteBtn = UIButton(type: .System)
+        let pasteBtn = UIButton(type: .system)
         pasteBtn.frame = CGRect(x: 0, y: 40, width: 90, height: 40)
-        pasteBtn.setTitle(LanguageManager.getToolString(forKey: "explorer.popover.paste"), forState: .Normal)
-        pasteBtn.titleLabel?.textAlignment = .Center
-        pasteBtn.titleLabel?.font = UIFont.boldSystemFontOfSize(16)
-        pasteBtn.enabled = enablePaste
-        pasteBtn.addTarget(self, action: #selector(tapPasteBtn), forControlEvents: .TouchUpInside)
+        pasteBtn.setTitle(LanguageManager.getToolString(forKey: "explorer.popover.paste"), for: UIControlState())
+        pasteBtn.titleLabel?.textAlignment = .center
+        pasteBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        pasteBtn.isEnabled = enablePaste
+        pasteBtn.addTarget(self, action: #selector(tapPasteBtn), for: .touchUpInside)
         view.addSubview(pasteBtn)
     }
     
     // MARK: event response
     
     func tapCreateBtn() {
-        dismissViewControllerAnimated(true, completion: {
+        dismiss(animated: true, completion: {
             self.delegate?.didClickCreateButton()
         })
     }
     
     func tapPasteBtn() {
-        dismissViewControllerAnimated(true, completion: {
+        dismiss(animated: true, completion: {
             self.delegate?.didClickPasteButton()
         })
     }

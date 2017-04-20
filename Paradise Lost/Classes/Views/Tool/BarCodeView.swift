@@ -11,7 +11,7 @@ import UIKit
 protocol BarCodeViewDelegate {
     func tapSoundImage()
     func tapVibraImage()
-    func copyButtonAction(result: String?)
+    func copyButtonAction(_ result: String?)
     func tapReader()
 }
 
@@ -44,7 +44,7 @@ class BarCodeView: UIView {
         self.isVibraOn = true
         
         super.init(frame: frame)
-        self.backgroundColor = UIColor.whiteColor()
+        self.backgroundColor = UIColor.white
         setupView()
     }
     
@@ -55,7 +55,7 @@ class BarCodeView: UIView {
         super.init(coder: aDecoder)
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         // subview
         addSubview(titleLabel)
         addSubview(reader)
@@ -68,8 +68,8 @@ class BarCodeView: UIView {
         
         // action
         
-        clearButton.addTarget(self, action: #selector(BarCodeView.clearResult), forControlEvents: .TouchUpInside)
-        copyButton.addTarget(self, action: #selector(BarCodeView.copyResult), forControlEvents: .TouchUpInside)
+        clearButton.addTarget(self, action: #selector(BarCodeView.clearResult), for: .touchUpInside)
+        copyButton.addTarget(self, action: #selector(BarCodeView.copyResult), for: .touchUpInside)
         
         let soundTap = UITapGestureRecognizer(target: self, action: #selector(BarCodeView.changeSound))
         soundImage.addGestureRecognizer(soundTap)
@@ -81,14 +81,14 @@ class BarCodeView: UIView {
     }
     
     override func layoutSubviews() {
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-84-[v0(40)]-20-[v1(334)]-[v2(30)]-[v3(54)]-[v4(25)]-20-[v5(36)]-69-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel, "v1": reader, "v2": resultLabel, "v3": resultText, "v4": clearButton, "v5": soundImage]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-586-[v0(25)]-20-[v1(36)]-69-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": copyButton, "v1": vibraImage]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-40-[v0(334)]-40-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": reader]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": resultLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": resultText]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-150-[v0(53)]-[v1(53)]-150-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": clearButton, "v1": copyButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0(36)]-20-[v1(36)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": soundImage, "v1": vibraImage]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-84-[v0(40)]-20-[v1(334)]-[v2(30)]-[v3(54)]-[v4(25)]-20-[v5(36)]-69-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel, "v1": reader, "v2": resultLabel, "v3": resultText, "v4": clearButton, "v5": soundImage]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-586-[v0(25)]-20-[v1(36)]-69-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": copyButton, "v1": vibraImage]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-40-[v0(334)]-40-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": reader]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": resultLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": resultText]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-150-[v0(53)]-[v1(53)]-150-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": clearButton, "v1": copyButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0(36)]-20-[v1(36)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": soundImage, "v1": vibraImage]))
     }
     
     // MARK: event response
@@ -115,7 +115,7 @@ class BarCodeView: UIView {
         delegate?.tapReader()
     }
     
-    func hasResult(result: String) {
+    func hasResult(_ result: String) {
         if result.isEmpty {
             resultText.text = LanguageManager.getToolString(forKey: "barcode.resulttext.text")
         } else {
@@ -125,11 +125,11 @@ class BarCodeView: UIView {
     
     // MARK: getters and setters
     
-    private var titleLabel: UILabel = {
+    fileprivate var titleLabel: UILabel = {
         var label = UILabel()
         label.text = LanguageManager.getToolString(forKey: "barcode.titlelabel.text")
-        label.font = UIFont.boldSystemFontOfSize(36)
-        label.textAlignment = .Center
+        label.font = UIFont.boldSystemFont(ofSize: 36)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -140,67 +140,67 @@ class BarCodeView: UIView {
         
         let label = UILabel()
         label.text = LanguageManager.getToolString(forKey: "barcode.reader.label.text")
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
         
-        let width = NSLayoutConstraint(item: label, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 300)
-        let height = NSLayoutConstraint(item: label, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 20)
-        let centerX = NSLayoutConstraint(item: label, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0)
-        let centerY = NSLayoutConstraint(item: label, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1, constant: 0)
+        let width = NSLayoutConstraint(item: label, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
+        let height = NSLayoutConstraint(item: label, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
+        let centerX = NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
+        let centerY = NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0)
         
-        NSLayoutConstraint.activateConstraints([width, height, centerX, centerY])
+        NSLayoutConstraint.activate([width, height, centerX, centerY])
         
         return view
     }()
     
-    private var resultLabel: UILabel = {
+    fileprivate var resultLabel: UILabel = {
         var label = UILabel()
         label.text = LanguageManager.getToolString(forKey: "barcode.resultlabel.text")
-        label.font = UIFont.boldSystemFontOfSize(20)
-        label.textAlignment = .Center
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var resultText: UITextView = {
+    fileprivate var resultText: UITextView = {
         var textView = UITextView()
         textView.text = LanguageManager.getToolString(forKey: "barcode.resulttext.text")
-        textView.textAlignment = .Center
-        textView.font = UIFont.systemFontOfSize(20)
-        textView.userInteractionEnabled = false
+        textView.textAlignment = .center
+        textView.font = UIFont.systemFont(ofSize: 20)
+        textView.isUserInteractionEnabled = false
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
     }()
     
-    private var clearButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getPublicString(forKey: "clear"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var clearButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle(LanguageManager.getPublicString(forKey: "clear"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private var copyButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getPublicString(forKey: "copy"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var copyButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle(LanguageManager.getPublicString(forKey: "copy"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private var soundImage: UIImageView = {
+    fileprivate var soundImage: UIImageView = {
         var imageView = UIImageView()
         imageView.image = UIImage(named: "SoundOn")
-        imageView.userInteractionEnabled = true
+        imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private var vibraImage: UIImageView = {
+    fileprivate var vibraImage: UIImageView = {
         var imageView = UIImageView()
         imageView.image = UIImage(named: "VibraOn")
-        imageView.userInteractionEnabled = true
+        imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

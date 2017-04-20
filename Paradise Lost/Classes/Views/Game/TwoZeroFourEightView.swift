@@ -17,13 +17,13 @@ protocol TwoZeroFourEightViewDelegate {
 class TwoZeroFourEightView: UIView {
     
     /// the length of a tile
-    private let length = 86
+    fileprivate let length = 86
     
     /// distance between two tile
-    private let padding = 6
+    fileprivate let padding = 6
     
     /// restore the (dimension * dimension) of tile
-    private var tilesSet: [UIView] = []
+    fileprivate var tilesSet: [UIView] = []
     
     var delegate: TwoZeroFourEightViewDelegate? = nil
     
@@ -39,7 +39,7 @@ class TwoZeroFourEightView: UIView {
         super.init(coder: aDecoder)
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         // add tiles
         for j in 0..<4 {
             for i in 0..<4 {
@@ -66,18 +66,18 @@ class TwoZeroFourEightView: UIView {
         addSubview(newButton)
         addSubview(exitButton)
         
-        newButton.addTarget(self, action: #selector(TwoZeroFourEightView.newGame), forControlEvents: .TouchUpInside)
-        exitButton.addTarget(self, action: #selector(TwoZeroFourEightView.exitGame), forControlEvents: .TouchUpInside)
+        newButton.addTarget(self, action: #selector(TwoZeroFourEightView.newGame), for: .touchUpInside)
+        exitButton.addTarget(self, action: #selector(TwoZeroFourEightView.exitGame), for: .touchUpInside)
     }
     
     override func layoutSubviews() {
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-54-[v0(60)]-[v1(30)]-[v2(374)]-[v3(30)]-[v4(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel, "v1": scoreTextLabel, "v2": tilesBackground, "v3": highScoreTextLabel, "v4": highScoreNumLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[v0(30)]-[v1]-[v2(30)]-[v3(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": scoreNumLabel, "v1": tilesBackground, "v2": newButton, "v3": exitButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-[v1(100)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": scoreTextLabel, "v1": scoreNumLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0(374)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": tilesBackground]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]-[v1(100)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": highScoreTextLabel, "v1": newButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]-[v1(100)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": highScoreNumLabel, "v1": exitButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-54-[v0(60)]-[v1(30)]-[v2(374)]-[v3(30)]-[v4(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel, "v1": scoreTextLabel, "v2": tilesBackground, "v3": highScoreTextLabel, "v4": highScoreNumLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:[v0(30)]-[v1]-[v2(30)]-[v3(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": scoreNumLabel, "v1": tilesBackground, "v2": newButton, "v3": exitButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v1(100)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": scoreTextLabel, "v1": scoreNumLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0(374)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": tilesBackground]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]-[v1(100)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": highScoreTextLabel, "v1": newButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]-[v1(100)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": highScoreNumLabel, "v1": exitButton]))
     }
     
     // MARK: event response
@@ -92,98 +92,98 @@ class TwoZeroFourEightView: UIView {
     
     // MARK: getters and setters
     
-    private var titleLabel: UILabel = {
+    fileprivate var titleLabel: UILabel = {
         var label = UILabel()
         label.text = LanguageManager.getGameString(forKey: "2048.titlelabel.text")
         label.textColor = Color().Kokiake
-        label.font = UIFont.boldSystemFontOfSize(54)
-        label.textAlignment = .Center
+        label.font = UIFont.boldSystemFont(ofSize: 54)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var scoreTextLabel: UILabel = {
+    fileprivate var scoreTextLabel: UILabel = {
         var label = UILabel()
         label.text = LanguageManager.getGameString(forKey: "2048.scoretextlabel.text")
         label.textColor = Color().Kurotobi
-        label.font = UIFont.boldSystemFontOfSize(27)
-        label.textAlignment = .Right
+        label.font = UIFont.boldSystemFont(ofSize: 27)
+        label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var scoreNumLabel: UILabel = {
+    fileprivate var scoreNumLabel: UILabel = {
         var label = UILabel()
         label.text = "0"
         label.textColor = Color().Kakitsubata
-        label.font = UIFont.boldSystemFontOfSize(27)
-        label.textAlignment = .Right
+        label.font = UIFont.boldSystemFont(ofSize: 27)
+        label.textAlignment = .right
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var tilesBackground: UIView = {
+    fileprivate var tilesBackground: UIView = {
         var view = UIView()
         view.backgroundColor = Color().TileBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private var highScoreTextLabel: UILabel = {
+    fileprivate var highScoreTextLabel: UILabel = {
         var label = UILabel()
         label.text = LanguageManager.getGameString(forKey: "2048.highscoretextlabel.text")
         label.textColor = Color().Kurotobi
-        label.font = UIFont.boldSystemFontOfSize(27)
-        label.textAlignment = .Center
+        label.font = UIFont.boldSystemFont(ofSize: 27)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var highScoreNumLabel: UILabel = {
+    fileprivate var highScoreNumLabel: UILabel = {
         var label = UILabel()
         label.text = "0"
         label.textColor = Color().Kakitsubata
-        label.font = UIFont.boldSystemFontOfSize(27)
-        label.textAlignment = .Center
+        label.font = UIFont.boldSystemFont(ofSize: 27)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var newButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitleColor(Color().Kurotobi, forState: .Normal)
-        button.setTitle(LanguageManager.getGameString(forKey: "2048.newbutton.title"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var newButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitleColor(Color().Kurotobi, for: UIControlState())
+        button.setTitle(LanguageManager.getGameString(forKey: "2048.newbutton.title"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private var exitButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitleColor(Color().Kurotobi, forState: .Normal)
-        button.setTitle(LanguageManager.getPublicString(forKey: "exit"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var exitButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitleColor(Color().Kurotobi, for: UIControlState())
+        button.setTitle(LanguageManager.getPublicString(forKey: "exit"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    func setValueOfTile(index: Int, value: Int) {
+    func setValueOfTile(_ index: Int, value: Int) {
         let tile = tilesSet[index] as! TZFETileView
         tile.value = value
     }
     
-    func setValueOfScore(value: Int) {
+    func setValueOfScore(_ value: Int) {
         scoreNumLabel.text = "\(value)"
     }
     
-    func setValueOfHighScore(value: Int) {
+    func setValueOfHighScore(_ value: Int) {
         highScoreNumLabel.text = "\(value)"
     }
 }
 
 class TZFETileView: UIView {
 
-    private let colorMap = [
+    fileprivate let colorMap = [
         0: Color().mixColorBetween(Color().TileColor, colorB: Color().TileBackground),
         2: Color().mixColorBetween(Color().TileColor, weightA: 1, colorB: Color().TileGoldColor, weightB: 0),
         4: Color().mixColorBetween(Color().TileColor, weightA: 0.9, colorB: Color().TileGoldColor, weightB: 0.1),
@@ -201,7 +201,7 @@ class TZFETileView: UIView {
     var value: Int = 0 {
         didSet {
             if value > 2048 {
-                backgroundColor = UIColor.blackColor()
+                backgroundColor = UIColor.black
             } else {
                 backgroundColor = colorMap[value]
             }
@@ -221,9 +221,9 @@ class TZFETileView: UIView {
     
     lazy var contentLabel: UILabel = {
         var label = UILabel()
-        label.textColor = UIColor.whiteColor()
-        label.font = UIFont.boldSystemFontOfSize(27) // originContentFont
-        label.textAlignment = .Center
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 27) // originContentFont
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -237,8 +237,8 @@ class TZFETileView: UIView {
         
         addSubview(contentLabel)
         
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": self.contentLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": self.contentLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": self.contentLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": self.contentLabel]))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -247,13 +247,13 @@ class TZFETileView: UIView {
     
     // MARK: private methods
     
-    private func show() {
-        UIView.animateWithDuration(0.1, animations: { () -> Void in
-            self.transform = CGAffineTransformMakeScale(1.1, 1.1)
-            }) { (finished: Bool) -> Void in
-                UIView.animateWithDuration(0.05, animations: { () -> Void in
-                    self.transform = CGAffineTransformIdentity
+    fileprivate func show() {
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+            self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            }, completion: { (finished: Bool) -> Void in
+                UIView.animate(withDuration: 0.05, animations: { () -> Void in
+                    self.transform = CGAffineTransform.identity
                 })
-        }
+        }) 
     }
 }

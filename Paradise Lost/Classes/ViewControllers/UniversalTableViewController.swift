@@ -11,7 +11,7 @@ import UIKit
 class UniversalTableViewController: UITableViewController, UniversalTableViewCellDelegate {
     
     /// The identifier for reused cell
-    private var cellReuseIdentifier: String = "Cell"
+    fileprivate var cellReuseIdentifier: String = "Cell"
     
     /// The name for title of navigation item
     var viewName: String = ""
@@ -25,17 +25,17 @@ class UniversalTableViewController: UITableViewController, UniversalTableViewCel
         super.viewDidLoad()
         navigationItem.title = viewName
         
-        tableView.registerClass(UniversalTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.register(UniversalTableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
     }
     
     // MARK: UITableViewDataSource
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemNames.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let aCell = tableView.dequeueReusableCellWithIdentifier(cellReuseIdentifier, forIndexPath: indexPath) as! UniversalTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let aCell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! UniversalTableViewCell
         aCell.nameLabel.text = itemNames[indexPath.row]
         aCell.delegate = self
         return aCell
@@ -48,13 +48,13 @@ class UniversalTableViewController: UITableViewController, UniversalTableViewCel
      
         - parameter cell: Cell which has been touched
      */
-    func cellButtonAction(cell: UITableViewCell) {
+    func cellButtonAction(_ cell: UITableViewCell) {
         fatalError("cellButtonAction(cell:) has not been implemented")
     }
 }
 
 protocol UniversalTableViewCellDelegate {
-    func cellButtonAction(cell: UITableViewCell)
+    func cellButtonAction(_ cell: UITableViewCell)
 }
 
 class UniversalTableViewCell: UITableViewCell {
@@ -79,34 +79,34 @@ class UniversalTableViewCell: UITableViewCell {
     
     // MARK: private methods
     
-    private func setupCell() {
+    fileprivate func setupCell() {
         addSubview(nameLabel)
         addSubview(actionButton)
         
-        actionButton.addTarget(self, action: #selector(UniversalTableViewCell.handleAction), forControlEvents: .TouchUpInside)
+        actionButton.addTarget(self, action: #selector(UniversalTableViewCell.handleAction), for: .touchUpInside)
         
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "H:|-16-[v0]-8-[v1(80)]-8-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel, "v1": actionButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat(
-            "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": actionButton]))
+        addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "H:|-16-[v0]-8-[v1(80)]-8-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel, "v1": actionButton]))
+        addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
+        addConstraints(NSLayoutConstraint.constraints(
+            withVisualFormat: "V:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": actionButton]))
     }
     
     // MARK: getters and setters
     
-    private let nameLabel: UILabel = {
+    fileprivate let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "default label"
-        label.font = UIFont.boldSystemFontOfSize(14)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private let actionButton: UIButton = {
-        let button = UIButton(type: .System)
-        button.setTitle("Go", forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate let actionButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Go", for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

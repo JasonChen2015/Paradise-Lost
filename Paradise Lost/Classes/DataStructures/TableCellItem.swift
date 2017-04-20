@@ -23,41 +23,41 @@ struct TableCellItem {
 class TableCellItemManager {
     
     enum MainTabType {
-        case Tool
-        case Game
+        case tool
+        case game
         
         var value: String {
             switch self {
-            case .Tool:
+            case .tool:
                 return "tool"
-            case .Game:
+            case .game:
                 return "game"
             }
         }
     }
     
-    class func itemsFromPlist(name: String, ofType type: MainTabType) -> [TableCellItem] {
+    class func itemsFromPlist(_ name: String, ofType type: MainTabType) -> [TableCellItem] {
         var items: [TableCellItem] = []
-        guard let itemsPath = NSBundle.mainBundle().pathForResource(name, ofType: "plist") else {
+        guard let itemsPath = Bundle.main.path(forResource: name, ofType: "plist") else {
             return []
         }
         guard let dict = NSDictionary(contentsOfFile: itemsPath) else {
             return []
         }
         for index in 1...dict.count {
-            if let info = dict.objectForKey("\(index)") as? NSDictionary {
-                let titleURL = info.objectForKey("name") as! String
+            if let info = dict.object(forKey: "\(index)") as? NSDictionary {
+                let titleURL = info.object(forKey: "name") as! String
                 let item = TableCellItem(
                     name: LanguageManager.getString(forKey: titleURL, inSet: type.value),
-                    segueId: info.objectForKey("segueId") as! String,
-                    needNavigation: info.objectForKey("needNavigation") as! Bool)
+                    segueId: info.object(forKey: "segueId") as! String,
+                    needNavigation: info.object(forKey: "needNavigation") as! Bool)
                 items.append(item)
             }
         }
         return items
     }
     
-    class func nameArrayFromItems(items: [TableCellItem]) -> [String] {
+    class func nameArrayFromItems(_ items: [TableCellItem]) -> [String] {
         var itemNames: [String] = []
         for index in 0...(items.count - 1) {
             itemNames.append(items[index].name)
@@ -65,7 +65,7 @@ class TableCellItemManager {
         return itemNames
     }
     
-    class func classNameFromItems(items: [TableCellItem], atIndex index: Int) -> String {
+    class func classNameFromItems(_ items: [TableCellItem], atIndex index: Int) -> String {
         /*
          String of class in Swift is as format product_module_name.class_name
          where product_module_name is based on product_name, but any nonaplhanumeric
@@ -74,14 +74,14 @@ class TableCellItemManager {
          refer: "Using Swift with Cocoa and Objective-C"
          */
         
-        let appName = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleName") as! String
-        let moduleName = appName.stringByReplacingOccurrencesOfString(" ", withString: "_")
+        let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
+        let moduleName = appName.replacingOccurrences(of: " ", with: "_")
         let className = "\(moduleName).\(items[index].segueId)"
         
         return className
     }
     
-    class func needNavigationFromItems(items: [TableCellItem], atIndex index:Int) -> Bool {
+    class func needNavigationFromItems(_ items: [TableCellItem], atIndex index:Int) -> Bool {
         return items[index].needNavigation
     }
 }

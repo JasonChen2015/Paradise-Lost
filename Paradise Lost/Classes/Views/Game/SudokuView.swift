@@ -9,16 +9,16 @@
 import UIKit
 
 protocol SudokuViewDelegate {
-    func startGameAction(didStartGame: Bool, usedSec: Int)
-    func resetGameAction(needAlert: Bool)
-    func exitGameAction(usedSec: Int)
+    func startGameAction(_ didStartGame: Bool, usedSec: Int)
+    func resetGameAction(_ needAlert: Bool)
+    func exitGameAction(_ usedSec: Int)
 }
 
 class SudokuView: UIView {
     
-    private var didStartGame: Bool = false
+    fileprivate var didStartGame: Bool = false
     
-    private var timer: NSTimer = NSTimer()
+    fileprivate var timer: Timer = Timer()
     var seconds: Int = 0 {
         didSet {
             if seconds == 0 {
@@ -34,7 +34,7 @@ class SudokuView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
         didStartGame = false
         setupView()
     }
@@ -43,7 +43,7 @@ class SudokuView: UIView {
         super.init(coder: aDecoder)
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         addSubview(titleLabel)
         addSubview(startButton)
         addSubview(resetButton)
@@ -52,21 +52,21 @@ class SudokuView: UIView {
         addSubview(timeLabel)
         addSubview(timeNumberLabel)
         
-        startButton.addTarget(self, action: #selector(SudokuView.startGame), forControlEvents: .TouchUpInside)
-        resetButton.addTarget(self, action: #selector(SudokuView.resetGame), forControlEvents: .TouchUpInside)
-        exitButton.addTarget(self, action: #selector(SudokuView.exitGame), forControlEvents: .TouchUpInside)
+        startButton.addTarget(self, action: #selector(SudokuView.startGame), for: .touchUpInside)
+        resetButton.addTarget(self, action: #selector(SudokuView.resetGame), for: .touchUpInside)
+        exitButton.addTarget(self, action: #selector(SudokuView.exitGame), for: .touchUpInside)
     }
     
     override func layoutSubviews() {
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-40-[v0(35)]-434-[v1(30)]-8-[v2(30)]-8-[v3(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel, "v1": startButton, "v2": resetButton, "v3": exitButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-509-[v2(30)]-[v0(30)]-[v1(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": timeLabel, "v1": timeNumberLabel, "v2": numberLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-294-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": startButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-294-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": resetButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-294-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": exitButton]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-294-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": numberLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-294-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": timeLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-294-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": timeNumberLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-40-[v0(35)]-434-[v1(30)]-8-[v2(30)]-8-[v3(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel, "v1": startButton, "v2": resetButton, "v3": exitButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-509-[v2(30)]-[v0(30)]-[v1(30)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": timeLabel, "v1": timeNumberLabel, "v2": numberLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": titleLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-294-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": startButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-294-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": resetButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-294-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": exitButton]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-294-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": numberLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-294-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": timeLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-294-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": timeNumberLabel]))
     }
     
     // MARK: event response
@@ -74,10 +74,10 @@ class SudokuView: UIView {
     func startGame() {
         didStartGame = !didStartGame
         if didStartGame {
-            startButton.setTitle(LanguageManager.getPublicString(forKey: "pause"), forState: .Normal)
+            startButton.setTitle(LanguageManager.getPublicString(forKey: "pause"), for: UIControlState())
             runTimer()
         } else {
-            startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
+            startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), for: UIControlState())
             stopTimer()
         }
         
@@ -90,7 +90,7 @@ class SudokuView: UIView {
         stopTimer()
         showSecondText()
         // button
-        startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
+        startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), for: UIControlState())
     }
     
     func resetGame() {
@@ -104,23 +104,23 @@ class SudokuView: UIView {
     }
     
     func runTimer() {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(SudokuView.addASecond), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(SudokuView.addASecond), userInfo: nil, repeats: true)
     }
     
     func stopTimer() {
-        if timer.valid {
+        if timer.isValid {
             timer.invalidate()
         }
     }
     
     // MARK: private methods
     
-    @objc private func addASecond() {
+    @objc fileprivate func addASecond() {
         seconds = seconds + 1
         showSecondText()
     }
     
-    private func showSecondText() {
+    fileprivate func showSecondText() {
         var minute: Int = seconds / 60
         let hours: Int = minute / 60
         minute = minute % 60
@@ -130,78 +130,78 @@ class SudokuView: UIView {
     
     // MARK: getters and setters
     
-    private var titleLabel: UILabel = {
+    fileprivate var titleLabel: UILabel = {
         var label = UILabel()
         label.text = LanguageManager.getGameString(forKey: "sudoku.titlelabel.text")
-        label.font = UIFont.boldSystemFontOfSize(36)
-        label.textAlignment = .Center
+        label.font = UIFont.boldSystemFont(ofSize: 36)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var numberLabel: UILabel = {
+    fileprivate var numberLabel: UILabel = {
         var label = UILabel()
         label.text = "NO. 1"
-        label.font = UIFont.boldSystemFontOfSize(25)
-        label.textAlignment = .Center
+        label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label;
     }()
     
-    func setNumber(number: Int) {
+    func setNumber(_ number: Int) {
         numberLabel.text = "NO. \(number)"
     }
     
-    private var timeLabel: UILabel = {
+    fileprivate var timeLabel: UILabel = {
         var label = UILabel()
         label.text = LanguageManager.getGameString(forKey: "sudoku.timelabel.text")
-        label.font = UIFont.boldSystemFontOfSize(25)
-        label.textAlignment = .Center
+        label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var timeNumberLabel: UILabel = {
+    fileprivate var timeNumberLabel: UILabel = {
         var label = UILabel()
         label.text = "0:0:0"
-        label.textAlignment = .Center
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var startButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getPublicString(forKey: "start"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var startButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle(LanguageManager.getPublicString(forKey: "start"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private var resetButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getGameString(forKey: "sudoku.resetbutton.title"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var resetButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle(LanguageManager.getGameString(forKey: "sudoku.resetbutton.title"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private var exitButton: UIButton = {
-        var button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getPublicString(forKey: "exit"), forState: .Normal)
-        button.exclusiveTouch = true
+    fileprivate var exitButton: UIButton = {
+        var button = UIButton(type: .system)
+        button.setTitle(LanguageManager.getPublicString(forKey: "exit"), for: UIControlState())
+        button.isExclusiveTouch = true
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 }
 
 protocol SudokuGridViewDelegate {
-    func didRefreshSudoku(uSudoku: [Int])
+    func didRefreshSudoku(_ uSudoku: [Int])
 }
 
 class SudokuGridView: UIView {
     
-    private var viewHeight: CGFloat = 0
-    private var viewWidth: CGFloat = 0
+    fileprivate var viewHeight: CGFloat = 0
+    fileprivate var viewWidth: CGFloat = 0
     
     var delegate: SudokuGridViewDelegate? = nil
     
@@ -228,7 +228,7 @@ class SudokuGridView: UIView {
         }
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let height = rect.height
         let width = rect.width
         
@@ -252,24 +252,24 @@ class SudokuGridView: UIView {
         // horizontal
         for i in 0...9 {
             if i % 3 == 0 {
-                regionPath.moveToPoint(CGPoint(x: 0, y: gridHeight * CGFloat(i)))
-                regionPath.addLineToPoint(CGPoint(x: width, y: gridHeight * CGFloat(i)))
+                regionPath.move(to: CGPoint(x: 0, y: gridHeight * CGFloat(i)))
+                regionPath.addLine(to: CGPoint(x: width, y: gridHeight * CGFloat(i)))
             } else {
-                gridPath.moveToPoint(CGPoint(x: 0, y: gridHeight * CGFloat(i)))
-                gridPath.addLineToPoint(CGPoint(x: width, y: gridHeight * CGFloat(i)))
+                gridPath.move(to: CGPoint(x: 0, y: gridHeight * CGFloat(i)))
+                gridPath.addLine(to: CGPoint(x: width, y: gridHeight * CGFloat(i)))
             }
         }
         // vertical
         for i in 0...9 {
             if i % 3 == 0 {
-                regionPath.moveToPoint(CGPoint(x: gridWidth * CGFloat(i), y: 0))
-                regionPath.addLineToPoint(CGPoint(x: gridWidth * CGFloat(i), y: height))
+                regionPath.move(to: CGPoint(x: gridWidth * CGFloat(i), y: 0))
+                regionPath.addLine(to: CGPoint(x: gridWidth * CGFloat(i), y: height))
             } else {
-                gridPath.moveToPoint(CGPoint(x: gridWidth * CGFloat(i), y: 0))
-                gridPath.addLineToPoint(CGPoint(x: gridWidth * CGFloat(i), y: height))
+                gridPath.move(to: CGPoint(x: gridWidth * CGFloat(i), y: 0))
+                gridPath.addLine(to: CGPoint(x: gridWidth * CGFloat(i), y: height))
             }
         }
-        UIColor.blackColor().setStroke()
+        UIColor.black.setStroke()
         gridPath.stroke()
         regionPath.stroke()
         
@@ -303,7 +303,7 @@ class SudokuGridView: UIView {
                     }
                     let centerX = gridWidth * CGFloat(i) + gridWidth / 2
                     let centerY = gridHeight * CGFloat(j) + gridHeight / 2
-                    str.drawAtPoint(CGPoint(x: centerX - 8, y: centerY - 12), withAttributes: attributes)
+                    str.draw(at: CGPoint(x: centerX - 8, y: centerY - 12), withAttributes: attributes)
                 }
             }
         }
@@ -321,19 +321,19 @@ class SudokuGridView: UIView {
         super.init(coder: aDecoder)
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SudokuGridView.handleTapGesture(_:)))
         addGestureRecognizer(tapGesture)
     }
     
     // MARK: event response
     
-    func handleTapGesture(sender: UITapGestureRecognizer) {
-        if sender.state == .Ended {
+    func handleTapGesture(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
             if !canEnable {
                 return
             }
-            let pos = sender.locationInView(self)
+            let pos = sender.location(in: self)
             // get point
             let i = Int(9 * pos.x / viewWidth) + 1
             let j = Int(9 * pos.y / viewHeight) + 1
@@ -341,7 +341,7 @@ class SudokuGridView: UIView {
         }
     }
     
-    func putNumberToPoint(number: Int) {
+    func putNumberToPoint(_ number: Int) {
         let (x, y) = selectedPoint
         if x != 0 && y != 0 {
             let index = x - 1 + (y - 1) * 9
@@ -356,7 +356,7 @@ class SudokuGridView: UIView {
 }
 
 protocol SudokuPanelViewDelegate {
-    func didTapNumber(number: Int)
+    func didTapNumber(_ number: Int)
 }
 
 /**
@@ -364,12 +364,12 @@ protocol SudokuPanelViewDelegate {
  */
 class SudokuPanelView: UIView {
     
-    private var viewHeight: CGFloat = 0
-    private var viewWidth: CGFloat = 0
+    fileprivate var viewHeight: CGFloat = 0
+    fileprivate var viewWidth: CGFloat = 0
     
     var delegate: SudokuPanelViewDelegate? = nil
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         // assume that height is 4/3 of width
         let height = rect.height
         let width = rect.width
@@ -377,7 +377,7 @@ class SudokuPanelView: UIView {
         
         // background
         let path = UIBezierPath(rect: CGRect(x: 0, y: 0, width: width, height: width))
-        let fillColor = UIColor.brownColor()
+        let fillColor = UIColor.brown
         fillColor.setFill()
         path.fill()
         
@@ -385,16 +385,16 @@ class SudokuPanelView: UIView {
         let plusPath = UIBezierPath()
         plusPath.lineWidth = plusHeight
         
-        plusPath.moveToPoint(CGPoint(x: 0, y: width / 3))
-        plusPath.addLineToPoint(CGPoint(x: width, y: width / 3))
-        plusPath.moveToPoint(CGPoint(x: 0, y: width / 3 * 2))
-        plusPath.addLineToPoint(CGPoint(x: width, y: width / 3 * 2))
-        plusPath.moveToPoint(CGPoint(x: width / 3, y: 0))
-        plusPath.addLineToPoint(CGPoint(x: width / 3, y: width))
-        plusPath.moveToPoint(CGPoint(x: width / 3 * 2, y: 0))
-        plusPath.addLineToPoint(CGPoint(x: width / 3 * 2, y: width))
+        plusPath.move(to: CGPoint(x: 0, y: width / 3))
+        plusPath.addLine(to: CGPoint(x: width, y: width / 3))
+        plusPath.move(to: CGPoint(x: 0, y: width / 3 * 2))
+        plusPath.addLine(to: CGPoint(x: width, y: width / 3 * 2))
+        plusPath.move(to: CGPoint(x: width / 3, y: 0))
+        plusPath.addLine(to: CGPoint(x: width / 3, y: width))
+        plusPath.move(to: CGPoint(x: width / 3 * 2, y: 0))
+        plusPath.addLine(to: CGPoint(x: width / 3 * 2, y: width))
         
-        UIColor.whiteColor().setStroke()
+        UIColor.white.setStroke()
         plusPath.stroke()
         
         // numbers
@@ -402,11 +402,11 @@ class SudokuPanelView: UIView {
             for i in 0..<3 {
                 let str = "\(i + j * 3 + 1)"
                     let attributes = [
-                        NSFontAttributeName: UIFont.boldSystemFontOfSize(22),
-                        NSForegroundColorAttributeName: UIColor.whiteColor()]
+                        NSFontAttributeName: UIFont.boldSystemFont(ofSize: 22),
+                        NSForegroundColorAttributeName: UIColor.white]
                     let centerX = width / 3 * CGFloat(i)
                     let centerY = width / 3 * CGFloat(j)
-                    str.drawAtPoint(CGPoint(x: centerX + 18, y: centerY + 11), withAttributes: attributes)
+                    str.draw(at: CGPoint(x: centerX + 18, y: centerY + 11), withAttributes: attributes)
             }
         }
         
@@ -416,41 +416,41 @@ class SudokuPanelView: UIView {
         // previous button
         // a triangle
         let pTriPath = UIBezierPath()
-        pTriPath.moveToPoint(CGPoint(x: 0, y: buttonCenterY))
-        pTriPath.addLineToPoint(CGPoint(x: width / 12, y: buttonCenterY - width / 24))
-        pTriPath.addLineToPoint(CGPoint(x: width / 12, y: buttonCenterY + width / 24))
-        pTriPath.addLineToPoint(CGPoint(x: 0, y: buttonCenterY))
-        UIColor.greenColor().setFill()
+        pTriPath.move(to: CGPoint(x: 0, y: buttonCenterY))
+        pTriPath.addLine(to: CGPoint(x: width / 12, y: buttonCenterY - width / 24))
+        pTriPath.addLine(to: CGPoint(x: width / 12, y: buttonCenterY + width / 24))
+        pTriPath.addLine(to: CGPoint(x: 0, y: buttonCenterY))
+        UIColor.green.setFill()
         pTriPath.fill()
         // a rectangle
         let pRecPath = UIBezierPath(rect:
             CGRect(x: width / 12, y: buttonCenterY - width / 48, width: width / 6, height: width / 24))
-        UIColor.greenColor().setFill()
+        UIColor.green.setFill()
         pRecPath.fill()
         
         // next button
         // a triangle
         let nTriPath = UIBezierPath()
-        nTriPath.moveToPoint(CGPoint(x: width, y: buttonCenterY))
-        nTriPath.addLineToPoint(CGPoint(x: width / 12 * 11, y: buttonCenterY - width / 24))
-        nTriPath.addLineToPoint(CGPoint(x: width / 12 * 11, y: buttonCenterY + width / 24))
-        nTriPath.addLineToPoint(CGPoint(x: width, y: buttonCenterY))
-        UIColor.greenColor().setFill()
+        nTriPath.move(to: CGPoint(x: width, y: buttonCenterY))
+        nTriPath.addLine(to: CGPoint(x: width / 12 * 11, y: buttonCenterY - width / 24))
+        nTriPath.addLine(to: CGPoint(x: width / 12 * 11, y: buttonCenterY + width / 24))
+        nTriPath.addLine(to: CGPoint(x: width, y: buttonCenterY))
+        UIColor.green.setFill()
         nTriPath.fill()
         // a rectangle
         let nRecPath = UIBezierPath(rect:
             CGRect(x: width / 4 * 3, y: buttonCenterY - width / 48, width: width / 6, height: width / 24))
-        UIColor.greenColor().setFill()
+        UIColor.green.setFill()
         nRecPath.fill()
         
         // clear
         let clearPath = UIBezierPath()
         clearPath.lineWidth = plusHeight
-        clearPath.moveToPoint(CGPoint(x: width / 12 * 5, y: width / 12 * 13))
-        clearPath.addLineToPoint(CGPoint(x: width / 12 * 7, y:width / 12 * 15))
-        clearPath.moveToPoint(CGPoint(x: width / 12 * 7, y: width / 12 * 13))
-        clearPath.addLineToPoint(CGPoint(x: width / 12 * 5, y:width / 12 * 15))
-        UIColor.redColor().setStroke()
+        clearPath.move(to: CGPoint(x: width / 12 * 5, y: width / 12 * 13))
+        clearPath.addLine(to: CGPoint(x: width / 12 * 7, y:width / 12 * 15))
+        clearPath.move(to: CGPoint(x: width / 12 * 7, y: width / 12 * 13))
+        clearPath.addLine(to: CGPoint(x: width / 12 * 5, y:width / 12 * 15))
+        UIColor.red.setStroke()
         clearPath.stroke()
     }
     
@@ -458,7 +458,7 @@ class SudokuPanelView: UIView {
         super.init(frame: frame)
         viewHeight = frame.height
         viewWidth = frame.width
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
         setupView()
     }
     
@@ -466,7 +466,7 @@ class SudokuPanelView: UIView {
         super.init(coder: aDecoder)
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SudokuGridView.handleTapGesture(_:)))
         addGestureRecognizer(tapGesture)
@@ -474,9 +474,9 @@ class SudokuPanelView: UIView {
     
     // MARK: event response
     
-    func handleTapGesture(sender: UITapGestureRecognizer) {
-        if sender.state == .Ended {
-            let pos = sender.locationInView(self)
+    func handleTapGesture(_ sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            let pos = sender.location(in: self)
             // judge
             let i = Int(3 * pos.x / viewWidth) + 1
             let j = Int(4 * pos.y / viewHeight)

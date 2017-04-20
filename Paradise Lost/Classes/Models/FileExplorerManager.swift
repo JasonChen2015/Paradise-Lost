@@ -15,13 +15,13 @@ class FileExplorerManager {
     /// document directory, i.e. ~/Documents
     var documentDir = ""
     /// file manager
-    var fileManager = NSFileManager.defaultManager()
+    var fileManager = FileManager.default
     
     // MARK: self attribute
     
     init() {
         var paths = NSSearchPathForDirectoriesInDomains(
-            .DocumentDirectory, .UserDomainMask, true)
+            .documentDirectory, .userDomainMask, true)
         if paths.count > 0 {
             self.documentDir = paths[0] as String
         }
@@ -38,10 +38,10 @@ class FileExplorerManager {
      - parameter absolutePath: the absolute path of file
      - returns: an NSArray of all contents from the provided path
     */
-    func getFileListFromFolder(absolutePath: String) -> [String] {
-        if getFileType(absolutePath) == .Folder {
+    func getFileListFromFolder(_ absolutePath: String) -> [String] {
+        if getFileType(absolutePath) == .folder {
             do {
-                let filelist = try fileManager.contentsOfDirectoryAtPath(absolutePath)
+                let filelist = try fileManager.contentsOfDirectory(atPath: absolutePath)
                 return filelist
             } catch {
                 return []
@@ -60,9 +60,9 @@ class FileExplorerManager {
      Notes: This may be very expensive to compute for deep filesystem hierarchies,
      and should probably be avoided.
      */
-    func getFileListFromFolderRecursive(absolutePath: String) -> [String] {
-        if getFileType(absolutePath) == .Folder {
-            if let fileList = fileManager.subpathsAtPath(absolutePath) {
+    func getFileListFromFolderRecursive(_ absolutePath: String) -> [String] {
+        if getFileType(absolutePath) == .folder {
+            if let fileList = fileManager.subpaths(atPath: absolutePath) {
                 return fileList
             } else {
                 return []
@@ -83,15 +83,15 @@ class FileExplorerManager {
      attempt an operation and handle the error gracefully than it is to
      try to figure out ahead of time whether the operation will succeed.
      */
-    func isFileOrFolderExist(absolutePath: String) -> Bool {
-        return fileManager.fileExistsAtPath(absolutePath)
+    func isFileOrFolderExist(_ absolutePath: String) -> Bool {
+        return fileManager.fileExists(atPath: absolutePath)
     }
     
     // enum that defines the type of file
     enum FileType {
-        case Folder
-        case File
-        case None
+        case folder
+        case file
+        case none
     }
 
     /**
@@ -105,74 +105,80 @@ class FileExplorerManager {
      attempt an operation and handle the error gracefully than it is to
      try to figure out ahead of time whether the operation will succeed.
      */
-    func getFileType(absolutePath: String) -> FileType {
-        var isDir: ObjCBool = true
-        if fileManager.fileExistsAtPath(absolutePath, isDirectory: &isDir) {
-            if isDir {
+    func getFileType(_ absolutePath: String) -> FileType {
+        var isDir : ObjCBool = true
+        if fileManager.fileExists(atPath: absolutePath, isDirectory: &isDir) {
+            if isDir.boolValue {
                 // exists and is a folder
-                return .Folder
+                return .folder
             } else {
                 // exists but is a file
-                return .File
+                return .file
             }
         } else {
             // file not exists
-            return .None
+            return .none
         }
     }
     
+    /*
+    // May be no use
     enum FileAttributes {
-        case OwnerAccountName
-        case CreationDate
-        case ModificationDate
-        case Size
-        case GroupOwnerAccountName
-        case HFSTypeCode
-        case Type
-        case ReferenceCount
-        case SystemFileNumber
-        case HFSCreatorCode
-        case PosixPermissions
-        case GroupOwnerAccountID
-        case OwnerAccountID
-        case SystemNumber
-        case ExtensionHidden
+        case ownerAccountName
+        case creationDate
+        case modificationDate
+        case size
+        case groupOwnerAccountName
+        case hfsTypeCode
+        case type
+        case referenceCount
+        case systemFileNumber
+        case hfsCreatorCode
+        case posixPermissions
+        case groupOwnerAccountID
+        case ownerAccountID
+        case systemNumber
+        case extensionHidden
         
         var value: String {
             switch self {
-            case OwnerAccountName:
-                return NSFileOwnerAccountName
-            case CreationDate:
-                return NSFileCreationDate
-            case ModificationDate:
-                return NSFileModificationDate
-            case Size:
-                return NSFileSize
-            case GroupOwnerAccountName:
-                return NSFileGroupOwnerAccountName
-            case HFSTypeCode:
-                return NSFileHFSTypeCode
-            case Type:
-                return NSFileType
-            case ReferenceCount:
-                return NSFileReferenceCount
-            case SystemFileNumber:
-                return NSFileSystemFileNumber
-            case HFSCreatorCode:
-                return NSFileHFSCreatorCode
-            case PosixPermissions:
-                return NSFilePosixPermissions
-            case GroupOwnerAccountID:
-                return NSFileGroupOwnerAccountID
-            case OwnerAccountID:
-                return NSFileOwnerAccountID
-            case SystemNumber:
-                return NSFileSystemNumber
-            case ExtensionHidden:
-                return NSFileExtensionHidden
+            case .ownerAccountName:
+                return FileAttributeKey.ownerAccountName.rawValue
+            case .creationDate:
+                return FileAttributeKey.creationDate.rawValue
+            case .modificationDate:
+                return FileAttributeKey.modificationDate.rawValue
+            case .size:
+                return FileAttributeKey.size.rawValue
+            case .groupOwnerAccountName:
+                return FileAttributeKey.groupOwnerAccountName.rawValue
+            case .hfsTypeCode:
+                return FileAttributeKey.hfsTypeCode.rawValue
+            case .type:
+                return FileAttributeKey.type.rawValue
+            case .referenceCount:
+                return FileAttributeKey.referenceCount.rawValue
+            case .systemFileNumber:
+                return FileAttributeKey.systemFileNumber.rawValue
+            case .hfsCreatorCode:
+                return FileAttributeKey.hfsCreatorCode.rawValue
+            case .posixPermissions:
+                return FileAttributeKey.posixPermissions.rawValue
+            case .groupOwnerAccountID:
+                return FileAttributeKey.groupOwnerAccountID.rawValue
+            case .ownerAccountID:
+                return FileAttributeKey.ownerAccountID.rawValue
+            case .systemNumber:
+                return FileAttributeKey.systemNumber.rawValue
+            case .extensionHidden:
+                return FileAttributeKey.extensionHidden.rawValue
             }
         }
-    }
+     }
+     
+     func getAttributeOfAFileOrFoloder(forKey: FileAttributes) -> AnyObject {
+     }
+    */
     
     /**
      get attributes of a file or a folder
@@ -180,9 +186,9 @@ class FileExplorerManager {
      - returns: an NSDictionary of key/value pairs containing the attributes of
      the item at the path in question
      */
-    func getAttributesOfFileOrFolder(absolutePath: String) -> [NSObject: AnyObject]? {
+    func getAttributesOfFileOrFolder(_ absolutePath: String) -> [AnyHashable: Any]? {
         do {
-            let attributes = try fileManager.attributesOfItemAtPath(absolutePath)
+            let attributes = try fileManager.attributesOfItem(atPath: absolutePath)
             return attributes
         } catch {
             return [:]
@@ -191,32 +197,29 @@ class FileExplorerManager {
     
     /*
     // May be no use
-    func getAttributeOfAFileOrFoloder(forKey: FileAttributes) -> AnyObject {
-    }
-    */
-    
     enum FileSystemAttributes {
-        case FreeNodes
-        case Nodes
-        case Size
-        case Number
-        case FreeSize
+        case freeNodes
+        case nodes
+        case size
+        case number
+        case freeSize
 
         var value: String {
             switch self {
-            case FreeNodes:
-                return NSFileSystemFreeNodes
-            case Nodes:
-                return NSFileSystemNodes
-            case Size:
-                return NSFileSystemSize
-            case Number:
-                return NSFileSystemNumber
-            case FreeSize:
-                return NSFileSystemFreeSize
+            case .freeNodes:
+                return FileAttributeKey.systemFreeNodes.rawValue
+            case .nodes:
+                return FileAttributeKey.systemNodes.rawValue
+            case .size:
+                return FileAttributeKey.systemSize.rawValue
+            case .number:
+                return FileAttributeKey.systemNumber.rawValue
+            case .freeSize:
+                return FileAttributeKey.systemFreeSize.rawValue
             }
         }
     }
+    */
     
     /**
      rename a file of absolute path to a new name
@@ -224,18 +227,18 @@ class FileExplorerManager {
      - parameter newName: a string of new name (can not contain '/')
      - returns: true while file is renamed
      */
-    func renameFile(absolutePath: String, newName:String) -> Bool {
+    func renameFile(_ absolutePath: String, newName:String) -> Bool {
         if !isFileOrFolderExist(absolutePath) {
             // no file can be renamed
             return false
         }
-        let dir = NSURL(fileURLWithPath: absolutePath).URLByDeletingLastPathComponent
-        let toFullPath = "\(dir!.path!)/\(newName)"
+        let dir = NSURL(fileURLWithPath: absolutePath).deletingLastPathComponent
+        let toFullPath = "\(dir!.path)/\(newName)"
         if isFileOrFolderExist(toFullPath) {
             return false
         }
         do {
-            try fileManager.moveItemAtPath(absolutePath, toPath: toFullPath)
+            try fileManager.moveItem(atPath: absolutePath, toPath: toFullPath)
             return true
         } catch {
             return false
@@ -250,11 +253,11 @@ class FileExplorerManager {
      - returns: true while the file is created, if file alrealdy exists then returns
      false
     */
-    func createFile(absolutePath: String) -> Bool {
+    func createFile(_ absolutePath: String) -> Bool {
         if isFileOrFolderExist(absolutePath) {
             return false
         } else {
-            return fileManager.createFileAtPath(absolutePath, contents: nil, attributes: [:])
+            return fileManager.createFile(atPath: absolutePath, contents: nil, attributes: [:])
         }
     }
     
@@ -263,11 +266,11 @@ class FileExplorerManager {
      - parameter absolutePath: the absolute path of file
      - returns: true while the file is created
      */
-    func createFileWithDirectory(absolutePath: String) -> Bool {
-        let dir = NSURL(fileURLWithPath: absolutePath).URLByDeletingLastPathComponent
-        if !isFileOrFolderExist(dir!.path!) {
+    func createFileWithDirectory(_ absolutePath: String) -> Bool {
+        let dir = NSURL(fileURLWithPath: absolutePath).deletingLastPathComponent
+        if !isFileOrFolderExist(dir!.path) {
             do {
-                try fileManager.createDirectoryAtURL(dir!, withIntermediateDirectories: true, attributes: [:])
+                try fileManager.createDirectory(at: dir!, withIntermediateDirectories: true, attributes: [:])
             } catch {
                 return false
             }
@@ -281,12 +284,12 @@ class FileExplorerManager {
      - returns: true while the directory is created, if directory alrealdy exists then
      returns false
      */
-    func createDirectory(absolutePath: String) -> Bool {
+    func createDirectory(_ absolutePath: String) -> Bool {
         if isFileOrFolderExist(absolutePath) {
             return false
         } else {
             do {
-                try fileManager.createDirectoryAtPath(absolutePath, withIntermediateDirectories: true, attributes: [:])
+                try fileManager.createDirectory(atPath: absolutePath, withIntermediateDirectories: true, attributes: [:])
             } catch {
                 return false
             }
@@ -299,10 +302,10 @@ class FileExplorerManager {
      - parameter absolutePath: the absolute path of file
      - returns: true while the file is removed
      */
-    func removeFileOrFolder(absolutePath: String) -> Bool {
+    func removeFileOrFolder(_ absolutePath: String) -> Bool {
         if isFileOrFolderExist(absolutePath) {
             do {
-                try fileManager.removeItemAtPath(absolutePath)
+                try fileManager.removeItem(atPath: absolutePath)
             } catch {
                 return false
             }
@@ -322,7 +325,7 @@ class FileExplorerManager {
      
      Notes: If move the file(folder) to cover a foler(file) of , it would not success.
      */
-    func moveFileOrFolder(fromFullPath fromFullPath: String, toFullPath:String, willCover: Bool) -> Bool {
+    func moveFileOrFolder(fromFullPath: String, toFullPath:String, willCover: Bool) -> Bool {
         if !isFileOrFolderExist(fromFullPath) {
             // no file can be moved
             return false
@@ -339,11 +342,11 @@ class FileExplorerManager {
                 }
             }
         } else {
-            createDirectory((NSURL(fileURLWithPath: toFullPath).URLByDeletingLastPathComponent?.path)!)
+            let _ = createDirectory((NSURL(fileURLWithPath: toFullPath).deletingLastPathComponent?.path)!)
         }
         // move file
         do {
-            try fileManager.moveItemAtPath(fromFullPath, toPath: toFullPath)
+            try fileManager.moveItem(atPath: fromFullPath, toPath: toFullPath)
         } catch {
             return false
         }
@@ -356,7 +359,7 @@ class FileExplorerManager {
      - parameter toFullPath: the path where the file or folder will be in
      - returns: return true while the file is copied
      */
-    func copyFileOrFolder(fromFullPath fromFullPath: String, toFullPath:String) -> Bool {
+    func copyFileOrFolder(fromFullPath: String, toFullPath:String) -> Bool {
         if !isFileOrFolderExist(fromFullPath) {
             // no file can be moved
             return false
@@ -365,12 +368,12 @@ class FileExplorerManager {
         if isFileOrFolderExist(toFullPath) {
             newPath = "\(newPath)-copy"
         }
-        if !createDirectory((NSURL(fileURLWithPath: newPath).URLByDeletingLastPathComponent?.path)!) {
+        if !createDirectory((NSURL(fileURLWithPath: newPath).deletingLastPathComponent?.path)!) {
             return false
         }
         // copy file
         do {
-            try fileManager.copyItemAtPath(fromFullPath, toPath: newPath)
+            try fileManager.copyItem(atPath: fromFullPath, toPath: newPath)
         } catch {
             return false
         }
@@ -385,12 +388,12 @@ class FileExplorerManager {
      - parameter contents: the data that you will write of
      - returns: true while the data is written
      */
-    func appendToFile(absolutePath: String, contents: String) -> Bool {
-        if getFileType(absolutePath) == .File {
-            if fileManager.isWritableFileAtPath(absolutePath) {
-                let fileHandle : NSFileHandle = NSFileHandle(forWritingAtPath: absolutePath)!
+    func appendToFile(_ absolutePath: String, contents: String) -> Bool {
+        if getFileType(absolutePath) == .file {
+            if fileManager.isWritableFile(atPath: absolutePath) {
+                let fileHandle : FileHandle = FileHandle(forWritingAtPath: absolutePath)!
                 fileHandle.seekToEndOfFile()
-                fileHandle.writeData(contents.dataUsingEncoding(NSUTF8StringEncoding)!)
+                fileHandle.write(contents.data(using: String.Encoding.utf8)!)
                 fileHandle.closeFile()
                 return true
             } else {
@@ -409,10 +412,10 @@ class FileExplorerManager {
      - parameter contents: the data that you will write of
      - returns: true while the data is written
      */
-    func coverToFile(absolutePath: String, contents: String) -> Bool {
+    func coverToFile(_ absolutePath: String, contents: String) -> Bool {
         if isFileOrFolderExist(absolutePath) {
             do {
-                try contents.writeToFile(absolutePath, atomically: false, encoding: NSUTF8StringEncoding)
+                try contents.write(toFile: absolutePath, atomically: false, encoding: String.Encoding.utf8)
                 return true
             } catch {
                 return false
@@ -428,10 +431,10 @@ class FileExplorerManager {
      - parameter filePath: the path of a file includes directory and filename
      - returns: content in UTF-8 of the file
      */
-    func getUTF8FileContent(fullPath: String) -> String {
+    func getUTF8FileContent(_ fullPath: String) -> String {
         var content: String
         do {
-            content = try String(contentsOfURL: NSURL(fileURLWithPath: fullPath), encoding: NSUTF8StringEncoding)
+            content = try String(contentsOf: URL(fileURLWithPath: fullPath), encoding: String.Encoding.utf8)
         } catch {
             return ""
         }

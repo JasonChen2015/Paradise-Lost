@@ -11,22 +11,22 @@ import UIKit
 class TextEditorVC: UIViewController {
     
     var mainView: TextEditorView!
-    private var isEdit: Bool = false
+    fileprivate var isEdit: Bool = false
     
     /// the information of the edited file
     var file: File = File()
     
-    private var fileManager = FileExplorerManager.shareInstance {
+    fileprivate var fileManager = FileExplorerManager.shareInstance {
         didSet {
             if fileManager.documentDir == "" {
                 AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "texteditor.openfail.message"), handler: { (_) -> Void in
-                    self.dismissViewControllerAnimated(true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                     return
                 })
             }
         }
     }
-    private var originFilePath: String = ""
+    fileprivate var originFilePath: String = ""
     
     // MARK: life cycle
     
@@ -35,11 +35,11 @@ class TextEditorVC: UIViewController {
         
         // navigation bar
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: LanguageManager.getToolString(forKey: "texteditor.rightbar.text"), style: .Plain, target: self, action: #selector(TextEditorVC.saveToFile))
+            title: LanguageManager.getToolString(forKey: "texteditor.rightbar.text"), style: .plain, target: self, action: #selector(TextEditorVC.saveToFile))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(
-            title: LanguageManager.getPublicString(forKey: "return"), style: .Plain, target: self, action: #selector(TextEditorVC.exitEditor))
+            title: LanguageManager.getPublicString(forKey: "return"), style: .plain, target: self, action: #selector(TextEditorVC.exitEditor))
         
-        mainView = TextEditorView(frame: UIScreen.mainScreen().bounds)
+        mainView = TextEditorView(frame: UIScreen.main.bounds)
         view.addSubview(mainView)
         
         // load data
@@ -52,22 +52,22 @@ class TextEditorVC: UIViewController {
             let text = fileManager.getUTF8FileContent(file.getFullPath())
             mainView.loadFile(file.name, content: text)
         } else {
-            fileManager.createFileWithDirectory(originFilePath)
+            let _ = fileManager.createFileWithDirectory(originFilePath)
             mainView.loadFile(file.name, content: "")
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(
-            self, selector: #selector(TextEditorVC.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(
-            self, selector: #selector(TextEditorVC.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(TextEditorVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(TextEditorVC.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         super.viewWillDisappear(animated)
     }
     
@@ -121,14 +121,14 @@ class TextEditorVC: UIViewController {
         mainView.resignAllResponder()
         if mainView.isModified {
             AlertManager.showTipsWithContinue(self, message: LanguageManager.getToolString(forKey: "texteditor.saveforget.message"), handler: nil, cHandler: { (_) -> Void in
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
             })
             return
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    func keyboardWillShow(aNotification: NSNotification) {
+    func keyboardWillShow(_ aNotification: Notification) {
         if isEdit {
             return
         }
@@ -136,7 +136,7 @@ class TextEditorVC: UIViewController {
         isEdit = true
     }
     
-    func keyboardWillHide(aNotification: NSNotification) {
+    func keyboardWillHide(_ aNotification: Notification) {
         if !isEdit {
             return
         }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MarqueeViewDelegate {
-    func willShowFullScreenMarquee(text: String, colorText: UIColor, colorBackground: UIColor, speedMode: MarqueeLabel.SpeedLimit)
+    func willShowFullScreenMarquee(_ text: String, colorText: UIColor, colorBackground: UIColor, speedMode: MarqueeLabel.SpeedLimit)
 }
 
 class MarqueeView: UIView, UITextFieldDelegate {
@@ -18,13 +18,13 @@ class MarqueeView: UIView, UITextFieldDelegate {
     
     var textColor: UIColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
     var backColor: UIColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-    var speedMode: MarqueeLabel.SpeedLimit = MarqueeLabel.SpeedLimit.Duration(7)
+    var speedMode: MarqueeLabel.SpeedLimit = MarqueeLabel.SpeedLimit.duration(7)
     
     // MARK: life cycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
         setupView()
     }
     
@@ -32,7 +32,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
         super.init(coder: aDecoder)
     }
     
-    private func setupView() {
+    fileprivate func setupView() {
         addSubview(nameLabel)
         addSubview(colorSegment)
         addSubview(redSlider)
@@ -62,44 +62,44 @@ class MarqueeView: UIView, UITextFieldDelegate {
         let tapView = UITapGestureRecognizer(target: self, action: #selector(MarqueeView.resignAllResponder))
         addGestureRecognizer(tapView)
         
-        colorSegment.addTarget(self, action: #selector(MarqueeView.didChangeColorSegment), forControlEvents: .ValueChanged)
-        speedSegment.addTarget(self, action: #selector(MarqueeView.didChangeSpeedSegment), forControlEvents: .ValueChanged)
+        colorSegment.addTarget(self, action: #selector(MarqueeView.didChangeColorSegment), for: .valueChanged)
+        speedSegment.addTarget(self, action: #selector(MarqueeView.didChangeSpeedSegment), for: .valueChanged)
         
-        redSlider.addTarget(self, action: #selector(MarqueeView.didChangeColorSlider(_:)), forControlEvents: .ValueChanged)
-        greenSlider.addTarget(self, action: #selector(MarqueeView.didChangeColorSlider(_:)), forControlEvents: .ValueChanged)
-        blueSlider.addTarget(self, action: #selector(MarqueeView.didChangeColorSlider(_:)), forControlEvents: .ValueChanged)
-        alphaSlider.addTarget(self, action: #selector(MarqueeView.didChangeColorSlider(_:)), forControlEvents: .ValueChanged)
+        redSlider.addTarget(self, action: #selector(MarqueeView.didChangeColorSlider(_:)), for: .valueChanged)
+        greenSlider.addTarget(self, action: #selector(MarqueeView.didChangeColorSlider(_:)), for: .valueChanged)
+        blueSlider.addTarget(self, action: #selector(MarqueeView.didChangeColorSlider(_:)), for: .valueChanged)
+        alphaSlider.addTarget(self, action: #selector(MarqueeView.didChangeColorSlider(_:)), for: .valueChanged)
         
-        redText.addTarget(self, action: #selector(MarqueeView.didChangeColorText(_:)), forControlEvents: .EditingDidEnd)
-        greenText.addTarget(self, action: #selector(MarqueeView.didChangeColorText(_:)), forControlEvents: .EditingDidEnd)
-        blueText.addTarget(self, action: #selector(MarqueeView.didChangeColorText(_:)), forControlEvents: .EditingDidEnd)
-        alphaText.addTarget(self, action: #selector(MarqueeView.didChangeColorText(_:)), forControlEvents: .EditingDidEnd)
+        redText.addTarget(self, action: #selector(MarqueeView.didChangeColorText(_:)), for: .editingDidEnd)
+        greenText.addTarget(self, action: #selector(MarqueeView.didChangeColorText(_:)), for: .editingDidEnd)
+        blueText.addTarget(self, action: #selector(MarqueeView.didChangeColorText(_:)), for: .editingDidEnd)
+        alphaText.addTarget(self, action: #selector(MarqueeView.didChangeColorText(_:)), for: .editingDidEnd)
         
-        contentText.addTarget(self, action: #selector(MarqueeView.refreshPreview), forControlEvents: .EditingDidEnd)
-        speedText.addTarget(self, action: #selector(MarqueeView.didChangeSpeedText), forControlEvents: .EditingDidEnd)
+        contentText.addTarget(self, action: #selector(MarqueeView.refreshPreview), for: .editingDidEnd)
+        speedText.addTarget(self, action: #selector(MarqueeView.didChangeSpeedText), for: .editingDidEnd)
         
-        showBtn.addTarget(self, action: #selector(MarqueeView.didTouchShowButton), forControlEvents: .TouchUpInside)
+        showBtn.addTarget(self, action: #selector(MarqueeView.didTouchShowButton), for: .touchUpInside)
     }
     
     override func layoutSubviews() {
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": colorSegment]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0(300)]-[v1]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": redSlider, "v1": redText]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0(300)]-[v1]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": greenSlider, "v1": greenText]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0(300)]-[v1]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": blueSlider, "v1": blueText]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0(300)]-[v1]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": alphaSlider, "v1": alphaText]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": contentLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": contentText]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-[v1(300)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": speedLabel, "v1": speedSegment]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-20-[v0]-[v1(30)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": speedText, "v1": unitLabel]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-60-[v0(288)]-8-[v1(38)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": preview, "v1": showBtn]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-68-[v0(30)]-20-[v1(30)]-[v2(30)]-[v3(30)]-[v4(30)]-[v5(30)]-20-[v6(30)]-[v7(30)]-20-[v8(30)]-[v9(30)]-20-[v10(162)]-78-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel, "v1": colorSegment, "v2": redSlider, "v3": greenSlider, "v4": blueSlider, "v5": alphaSlider, "v6": contentLabel, "v7": contentText, "v8": speedLabel, "v9": speedText, "v10": preview]))
-        addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-156-[v0(30)]-[v1(30)]-[v2(30)]-[v3(30)]-108-[v4(30)]-[v5(30)]-152-[v6(30)]-78-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": redText, "v1": greenText, "v2": blueText, "v3": alphaText, "v4": speedSegment, "v5": unitLabel, "v6": showBtn]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[v0]|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": colorSegment]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0(300)]-[v1]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": redSlider, "v1": redText]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0(300)]-[v1]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": greenSlider, "v1": greenText]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0(300)]-[v1]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": blueSlider, "v1": blueText]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0(300)]-[v1]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": alphaSlider, "v1": alphaText]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": contentLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": contentText]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v1(300)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": speedLabel, "v1": speedSegment]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-[v1(30)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": speedText, "v1": unitLabel]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-60-[v0(288)]-8-[v1(38)]-20-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": preview, "v1": showBtn]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-68-[v0(30)]-20-[v1(30)]-[v2(30)]-[v3(30)]-[v4(30)]-[v5(30)]-20-[v6(30)]-[v7(30)]-20-[v8(30)]-[v9(30)]-20-[v10(162)]-78-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": nameLabel, "v1": colorSegment, "v2": redSlider, "v3": greenSlider, "v4": blueSlider, "v5": alphaSlider, "v6": contentLabel, "v7": contentText, "v8": speedLabel, "v9": speedText, "v10": preview]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-156-[v0(30)]-[v1(30)]-[v2(30)]-[v3(30)]-108-[v4(30)]-[v5(30)]-152-[v6(30)]-78-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": redText, "v1": greenText, "v2": blueText, "v3": alphaText, "v4": speedSegment, "v5": unitLabel, "v6": showBtn]))
     }
     
     // MARK: UITextFieldDelegate
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return false
     }
@@ -107,11 +107,11 @@ class MarqueeView: UIView, UITextFieldDelegate {
     // MARK: event response
     
     func resignAllResponder() {
-        UIApplication.sharedApplication().sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, forEvent: nil)
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
     // for view controller initialization
-    func setColorSegment(selectedIndex: Int) {
+    func setColorSegment(_ selectedIndex: Int) {
         if selectedIndex == 1 {
             colorSegment.selectedSegmentIndex = 1
         } else {
@@ -121,7 +121,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
     }
     
     // for view controller initialization
-    func setSpeedSegment(selectedIndex: Int) {
+    func setSpeedSegment(_ selectedIndex: Int) {
         if selectedIndex == 1 {
             speedSegment.selectedSegmentIndex = 1
         } else {
@@ -145,7 +145,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
         refreshColorTextFromSlider()
     }
     
-    func didChangeColorSlider(sender: AnyObject) {
+    func didChangeColorSlider(_ sender: AnyObject) {
         switch sender.tag {
         case 100:
             redText.text = "\(redSlider.value)"
@@ -166,7 +166,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
         refreshPreview()
     }
     
-    func didChangeColorText(sender: AnyObject) {
+    func didChangeColorText(_ sender: AnyObject) {
         switch sender.tag {
         case 200:
             redSlider.value = transferRGBValueFromText(redText.text)
@@ -192,11 +192,11 @@ class MarqueeView: UIView, UITextFieldDelegate {
     func didChangeSpeedSegment() {
         if speedSegment.selectedSegmentIndex == 0 {
             // point per second
-            speedMode = .Rate(transferSpeedFromText(speedText.text))
+            speedMode = .rate(transferSpeedFromText(speedText.text))
             unitLabel.text = "p/s"
         } else if speedSegment.selectedSegmentIndex == 1 {
             // second per time
-            speedMode = .Duration(transferSpeedFromText(speedText.text))
+            speedMode = .duration(transferSpeedFromText(speedText.text))
             unitLabel.text = "s"
         }
         refreshPreview()
@@ -212,7 +212,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
     
     // MARK: private methods
     
-    private func transferRGBValueFromText(text: String?) -> Float {
+    fileprivate func transferRGBValueFromText(_ text: String?) -> Float {
         if text != nil {
             if var color = Float(text!) {
                 if color < 0 {
@@ -229,7 +229,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
         }
     }
     
-    private func saveColor() {
+    fileprivate func saveColor() {
         let currentColor = UIColor(colorLiteralRed: redSlider.value,
                                    green: greenSlider.value, blue: blueSlider.value, alpha: alphaSlider.value)
         if colorSegment.selectedSegmentIndex == 0 {
@@ -239,14 +239,14 @@ class MarqueeView: UIView, UITextFieldDelegate {
         }
     }
     
-    private func refreshColorTextFromSlider() {
+    fileprivate func refreshColorTextFromSlider() {
         redText.text = "\(redSlider.value)"
         greenText.text = "\(greenSlider.value)"
         blueText.text = "\(blueSlider.value)"
         alphaText.text = "\(alphaSlider.value)"
     }
     
-    private func transferSpeedFromText(text: String?) -> CGFloat {
+    fileprivate func transferSpeedFromText(_ text: String?) -> CGFloat {
         if text != nil {
             if let speed = Float(text!) {
                 return CGFloat(speed)
@@ -268,78 +268,78 @@ class MarqueeView: UIView, UITextFieldDelegate {
     
     // MARK: getters and setters
     
-    private var nameLabel: UILabel = {
+    fileprivate var nameLabel: UILabel = {
        let label = UILabel()
         label.text = LanguageManager.getToolString(forKey: "marquee.namelabel.text")
-        label.font = UIFont.boldSystemFontOfSize(20)
-        label.textAlignment = .Center
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var colorSegment: UISegmentedControl = {
+    fileprivate var colorSegment: UISegmentedControl = {
         let segment = UISegmentedControl()
-        segment.insertSegmentWithTitle(LanguageManager.getToolString(forKey: "marquee.colorseg.text"), atIndex: 0, animated: true)
-        segment.insertSegmentWithTitle(LanguageManager.getToolString(forKey: "marquee.colorseg.back"), atIndex: 1, animated: true)
+        segment.insertSegment(withTitle: LanguageManager.getToolString(forKey: "marquee.colorseg.text"), at: 0, animated: true)
+        segment.insertSegment(withTitle: LanguageManager.getToolString(forKey: "marquee.colorseg.back"), at: 1, animated: true)
         segment.translatesAutoresizingMaskIntoConstraints = false
         return segment
     }()
     
-    private var redSlider: UISlider = {
+    fileprivate var redSlider: UISlider = {
         let slider = UISlider()
         slider.tag = 100
-        slider.tintColor = UIColor.redColor()
+        slider.tintColor = UIColor.red
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }()
     
-    private var redText: UITextField = {
+    fileprivate var redText: UITextField = {
         let text = UITextField()
         text.tag = 200
-        text.keyboardType = .NumbersAndPunctuation
-        text.layer.borderColor = Color().LightGray.CGColor
+        text.keyboardType = .numbersAndPunctuation
+        text.layer.borderColor = Color().LightGray.cgColor
         text.layer.borderWidth = 1.0
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var greenSlider: UISlider = {
+    fileprivate var greenSlider: UISlider = {
         let slider = UISlider()
         slider.tag = 101
-        slider.tintColor = UIColor.greenColor()
+        slider.tintColor = UIColor.green
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }()
     
-    private var greenText: UITextField = {
+    fileprivate var greenText: UITextField = {
         let text = UITextField()
         text.tag = 201
-        text.keyboardType = .NumbersAndPunctuation
-        text.layer.borderColor = Color().LightGray.CGColor
+        text.keyboardType = .numbersAndPunctuation
+        text.layer.borderColor = Color().LightGray.cgColor
         text.layer.borderWidth = 1.0
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var blueSlider: UISlider = {
+    fileprivate var blueSlider: UISlider = {
         let slider = UISlider()
         slider.tag = 102
-        slider.tintColor = UIColor.blueColor()
+        slider.tintColor = UIColor.blue
         slider.translatesAutoresizingMaskIntoConstraints = false
         return slider
     }()
     
-    private var blueText: UITextField = {
+    fileprivate var blueText: UITextField = {
         let text = UITextField()
         text.tag = 202
-        text.keyboardType = .NumbersAndPunctuation
-        text.layer.borderColor = Color().LightGray.CGColor
+        text.keyboardType = .numbersAndPunctuation
+        text.layer.borderColor = Color().LightGray.cgColor
         text.layer.borderWidth = 1.0
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var alphaSlider: UISlider = {
+    fileprivate var alphaSlider: UISlider = {
         let slider = UISlider()
         slider.tag = 103
         slider.tintColor = Color().LightGray
@@ -347,87 +347,87 @@ class MarqueeView: UIView, UITextFieldDelegate {
         return slider
     }()
     
-    private var alphaText: UITextField = {
+    fileprivate var alphaText: UITextField = {
         let text = UITextField()
         text.tag = 203
-        text.keyboardType = .NumbersAndPunctuation
-        text.layer.borderColor = Color().LightGray.CGColor
+        text.keyboardType = .numbersAndPunctuation
+        text.layer.borderColor = Color().LightGray.cgColor
         text.layer.borderWidth = 1.0
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var contentLabel: UILabel = {
+    fileprivate var contentLabel: UILabel = {
         let label = UILabel()
         label.text = LanguageManager.getToolString(forKey: "marquee.contentlabel.text")
-        label.textAlignment = .Left
-        label.font = UIFont.systemFontOfSize(16)
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var contentText: UITextField = {
+    fileprivate var contentText: UITextField = {
         let text = UITextField()
         text.text = LanguageManager.getToolString(forKey: "marquee.contenttext.text")
-        text.font = UIFont.systemFontOfSize(18)
-        text.layer.borderColor = Color().LightGray.CGColor
+        text.font = UIFont.systemFont(ofSize: 18)
+        text.layer.borderColor = Color().LightGray.cgColor
         text.layer.borderWidth = 1.0
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var speedLabel: UILabel = {
+    fileprivate var speedLabel: UILabel = {
         let label = UILabel()
         label.text = LanguageManager.getToolString(forKey: "marquee.speedlabel.text")
-        label.textAlignment = .Left
-        label.font = UIFont.systemFontOfSize(16)
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var speedSegment: UISegmentedControl = {
+    fileprivate var speedSegment: UISegmentedControl = {
         let segment = UISegmentedControl()
-        segment.insertSegmentWithTitle(LanguageManager.getToolString(forKey: "marquee.speedseg.rate"), atIndex: 0, animated: true)
-        segment.insertSegmentWithTitle(LanguageManager.getToolString(forKey: "marquee.speedseg.duration"), atIndex: 1, animated: true)
+        segment.insertSegment(withTitle: LanguageManager.getToolString(forKey: "marquee.speedseg.rate"), at: 0, animated: true)
+        segment.insertSegment(withTitle: LanguageManager.getToolString(forKey: "marquee.speedseg.duration"), at: 1, animated: true)
         segment.translatesAutoresizingMaskIntoConstraints = false
         return segment
     }()
     
-    private var speedText: UITextField = {
+    fileprivate var speedText: UITextField = {
         let text = UITextField()
         text.text = "7"
-        text.textAlignment = .Right
-        text.font = UIFont.systemFontOfSize(18)
-        text.keyboardType = .NumbersAndPunctuation
-        text.layer.borderColor = Color().LightGray.CGColor
+        text.textAlignment = .right
+        text.font = UIFont.systemFont(ofSize: 18)
+        text.keyboardType = .numbersAndPunctuation
+        text.layer.borderColor = Color().LightGray.cgColor
         text.layer.borderWidth = 1.0
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    private var unitLabel: UILabel = {
+    fileprivate var unitLabel: UILabel = {
         let label = UILabel()
         label.text = "s"
-        label.font = UIFont.systemFontOfSize(14)
+        label.font = UIFont.systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var preview: MarqueeLabel = {
+    fileprivate var preview: MarqueeLabel = {
         let label = MarqueeLabel()
-        label.layer.borderColor = Color().LightGray.CGColor
+        label.layer.borderColor = Color().LightGray.cgColor
         label.layer.borderWidth = 1.0
-        label.font = UIFont.boldSystemFontOfSize(130)
-        label.type = .Continuous
-        label.animationCurve = .Linear
+        label.font = UIFont.boldSystemFont(ofSize: 130)
+        label.type = .continuous
+        label.animationCurve = .linear
         label.animationDelay = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private var showBtn: UIButton = {
-        let button = UIButton(type: .System)
-        button.setTitle(LanguageManager.getToolString(forKey: "marquee.showbtn.title"), forState: .Normal)
+    fileprivate var showBtn: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle(LanguageManager.getToolString(forKey: "marquee.showbtn.title"), for: UIControlState())
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

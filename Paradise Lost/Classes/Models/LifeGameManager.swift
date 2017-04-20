@@ -10,7 +10,7 @@ import Foundation
 
 class LifeGameManager {
     // 0 for no 1 for have
-    private var status: [[Int]] = Array(count: 500, repeatedValue: Array(count: 500, repeatedValue: 0))
+    fileprivate var status: [[Int]] = Array(repeating: Array(repeating: 0, count: 500), count: 500)
     var row: Int!
     var column: Int!
     
@@ -18,8 +18,8 @@ class LifeGameManager {
         return status
     }
     
-    func getEditable(x: Int, y: Int, rows: Int, columns: Int) -> [[Int]] {
-        var temp = Array(count: 500, repeatedValue: Array(count: 500, repeatedValue: 0))
+    func getEditable(_ x: Int, y: Int, rows: Int, columns: Int) -> [[Int]] {
+        var temp = Array(repeating: Array(repeating: 0, count: 500), count: 500)
         let tx = x < 1 ? 0 : (x - 1)
         let ty = y < 1 ? 0 : (y - 1)
         for i in 0...(columns - 1) {
@@ -32,7 +32,7 @@ class LifeGameManager {
         return temp
     }
     
-    func setEditable(x: Int, y: Int, rows: Int, columns: Int, array: [[Int]]) {
+    func setEditable(_ x: Int, y: Int, rows: Int, columns: Int, array: [[Int]]) {
         let tx = x < 1 ? 0 : (x - 1)
         let ty = y < 1 ? 0 : (y - 1)
         for i in 0...(columns - 1) {
@@ -65,7 +65,7 @@ class LifeGameManager {
         status = temp
     }
     
-    func surroundCount(x x: Int, y: Int) -> Int {
+    func surroundCount(x: Int, y: Int) -> Int {
         var count = 0
         if x > 0 {
             if y > 0 && status[x - 1][y - 1] == 1 {
@@ -103,27 +103,27 @@ class LifeGameManager {
         }
     }
     
-    func setPopulate(x: Int, _ y: Int) {
+    func setPopulate(_ x: Int, _ y: Int) {
         if 0 <= x && x <= column && 0 <= y && y <= row {
             status[x][y] = 1
         }
     }
     
     enum LifeGameGridStyle {
-        case Glider
-        case GliderGun
-        case Tumbler
-        case Pulsar
+        case glider
+        case gliderGun
+        case tumbler
+        case pulsar
         
         var value: String {
             switch self {
-            case .Glider:
+            case .glider:
                 return "Glider"
-            case .GliderGun:
+            case .gliderGun:
                 return "Gosper Glider Gun"
-            case .Tumbler:
+            case .tumbler:
                 return "Tumbler"
-            case .Pulsar:
+            case .pulsar:
                 return "Pulsar"
             }
         }
@@ -131,48 +131,48 @@ class LifeGameManager {
     
     static let style = ["Glider", "Gosper Glider Gun", "Tumbler", "Pulsar"]
     
-    func getLiftGameGridStyleFromIndex(index: Int) -> LifeGameGridStyle {
+    func getLiftGameGridStyleFromIndex(_ index: Int) -> LifeGameGridStyle {
         switch index {
-        case 0: return .Glider
-        case 1: return .GliderGun
-        case 2: return .Tumbler
-        case 3: return .Pulsar
-        default: return .Glider
+        case 0: return .glider
+        case 1: return .gliderGun
+        case 2: return .tumbler
+        case 3: return .pulsar
+        default: return .glider
         }
     }
     
-    func addStyle(style: LifeGameGridStyle, x: Int, y: Int, axes: LifeGameAxes = .Origin, mirror: Bool = false) {
+    func addStyle(_ style: LifeGameGridStyle, x: Int, y: Int, axes: LifeGameAxes = .origin, mirror: Bool = false) {
         switch style {
-        case .Glider:
+        case .glider:
             addGliderAtPoint(x: x, y: y, axes: axes, mirror: mirror)
             break
-        case .GliderGun:
+        case .gliderGun:
             addGliderGunAtPoint(x: x, y: y, axes: axes)
             break
-        case .Tumbler:
+        case .tumbler:
             addTumblerAtPoint(x: x, y: y, axes: axes, mirror: mirror)
             break
-        case .Pulsar:
+        case .pulsar:
             addPulsarAtPoint(x: x, y: y, axes: axes, mirror: mirror)
             break
         }
     }
     
     enum LifeGameAxes {
-        case Origin   // mirror: mirror x=y
-        case MirrorY  // mirror t axes, mirror: rotate anticlockwise 90 degree
-        case MirrorX  // mirror x axes, mirror: rotate clockwise 90
-        case MirrorXY // rotate 180 degree, mirror:
+        case origin   // mirror: mirror x=y
+        case mirrorY  // mirror t axes, mirror: rotate anticlockwise 90 degree
+        case mirrorX  // mirror x axes, mirror: rotate clockwise 90
+        case mirrorXY // rotate 180 degree, mirror:
         
         var value: (Int, Int) {
             switch self {
-            case .Origin:
+            case .origin:
                 return (1, 1)
-            case .MirrorY:
+            case .mirrorY:
                 return (-1, 1)
-            case .MirrorX:
+            case .mirrorX:
                 return (1, -1)
-            case .MirrorXY:
+            case .mirrorXY:
                 return (-1, -1)
             }
         }
@@ -182,7 +182,7 @@ class LifeGameManager {
      [1, 0, 1]
      [0, 1, 1]
      */
-    func addGliderAtPoint(x x: Int, y: Int, axes: LifeGameAxes = .Origin, mirror: Bool = false) {
+    func addGliderAtPoint(x: Int, y: Int, axes: LifeGameAxes = .origin, mirror: Bool = false) {
         let (xe, ye) = axes.value
         if !mirror {
             setPopulate(x + 2 * xe, y)
@@ -200,7 +200,7 @@ class LifeGameManager {
      [1, 1]
      [1, 1]
      */
-    func addBlockAtPoint(x x: Int, y: Int, axes: LifeGameAxes = .Origin, mirror: Bool = false) {
+    func addBlockAtPoint(x: Int, y: Int, axes: LifeGameAxes = .origin, mirror: Bool = false) {
         let (xe, ye) = axes.value
         setPopulate(x, y)
         setPopulate(x + xe, y)
@@ -213,7 +213,7 @@ class LifeGameManager {
      [1, 0, 1]
      [1, 1, 0]
      */
-    func addShipAtPoint(x x: Int, y: Int, axes: LifeGameAxes = .Origin, mirror: Bool = false) {
+    func addShipAtPoint(x: Int, y: Int, axes: LifeGameAxes = .origin, mirror: Bool = false) {
         let (xe, ye) = axes.value
         setPopulate(x + xe, y)
         setPopulate(x + 2 * xe, y)
@@ -223,15 +223,15 @@ class LifeGameManager {
         setPopulate(x + xe, y + 2 * ye)
     }
     
-    func addGliderGunAtPoint(x x: Int, y: Int, axes: LifeGameAxes = .Origin) {
+    func addGliderGunAtPoint(x: Int, y: Int, axes: LifeGameAxes = .origin) {
         let (xe, ye) = axes.value
         addBlockAtPoint(x: x, y: y)
         addShipAtPoint(x: x + 8 * xe, y: y)
-        addGliderAtPoint(x: x + 18 * xe, y: y + 4 * ye, axes: .MirrorXY)
+        addGliderAtPoint(x: x + 18 * xe, y: y + 4 * ye, axes: .mirrorXY)
         addShipAtPoint(x: x + 22 * xe, y: y - 2 * ye)
-        addGliderAtPoint(x: x + 26 * xe, y: y + 12 * ye, axes: .MirrorXY, mirror: true)
+        addGliderAtPoint(x: x + 26 * xe, y: y + 12 * ye, axes: .mirrorXY, mirror: true)
         addBlockAtPoint(x: x + 34 * xe, y: y - 2 * ye)
-        addGliderAtPoint(x: x + 37 * xe, y: y + 7 * ye, axes: .MirrorXY)
+        addGliderAtPoint(x: x + 37 * xe, y: y + 7 * ye, axes: .mirrorXY)
     }
     
     /*
@@ -241,7 +241,7 @@ class LifeGameManager {
      [1, 0, 0, 0, 1]
      [1, 0, 1, 0, 1]
      */
-    func addPulsarAtPoint(x x: Int, y: Int, axes: LifeGameAxes = .Origin, mirror: Bool = false) {
+    func addPulsarAtPoint(x: Int, y: Int, axes: LifeGameAxes = .origin, mirror: Bool = false) {
         let (xe, ye) = axes.value
         if !mirror {
             setPopulate(x, y + ye)
@@ -270,7 +270,7 @@ class LifeGameManager {
      [1, 0, 0, 0, 0, 0, 1]
      [1, 1, 1, 0, 1, 1, 1]
      */
-    func addTumblerAtPoint(x x: Int, y: Int, axes: LifeGameAxes = .Origin, mirror: Bool = false) {
+    func addTumblerAtPoint(x: Int, y: Int, axes: LifeGameAxes = .origin, mirror: Bool = false) {
         let (xe, ye) = axes.value
         if !mirror {
             setPopulate(x + 6 * xe, y)

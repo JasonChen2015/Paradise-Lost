@@ -14,7 +14,7 @@ class LanguageManager {
     static var dict: NSDictionary?
     
     class func setAppLanguage() {
-        if let lang = NSUserDefaults.standardUserDefaults().objectForKey("language") {
+        if let lang = UserDefaults.standard.object(forKey: "language") {
             language = lang as! String
         } else {
             language = "en" // default value
@@ -29,16 +29,16 @@ class LanguageManager {
     }
     
     class func getAppLanguageDict() -> NSDictionary? {
-        if let filename = NSBundle.mainBundle().pathForResource("Language", ofType: "plist") {
+        if let filename = Bundle.main.path(forResource: "Language", ofType: "plist") {
             return NSDictionary(contentsOfFile: filename)
         } else {
             return nil
         }
     }
     
-    class func getAppLanguageString(key: String) -> String {
+    class func getAppLanguageString(_ key: String) -> String {
         if dict != nil {
-            if let str = dict!.objectForKey(language)?.objectForKey(key) {
+            if let str = (dict!.object(forKey: language) as AnyObject).object(forKey: key) {
                 return (str as! String)
             }
         }
@@ -63,8 +63,8 @@ class LanguageManager {
     
     class func getString(forKey key: String, inSet: String) -> String {
         if dict != nil {
-            if let value = dict!.objectForKey(inSet)?.objectForKey(key) {
-                if let str = value.objectForKey(language) {
+            if let value = (dict!.object(forKey: inSet) as AnyObject).object(forKey: key) {
+                if let str = (value as AnyObject).object(forKey: language) {
                     return (str as! String);
                 }
             }

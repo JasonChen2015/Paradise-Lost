@@ -11,74 +11,74 @@ import Foundation
 class UserDefaultManager {
     
     enum UserKey {
-        case TZFEHighScore      // Int      // the highest score
-        case TZFEScoreRecord    // Int      // current score
-        case TZFETilesRecord    // [Int]    // current tiles position
-        case BarCodeSoundOn     // Bool     // if open sound
-        case BarCodeVibraOn     // Bool     // if open vibra
-        case SudokuNumber       // Int      // the number of sudoku puzzle
-        case SudokuUserGrid     // [:]      // user sudoku puzzles
+        case tzfeHighScore      // Int      // the highest score
+        case tzfeScoreRecord    // Int      // current score
+        case tzfeTilesRecord    // [Int]    // current tiles position
+        case barCodeSoundOn     // Bool     // if open sound
+        case barCodeVibraOn     // Bool     // if open vibra
+        case sudokuNumber       // Int      // the number of sudoku puzzle
+        case sudokuUserGrid     // [:]      // user sudoku puzzles
         
         var value: String {
             switch self {
-            case .TZFEHighScore:
-                return "TZFEHighScore"
-            case .TZFEScoreRecord:
-                return "TZFEScoreRecord"
-            case .TZFETilesRecord:
-                return "TZFETilesRecord"
-            case .BarCodeSoundOn:
-                return "BarCodeSoundOn"
-            case .BarCodeVibraOn:
-                return "BarCodeVibraOn"
-            case .SudokuNumber:
-                return "SudokuNumber"
-            case .SudokuUserGrid:
-                return "SudokuUserGrid"
+            case .tzfeHighScore:
+                return "tzfeHighScore"
+            case .tzfeScoreRecord:
+                return "tzfeScoreRecord"
+            case .tzfeTilesRecord:
+                return "tzfeTilesRecord"
+            case .barCodeSoundOn:
+                return "barCodeSoundOn"
+            case .barCodeVibraOn:
+                return "barCodeVibraOn"
+            case .sudokuNumber:
+                return "sudokuNumber"
+            case .sudokuUserGrid:
+                return "sudokuUserGrid"
             }
         }
     }
     
     class func registerDefaultsFromSettingsBundle() {
-        guard let settingsBundle = NSBundle.mainBundle().pathForResource("Settings", ofType: "bundle") else {
+        guard let settingsBundle = Bundle.main.path(forResource: "Settings", ofType: "bundle") else {
             return
         }
-        guard let settings = NSDictionary(contentsOfFile: settingsBundle.stringByAppendingString("/Root.plist")) else {
+        guard let settings = NSDictionary(contentsOfFile: settingsBundle + "/Root.plist") else {
             return
         }
-        guard let preferences = settings.objectForKey("PreferenceSpecifiers") as? Array<NSDictionary> else {
+        guard let preferences = settings.object(forKey: "PreferenceSpecifiers") as? Array<NSDictionary> else {
             return
         }
         // get the key and value
         var defaultsToRegister = [String : AnyObject].init(minimumCapacity: preferences.count)
         for prefSpec in preferences {
-            guard let key = (prefSpec as NSDictionary).objectForKey("Key") as? String else {
+            guard let key = (prefSpec as NSDictionary).object(forKey: "Key") as? String else {
                 continue
             }
-            guard let value = (prefSpec as NSDictionary).objectForKey("DefaultValue") as? String else {
+            guard let value = (prefSpec as NSDictionary).object(forKey: "DefaultValue") as? String else {
                 continue
             }
-            defaultsToRegister.updateValue(value, forKey: key)
+            defaultsToRegister.updateValue(value as AnyObject, forKey: key)
         }
-        NSUserDefaults.standardUserDefaults().registerDefaults(defaultsToRegister)
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.register(defaults: defaultsToRegister)
+        UserDefaults.standard.synchronize()
     }
     
-    private class func objectFromKeyString(key: String) -> AnyObject? {
-        return NSUserDefaults.standardUserDefaults().objectForKey(key)
+    fileprivate class func objectFromKeyString(_ key: String) -> Any? {
+        return UserDefaults.standard.object(forKey: key)
     }
     
-    class func objectFromKeyEnum(key: UserKey) -> AnyObject? {
+    class func objectFromKeyEnum(_ key: UserKey) -> Any? {
         return objectFromKeyString(key.value)
     }
     
-    private class func setObject(value: AnyObject?, forKeyString key: String) {
-        let defaults = NSUserDefaults()
-        defaults.setObject(value, forKey: key)
+    fileprivate class func setObject(_ value: AnyObject?, forKeyString key: String) {
+        let defaults = UserDefaults()
+        defaults.set(value, forKey: key)
         defaults.synchronize()
     }
     
-    class func setObject(value:AnyObject?, forKeyEnum key: UserKey) {
+    class func setObject(_ value:AnyObject?, forKeyEnum key: UserKey) {
         setObject(value, forKeyString: key.value)
     }
 }

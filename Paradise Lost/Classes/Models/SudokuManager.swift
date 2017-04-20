@@ -9,7 +9,7 @@
 import Foundation
 
 class SudokuManager {
-    class func checkCorrect(items: [Int]) -> Bool {
+    class func checkCorrect(_ items: [Int]) -> Bool {
         // check zero
         for i in 0..<9 {
             for j in 0..<9 {
@@ -63,7 +63,7 @@ class SudokuManager {
     /*
         count out the total number of zero in sudoku
     */
-    class func getZeroNumber(items: [Int]) -> Int {
+    class func getZeroNumber(_ items: [Int]) -> Int {
         var sum = 0
         for j in 0..<9 {
             for i in 0..<9 {
@@ -75,13 +75,13 @@ class SudokuManager {
         return sum
     }
     
-    class func putNumber(items: [Int], index: Int, number: Int) -> [Int] {
+    class func putNumber(_ items: [Int], index: Int, number: Int) -> [Int] {
         var temp = items
         temp[index] = number
         return temp
     }
     
-    class func getStringFromSudoku(items: [Int]) -> String {
+    class func getStringFromSudoku(_ items: [Int]) -> String {
         var temp: String = ""
         for i in 0..<items.count {
             temp = temp + "\(items[i])"
@@ -89,7 +89,7 @@ class SudokuManager {
         return temp
     }
     
-    class func getSudokuFromString(str: String) -> ([Int], Bool) {
+    class func getSudokuFromString(_ str: String) -> ([Int], Bool) {
         var zero: [Int] = []
         for _ in 0..<81 {
             zero.append(0)
@@ -116,8 +116,8 @@ class SudokuManager {
         return (temp, success)
     }
     
-    class func getSudokuFromDictionary(dict: NSDictionary, atIndex index: Int) -> ([Int], Bool) {
-        if let str = dict.objectForKey("\(index)") {
+    class func getSudokuFromDictionary(_ dict: NSDictionary, atIndex index: Int) -> ([Int], Bool) {
+        if let str = dict.object(forKey: "\(index)") {
             return getSudokuFromString(str as! String)
         } else {
             return ([], false)
