@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class CheckJailBroken {
     static let probablePath: [String] = [
@@ -22,7 +23,7 @@ class CheckJailBroken {
     static let testPath: String = "/private/jailbreak.txt"
     
     class func isJailBroken() -> Bool {
-        #if !(TARGET_IPHONE_SIMULATOR)
+        if !UIDevice.isSimulator {
             let fem = FileExplorerManager.shareInstance
             for path in probablePath {
                 if fem.isFileOrFolderExist(path) {
@@ -36,8 +37,18 @@ class CheckJailBroken {
                     return true
                 }
             }
-        #endif
+        }
         return false
     }
     
+}
+
+extension UIDevice {
+    static var isSimulator: Bool {
+        var isSim = false
+        #if arch(i386) || arch(x86_64)
+            isSim = true
+        #endif
+        return isSim
+    }
 }
