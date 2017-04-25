@@ -47,5 +47,14 @@
 		<key>needNavigation</key>
 		<true/>
 	</dict>
+	<key>6</key>
+	<dict>
+		<key>name</key>
+		<string>forecast.namelabel.text</string>
+		<key>segueId</key>
+		<string>ForecastVC</string>
+		<key>needNavigation</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

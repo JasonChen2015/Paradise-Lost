@@ -514,6 +514,13 @@
 			<key>en</key>
 			<string>Audio Tool</string>
 		</dict>
+		<key>forecast.namelabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>天气预报</string>
+			<key>en</key>
+			<string>Forecast</string>
+		</dict>
 	</dict>
 	<key>game</key>
 	<dict>
