@@ -12,6 +12,8 @@
 		96134CB81D2BA5C200232FCD /* JumpingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96134CB71D2BA5C200232FCD /* JumpingVC.swift */; };
 		96134CBA1D2BA67C00232FCD /* JumpingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96134CB91D2BA67C00232FCD /* JumpingScene.swift */; };
 		96134CBC1D2BA88E00232FCD /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 96134CBB1D2BA88E00232FCD /* sprites.atlas */; };
+		9626555C1F79F17D00D83BC0 /* PaintingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626555B1F79F17D00D83BC0 /* PaintingVC.swift */; };
+		9626555E1F79F2F000D83BC0 /* PaintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626555D1F79F2F000D83BC0 /* PaintingView.swift */; };
 		962AF9F41CE9640D00B7E128 /* TwoZeroFourEightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */; };
 		962EC31C1D238145008E2D44 /* TextEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962EC31B1D238145008E2D44 /* TextEditorVC.swift */; };
 		962EC31E1D238252008E2D44 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962EC31D1D238252008E2D44 /* TextEditorView.swift */; };
@@ -63,6 +65,8 @@
 		96134CB71D2BA5C200232FCD /* JumpingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpingVC.swift; sourceTree = "<group>"; };
 		96134CB91D2BA67C00232FCD /* JumpingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpingScene.swift; sourceTree = "<group>"; };
 		96134CBB1D2BA88E00232FCD /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = sprites.atlas; path = Resources/sprites.atlas; sourceTree = "<group>"; };
+		9626555B1F79F17D00D83BC0 /* PaintingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintingVC.swift; sourceTree = "<group>"; };
+		9626555D1F79F2F000D83BC0 /* PaintingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintingView.swift; sourceTree = "<group>"; };
 		962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoZeroFourEightView.swift; sourceTree = "<group>"; };
 		962EC31B1D238145008E2D44 /* TextEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorVC.swift; sourceTree = "<group>"; };
 		962EC31D1D238252008E2D44 /* TextEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 				96E72CEE1D5ADC0A00B16522 /* MarqueeView.swift */,
 				967B062D1E71005800213A41 /* AudioToolView.swift */,
 				960783371EA9AA1200D66734 /* ForecastView.swift */,
+				9626555D1F79F2F000D83BC0 /* PaintingView.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 				96E72CEC1D5ADBFA00B16522 /* MarqueeVC.swift */,
 				967B062B1E70FFD900213A41 /* AudioToolVC.swift */,
 				960783351EA9A2CC00D66734 /* ForecastVC.swift */,
+				9626555B1F79F17D00D83BC0 /* PaintingVC.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 				960783361EA9A2CC00D66734 /* ForecastVC.swift in Sources */,
 				96B84F031CF6D04200817793 /* UserDefaultManager.swift in Sources */,
 				96753A411CE5DD170079FB8F /* FileExplorerManager.swift in Sources */,
+				9626555E1F79F2F000D83BC0 /* PaintingView.swift in Sources */,
 				9632B8401D24B11F008C718A /* LogFileManager.swift in Sources */,
 				9664D2961CF7FAE400630EAE /* TZFEManager.swift in Sources */,
 				965D1D7F1CFECD5900FD6812 /* SudokuManager.swift in Sources */,
@@ -394,6 +401,7 @@
 				9672179F1CFBF5F7002D77B7 /* BarCodeVC.swift in Sources */,
 				962EC31C1D238145008E2D44 /* TextEditorVC.swift in Sources */,
 				96F354681D9D1AA000D0B3FB /* LifeGameManager.swift in Sources */,
+				9626555C1F79F17D00D83BC0 /* PaintingVC.swift in Sources */,
 				968F1FF11EAA02A80036FB2A /* Forecast.swift in Sources */,
 				96E72CED1D5ADBFA00B16522 /* MarqueeVC.swift in Sources */,
 			);

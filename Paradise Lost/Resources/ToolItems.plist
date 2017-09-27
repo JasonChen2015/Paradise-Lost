@@ -56,5 +56,14 @@
 		<key>needNavigation</key>
 		<true/>
 	</dict>
+	<key>7</key>
+	<dict>
+		<key>name</key>
+		<string>paint.namelabel.text</string>
+		<key>segueId</key>
+		<string>PaintingVC</string>
+		<key>needNavigation</key>
+		<false/>
+	</dict>
 </dict>
 </plist>

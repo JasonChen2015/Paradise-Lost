@@ -521,6 +521,13 @@
 			<key>en</key>
 			<string>Forecast</string>
 		</dict>
+		<key>paint.namelabel.text</key>
+		<dict>
+			<key>zh</key>
+			<string>画画板</string>
+			<key>en</key>
+			<string>Painting</string>
+		</dict>
 	</dict>
 	<key>game</key>
 	<dict>
