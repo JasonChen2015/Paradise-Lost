@@ -14,6 +14,7 @@
 		96134CBC1D2BA88E00232FCD /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 96134CBB1D2BA88E00232FCD /* sprites.atlas */; };
 		9626555C1F79F17D00D83BC0 /* PaintingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626555B1F79F17D00D83BC0 /* PaintingVC.swift */; };
 		9626555E1F79F2F000D83BC0 /* PaintingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626555D1F79F2F000D83BC0 /* PaintingView.swift */; };
+		962655601F7CDCD100D83BC0 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9626555F1F7CDCD100D83BC0 /* ImageManager.swift */; };
 		962AF9F41CE9640D00B7E128 /* TwoZeroFourEightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */; };
 		962EC31C1D238145008E2D44 /* TextEditorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962EC31B1D238145008E2D44 /* TextEditorVC.swift */; };
 		962EC31E1D238252008E2D44 /* TextEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962EC31D1D238252008E2D44 /* TextEditorView.swift */; };
@@ -67,6 +68,7 @@
 		96134CBB1D2BA88E00232FCD /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; name = sprites.atlas; path = Resources/sprites.atlas; sourceTree = "<group>"; };
 		9626555B1F79F17D00D83BC0 /* PaintingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintingVC.swift; sourceTree = "<group>"; };
 		9626555D1F79F2F000D83BC0 /* PaintingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintingView.swift; sourceTree = "<group>"; };
+		9626555F1F7CDCD100D83BC0 /* ImageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		962AF9F31CE9640D00B7E128 /* TwoZeroFourEightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoZeroFourEightView.swift; sourceTree = "<group>"; };
 		962EC31B1D238145008E2D44 /* TextEditorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorVC.swift; sourceTree = "<group>"; };
 		962EC31D1D238252008E2D44 /* TextEditorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEditorView.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				965D1D7E1CFECD5900FD6812 /* SudokuManager.swift */,
 				96F354671D9D1AA000D0B3FB /* LifeGameManager.swift */,
 				96346D9D1EA9DFA700F99965 /* ForecastManager.swift */,
+				9626555F1F7CDCD100D83BC0 /* ImageManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 			files = (
 				96DCF8401CE4250700A08658 /* AppDelegate.swift in Sources */,
 				96687FEC1CE5AB3400149A59 /* TableCellItem.swift in Sources */,
+				962655601F7CDCD100D83BC0 /* ImageManager.swift in Sources */,
 				965BA4B41CEAF29C003988E2 /* Color.swift in Sources */,
 				9632B8421D24C61A008C718A /* File.swift in Sources */,
 				96BDAE1A1CF82A0700FFB05D /* AlertManager.swift in Sources */,

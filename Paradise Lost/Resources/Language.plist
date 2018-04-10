@@ -528,6 +528,48 @@
 			<key>en</key>
 			<string>Painting</string>
 		</dict>
+		<key>paint.save.title</key>
+		<dict>
+			<key>zh</key>
+			<string>保存</string>
+			<key>en</key>
+			<string>Save</string>
+		</dict>
+		<key>paint.get.title</key>
+		<dict>
+			<key>zh</key>
+			<string>选取</string>
+			<key>en</key>
+			<string>Get</string>
+		</dict>
+		<key>paint.getImage.error</key>
+		<dict>
+			<key>zh</key>
+			<string>请选取正确格式图片。</string>
+			<key>en</key>
+			<string>Please get the picture with correct format.</string>
+		</dict>
+		<key>paint.getImage.message</key>
+		<dict>
+			<key>zh</key>
+			<string>你有尚未保存的图片，是否先保存它？</string>
+			<key>en</key>
+			<string>You&apos;ve got an unsaved picture, do you want to save it first?</string>
+		</dict>
+		<key>paint.saveImage.success</key>
+		<dict>
+			<key>zh</key>
+			<string>保存图片成功！</string>
+			<key>en</key>
+			<string>Save image success!</string>
+		</dict>
+		<key>paint.saveImage.fail</key>
+		<dict>
+			<key>zh</key>
+			<string>保存图片失败！</string>
+			<key>en</key>
+			<string>Save image fail!</string>
+		</dict>
 	</dict>
 	<key>game</key>
 	<dict>
