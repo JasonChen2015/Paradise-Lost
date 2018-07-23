@@ -58,9 +58,11 @@
 		96F354641D9D0D8900D0B3FB /* LifeGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F354631D9D0D8900D0B3FB /* LifeGameVC.swift */; };
 		96F354661D9D0E2800D0B3FB /* LifeGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F354651D9D0E2800D0B3FB /* LifeGameView.swift */; };
 		96F354681D9D1AA000D0B3FB /* LifeGameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F354671D9D1AA000D0B3FB /* LifeGameManager.swift */; };
+		E5B11070EBA99385CB114186 /* Pods_Paradise_Lost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9137222363724E9DD08AD07 /* Pods_Paradise_Lost.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		333E032D8F96A1FAEABC8D00 /* Pods-Paradise Lost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paradise Lost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Paradise Lost/Pods-Paradise Lost.debug.xcconfig"; sourceTree = "<group>"; };
 		960783351EA9A2CC00D66734 /* ForecastVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastVC.swift; sourceTree = "<group>"; };
 		960783371EA9AA1200D66734 /* ForecastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		96134CB71D2BA5C200232FCD /* JumpingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpingVC.swift; sourceTree = "<group>"; };
@@ -114,6 +116,8 @@
 		96F354631D9D0D8900D0B3FB /* LifeGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeGameVC.swift; sourceTree = "<group>"; };
 		96F354651D9D0E2800D0B3FB /* LifeGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeGameView.swift; sourceTree = "<group>"; };
 		96F354671D9D1AA000D0B3FB /* LifeGameManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LifeGameManager.swift; sourceTree = "<group>"; };
+		C90FD55EA2C4AD729C698DD0 /* Pods-Paradise Lost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Paradise Lost.release.xcconfig"; path = "Pods/Target Support Files/Pods-Paradise Lost/Pods-Paradise Lost.release.xcconfig"; sourceTree = "<group>"; };
+		C9137222363724E9DD08AD07 /* Pods_Paradise_Lost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Paradise_Lost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,12 +125,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5B11070EBA99385CB114186 /* Pods_Paradise_Lost.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0EFBB8544C72C09EA159D090 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				333E032D8F96A1FAEABC8D00 /* Pods-Paradise Lost.debug.xcconfig */,
+				C90FD55EA2C4AD729C698DD0 /* Pods-Paradise Lost.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		5AB1CDC033A70AC1A63B7CD5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9137222363724E9DD08AD07 /* Pods_Paradise_Lost.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		962AF9F51CE9641200B7E128 /* Game */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +207,8 @@
 				96687FE01CE5714000149A59 /* LICENSE */,
 				96687FE11CE5714000149A59 /* README.md */,
 				96DCF80B1CE422CF00A08658 /* Products */,
+				0EFBB8544C72C09EA159D090 /* Pods */,
+				5AB1CDC033A70AC1A63B7CD5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,9 +313,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 96DCF8321CE422D000A08658 /* Build configuration list for PBXNativeTarget "Paradise Lost" */;
 			buildPhases = (
+				422DBD6EA76C4749F613044E /* [CP] Check Pods Manifest.lock */,
 				96DCF8061CE422CF00A08658 /* Sources */,
 				96DCF8071CE422CF00A08658 /* Frameworks */,
 				96DCF8081CE422CF00A08658 /* Resources */,
+				4D73333364A4DED54D8DC854 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -361,6 +387,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		422DBD6EA76C4749F613044E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Paradise Lost-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D73333364A4DED54D8DC854 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Paradise Lost/Pods-Paradise Lost-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Paradise Lost/Pods-Paradise Lost-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		96DCF8061CE422CF00A08658 /* Sources */ = {
@@ -506,8 +571,9 @@
 		};
 		96DCF8331CE422D000A08658 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 333E032D8F96A1FAEABC8D00 /* Pods-Paradise Lost.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
@@ -534,8 +600,9 @@
 		};
 		96DCF8341CE422D000A08658 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C90FD55EA2C4AD729C698DD0 /* Pods-Paradise Lost.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
