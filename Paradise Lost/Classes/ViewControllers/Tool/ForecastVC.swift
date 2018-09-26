@@ -45,6 +45,12 @@ class ForecastVC: UIViewController, ForecastViewDelegate {
     // MARK: private methods
     
     fileprivate func getWeatherInfo(urlString: String) {
+        //
+        DispatchQueue.global().async {
+            DispatchQueue.main.async {
+                self.mainView.busyLoading()
+            }
+        }
         let session = URLSession.shared
         let url = URL(string: urlString)
         let dataTask = session.dataTask(with: url!) { (data: Data?, response: URLResponse?, error: Error?) in
@@ -61,12 +67,7 @@ class ForecastVC: UIViewController, ForecastViewDelegate {
             }
         }
         // launch data task
-        DispatchQueue.global().async {
-            DispatchQueue.main.async {
-                self.mainView.busyLoading()
-            }
-            dataTask.resume()
-        }
+        dataTask.resume()
     }
     
     fileprivate func refreshData() {

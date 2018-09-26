@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol ForecastViewDelegate {
     func updateView()
@@ -45,14 +46,62 @@ class ForecastView: UIView {
     }
     
     override func layoutSubviews() {
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0(144)]-[v1]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": weatherIcon, "v1": locationLabel]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0(144)]-[v1]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": actIndView, "v1": updateButton]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0(150)]-[v1]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": timeLabel, "v1": timeText]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0(150)]-[v1]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": summaryLabel, "v1": summaryText]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-[v0(150)]-[v1]-|", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": temperatureLabel, "v1": temperatureText]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-84-[v0(144)]-35-[v1]-[v2]-[v3]", options: NSLayoutFormatOptions(), metrics: nil,  views: ["v0": weatherIcon, "v1": timeLabel, "v2": summaryLabel, "v3": temperatureLabel]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-84-[v0(20)]-104-[v1(20)]-35-[v2]-[v3]-[v4]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": updateButton, "v1": locationLabel, "v2": timeText, "v3": summaryText, "v4": temperatureText]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-84-[v0(144)]", options: NSLayoutFormatOptions(), metrics: nil, views: ["v0": actIndView]))
+        actIndView.snp.makeConstraints { (make) in
+            make.width.equalTo(144)
+            make.height.equalTo(144)
+            make.left.equalTo(self).offset(8)
+            make.top.equalTo(self).offset(84)
+        }
+        weatherIcon.snp.makeConstraints { (make) in
+            make.width.equalTo(144)
+            make.height.equalTo(144)
+            make.left.equalTo(self).offset(8)
+            make.top.equalTo(self).offset(84)
+        }
+        updateButton.snp.makeConstraints { (make) in
+            make.left.equalTo(actIndView.snp.right).offset(8)
+            make.right.equalTo(self).offset(-8)
+            make.top.equalTo(actIndView)
+        }
+        locationLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(actIndView.snp.right).offset(8)
+            make.right.equalTo(self).offset(-8)
+            make.bottom.equalTo(actIndView.snp.bottom)
+            make.height.equalTo(20)
+        }
+        timeLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(8)
+            make.top.equalTo(actIndView.snp.bottom).offset(35)
+            make.width.equalTo(150)
+        }
+        timeText.snp.makeConstraints { (make) in
+            make.left.equalTo(timeLabel.snp.right).offset(8)
+            make.top.equalTo(timeLabel)
+            make.height.equalTo(timeLabel)
+            make.right.equalTo(self).offset(-8)
+        }
+        summaryLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(8)
+            make.top.equalTo(timeLabel.snp.bottom).offset(8)
+            make.width.equalTo(150)
+        }
+        summaryText.snp.makeConstraints { (make) in
+            make.left.equalTo(summaryLabel.snp.right).offset(8)
+            make.top.equalTo(summaryLabel)
+            make.height.equalTo(summaryLabel)
+            make.right.equalTo(self).offset(-8)
+        }
+        temperatureLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(self).offset(8)
+            make.top.equalTo(summaryLabel.snp.bottom).offset(8)
+            make.width.equalTo(150)
+        }
+        temperatureText.snp.makeConstraints { (make) in
+            make.left.equalTo(temperatureLabel.snp.right).offset(8)
+            make.top.equalTo(temperatureLabel)
+            make.height.equalTo(temperatureLabel)
+            make.right.equalTo(self).offset(-8)
+        }
     }
     
     // MARK: event response
@@ -116,7 +165,7 @@ class ForecastView: UIView {
     // MARK: getters and setters
     
     fileprivate var actIndView: UIActivityIndicatorView = {
-        var activity = UIActivityIndicatorView()
+        var activity = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activity.hidesWhenStopped = true
         activity.translatesAutoresizingMaskIntoConstraints = false
         return activity

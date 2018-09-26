@@ -10,7 +10,7 @@ import Foundation
 
 class UserDefaultManager {
     
-    enum UserKey {
+    enum UserKey: String {
         case tzfeHighScore      // Int      // the highest score
         case tzfeScoreRecord    // Int      // current score
         case tzfeTilesRecord    // [Int]    // current tiles position
@@ -18,25 +18,6 @@ class UserDefaultManager {
         case barCodeVibraOn     // Bool     // if open vibra
         case sudokuNumber       // Int      // the number of sudoku puzzle
         case sudokuUserGrid     // [:]      // user sudoku puzzles
-        
-        var value: String {
-            switch self {
-            case .tzfeHighScore:
-                return "tzfeHighScore"
-            case .tzfeScoreRecord:
-                return "tzfeScoreRecord"
-            case .tzfeTilesRecord:
-                return "tzfeTilesRecord"
-            case .barCodeSoundOn:
-                return "barCodeSoundOn"
-            case .barCodeVibraOn:
-                return "barCodeVibraOn"
-            case .sudokuNumber:
-                return "sudokuNumber"
-            case .sudokuUserGrid:
-                return "sudokuUserGrid"
-            }
-        }
     }
     
     class func registerDefaultsFromSettingsBundle() {
@@ -69,7 +50,7 @@ class UserDefaultManager {
     }
     
     class func objectFromKeyEnum(_ key: UserKey) -> Any? {
-        return objectFromKeyString(key.value)
+        return objectFromKeyString(key.rawValue)
     }
     
     fileprivate class func setObject(_ value: AnyObject?, forKeyString key: String) {
@@ -79,6 +60,6 @@ class UserDefaultManager {
     }
     
     class func setObject(_ value:AnyObject?, forKeyEnum key: UserKey) {
-        setObject(value, forKeyString: key.value)
+        setObject(value, forKeyString: key.rawValue)
     }
 }

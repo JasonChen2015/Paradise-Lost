@@ -82,7 +82,7 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
     fileprivate func setupCapture() {
         let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
         // input
-        var deviceInput = AVCaptureDeviceInput()
+        var deviceInput: AVCaptureDeviceInput
         do {
             deviceInput = try AVCaptureDeviceInput(device: device)
         } catch let error as NSError {
