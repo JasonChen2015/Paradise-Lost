@@ -36,15 +36,22 @@ struct File {
         self.name = name
     }
     
+    init(absolutePathUrl: URL) {
+        self.name = absolutePathUrl.lastPathComponent
+        let path = absolutePathUrl.deletingLastPathComponent().absoluteString
+        let range = path.index(path.startIndex, offsetBy: 7)... // file://
+        self.path = "\(path[range])"
+    }
+    
     init(absolutePath: String) {
         let url = URL(fileURLWithPath: absolutePath)
         self.name = url.lastPathComponent
-        let n = absolutePath.characters.count - name.characters.count - 1 // '/'
-        self.path = absolutePath.substring(to: absolutePath.characters.index(absolutePath.startIndex, offsetBy: n))
+        let n = absolutePath.count - name.count - 1 // '/'
+        self.path = absolutePath.substring(to: absolutePath.index(absolutePath.startIndex, offsetBy: n))
     }
     
     mutating func getExtensionsFromName() {
-        if name.characters.first != "." { // handle invisible file under unix
+        if name.first != "." { // handle invisible file under unix
             let temp = name.components(separatedBy: ".")
             self.extensions = (temp.count == 2) ? temp[1] : ""
         }

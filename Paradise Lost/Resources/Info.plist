@@ -4,6 +4,26 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en_US</string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>com.jakechen.Paradise-Lost</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.text</string>
+                <string>public.item</string>
+				<string>public.data</string>
+				<string>public.content</string>
+				<string>public.archive</string>
+				<string>public.composite-content</string>
+                <string>com.microsoft.powerpoint.ppt</string>
+                <string>com.microsoft.word.doc</string>
+                <string>com.microsoft.excel.xls</string>
+                <string>com.adobe.pdf</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -34,6 +54,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To get picture and edit it</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,7 +73,12 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To get picture and edit it</string>
+	<key>UTExportedTypeDeclarations</key>
+	<array>
+		<dict>
+			<key>UTTypeIdentifier</key>
+			<string>com.jakechen.Paradise-Lost</string>
+		</dict>
+	</array>
 </dict>
 </plist>
