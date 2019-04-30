@@ -93,25 +93,25 @@ class BarCodeView: UIView {
     
     // MARK: event response
     
-    func clearResult() {
+    @objc func clearResult() {
         resultText.text = LanguageManager.getToolString(forKey: "barcode.resulttext.text")
     }
     
-    func copyResult() {
+    @objc func copyResult() {
         delegate?.copyButtonAction(resultText.text)
     }
     
-    func changeSound() {
+    @objc func changeSound() {
         isSoundOn = !isSoundOn
         delegate?.tapSoundImage()
     }
     
-    func changeVibra() {
+    @objc func changeVibra() {
         isVibraOn = !isVibraOn
         delegate?.tapVibraImage()
     }
     
-    func tapReader() {
+    @objc func tapReader() {
         delegate?.tapReader()
     }
     

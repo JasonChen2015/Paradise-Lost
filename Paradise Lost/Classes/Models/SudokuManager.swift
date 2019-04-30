@@ -97,12 +97,12 @@ class SudokuManager {
         var success = true
         
         var temp: [Int] = []
-        if str.characters.count != 81 {
+        if str.count != 81 {
             // the str is not in right format thus return a 0 array
             temp = zero
             success = false
         } else {
-            for char in str.characters {
+            for char in str {
                 // check each character is in 0..9
                 if "0" <= String(char) && String(char) <= "9" {
                     temp.append(Int(String(char))!)

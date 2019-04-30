@@ -111,7 +111,7 @@ class LifeGameVC: UIViewController, LifeGameViewDelegate {
         timer = Timer.scheduledTimer(timeInterval: speed, target: self, selector: #selector(LifeGameVC.generateNextStatus), userInfo: nil, repeats: false)
     }
     
-    func generateNextStatus() {
+    @objc func generateNextStatus() {
         manager.generate()
         gridView.gridArray = manager.getStatus()
         DispatchQueue.main.async {

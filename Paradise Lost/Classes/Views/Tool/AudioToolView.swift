@@ -52,15 +52,15 @@ class AudioToolView: UIView {
     
     // MARK: event response
     
-    func doStop() {
+    @objc func doStop() {
         delegate?.stopAudio()
     }
     
-    func doPlay() {
+    @objc func doPlay() {
         delegate?.playAudio()
     }
     
-    func doRecord() {
+    @objc func doRecord() {
         delegate?.recordAudio()
     }
     

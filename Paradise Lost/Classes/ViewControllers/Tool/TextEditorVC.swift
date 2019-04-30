@@ -76,7 +76,7 @@ class TextEditorVC: UIViewController {
     /**
         all files will be saved at ~/Documents/editor/
      */
-    func saveToFile() {
+    @objc func saveToFile() {
         // user interface
         mainView.resignAllResponder()
         
@@ -117,7 +117,7 @@ class TextEditorVC: UIViewController {
         }
     }
     
-    func exitEditor() {
+    @objc func exitEditor() {
         mainView.resignAllResponder()
         if mainView.isModified {
             AlertManager.showTipsWithContinue(self, message: LanguageManager.getToolString(forKey: "texteditor.saveforget.message"), handler: nil, cHandler: { (_) -> Void in
@@ -128,7 +128,7 @@ class TextEditorVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func keyboardWillShow(_ aNotification: Notification) {
+    @objc func keyboardWillShow(_ aNotification: Notification) {
         if isEdit {
             return
         }
@@ -136,7 +136,7 @@ class TextEditorVC: UIViewController {
         isEdit = true
     }
     
-    func keyboardWillHide(_ aNotification: Notification) {
+    @objc func keyboardWillHide(_ aNotification: Notification) {
         if !isEdit {
             return
         }

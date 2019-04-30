@@ -71,7 +71,7 @@ class SudokuView: UIView {
     
     // MARK: event response
     
-    func startGame() {
+    @objc func startGame() {
         didStartGame = !didStartGame
         if didStartGame {
             startButton.setTitle(LanguageManager.getPublicString(forKey: "pause"), for: UIControlState())
@@ -93,12 +93,12 @@ class SudokuView: UIView {
         startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), for: UIControlState())
     }
     
-    func resetGame() {
+    @objc func resetGame() {
         resetScreen()
         delegate?.resetGameAction(true)
     }
     
-    func exitGame() {
+    @objc func exitGame() {
         stopTimer()
         delegate?.exitGameAction(seconds)
     }
@@ -289,17 +289,17 @@ class SudokuGridView: UIView {
             for i in 0..<9 {
                 if sudoku[i + j * 9] != 0 {
                     let str = "\(sudoku[i + j * 9])"
-                    var attributes: [String: AnyObject] = [:]
+                    var attributes: [NSAttributedStringKey: AnyObject] = [:]
                     if stableSudoku[i + j * 9] != 0 {
                         // stable number
-                        attributes = [NSFontAttributeName: UIFont(name: "Helvetica-Bold", size: 24)!]
+                        attributes = [NSAttributedStringKey.font: UIFont(name: "Helvetica-Bold", size: 24)!]
                     } else {
                         // number can be changed
                         if !canEnable {
                             // game pause thus do not show typed number
                             continue
                         }
-                        attributes = [NSFontAttributeName: UIFont(name: "Courier", size: 22)!]
+                        attributes = [NSAttributedStringKey.font: UIFont(name: "Courier", size: 22)!]
                     }
                     let centerX = gridWidth * CGFloat(i) + gridWidth / 2
                     let centerY = gridHeight * CGFloat(j) + gridHeight / 2
@@ -328,7 +328,7 @@ class SudokuGridView: UIView {
     
     // MARK: event response
     
-    func handleTapGesture(_ sender: UITapGestureRecognizer) {
+    @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             if !canEnable {
                 return
@@ -402,8 +402,8 @@ class SudokuPanelView: UIView {
             for i in 0..<3 {
                 let str = "\(i + j * 3 + 1)"
                     let attributes = [
-                        NSFontAttributeName: UIFont.boldSystemFont(ofSize: 22),
-                        NSForegroundColorAttributeName: UIColor.white]
+                        NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 22),
+                        NSAttributedStringKey.foregroundColor: UIColor.white]
                     let centerX = width / 3 * CGFloat(i)
                     let centerY = width / 3 * CGFloat(j)
                     str.draw(at: CGPoint(x: centerX + 18, y: centerY + 11), withAttributes: attributes)

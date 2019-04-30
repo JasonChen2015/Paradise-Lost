@@ -32,7 +32,7 @@ class GameListVC: UniversalTableViewController {
                     if TableCellItemManager.needNavigationFromItems(items, atIndex: indexPath.row) {
                         self.navigationController?.pushViewController(viewController, animated: true)
                     } else {
-                        self.present(viewController, animated: false) { (_) in }
+                        self.present(viewController, animated: false)
                     }
                 }
             }

@@ -3,6 +3,6 @@ platform :ios, '10.0'
 use_frameworks!
 
 target 'Paradise Lost' do
-pod 'SnapKit', '~> 3.2.0'
+pod 'SnapKit', '~> 4.0.0'
 
 end

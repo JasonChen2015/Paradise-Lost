@@ -213,7 +213,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
     
     // @available attribute seems to cause SourceKit to crash right now
     // @available(*, deprecated = 2.6, message = "Use speed property instead")
-    @IBInspectable open var scrollDuration: CGFloat? {
+    open var scrollDuration: CGFloat? {
         get {
             switch speed {
             case .duration(let duration): return duration
@@ -229,7 +229,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
     
     // @available attribute seems to cause SourceKit to crash right now
     // @available(*, deprecated = 2.6, message = "Use speed property instead")
-    @IBInspectable open var scrollRate: CGFloat? {
+    open var scrollRate: CGFloat? {
         get {
             switch speed {
             case .duration(_): return nil
@@ -1196,7 +1196,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         NotificationCenter.default.post(name: Notification.Name(rawValue: message.rawValue), object: nil, userInfo: ["controller" : controller])
     }
     
-    open func restartForViewController(_ notification: Notification) {
+    @objc open func restartForViewController(_ notification: Notification) {
         if let controller = notification.userInfo?["controller"] as? UIViewController {
             if controller === self.firstAvailableViewController() {
                 self.restartLabel()
@@ -1204,7 +1204,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         }
     }
     
-    open func labelizeForController(_ notification: Notification) {
+    @objc open func labelizeForController(_ notification: Notification) {
         if let controller = notification.userInfo?["controller"] as? UIViewController {
             if controller === self.firstAvailableViewController() {
                 self.labelize = true
@@ -1212,7 +1212,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         }
     }
     
-    open func animateForController(_ notification: Notification) {
+    @objc open func animateForController(_ notification: Notification) {
         if let controller = notification.userInfo?["controller"] as? UIViewController {
             if controller === self.firstAvailableViewController() {
                 self.labelize = false
@@ -1251,7 +1251,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
      - SeeAlso: resetLabel
      - SeeAlso: triggerScrollStart
      */
-    open func restartLabel() {
+    @objc open func restartLabel() {
         // Shutdown the label
         shutdownLabel()
         // Restart scrolling if appropriate
@@ -1285,7 +1285,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
      - SeeAlso: restartLabel
      - SeeAlso: triggerScrollStart
      */
-    open func shutdownLabel() {
+    @objc open func shutdownLabel() {
         // Bring label to home location
         returnLabelToHome()
         // Apply gradient mask for home location
@@ -1343,7 +1343,7 @@ open class MarqueeLabel: UILabel, CAAnimationDelegate {
         maskLayer?.beginTime = maskLayer!.convertTime(CACurrentMediaTime(), from:nil) - gradientPauseTime!
     }
     
-    open func labelWasTapped(_ recognizer: UIGestureRecognizer) {
+    @objc open func labelWasTapped(_ recognizer: UIGestureRecognizer) {
         if labelShouldScroll() && !awayFromHome {
             beginScroll(true)
         }

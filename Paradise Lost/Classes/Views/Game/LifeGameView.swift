@@ -113,11 +113,11 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
     
     // MARK: event response
     
-    func resignAllResponder() {
+    @objc func resignAllResponder() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
-    func startGame() {
+    @objc func startGame() {
         resignAllResponder()
         willStart = !willStart
         delegate?.startGameAction(willStart, speed: getDoubleFromText(speedText, num: 1.0), gridSize: getIntFromText(gridSizeText, num: 2))
@@ -128,24 +128,24 @@ class LifeGameView: UIView, UITextFieldDelegate, UIPickerViewDataSource, UIPicke
         }
     }
     
-    func clearGame() {
+    @objc func clearGame() {
         resignAllResponder()
         willStart = false
         startButton.setTitle(LanguageManager.getPublicString(forKey: "start"), for: UIControlState())
         delegate?.clearGameAction()
     }
     
-    func exitGame() {
+    @objc func exitGame() {
         clearGame()
         delegate?.exitGameAction()
     }
     
-    func editGrid() {
+    @objc func editGrid() {
         resignAllResponder()
         delegate?.editGridAction(x: getIntFromText(gridXText, num: 1), y: getIntFromText(gridYText, num: 1))
     }
     
-    func addGrid() {
+    @objc func addGrid() {
         resignAllResponder()
         delegate?.addGridAction(x: getIntFromText(gridXText, num: 1), y: getIntFromText(gridYText, num: 1), index: chosenStyle)
     }
@@ -390,7 +390,7 @@ class LifeGameEditGridView: UIView {
     
     // MARK: event response
     
-    func handleTapGesture(_ sender: UITapGestureRecognizer) {
+    @objc func handleTapGesture(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             let pos = sender.location(in: self)
             let x = Int(pos.x / 20)

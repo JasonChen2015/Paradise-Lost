@@ -111,19 +111,19 @@ class PaintingView: UIView {
     
     // MARK: event response
     
-    func clickBackButton() {
+    @objc func clickBackButton() {
         delegate?.exit()
     }
     
-    func clickSaveButton() {
+    @objc func clickSaveButton() {
         delegate?.savePic()
     }
     
-    func clickGetButton() {
+    @objc func clickGetButton() {
         delegate?.getPic()
     }
     
-    func changeBackground() {
+    @objc func changeBackground() {
         if (isBgColorBlack) {
             isBgColorBlack = false
             self.backgroundColor = UIColor.white
@@ -143,7 +143,7 @@ class PaintingView: UIView {
     }
     
     // for resize mode
-    func singlePanImageView(_ sender: UIPanGestureRecognizer) {
+    @objc func singlePanImageView(_ sender: UIPanGestureRecognizer) {
         if (sender.state == .began) {
             let lp = sender.location(in: mainImageView)
             touchType = getTouchType(point: lp)
@@ -165,7 +165,7 @@ class PaintingView: UIView {
     }
     
     // for drag picture
-    func doublePanImageView(_ sender: UIPanGestureRecognizer) {
+    @objc func doublePanImageView(_ sender: UIPanGestureRecognizer) {
     }
     
     func loadImage(rawImage: UIImage?) {
@@ -320,7 +320,7 @@ class PaintingToolView: UIView {
     
     // MARK: event response
     
-    func clickPenImage() {
+    @objc func clickPenImage() {
         if (currentMode == .pen) {
             selectView.isHidden = true
             currentMode = .none
@@ -333,7 +333,7 @@ class PaintingToolView: UIView {
         delegate?.changePenMode()
     }
     
-    func clickResizeImage() {
+    @objc func clickResizeImage() {
         if (currentMode == .resize) {
             selectView.isHidden = true
             currentMode = .none
@@ -346,7 +346,7 @@ class PaintingToolView: UIView {
         delegate?.changeResizeMode()
     }
     
-    func clickTextImage() {
+    @objc func clickTextImage() {
         if (currentMode == .text) {
             selectView.isHidden = true
             currentMode = .none

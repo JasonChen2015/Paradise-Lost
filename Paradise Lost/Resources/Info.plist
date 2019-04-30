@@ -56,6 +56,8 @@
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To get picture and edit it</string>
+    <key>NSCameraUsageDescription</key>
+    <string>To take pircture and use it</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UIRequiredDeviceCapabilities</key>

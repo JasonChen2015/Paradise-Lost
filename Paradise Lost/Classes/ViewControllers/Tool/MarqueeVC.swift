@@ -103,7 +103,7 @@ class MarqueeFullVC: UIViewController {
     
     // MARK: event response
     
-    func viewTouchDown(_ recognizer: UITapGestureRecognizer) {
+    @objc func viewTouchDown(_ recognizer: UITapGestureRecognizer) {
         UIApplication.shared.isIdleTimerDisabled = false
         dismiss(animated: false, completion: nil)
     }

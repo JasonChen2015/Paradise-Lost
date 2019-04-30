@@ -121,7 +121,7 @@ class PaintingVC: UIViewController, PaintingViewDelegate, UIImagePickerControlle
         }
     }
     
-    func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let _ = error {
             // fail
             AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "paint.saveImage.fail"), handler: nil)

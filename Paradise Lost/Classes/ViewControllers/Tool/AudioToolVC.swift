@@ -35,7 +35,7 @@ class AudioToolVC: UIViewController, AudioToolViewDelegate {
     
     // MARK: AudioToolViewDelegate
     
-    func stopAudio() {
+    @objc func stopAudio() {
         if let audioRecorder = audioRecorder {
             audioRecorder.stop()
         }

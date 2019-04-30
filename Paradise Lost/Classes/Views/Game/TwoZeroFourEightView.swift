@@ -82,11 +82,11 @@ class TwoZeroFourEightView: UIView {
     
     // MARK: event response
     
-    func newGame() {
+    @objc func newGame() {
         delegate?.newButtonAction()
     }
     
-    func exitGame() {
+    @objc func exitGame() {
         delegate?.exitButtonAction()
     }
     

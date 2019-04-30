@@ -106,7 +106,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
     
     // MARK: event response
     
-    func resignAllResponder() {
+    @objc func resignAllResponder() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
     
@@ -130,7 +130,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
         didChangeSpeedSegment()
     }
     
-    func didChangeColorSegment() {
+    @objc func didChangeColorSegment() {
         if colorSegment.selectedSegmentIndex == 0 {
             redSlider.value = Float(textColor.RGBComponents.red)
             greenSlider.value = Float(textColor.RGBComponents.green)
@@ -145,7 +145,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
         refreshColorTextFromSlider()
     }
     
-    func didChangeColorSlider(_ sender: AnyObject) {
+    @objc func didChangeColorSlider(_ sender: AnyObject) {
         switch sender.tag {
         case 100:
             redText.text = "\(redSlider.value)"
@@ -166,7 +166,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
         refreshPreview()
     }
     
-    func didChangeColorText(_ sender: AnyObject) {
+    @objc func didChangeColorText(_ sender: AnyObject) {
         switch sender.tag {
         case 200:
             redSlider.value = transferRGBValueFromText(redText.text)
@@ -189,7 +189,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
         }
     }
     
-    func didChangeSpeedSegment() {
+    @objc func didChangeSpeedSegment() {
         if speedSegment.selectedSegmentIndex == 0 {
             // point per second
             speedMode = .rate(transferSpeedFromText(speedText.text))
@@ -202,11 +202,11 @@ class MarqueeView: UIView, UITextFieldDelegate {
         refreshPreview()
     }
     
-    func didChangeSpeedText() {
+    @objc func didChangeSpeedText() {
         didChangeSpeedSegment()
     }
     
-    func didTouchShowButton() {
+    @objc func didTouchShowButton() {
         delegate?.willShowFullScreenMarquee(contentText.text!, colorText: textColor, colorBackground: backColor, speedMode: speedMode)
     }
     
@@ -230,7 +230,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
     }
     
     fileprivate func saveColor() {
-        let currentColor = UIColor(colorLiteralRed: redSlider.value,
+        let currentColor = UIColor(_colorLiteralRed: redSlider.value,
                                    green: greenSlider.value, blue: blueSlider.value, alpha: alphaSlider.value)
         if colorSegment.selectedSegmentIndex == 0 {
             textColor = currentColor
@@ -258,7 +258,7 @@ class MarqueeView: UIView, UITextFieldDelegate {
         }
     }
     
-    func refreshPreview() {
+    @objc func refreshPreview() {
         preview.textColor = textColor
         preview.backgroundColor = backColor
         preview.text = contentText.text

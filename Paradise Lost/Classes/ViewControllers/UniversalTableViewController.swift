@@ -73,7 +73,7 @@ class UniversalTableViewCell: UITableViewCell {
     
     // MARK: event response
     
-    func handleAction() {
+    @objc func handleAction() {
         delegate?.cellButtonAction(self)
     }
     

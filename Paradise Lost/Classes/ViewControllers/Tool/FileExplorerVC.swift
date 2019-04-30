@@ -62,7 +62,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
                                                             target: self,
                                                             action: #selector(FileExplorerVC.extraOperation))
         navigationItem.rightBarButtonItem?.setTitleTextAttributes(
-            [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 28)], for: UIControlState())
+            [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 28)], for: UIControlState())
         
         // set up collection view
         let flowLayout = UICollectionViewFlowLayout()
@@ -152,7 +152,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
     
     // MARK: UIGestureRecognizerDelegate
     
-    func longPressGesture(_ recognize: UILongPressGestureRecognizer) {
+    @objc func longPressGesture(_ recognize: UILongPressGestureRecognizer) {
         if recognize.state == .began {
             let point = recognize.location(in: collectionView)
             if let indexPath = collectionView.indexPathForItem(at: point) {
@@ -229,7 +229,7 @@ class FileExplorerVC: UIViewController, UICollectionViewDataSource,
         }
     }
     
-    func extraOperation() {
+    @objc func extraOperation() {
         // use pop over to show the menu
         let popVC = FilePopoverVC()
         popVC.preferredContentSize = CGSize(width: 90, height: 80)
@@ -453,13 +453,13 @@ class FilePopoverVC: UIViewController {
     
     // MARK: event response
     
-    func tapCreateBtn() {
+    @objc func tapCreateBtn() {
         dismiss(animated: true, completion: {
             self.delegate?.didClickCreateButton()
         })
     }
     
-    func tapPasteBtn() {
+    @objc func tapPasteBtn() {
         dismiss(animated: true, completion: {
             self.delegate?.didClickPasteButton()
         })

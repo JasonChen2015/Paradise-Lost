@@ -51,7 +51,7 @@ class TextEditorView: UIView {
     
     // MARK: event response
     
-    func resignAllResponder() {
+    @objc func resignAllResponder() {
         // to hide keyboard
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
@@ -70,7 +70,7 @@ class TextEditorView: UIView {
             return
         }
         let animationDuration = (duration as AnyObject).doubleValue
-        UIView.animate(withDuration: animationDuration!, animations: { (_) -> Void in
+        UIView.animate(withDuration: animationDuration!, animations: { () -> Void in
             self.frame = viewFrame
         })
     }
@@ -81,7 +81,7 @@ class TextEditorView: UIView {
             return
         }
         let animationDuration = (duration as AnyObject).doubleValue
-        UIView.animate(withDuration: animationDuration!, animations: { (_) -> Void in
+        UIView.animate(withDuration: animationDuration!, animations: { () -> Void in
             self.frame = self.originFrame
         })
     }

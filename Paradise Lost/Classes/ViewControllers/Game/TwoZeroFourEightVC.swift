@@ -110,7 +110,7 @@ class TwoZeroFourEightVC: UIViewController, TwoZeroFourEightViewDelegate {
     
     // MARK: event response
     
-    func handlePanGesture(_ sender: UIPanGestureRecognizer) {
+    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
         if sender.state == .ended {
             let velocity = sender.velocity(in: self.view)
             var direction: TZFEManager.Direction = .none

@@ -23,10 +23,10 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
     fileprivate var isCapturing: Bool = false
     
     fileprivate let captureObjectType = [
-        AVMetadataObjectTypeUPCECode,
-        AVMetadataObjectTypeQRCode,
-        AVMetadataObjectTypeEAN8Code,
-        AVMetadataObjectTypeEAN13Code
+        AVMetadataObject.ObjectType.upce,
+        AVMetadataObject.ObjectType.qr,
+        AVMetadataObject.ObjectType.ean8,
+        AVMetadataObject.ObjectType.ean13
     ]
     
     // MARK: life cycle
@@ -80,7 +80,10 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
     }
     
     fileprivate func setupCapture() {
-        let device = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
+        guard let device = AVCaptureDevice.default(for: .video) else {
+            AlertManager.showTips(self, message: LanguageManager.getToolString(forKey: "barcode.initinput.message"), handler: nil)
+            return
+        }
         // input
         var deviceInput: AVCaptureDeviceInput
         do {
@@ -109,7 +112,7 @@ class BarCodeVC: UIViewController, AVCaptureMetadataOutputObjectsDelegate, BarCo
         // layer
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = mainView.reader.bounds
-        previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
     }
     
     // MARK: AVCaptureMetadataOutputObjectsDelegate

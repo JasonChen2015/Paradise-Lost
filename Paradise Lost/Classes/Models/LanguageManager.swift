@@ -14,8 +14,8 @@ class LanguageManager {
     static var dict: NSDictionary?
     
     class func setAppLanguage() {
-        if let lang = UserDefaults.standard.object(forKey: "language") {
-            language = lang as! String
+        if let lang = UserDefaults.standard.object(forKey: "language") as? String {
+            language = lang
         } else {
             language = "en" // default value
         }

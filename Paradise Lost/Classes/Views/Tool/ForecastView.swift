@@ -106,7 +106,7 @@ class ForecastView: UIView {
     
     // MARK: event response
     
-    func doUpdate() {
+    @objc func doUpdate() {
         delegate?.updateView()
     }
     
